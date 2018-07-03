@@ -1,0 +1,177 @@
+<!doctype html>
+
+<html>
+
+<head>
+     <title>San Francisco Payroll</title>
+     <meta charset = "UTF-8">
+    
+     <!-- styles -->
+     <link rel = "stylesheet" type = "text/css" href = "styles/bootstrap.min.css">
+     <link rel = "stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato" />
+     <link rel = "stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Prociono" />
+     <link rel = "stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat" >
+     <link rel = "stylesheet" type = "text/css" href = "styles/payroll.css">
+    
+     <!-- scripts -->
+     <script type="text/javascript" src = "scripts/jquery-3.2.1.min.js"> </script>
+     <script type="text/javascript" src = "scripts/bootstrap.js"> </script>
+    
+
+</head>
+
+<body>
+
+    <div id = "entire_container">
+        <div id = "navbar_container"> <!-- navbar container-->
+            <!-- nav bar -->
+            <nav class="navbar navbar-toggleable-lg navbar-light bg-faded fixed-top" id = "payroll_navbar">
+
+                <!-- div containing contents of navbar header-->
+                <div class = "navbar-header">
+                    <img id = "banner_logo" src = "photos/sf_payroll_logo.gif" alt = "banner logo"/>
+                
+                </div>
+                    <!-- list of navbar elements -->
+                <ul class="navbar-nav nav-fill w-100">
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "#">Home </a>
+                    </li>
+
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "#"> Events </a>
+                    </li>
+    
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "#">About Us </a>
+                    </li>
+    
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "#"> Members </a>
+                    </li>
+    
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "#"> Resources </a>
+                    </li>
+    
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "#"> Careers </a>
+                    </li>
+    
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "#"> Contact Us </a>
+                    </li>
+    
+                </ul> <!-- end of ul -->
+    
+            </nav> <!-- end of navbar -->
+
+        </div> <!-- end of navbar container -->
+
+        <div id = "welcome_container">
+
+            <div class = "text-center" id = "page_header">
+                <h2> San Francisco Bay Area Chapter </h2>
+                <h2> American Payroll Association   </h2>
+            </div>
+            
+            
+
+            <!-- carousel for image slideshow -->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval = "5000">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class= "slide_image" class = "img-responsive" src="photos/about_us_1.JPG" alt="first image">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img class= "slide_image" class = "img-responsive" src="photos/about_us_2.JPG" alt = "second image">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img class= "slide_image" class = "img-responsive" src="photos/about_us_4.JPG" alt="third image">
+                        </div>
+                    </div>
+            </div> <!-- end of carousel -->
+
+            <div id = "welcome_awards_join"> <!-- div to hold welcome text, award lists, and join button -->
+
+              
+                <h3 id = "welcome_text" class = "text-center"> Welcome to the San Francisco Bay Area Chapter
+                    of the American Payroll Association</h3>
+             
+                
+
+                <div id = "awards">
+                    <img class = "award_image" alt = "2018 first chapter pictorial " src = "photos/award7.jpg"/> 
+                    <img class = "award_image" alt = "first npw photo contest" src = "photos/award8.jpg"/> 
+                    <img class = "award_image" alt = "gavel award innovator" src = "photos/award5.jpg"/> 
+                    <img class = "award_image" alt = "2018 participant regional/statewide meeting" src = "photos/award6.jpg"/> 
+                    <img class = "award_image" alt = "2017 participant" src = "photos/award2.jpg"/> 
+                    <img class = "award_image" alt = "2017 chapter pictorial particpant" src = "photos/award4.jpg"/> 
+                    <img class = "award_image" alt = "honorable mention chapter of the year" src = "photos/award1.jpg"/> 
+                </div>
+                
+
+                <div id = "join">
+                    <h3> Not a member yet? Click to Join! </h3>
+                    <a class = "text-center" id="join_link" href = "https://www.cvent.com/events/ContactPortal/Login.aspx?cwstub=e9b2ed48-33d2-4d6c-bd0e-f6459cd30d89"> 
+                        <button type="button" class="btn btn-outlined btn-primary" id = "join_button">  Join </button>  
+                    </a>
+                </div>
+               
+                <br>
+
+            </div> <!-- end of welcome awards join -->
+
+        </div> <!-- end of welcome container-->
+
+        <!-- Events Section -->
+
+        <div id = "events_container">
+            <div id = "event_header">
+                <h2 class = "font-italic"> Events </h2>
+            </div>
+        </div> <!-- end of Events container -->
+
+
+        <!-- About Us Section-->
+        <div id = "about_us_container">
+            <div id = "about_us_header">
+                <h2 class = "font-italic"> About Us </h2>
+            </div>
+
+            <div id = "about_us_part1">
+                <h2 class = "text-center font-italic" > San Francisco Bay Area Chapter </h2>
+                <img id = "about_us_1" src = "photos/about_us_3.JPG" alt = "chapter photo" />
+                <div id = "blockquote_caption">
+                    <blockquote class = "font-weight-bold">
+                        The SFBAC has been providing educational and networking opportunities for the local Payroll 
+                        Professional since 1983. Every day, we strive to support the Payroll Professional with member benefits 
+                        including educational workshops, meetings, payroll legislative update, and scholarship programs. 
+                        We genuinely care about our members and go above and beyond to provide the best support, 
+                        as well as to support the goals of the National American Payroll Organization. 
+                        The San Francisco Bay Area Chapter of the APA supports CurrenC SF in partnership with the City and 
+                        County of San Francisco’s Office of Financial Empowerment. For more information go to: http://currencsf.org 
+                    </blockquote>
+                </div>
+            </div>
+
+
+        </div> <!-- end of about us container -->
+            
+     </div> <!-- end of entire container -->
+    
+</body>
+
+
+
+</html>
