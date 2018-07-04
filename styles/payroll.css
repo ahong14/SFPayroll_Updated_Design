@@ -121,7 +121,7 @@ body{
 }
 
 #about_us_container{
-  min-height: 800px;
+  min-height: 1500px;
   display:flex;
   flex-direction: column;
   justify-content: space-around;
@@ -139,18 +139,33 @@ body{
   display:flex;
   flex-direction: column;
   align-self: center;
+  min-height: 500px;
 }
 
 #about_us_1{
   display:flex;
   align-self: center;
   width: 700px;
-  height: 400px;
+  height: 380px;
 }
 
-#blockquote_caption{
+.blockquote_caption{
   width: 800px;
 }
+
+.toggle_info{
+  cursor: pointer;
+  color: blue;
+}
+
+.about_section{
+  display:flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+
+
 
 
 

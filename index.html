@@ -106,7 +106,8 @@
 
               
                 <h3 id = "welcome_text" class = "text-center"> Welcome to the San Francisco Bay Area Chapter
-                    of the American Payroll Association</h3>
+                    of the American Payroll Association
+                </h3>
              
                 
 
@@ -152,7 +153,7 @@
             <div id = "about_us_part1">
                 <h2 class = "text-center font-italic" > San Francisco Bay Area Chapter </h2>
                 <img id = "about_us_1" src = "photos/about_us_3.JPG" alt = "chapter photo" />
-                <div id = "blockquote_caption">
+                <div class = "blockquote_caption">
                     <blockquote class = "font-weight-bold">
                         The SFBAC has been providing educational and networking opportunities for the local Payroll 
                         Professional since 1983. Every day, we strive to support the Payroll Professional with member benefits 
@@ -160,16 +161,52 @@
                         We genuinely care about our members and go above and beyond to provide the best support, 
                         as well as to support the goals of the National American Payroll Organization. 
                         The San Francisco Bay Area Chapter of the APA supports CurrenC SF in partnership with the City and 
-                        County of San Francisco’s Office of Financial Empowerment. For more information go to: http://currencsf.org 
+                        County of San Francisco’s Office of Financial Empowerment. For more information go to: 
+                        <a href = "http://currencsf.org ">http://currencsf.org </a>
                     </blockquote>
                 </div>
             </div>
+
+            
+            <!-- history section-->
+            <div class = "about_section" id =  "history_section">
+                <h2 class = "text-center "> History </h2>
+                
+                <div class = "toggle_info" id = "history_more_info">
+                    <p class = "text-center font-italic" onclick = "showHistory()"> More Info </p>
+                </div>
+
+            </div> <!--end of history section -->
+
+            <!-- apa section -->
+            <div class = "about_section" id = "apa_section">
+                <h2 class = "text-center "> American Payroll Association </h2>
+                
+                <div class = "toggle_info" id = "apa_more_info">
+                    <p class = "text-center font-italic" onclick = "showAPA()"> More Info </p>
+                </div>
+    
+            </div> <!-- end of APA section -->
+
+            <div class = "about_section" id = "gpmi_section">
+                <h2 class = "text-center"> Global Payroll Management Institute </h2>
+                
+                <div class = "toggle_info" id = "gpmi_more_info">
+                    <p class = "text-center font-italic" onclick = "showGPMI()"> More Info </p>
+                </div>
+
+            </div> <!-- end of GPMI section -->
+
+
+
 
 
         </div> <!-- end of about us container -->
             
      </div> <!-- end of entire container -->
-    
+
+     <script type = "text/javascript" src = "scripts/payroll.js"> </script>
+
 </body>
 
 
