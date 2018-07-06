@@ -1,3 +1,15 @@
+function setDate(){
+    var date = new Date();
+    var date_div = document.getElementById('time_date');
+    date_div.textContent = date.toDateString();
+}
+
+setDate();
+
+
+
+
+
 
 //toggle about sections 
 function showHistory(){
