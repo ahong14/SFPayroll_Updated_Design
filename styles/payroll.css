@@ -34,7 +34,7 @@ body{
 #welcome_container{
   display:flex;
   flex-direction: column;
-  min-height: 850px;
+  min-height: 1000px;
   background-color: #E2DDDC;
 }
 
@@ -45,12 +45,12 @@ body{
 }
 
 #myCarousel{
-  margin-top: 10px;
+  /* margin-top: 10px; */
   padding: 10px;
 }
 
 .slide_image{
-	height: 400px;
+	height: 460px;
   width: 950px;
   display:block;
 	margin-left:auto;
@@ -98,17 +98,18 @@ body{
   margin-top: 50px;
   display:flex;
   flex-direction: column;
-  align-self: center;
+  align-self: center;  
 
-  
 }
-
-
 
 #join_button{
   width: 200px;
   border-radius: 0px;
   cursor: pointer;
+}
+
+#join_link{
+  padding: 5px;
 }
 
 #events_container{
@@ -120,6 +121,7 @@ body{
 
 .section_header{
   text-decoration: underline;
+  font-style: italic;
 }
 #event_header{
   align-self: center;
@@ -131,8 +133,10 @@ body{
   font-size: 25px;
 }
 
+
+/*about us section */ 
 #about_us_container{
-  min-height: 2000px;
+  min-height: 3000px;
   display:flex;
   flex-direction: column;
   justify-content: space-around;
@@ -142,11 +146,9 @@ body{
 
 #about_us_header{
   align-self: center;
-
 }
 
 #about_us_part1{
-
   display:flex;
   flex-direction: column;
   align-self: center;
@@ -210,6 +212,43 @@ body{
   width: 80px;
   height: 60px;
 }
+
+#officers_container{
+  min-height: 1000px;
+  width: 100%;
+
+}
+
+#officers_content{
+  margin: auto;
+  min-height: 900px;
+  width: 90%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.officer_info{
+  align-self: center;
+  border: solid 1px black;
+  padding: 5px;
+  width: 400px;
+  height: 300px;
+}
+
+.officer_image{
+  width: 100px;
+  height: 100px;
+  align-self: center;
+}
+
+#president{
+  margin: auto;
+}
+
+
 
 
 
