@@ -31,6 +31,10 @@ body{
   color: blue;
 }
 
+#banner_logo{
+  width: 80%;
+}
+
 #welcome_container{
   display:flex;
   flex-direction: column;
@@ -62,7 +66,6 @@ body{
   display:flex;
   flex-direction: column;
   justify-content: space-around;
-
 }
 
 #welcome_text_div{
@@ -113,7 +116,7 @@ body{
 }
 
 #events_container{
-  min-height: 500px;
+  min-height: 1000px;
   display:flex;
   flex-direction: column;
   background-color: #83A0DE;
@@ -246,6 +249,52 @@ body{
 
 #president{
   margin: auto;
+}
+
+#membership_container{
+  min-height: 1100px;
+  background-color: lightgray;
+}
+
+#membership_fees{
+  margin-top: 50px;
+  display:flex;
+  flex-direction: column;
+}
+
+#benefits{
+  margin: auto;
+  width: 40%;
+}
+
+.corporate_type{
+  display:flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+#silver{
+  width:30px;
+  height:30px;
+  background-color: silver;
+}
+
+#gold{
+  width:30px;
+  height:30px;
+  background-color: gold;
+}
+
+#platinum{
+  width:30px;
+  height:30px;
+  background-color: #E5E4E2;
+  margin-left: 80px;
+}
+
+ul{
+  font-size: 20px;
+  font-style: italic;
 }
 
 

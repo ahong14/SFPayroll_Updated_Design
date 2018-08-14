@@ -146,4 +146,49 @@ function hideGPMI(){
     more_info.style.visibility = 'visible';
 }
 
+function showStudy(){
+    var study_content = document.getElementById("study_group");
+
+    var study_div = document.createElement("div");
+
+    study_div.id = "study_content";
+
+    var blockquote1 = document.createElement("blockquote");
+    
+    blockquote1.textContent = 
+    "This is a special group designed to cater to those who prefer a smaller, more intimate study environment, so limited space is available. Enroll now to ensure your spot is reserved! The APA has several different grant programs to not only help pay for Congress, but will also cover classes and resources. Visit the follow web page for more details: http://www.americanpayroll.org/members/edgrant/. The American Payroll Association website also has  posted all Study Group sessions from other local chapters. Please check out HERE for more education information.";
+
+
+    study_div.style.width = "50%";
+    study_div.style.alignSelf = "center";
+
+    //create button to hide info
+    var hide_info = document.createElement("p");
+    hide_info.textContent = "Hide Info";
+    hide_info.onclick = hideStudy;
+    hide_info.className = 'text-center font-italic toggle_info';
+
+    study_div.appendChild(blockquote1);
+
+    study_div.appendChild(hide_info);
+
+    study_content.appendChild(study_div);
+
+    var more_info = document.getElementById('study_more_info');
+    more_info.style.visibility = 'hidden';
+
+}
+
+function hideStudy(){
+    var content = document.getElementById('study_content');
+    while(content.hasChildNodes()){
+        content.removeChild(content.lastChild);
+    }
+    content.remove();
+
+    var more_info = document.getElementById('study_more_info');
+    more_info.style.visibility = 'visible';
+
+}
+
 
