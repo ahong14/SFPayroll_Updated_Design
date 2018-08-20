@@ -39,7 +39,11 @@ body{
   display:flex;
   flex-direction: column;
   min-height: 1000px;
-  background-color: #E2DDDC;
+  /* background-image: url("../photos/golden_gate_bridge.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: cover; */
+  /* background-color: #E2DDDC; */
 }
 
 #page_header{
@@ -111,12 +115,14 @@ body{
   cursor: pointer;
 }
 
+
+
 #join_link{
   padding: 5px;
 }
 
 #events_container{
-  min-height: 1000px;
+  min-height: 1500px;
   display:flex;
   flex-direction: column;
   background-color: #83A0DE;
@@ -125,6 +131,7 @@ body{
 .section_header{
   text-decoration: underline;
   font-style: italic;
+  text-align: center;
 }
 #event_header{
   align-self: center;
@@ -143,8 +150,7 @@ body{
   display:flex;
   flex-direction: column;
   justify-content: space-around;
-  /* background-color: #898989; */
-
+  /* background-color: lightskyblue; */
 }
 
 #about_us_header{
@@ -200,7 +206,8 @@ body{
     display:flex;
     flex-direction: column;
     z-index: 100;
-    background-color: #B7BFF2;
+    background-color: lightgray;
+    visibility: hidden;
 }
 
 #sponsor_logos{
@@ -213,7 +220,7 @@ body{
 
 .sponsor_images{
   width: 80px;
-  height: 60px;
+  height: 55px;
 }
 
 #officers_container{
@@ -297,13 +304,150 @@ ul{
   font-style: italic;
 }
 
+#resources_container{
+  min-height: 1000px;
+  background-color: lightsteelblue;
+}
 
+#study_group_resources{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
+#cpp_image{
+  width:80px;
+  height:80px;
+  align-self: center;
+}
 
+#fpc_image{
+  width:80px;
+  height:80px;
+  align-self: center;
+}
 
+#cpp{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
 
+#fpc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 
+}
 
+.learning_resources{
+  display:flex;
+  flex-direction: column;
+  font-style: italic;
+  text-align: center;
+}
+
+#learning_resources_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#careers_container{
+  min-height: 1500px;
+  background-color: lightgrey;
+}
+
+#open_positions{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
+
+}
+
+#help_sites{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.underline_header{
+  text-decoration: underline;
+}
+
+#accountants_international{
+  width: 40%;
+  margin: auto;
+}
+
+#job_form{
+  display:flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+#job_form_input{
+  width: 40%;
+  align-self: center;
+  margin: auto;
+  padding: 5px;
+}
+
+#submit_container{
+  display: flex;
+  flex-direction: column;
+}
+
+#submit_button{
+  width: 200px;
+  border-radius: 0px;
+  cursor: pointer;
+  align-self: center;
+}
+
+#contact_us_container{
+  min-height: 1000px;
+  display :flex;
+  flex-direction: column;
+}
+
+#contact_info{
+  align-self: center;
+  font-weight: bold;
+
+}
+
+.follow_us_container{
+  display:flex;
+  flex-direction: row;
+  
+}
+
+.follow_image{
+  width: 50px;
+  height: 50px;
+  margin-top: -10px;
+}
+
+#facebook_logo{
+  width: 40px;
+  height: 40px;
+
+}
+
+#hear_from_container{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-self: center;
+}
+
+/* #hear_from_form{
+  width: 80%;
+} */
 
 /* #body_div{
   width:100%;
