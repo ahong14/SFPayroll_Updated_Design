@@ -1,3 +1,4 @@
+//set date for events section
 function setDate(){
     var date = new Date();
     var date_div = document.getElementById('time_date');
@@ -5,11 +6,6 @@ function setDate(){
 }
 
 setDate();
-
-
-
-
-
 
 //toggle about sections 
 function showHistory(){
@@ -191,6 +187,7 @@ function hideStudy(){
 
 }
 
+//scroll animation functions
 function scrollHome(){
     $('html, body').animate(
     {

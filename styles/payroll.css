@@ -1,8 +1,4 @@
 
-/*
-fixes navbar blocking contents of top page
-*/
-
 body{
     padding-top: 65px;
     font-family: 'Montserat', sans-serif;
@@ -142,7 +138,6 @@ body{
   font-size: 25px;
 }
 
-
 /*about us section */ 
 #about_us_container{
   min-height: 3500px;
@@ -241,7 +236,7 @@ body{
 
 .officer_info{
   align-self: center;
-  border: solid 1px black;
+  border: ridge 1px black;
   padding: 5px;
   width: 400px;
   height: 300px;
@@ -258,7 +253,7 @@ body{
 }
 
 #membership_container{
-  min-height: 1200px;
+  min-height: 1300px;
   background-color: lightgray;
 }
 
@@ -355,7 +350,7 @@ ul{
 }
 
 #careers_container{
-  min-height: 1500px;
+  min-height: 1600px;
   background-color: lightgrey;
 }
 
@@ -441,6 +436,23 @@ ul{
   display: flex;
   flex-direction: column;
   width: 60%;
+  align-self: center;
+}
+
+#membership_photo{
+  width: 550px;
+  height: 300px;
+  align-self: center;
+}
+
+#career_header{
+  display:flex;
+  flex-direction: column; 
+}
+
+#career_image{
+  width: 500px;
+  height: 300px;
   align-self: center;
 }
 

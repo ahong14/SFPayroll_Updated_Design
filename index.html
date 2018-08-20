@@ -16,11 +16,9 @@
      <!-- scripts -->
      <script type="text/javascript" src = "scripts/jquery-3.2.1.min.js"> </script>
      <script type="text/javascript" src = "scripts/bootstrap.js"> </script>
-    
 </head>
 
 <body>
-
     <div id = "entire_container">
         <div id = "navbar_container"> <!-- navbar container-->
             <!-- nav bar -->
@@ -81,6 +79,7 @@
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                         <li data-target="#myCarousel" data-slide-to="2"></li>
                         <li data-target="#myCarousel" data-slide-to="3"></li>
+                        <li data-target="#myCarousel" data-slide-to="4"></li>
                     </ol>
 
                     <!-- Wrapper for slides -->
@@ -100,6 +99,10 @@
 
                         <div class="carousel-item">
                             <img class= "slide_image" class = "img-responsive" src="photos/about_us_4.JPG" alt="fourth image">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img class= "slide_image" class = "img-responsive" src="photos/carousel_image.jpg" alt="fifth image">
                         </div>
                     </div>
             </div> <!-- end of carousel -->
@@ -139,7 +142,6 @@
         </div> <!-- end of welcome container-->
 
         <!-- Events Section -->
-
         <div id = "events_container">
             <div id = "event_header">
                 <h2 class = "section_header"> Events </h2>
@@ -149,10 +151,7 @@
                 
             </div>
 
-
-
         </div> <!-- end of Events container -->
-
 
         <!-- About Us Section-->
         <div id = "about_us_container">
@@ -345,6 +344,7 @@
             <h2 class = "section_header text-center"> Membership </h2>
 
             <div class = "text-center" id = "membership_fees">
+                <img src = "photos/membership_photo.jpg" id = "membership_photo"/>
                 <h3> Individual Membership - $60 </h3>
          
                 <br> 
@@ -418,8 +418,8 @@
                     <p class = "font-weight-bold"> Certified Payroll Professional (CPP) </p>
                     <p> The CPP is a certification credential for those with some experience in payroll</p>
                     <a href = "https://www.americanpayroll.org/education-certification/certification/certified-payroll-professional-(cpp)" target = "_blank"> <p> Overview information </p> </a>
-                    <p> Content outline </p>
-                    <p> Handbook </p>
+                    <a href = ""> <p> Content outline </p> </a>
+                    <a href = ""><p> Handbook </p> </a>
                 </div>
 
 
@@ -428,8 +428,8 @@
                     <p class = "font-weight-bold"> Fundamental Payroll Certification (FPC)</p>
                     <p> The FPC is a certification credential for payroll beginners and service and support for professionals.</p>
                     <a href = "https://www.americanpayroll.org/education-certification/certification/fundamental-payroll-certification-(fpc)" target = "_blank"> <p> Overview information </p> </a>
-                    <p> Content outline </p>
-                    <p> Handbook </p>
+                    <a href = ""> <p> Content outline </p> </a>
+                    <a href = ""><p> Handbook </p> </a>
                 </div>
             </div> <!-- end of study group resources -->
             
@@ -491,12 +491,17 @@
 
         <!-- careers container-->
         <div id = "careers_container">
-            <h2 class = "section_header text-center"> Careers </h2>
+
+            <div id = "career_header">
+                <h2 class = "section_header text-center"> Careers </h2>
+                <img src = "photos/gpmi_background.jpg" id = "career_image"/>
+            </div>
+          
             <br>
 
             <div class = "learning_resources" id = "open_positions">
                 <h3> Open Positions </h3>
-            
+
                     <li> <a href = "http://www.sfpayroll.org/JobPosting/2018/Payroll__Benefits___HRIS_Manager_0808.pdf" target="_blank"> Payroll, Benefits & HRIS Manager </a> San Rafael, EAH Housing, 8/08/2018 </li>
                     <!-- <li> <a href = "" target = "_blank"> Director of Global Payroll </a> Colorado, Western Union, 8/08/2018  </li> -->
                     <li> <a href = "https://segment.com/jobs/1280505-Global-Payroll-Lead" target = "_blank"> Senior Global Payroll </a> San Francisco, Meltwater, 07/19/2018     </li>
