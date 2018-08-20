@@ -17,7 +17,6 @@
      <script type="text/javascript" src = "scripts/jquery-3.2.1.min.js"> </script>
      <script type="text/javascript" src = "scripts/bootstrap.js"> </script>
     
-
 </head>
 
 <body>
@@ -29,35 +28,35 @@
 
                 <!-- div containing contents of navbar header-->
                 <div class = "navbar-header">
-                    <img id = "banner_logo" src = "photos/sf_payroll_logo.gif" alt = "banner logo"/>
+                    <img id = "banner_logo" onclick = "scrollHome()" src = "photos/sf_payroll_logo.gif" alt = "banner logo"/>
                 </div>
                     <!-- list of navbar elements -->
                 <ul class="navbar-nav nav-fill w-100">
-                    <li class = "nav-item">
+                    <li class = "nav-item" onclick = "scrollHome()">
                         <a class = "nav-link" href = "#">Home </a>
                     </li>
 
-                    <li class = "nav-item">
-                        <a class = "nav-link" href = "#"> Events </a>
+                    <li class = "nav-item" onclick = "scrollToEvents()">
+                        <a class = "nav-link" href = "#events_container"> Events </a>
                     </li>
     
-                    <li class = "nav-item">
+                    <li class = "nav-item" onclick = "scrollToAbout()">
                         <a class = "nav-link" href = "#">About Us </a>
                     </li>
     
-                    <li class = "nav-item">
+                    <li class = "nav-item" onclick = "scrollToMembership()">
                         <a class = "nav-link" href = "#"> Membership </a>
                     </li>
     
-                    <li class = "nav-item">
+                    <li class = "nav-item" onclick = "scrollToResources()">
                         <a class = "nav-link" href = "#"> Resources </a>
                     </li>
     
-                    <li class = "nav-item">
+                    <li class = "nav-item" onclick = "scrollToCareers()">
                         <a class = "nav-link" href = "#"> Careers </a>
                     </li>
     
-                    <li class = "nav-item">
+                    <li class = "nav-item" onclick = "scrollToContacts()">
                         <a class = "nav-link" href = "#"> Contact Us </a>
                     </li>
     
@@ -127,7 +126,7 @@
                     <h3 class = "text-center"> Not a member yet?  </h3>
 
                     <a class = "text-center" id="join_link" href = "https://www.cvent.com/events/ContactPortal/Login.aspx?cwstub=e9b2ed48-33d2-4d6c-bd0e-f6459cd30d89" target="_blank"> 
-                        <button type="button" class="btn btn-outlined btn-primary" id = "join_button">  Join </button>  
+                        <button type="button" class="btn btn-outlined btn-primary" id = "join_button">  Join/Login </button>  
                     </a>
 
                     <h3 class = "text-center"> Click to join! </h3>
@@ -602,11 +601,11 @@
 
             <br> 
             <div id = "contact_info">
-                <p> General Information/Government Update: <a href=""> info@sfpayroll.org </a> </p>
-                <p> Reservation: <a href = ""> RSVP@sfpayroll.org </a> </p>
-                <p> Membership: <a href = "" > member@sfpayroll.org </a> </p>
-                <p> Study Group: <a href = ""> studygroup@sfpayroll.org </a> </p>
-                <p> Job Posting/Webmaster: <a href = ""> admin@sfpayroll.org </a> </p>
+                <p> General Information/Government Update: <a href="mailto:info@sfpayroll.org" target = "_blank"> info@sfpayroll.org </a> </p>
+                <p> Reservation: <a href = "mailto:RSVP@sfpayroll.org" target = "_blank"> RSVP@sfpayroll.org </a> </p>
+                <p> Membership: <a href = "mailto:member@sfpayroll.org" target = "_blank" > member@sfpayroll.org </a> </p>
+                <p> Study Group: <a href = "mailto:studygroup@sfpayroll.org" target = "_blank"> studygroup@sfpayroll.org </a> </p>
+                <p> Job Posting/Webmaster: <a href = "mailto:admin@sfpayroll.org" target = "_blank"> admin@sfpayroll.org </a> </p>
 
                 <div class = "follow_us_container" id = "linkedin">
                     <h3> LinkedIn: </h3>

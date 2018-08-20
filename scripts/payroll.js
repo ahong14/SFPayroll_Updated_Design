@@ -191,5 +191,56 @@ function hideStudy(){
 
 }
 
+function scrollHome(){
+    $('html, body').animate(
+    {
+        scrollTop: $('#welcome_container').position().top-77
+    },500);
+}
 
+
+function scrollToEvents(){
+    // Scroll to a certain element
+
+    $('html, body').animate(
+    {
+        scrollTop: $('#events_container').position().top-77
+    },500);
+    
+}
+
+function scrollToAbout(){
+    $('html, body').animate(
+    {
+        scrollTop: $('#about_us_container').position().top-30
+    },500);
+}
+
+function scrollToMembership(){
+    $('html, body').animate(
+    {
+        scrollTop: $('#membership_container').position().top-77
+    },500);
+}
+
+function scrollToResources(){
+    $('html, body').animate(
+    {
+        scrollTop: $('#resources_container').position().top-77
+    },500);
+}
+
+function scrollToCareers(){
+    $('html, body').animate(
+    {
+        scrollTop: $('#careers_container').position().top-77
+    },500);
+}
+
+function scrollToContacts(){
+    $('html, body').animate(
+    {
+        scrollTop: $('#contact_us_container').position().top-77
+    },500);
+}
 
