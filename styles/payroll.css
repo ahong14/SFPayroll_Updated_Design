@@ -133,6 +133,7 @@ body{
   flex-direction: column;
   align-self: center;
   justify-content: space-evenly;
+  /* border: solid 1px black; */
 }
 
 .event_info{
