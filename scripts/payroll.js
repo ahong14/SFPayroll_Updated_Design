@@ -173,6 +173,9 @@ function showStudy(){
     var more_info = document.getElementById('study_more_info');
     more_info.style.visibility = 'hidden';
 
+    var membership_container = document.getElementById('membership_container');
+    membership_container.style.minHeight = "1500px";
+
 }
 
 function hideStudy(){
@@ -184,6 +187,9 @@ function hideStudy(){
 
     var more_info = document.getElementById('study_more_info');
     more_info.style.visibility = 'visible';
+
+    var membership_container = document.getElementById('membership_container');
+    membership_container.style.minHeight = "1300px";
 
 }
 

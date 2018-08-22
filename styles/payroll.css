@@ -1,8 +1,17 @@
-
 body{
     padding-top: 65px;
     font-family: 'Montserat', sans-serif;
     /* font-family: 'Times New Roman', Times, serif'; */
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#header_text{
+  color: white;
 }
 
 #entire_container{
@@ -35,12 +44,17 @@ body{
 #welcome_container{
   display:flex;
   flex-direction: column;
-  min-height: 1100px;
+  min-height: 1500px;
   /* background-image: url("../photos/golden_gate_bridge.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: cover; */
   /* background-color: #E2DDDC; */
+}
+
+#golden_gate_background{
+  width: 100vw;
+  height: 500px;
 }
 
 #page_header{
@@ -161,7 +175,7 @@ body{
   min-height: 3500px;
   display:flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   /* background-color: lightskyblue; */
 }
 
