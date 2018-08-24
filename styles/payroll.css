@@ -3,6 +3,10 @@ body{
     font-family: 'Montserat', sans-serif;
     /* font-family: 'Times New Roman', Times, serif'; */
 }
+
+.underline{
+  text-decoration: underline;
+}
 .centered {
   position: absolute;
   top: 50%;
@@ -45,6 +49,8 @@ body{
   display:flex;
   flex-direction: column;
   min-height: 1500px;
+  background-color: #D8D8D8;
+  /* color: white; */
   /* background-image: url("../photos/golden_gate_bridge.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -136,10 +142,10 @@ body{
 }
 
 #events_container{
-  min-height: 1500px;
+  min-height: 1200px;
   display:flex;
   flex-direction: column;
-  background-color: #D4D4D4;
+  /* background-color: #D8D8D8; */
 }
 
 #events{
@@ -153,6 +159,11 @@ body{
 .event_info{
   display:flex;
   flex-direction: column;
+}
+
+#events_image{
+  width: 700px;
+  height: 380px;
 }
 
 .section_header{
@@ -176,7 +187,7 @@ body{
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* background-color: lightskyblue; */
+  background-color: #D8D8D8;
 }
 
 #about_us_header{
@@ -188,7 +199,7 @@ body{
   flex-direction: column;
   align-self: center;
   min-height: 500px;
-  margin-top: -50px;
+  margin-top: -100px;
 }
 
 #about_us_part1_blockquote{
@@ -270,6 +281,7 @@ body{
   align-self: center;
   border: ridge 1px black;
   padding: 5px;
+  font-weight: bold;
   width: 400px;
   height: 300px;
 }
@@ -286,7 +298,7 @@ body{
 
 #membership_container{
   min-height: 1300px;
-  background-color: lightgray;
+  /* background-color: lightgray; */
 }
 
 #membership_fees{
@@ -331,8 +343,8 @@ ul{
 }
 
 #resources_container{
-  min-height: 1000px;
-  background-color: #DEE0DE;
+  min-height: 1000px; 
+  background-color: #D8D8D8;
 }
 
 #study_group_resources{
@@ -383,7 +395,7 @@ ul{
 
 #careers_container{
   min-height: 1600px;
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
 }
 
 #open_positions{
@@ -438,6 +450,8 @@ ul{
   min-height: 1000px;
   display :flex;
   flex-direction: column;
+  background-color: #D8D8D8;
+
 }
 
 #contact_info{
