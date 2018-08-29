@@ -35,6 +35,18 @@ body{
 
 #payroll_navbar{
   height: 80px;
+  /* visibility: hidden; */
+}
+
+#mobile_navbar{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  visibility: hidden;
+}
+
+#sidebar{
+  display:none;
 }
 
 .navbar-light .navbar-nav .nav-link{
@@ -50,11 +62,6 @@ body{
   width: 80%;
   cursor: pointer;
 }
-
-
-
-
-
 
 #welcome_container{
   display:flex;
@@ -538,11 +545,57 @@ ul{
   #payroll_navbar{
     visibility: hidden;
   }
+  
+  #mobile_navbar{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    visibility: visible;
+  }
+
+  #mobile_bar{
+    align-self: center;
+  }
 
   #golden_gate_background{
     height: 300px;
   }
 
+  #sidebar{
+    display: inline;
+    visibility: visible;
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    z-index: 1;
+    background-color: #D8D8D8;
+    transition: 0.5s;
+    padding-top: 60px;
+    right:0;
+  }
 
+  #close_navbar{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 20px;
+    color: white;
+  }
+
+  #close_icon{
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  #mobile_nav_links{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  #mobile_nav_links p{
+    cursor: pointer;
+  }
 
 }
+/* end of mobile version */ 

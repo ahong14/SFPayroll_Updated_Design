@@ -306,3 +306,10 @@ function scrollToContacts(){
     },500);
 }
 
+function showSideNav(){
+    document.getElementById("sidebar").style.width = "200px";
+}
+
+function closeSideNav(){
+    document.getElementById("sidebar").style.width = "0";
+}
