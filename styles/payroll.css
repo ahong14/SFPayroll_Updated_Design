@@ -6,6 +6,10 @@ body{
     /* font-family: 'Times New Roman', Times, serif'; */
 }
 
+blockquote{
+  overflow: auto;
+}
+
 .underline{
   text-decoration: underline;
 }
@@ -548,7 +552,19 @@ ul{
   }
 
   h1 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+  }
+
+  h2{
+    font-size: 1.2rem;
+  }
+
+  h3{
+    font-size: 1.1rem;
+  }
+
+  li{
+    font-size: 0.9rem;
   }
 
   entire_container{
@@ -645,6 +661,7 @@ ul{
 
   #awards{
     margin: auto;
+    min-width: 100px;
   }
   
   .slide_image{
@@ -657,6 +674,11 @@ ul{
     width: 60px;
   }
 
+  #events_image{
+    width: 350px;
+    height: 200px;
+  }
+
   #about_us_container{
     min-height: 5000px;
   }
@@ -666,8 +688,14 @@ ul{
     width: 300px;
   }
 
+  #about_us_part1_blockquote{
+    width: 450px;
+    margin: auto;
+  }
+
+
   #membership_conatiner{
-    min-height: 2000px;
+    min-height: 3000px;
   }
 
   #resources_container{
