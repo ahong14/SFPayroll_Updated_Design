@@ -49,6 +49,10 @@ body{
   display:none;
 }
 
+#close_navbar{
+  display: none;
+}
+
 .navbar-light .navbar-nav .nav-link{
   color: black;
   font-size: 16px;
@@ -534,44 +538,63 @@ ul{
   color: white;
 }
 
-/* Standard syntax */
-@keyframes move {
-  from {top: 0px;}
-  to {top: 200px;}
-}
 
 /* mobile version */ 
 @media screen and (max-width: 520px){
+
+  
+  body{
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  entire_container{
+    margin: 0 auto;
+  }
+
   #payroll_navbar{
     visibility: hidden;
   }
   
   #mobile_navbar{
     display:flex;
-    flex-direction: row;
     justify-content: space-between;
     visibility: visible;
+    width:100vw;
   }
 
   #mobile_bar{
     align-self: center;
+    cursor: pointer;
   }
 
-  #golden_gate_background{
-    height: 300px;
+  #mobile_banner{
+    display: flex;
+    flex-direction: row;
   }
+
+  #banner_logo_mobile{
+    width: 60%;
+    align-self: flex-end;
+  }
+
+
 
   #sidebar{
     display: inline;
     visibility: visible;
-    height: 100%;
-    width: 0px;
+    height: 100vh;
+    width: 0vw;
     position: fixed;
-    z-index: 1;
+    z-index: 200;
     background-color: #D8D8D8;
     transition: 0.5s;
     padding-top: 60px;
-    right:0;
+    overflow-x: hidden;
+    left:0;
   }
 
   #close_navbar{
@@ -583,6 +606,9 @@ ul{
   }
 
   #close_icon{
+  
+    display: none;
+    
     padding: 5px;
     cursor: pointer;
   }
@@ -593,8 +619,39 @@ ul{
     justify-content: space-evenly;
   }
 
-  #mobile_nav_links p{
+  #mobile_nav_links p:hover{
     cursor: pointer;
+    color: blue;
+  }
+
+ 
+
+  #page_header{
+    position: relative;
+    font-style: italic;
+    min-height: 200px;
+  }
+ 
+  #golden_gate_background{
+    height: 300px;
+  }
+
+ 
+
+  /* h3{
+    font-size: 1.3rem;
+
+  } */
+
+  
+  .slide_image{
+    height: 300px;
+    width: 450px;
+
+  }
+
+  .award_image{
+    width: 60px;
   }
 
 }

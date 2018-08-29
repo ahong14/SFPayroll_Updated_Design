@@ -308,8 +308,11 @@ function scrollToContacts(){
 
 function showSideNav(){
     document.getElementById("sidebar").style.width = "200px";
+    document.getElementById("close_icon").style.display = "block";
 }
 
 function closeSideNav(){
     document.getElementById("sidebar").style.width = "0";
+    document.getElementById("close_icon").style.display = "none";
+
 }

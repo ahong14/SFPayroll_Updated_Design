@@ -26,6 +26,24 @@
 
 <body>
     <div id = "entire_container">
+
+         <!-- mobile sidebar -->
+        <div id = "sidebar">
+            <div id = "close_navbar">
+                <p id = "close_icon" onclick = "closeSideNav()"> &times; </p>
+            </div>
+                        
+                        
+            <div class = "text-center" id = "mobile_nav_links">
+                <p onclick = "scrollHome()"> Home</p>
+                <p onclick = "scrollToEvents()"> Events</p>
+                <p onclick = "scrollToAbout()"> About Us</p>
+                <p onclick = "scrollToMembership()"> Membership </p>
+                <p onclick = "scrollToResources()"> Resources </p>
+                <p onclick = "scrollToCareers()"> Careers </p>
+                <p onclick = "scrollToContacts()"> Contact Us </p>
+            </div>
+        </div> 
         <!-- navbar container-->
         <div id = "navbar_container"> 
             <!-- nav bar -->
@@ -72,14 +90,15 @@
 
             <!-- mobile navbar -->
             <nav class="navbar navbar-toggleable-lg navbar-light bg-faded fixed-top" id = "mobile_navbar">
-                <div class = "navbar-header">
-                    <img id = "banner_logo" onclick = "scrollHome()" src = "photos/sf_payroll_logo.gif" alt = "banner logo"/>
-                </div>
-
                 <div id = "mobile_bar">
                     <i id = "bar_icon" class="fa fa-bars" onclick = "showSideNav()"></i>
                 </div>
-              
+                
+        
+                <div class = "navbar-header" id = "mobile_banner">
+                    <img id = "banner_logo_mobile" onclick = "scrollHome()" src = "photos/sf_payroll_logo.gif" alt = "banner logo"/>
+                </div>
+
             </nav>
 
         </div> <!-- end of navbar container -->
@@ -750,23 +769,7 @@
 
         </div> end of footer -->
         
-        <!-- mobile sidebar -->
-        <div id = "sidebar">
-            <div id = "close_navbar">
-                <p id = "close_icon" onclick = "closeSideNav()"> &times; </p>
-            </div>
-        
-        
-            <div class = "text-center" id = "mobile_nav_links">
-                <p onclick = "scrollHome()"> Home</p>
-                <p onclick = "scrollToEvents()"> Events</p>
-                <p onclick = "scrollToAbout()"> About Us</p>
-                <p onclick = "scrollToMembership()"> Membership </p>
-                <p onclick = "scrollToResources()"> Resources </p>
-                <p onclick = "scrollToCareers()"> Careers </p>
-                <p onclick = "scrollToContacts()"> Contact Us </p>
-            </div>
-        </div> 
+   
                 
      </div> <!-- end of entire container -->
 
