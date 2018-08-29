@@ -643,6 +643,9 @@ ul{
 
   } */
 
+  #awards{
+    margin: auto;
+  }
   
   .slide_image{
     height: 300px;
@@ -653,6 +656,28 @@ ul{
   .award_image{
     width: 60px;
   }
+
+  #about_us_container{
+    min-height: 5000px;
+  }
+
+  #about_us_1{
+    height: 180px;
+    width: 300px;
+  }
+
+  #membership_conatiner{
+    min-height: 2000px;
+  }
+
+  #resources_container{
+    min-height: 1400px;
+  }
+
+  #careers_container{
+    min-height: 2200px;
+  }
+  
 
 }
 /* end of mobile version */ 
