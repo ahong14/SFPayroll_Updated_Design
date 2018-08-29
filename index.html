@@ -8,11 +8,15 @@
     
      <!-- styles -->
      <link rel = "stylesheet" type ="text/css"  href = "styles/bootstrap.css">
+     <link rel = "stylesheet" type ="text/css"  href = "styles/payroll.css"> 
+     <link rel="stylesheet"   type = "text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+     <!-- fonts -->
      <link rel = "stylesheet" type="text/css"   href="https://fonts.googleapis.com/css?family=Lato" />
      <link rel = "stylesheet" type="text/css"   href="https://fonts.googleapis.com/css?family=Prociono" />
      <link rel = "stylesheet" type="text/css"   href="https://fonts.googleapis.com/css?family=Montserrat" >
-     <link rel = "stylesheet" type ="text/css"  href = "styles/payroll.css">
-     <!-- <link rel=  "stylesheet" type="text/css"   href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" > -->
+
     
      <!-- scripts -->
      <script type="text/javascript" src = "scripts/jquery-3.2.1.min.js"> </script>
@@ -21,7 +25,8 @@
 
 <body>
     <div id = "entire_container">
-        <div id = "navbar_container"> <!-- navbar container-->
+        <!-- navbar container-->
+        <div id = "navbar_container"> 
             <!-- nav bar -->
             <nav class="navbar navbar-toggleable-lg navbar-light bg-faded fixed-top" id = "payroll_navbar">
 
@@ -66,7 +71,7 @@
         </div> <!-- end of navbar container -->
 
         <div id = "welcome_container">
-
+            <!-- header containing golden gate bridge image and chapter title-->
             <div class = "text-center" id = "page_header">
                 <div class = "centered" id = "header_text">
                     <h1> San Francisco Bay Area Chapter </h1>
@@ -77,8 +82,8 @@
             </div>
             
 
-
-            <div id = "welcome_awards_join"> <!-- div to hold welcome text, award lists, and join button -->
+            <!-- div to hold welcome text, award lists, and join button -->
+            <div id = "welcome_awards_join"> 
                 <h3 id = "welcome_text" class = "text-center"> Welcome to the San Francisco Bay Area Chapter
                     of the American Payroll Association
                 </h3>
@@ -119,6 +124,7 @@
                         </div>
                 </div> <!-- end of carousel -->
              
+                <!-- list of chapter awards -->
                 <div id = "awards">
                     <img class = "award_image" alt = "2018 first chapter pictorial " src = "photos/award7.jpg"/> 
                     <img class = "award_image" alt = "first npw photo contest" src = "photos/award8.jpg"/> 
@@ -129,6 +135,7 @@
                     <img class = "award_image" alt = "honorable mention chapter of the year" src = "photos/award1.jpg"/> 
                 </div>
 
+                <!-- list of chapter sponsors -->
                 <div id = "sponsors">
                     <p class = "text-center font-weight-bold font-italic" > Sponsors: </p>
 
@@ -139,7 +146,7 @@
                     </div>
                 </div>
 
-
+                <!-- join button -->
                 <div id = "join">
                     <h3 class = "text-center"> Not a member yet?  </h3>
 
@@ -208,6 +215,7 @@
                 <h2 class = "section_header font-italic"> About Us </h2>
             </div>
 
+            <!-- about chapter section -->
             <div id = "about_us_part1">
               
                 <img id = "about_us_1" src = "photos/about_us_3.JPG" alt = "chapter photo" />
@@ -234,7 +242,7 @@
                 <img class = "section_image " id = "apa_logo" src = "photos/american_payroll_association_logo.png" alt = "apa logo"/>
 
                 <div class = "toggle_info" id = "apa_more_info">
-                    <p class = "text-center font-italic" onclick = "showAPA()"> More Info </p>
+                    <p class = "text-center font-italic" onclick = "showAPA()">  <i class="fa fa-caret-down"></i> More Info </p>
                 </div>
     
             </div> <!-- end of APA section -->
@@ -245,7 +253,7 @@
                 <img class = "section_image" id = "gpmi_logo" src = "photos/GPMILogo.png" alt = "gpmi logo"/>
 
                 <div class = "toggle_info" id = "gpmi_more_info">
-                    <p class = "text-center font-italic" onclick = "showGPMI()"> More Info </p>
+                    <p class = "text-center font-italic" onclick = "showGPMI()"> <i class="fa fa-caret-down"></i> More Info </p>
                 </div>
 
             </div> <!-- end of GPMI section -->
@@ -257,12 +265,12 @@
                 <img class = "section_image" id = "history_logo" src = "photos/sf_payroll_logo.gif" alt = "sf logo"/>
         
                 <div class = "toggle_info" id = "history_more_info">
-                    <p class = "text-center font-italic" onclick = "showHistory()"> More Info </p>
+                    <p class = "text-center font-italic" onclick = "showHistory()"> <i class="fa fa-caret-down"></i> More Info </p>
                 </div>
         
             </div> <!--end of history section -->
 
-            <!-- history section-->
+            <!-- bylaws-->
             <div class = "about_section" id =  "bylaws_section">
             
                 <h2 class = "text-center "> San Francisco Bay Area Chapter By Laws </h2>
@@ -273,7 +281,7 @@
                     <p class = "text-center font-italic" > Click here for details: <a href = "http://www.sfpayroll.org/boardfiles/2014_Bylaws_Constitution.pdf" target = "_blank"> By Laws </a> </p>
                 </div>
                 
-            </div> <!--end of history section -->
+            </div> <!--end of bylaws     -->
 
 
             <!-- Officers Section -->
@@ -442,7 +450,7 @@
                     <img class = "section_image " id = "study_group_image" src = "photos/study_group.jpg" alt = "study group logo"/>
 
                     <div class = "toggle_info" id = "study_more_info">
-                        <p class = "text-center font-italic" onclick = "showStudy()"> More Info </p>
+                        <p class = "text-center font-italic" onclick = "showStudy()">  More Info </p>
                     </div>
         
                 </div> <!-- end of APA section -->
@@ -488,7 +496,7 @@
 
             <div id = "learning_resources_container">
                 <div class = "learning_resources">
-                    <h3 class = "text-center"> Learning Resources </h3>
+                    <h3 class = "text-center underline"> Learning Resources </h3>
                     <a href = "https://www.americanpayroll.org/news-resources/apa-news?"  target="_blank"> <p> Webinar from American Payroll Association</p> </a>
                     <a href = "https://www.americanpayroll.org/education-certification/education/learning-paths"  target="_blank"> <p> American Payroll Association</p> </a>
                     <a href = "http://www.gpminstitute.com/"  target="_blank"> <p> Global Payroll Management Institute </p></a>
@@ -502,7 +510,7 @@
              
 
                 <div class = "learning_resources" id = "government_agencies">
-                    <h3 class = "text-center"> Government Agencies </h3>
+                    <h3 class = "text-center underline"> Government Agencies </h3>
                     <a href ="https://www.irs.gov/" target = "_blank"> <p> Internal Revenue Service </p></a>
                     <a href ="https://www.ssa.gov/" target = "_blank"> <p> Social Security Administration </p></a>
                     <a href ="https://www.frbservices.org/resources/routing-number-directory/index.html" target = "_blank"> <p> Federal Reserve E-Payments Routing Directory</p></a>
@@ -511,7 +519,7 @@
                 </div>
 
                 <div class = "learning_resources" id = "california_agencies">
-                    <h3 class = "text-center"> California/San Francisco Agencies </h3>
+                    <h3 class = "text-center underline"> California/San Francisco Agencies </h3>
                     <a href ="https://www.sco.ca.gov/upd_rptg.html" target = "_blank"> <p> CA Unclaimed Property Division</p></a>
                     <a href ="https://www.edd.ca.gov/" target = "_blank"> <p> California Employed Development Department</p></a>
                     <a href ="http://www.childsup.ca.gov/default.aspx" target = "_blank"> <p> California Department of Child Support </p></a>
@@ -526,7 +534,7 @@
                 </div>
 
                 <div class = "learning_resources" id = "payroll_links">
-                    <h3 class = "text-center"> Payroll Links </h3>
+                    <h3 class = "text-center underline"> Payroll Links </h3>
                     <a href ="https://payrolltalk.symmetry.com/" target = "_blank"> <p> Payroll Talk </p></a>
                     <a href ="https://www.paycheckcity.com/" target = "_blank"> <p> PayCheck City - PayCheck Calculator</p></a>
                     <a href ="https://commuterbenefits.com/" target = "_blank"> <p> Commuter Checks </p></a>
@@ -647,7 +655,7 @@
 
             <br>
             <div id = "submit_container">
-                <button type="button" class="btn btn-outlined btn-primary" id = "submit_button">  Submit </button>
+                <button type="button" class="btn btn-outlined btn-primary" id = "submit_button" onclick = "sendJobPost()">  Submit </button>
             </div>
              
         </div> <!-- end of careers container -->
@@ -688,7 +696,7 @@
 
             <div id = "hear_from_container">
                 <h3 class = "text-center"> We would love to hear from you! </h3>
-                <p id = "hear_content">We want to know how we can serve you better. Feel free to drop us a note, ask a question about our Chapter, or just say hi. We will get back to you right away.</p>
+                <p id = "hear_content">We want to know how we can serve you better. Feel free to drop us a note, ask a question about our Chapter, or join us a sponsor. We will get back to you right away.</p>
                 <div class = "form-group" id = "hear_from_form">
                     <label for="usr">Name: </label>
                     <input type="text" class="form-control" id="name">
@@ -704,6 +712,14 @@
                     <button type="button" class="btn btn-outlined btn-primary" id = "submit_button">  Submit </button>
                 </div>
             
+            </div>
+        </div>
+
+        <div id = "ending">
+            <div id = "ending_content">
+                <p> San Francisco Bay Area Chapter </p>
+                <p> American Payroll Assoication</p>
+                <p> Contact Webmaster: </p>
             </div>
         </div>
 

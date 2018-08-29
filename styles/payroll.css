@@ -1,11 +1,17 @@
 body{
     padding-top: 65px;
     font-family: 'Montserat', sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
     /* font-family: 'Times New Roman', Times, serif'; */
 }
 
 .underline{
   text-decoration: underline;
+}
+
+.bold{
+  font-weight: bold;
 }
 .centered {
   position: absolute;
@@ -44,6 +50,11 @@ body{
   width: 80%;
   cursor: pointer;
 }
+
+
+
+
+
 
 #welcome_container{
   display:flex;
@@ -187,7 +198,7 @@ body{
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: #D8D8D8;
+  background-color: #F8F9F9;
 }
 
 #about_us_header{
@@ -502,3 +513,36 @@ ul{
   align-self: center;
 }
 
+#ending{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #252525;
+  width: 100vw;
+  min-height: 200px;
+}
+
+#ending_content{
+  align-self: center;
+  color: white;
+}
+
+/* Standard syntax */
+@keyframes move {
+  from {top: 0px;}
+  to {top: 200px;}
+}
+
+/* mobile version */ 
+@media screen and (max-width: 520px){
+  #payroll_navbar{
+    visibility: hidden;
+  }
+
+  #golden_gate_background{
+    height: 300px;
+  }
+
+
+
+}

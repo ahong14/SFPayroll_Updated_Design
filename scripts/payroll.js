@@ -12,10 +12,12 @@ function showHistory(){
     var history_content = document.getElementById('history_section');
     
     var history_content_div = document.createElement('div');
+ 
+
     history_content_div.id = 'history_content';
 
     var blockquote_content = document.createElement('div');
-    blockquote_content.className = 'blockquote_caption';
+    blockquote_content.className = 'blockquote_caption bold';
     blockquote_content.id = 'history_blockquotes';
 
     var blockquote1 = document.createElement('blockquote');
@@ -38,7 +40,11 @@ function showHistory(){
 
     history_content_div.appendChild(blockquote_content);
 
-    history_content.appendChild(history_content_div);
+    // //vanilla js way
+    // history_content.appendChild(history_content_div);
+
+    //jquery way
+    $(history_content_div).hide().appendTo(history_content).fadeIn(500);
 
     var more_info = document.getElementById('history_more_info');
     more_info.style.visibility = 'hidden';
@@ -52,6 +58,9 @@ function hideHistory(){
     }
 
     history_content.remove();
+    // $(history_content).fadeOut(500, function() {
+    //     $(this).remove();    
+    // });
 
     var more_info = document.getElementById('history_more_info');
     more_info.style.visibility = 'visible'; 
@@ -64,7 +73,7 @@ function showAPA(){
     apa_content_div.id = 'apa_content';
 
     var blockquote_content = document.createElement('div');
-    blockquote_content.className = 'blockquote_caption';
+    blockquote_content.className = 'blockquote_caption bold';
     blockquote_content.id = 'apa_blockquotes';
 
     var blockquote1 = document.createElement('blockquote');
@@ -83,7 +92,9 @@ function showAPA(){
 
      apa_content_div.appendChild(blockquote_content);
 
-     apa_content.appendChild(apa_content_div);
+    //  apa_content.appendChild(apa_content_div);
+       //jquery way
+    $(apa_content_div).hide().appendTo(apa_content).fadeIn(500);
 
      var more_info = document.getElementById('apa_more_info');
      more_info.style.visibility = 'hidden';
@@ -107,7 +118,7 @@ function showGPMI(){
     gpmi_content_div.id = "gpmi_content";
 
     var blockquote_content = document.createElement('div');
-    blockquote_content.className = 'blockquote_caption';
+    blockquote_content.className = 'blockquote_caption bold';
     blockquote_content.id = 'gpmi_blockquotes';
 
     var blockquote1 = document.createElement('blockquote');
@@ -124,7 +135,10 @@ function showGPMI(){
     blockquote_content.appendChild(hide_info);
 
     gpmi_content_div.appendChild(blockquote_content);
-    gpmi_content.appendChild(gpmi_content_div);
+    // gpmi_content.appendChild(gpmi_content_div);
+    
+    //jquery way
+    $(gpmi_content_div).hide().appendTo(gpmi_content).fadeIn(500);
 
     var more_info = document.getElementById('gpmi_more_info');
     more_info.style.visibility = 'hidden';
@@ -150,6 +164,8 @@ function showStudy(){
     study_div.id = "study_content";
 
     var blockquote1 = document.createElement("blockquote");
+
+    blockquote1.className = "bold";
     
     blockquote1.textContent = 
     "This is a special group designed to cater to those who prefer a smaller, more intimate study environment, so limited space is available. Enroll now to ensure your spot is reserved! The APA has several different grant programs to not only help pay for Congress, but will also cover classes and resources. Visit the follow web page for more details: http://www.americanpayroll.org/members/edgrant/. The American Payroll Association website also has  posted all Study Group sessions from other local chapters. Please check out HERE for more education information.";
@@ -168,7 +184,10 @@ function showStudy(){
 
     study_div.appendChild(hide_info);
 
-    study_content.appendChild(study_div);
+    // study_content.appendChild(study_div);
+    
+    //jquery way
+    $(study_div).hide().appendTo(study_content).fadeIn(500);
 
     var more_info = document.getElementById('study_more_info');
     more_info.style.visibility = 'hidden';
@@ -190,8 +209,48 @@ function hideStudy(){
 
     var membership_container = document.getElementById('membership_container');
     membership_container.style.minHeight = "1300px";
+}
+//end of toggle functions
+
+function sendJobPost(){
+    // var position_title = document.getElementById('position');
+    // var city = document.getElementById('city');
+    // var state  = document.getElementById('state');
+    // var payroll_position = document.getElementById('payroll_position');
+    // var job_description = document.getElementById('job_description');
+
+    // if(position_title.value == ""){
+    //     alert("Empty Position Title: Please enter a position title.");
+    // }
+
+    // else if (city.value == ""){
+    //     alert("Empty City: Please enter a city location");
+    // }
+
+    // else if (state.value == ""){
+    //     alert("Empty State: Please enter a state");
+    // }
+
+    // else if (job_description.value == ""){
+    //     alert("Empty Job Description: Please enter a job description");
+    // }
+
+    // else{
+    //         var link = "mailto:alexhong681@gmail.com"
+    //          + "&subject=" + escape("New Job Position")
+    //          + "&body=" + escape("Position Title: " + position_title.value) + escape("City: " + city.value) + escape("State: " + state.value) 
+    //                     + escape("Payroll Position: " + payroll_position.value) + escape("Job Description: " + job_description.value);
+
+    //         window.location.href = link;
+    //         alert("Job Posting Sent!");
+
+    // }
+
+  
+
 
 }
+
 
 //scroll animation functions
 function scrollHome(){
