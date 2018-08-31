@@ -543,9 +543,8 @@ ul{
 
 
 /* mobile version */ 
-@media screen and (max-width: 520px){
+@media screen and (min-width: 500px) and (max-width: 520px){
 
-  
   body{
     overflow-x: hidden;
   }
@@ -713,6 +712,376 @@ ul{
     margin-top: 20px;
   }
   
+
+}
+
+@media screen and (min-width: 400px) and (max-width: 500px){
+  body{
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2{
+    font-size: 1.2rem;
+  }
+
+  h3{
+    font-size: 1.1rem;
+  }
+
+  li{
+    font-size: 0.9rem;
+  }
+
+  entire_container{
+    margin: 0 auto;
+  }
+
+  #payroll_navbar{
+    visibility: hidden;
+  }
+  
+  #mobile_navbar{
+    display:flex;
+    justify-content: space-between;
+    visibility: visible;
+    width:100vw;
+  }
+
+  #mobile_bar{
+    align-self: center;
+    cursor: pointer;
+  }
+
+  #mobile_banner{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  #banner_logo_mobile{
+    width: 60%;
+    align-self: flex-end;
+  }
+
+  #sidebar{
+    display: inline;
+    visibility: visible;
+    height: 100%;
+    width: 0vw;
+    position: fixed;
+    z-index: 200;
+    background-color: #F7F7F7;
+    transition: 0.5s;
+    padding-top: 60px;
+    overflow-x: hidden;
+    left:0;
+  }
+
+  #close_navbar{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 20px;
+    color: grey;
+  }
+
+  #close_icon{
+    display: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  #mobile_nav_links{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  #mobile_nav_links p:hover{
+    cursor: pointer;
+    color: blue;
+  }
+
+  #page_header{
+    position: relative;
+    font-style: italic;
+    min-height: 100px;
+  }
+ 
+  #golden_gate_background{
+    height: 300px;
+  }
+
+  #awards{
+    margin: auto;
+    min-width: 100px;
+  }
+  
+  .slide_image{
+    height: 300px;
+    width: 450px;
+
+  }
+
+  .award_image{
+    width: 60px;
+  }
+
+  #events_container{
+    min-height: 900px;
+  }
+
+  #events_image{
+    width: 350px;
+    height: 200px;
+  }
+
+  #about_us_container{
+    min-height: 5500px;
+  }
+
+  #about_us_1{
+    height: 180px;
+    width: 300px;
+  }
+
+  #about_us_part1_blockquote{
+    width: 400px;
+    margin: auto;
+  }
+
+  .blockquote_caption{
+    width: 400px;
+  }
+
+  #membership_container{
+    min-height: 1300px;
+  }
+
+  #membership_photo{
+    width: 350px;
+    height: 300px;
+  }
+
+  #platinum{
+    margin-left: 50px;
+  }
+
+  #resources_container{
+    min-height: 1400px;
+  }
+
+  #careers_container{
+    min-height: 1800px;
+  }
+
+  #career_image{
+    width: 400px;
+  }
+
+  #career_header{
+    margin-top: 20px;
+  }
+  
+
+}
+
+
+/* small screens*/
+@media screen and (max-width: 400px){
+  body{
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2{
+    font-size: 1.2rem;
+  }
+
+  h3{
+    font-size: 1.1rem;
+  }
+
+  li{
+    font-size: 0.9rem;
+  }
+
+  entire_container{
+    margin: 0 auto;
+  }
+
+  #payroll_navbar{
+    visibility: hidden;
+  }
+  
+  #mobile_navbar{
+    display:flex;
+    justify-content: space-between;
+    visibility: visible;
+    width:100vw;
+  }
+
+  #mobile_bar{
+    align-self: center;
+    cursor: pointer;
+  }
+
+  #mobile_banner{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  #banner_logo_mobile{
+    width: 60%;
+    align-self: flex-end;
+  }
+
+  #sidebar{
+    display: inline;
+    visibility: visible;
+    height: 100%;
+    width: 0vw;
+    position: fixed;
+    z-index: 200;
+    background-color: #F7F7F7;
+    transition: 0.5s;
+    padding-top: 60px;
+    overflow-x: hidden;
+    left:0;
+  }
+
+  #close_navbar{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 20px;
+    color: grey;
+  }
+
+  #close_icon{
+    display: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  #mobile_nav_links{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  #mobile_nav_links p:hover{
+    cursor: pointer;
+    color: blue;
+  }
+
+  #page_header{
+    position: relative;
+    font-style: italic;
+    min-height: 100px;
+  }
+ 
+  #golden_gate_background{
+    height: 300px;
+  }
+
+  #awards{
+    margin: auto;
+    width: 300px;
+  }
+  
+  .slide_image{
+    height: 250px;
+    width: 300px;
+
+  }
+
+  .award_image{
+    width: 50px;
+  }
+
+  #events_container{
+    min-height: 1000px;
+  }
+
+  #events_image{
+    width: 350px;
+    height: 200px;
+  }
+
+  #about_us_container{
+    min-height: 5000px;
+  }
+
+  #about_us_1{
+    margin-top: 20px; 
+    height: 150px;
+    width: 250px;
+  }
+
+  .officer_info{
+    width: 290px;
+    height:310px;
+  }
+
+  #about_us_part1_blockquote{
+    width: 300px;
+    margin: auto;
+  }
+
+  .blockquote_caption{
+    width: 300px;
+  }
+
+  #membership_container{
+    min-height: 1550px;
+  }
+
+  #membership_photo{
+    width: 350px;
+    height: 300px;
+  }
+
+  #platinum{
+    margin-left: 50px;
+  }
+
+  #resources_container{
+    min-height: 1850px;
+  }
+
+  #help_sites{
+    flex-wrap: wrap;
+  }
+
+  #learning_resources_container{
+    flex-wrap: wrap;
+  }
+
+  #careers_container{
+    min-height: 2100px;
+  }
+
+  #career_header{
+    margin-top: 20px;
+  }
+
+  #career_image{
+    width: 300px;
+    height:200px;
+  }
+
+  #accountants_international{
+    width: 300px;
+  }
 
 }
 /* end of mobile version */ 

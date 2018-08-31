@@ -6,7 +6,9 @@ function setDate(){
 }
 
 //check mobile site window width
-var x = window.matchMedia("(max-width: 520px)");
+var largeWindow = window.matchMedia("(min-width: 500px)");
+var mediumWindow = window.matchMedia("(max-width: 480px)");
+var smallWindow = window.matchMedia("(max-width: 360px)")
 
 //check mediaquery for desktop or mobile
 function checkWindow(x) {
@@ -206,8 +208,16 @@ function showStudy(){
 
     var membership_container = document.getElementById('membership_container');
 
-    if(checkWindow(x) == true){
+    if(checkWindow(largeWindow) == true){
         membership_container.style.minHeight = "1800px";
+    }
+
+    else if(checkWindow(mediumWindow)==true){
+        membership_container.style.minHeight = "1900px";
+    }
+
+    else if(checkWindow(smallWindow)==true){
+        membership_container.style.minHeight = "2000px";
     }
 
     else{
@@ -277,7 +287,7 @@ function scrollHome(){
         scrollTop: $('#welcome_container').position().top-77
     },500);
 
-    if( checkWindow(x) == true){
+    if( checkWindow(largeWindow) == true || checkWindow(mediumWindow) == true || checkWindow(smallWindow) == true){
         closeSideNav();
     }
 }
@@ -291,7 +301,7 @@ function scrollToEvents(){
         scrollTop: $('#events_container').position().top-77
     },500);
 
-    if( checkWindow(x) == true){
+    if( checkWindow(largeWindow) == true || checkWindow(mediumWindow) == true || checkWindow(smallWindow) == true){
         closeSideNav();
     }
     
@@ -303,7 +313,7 @@ function scrollToAbout(){
         scrollTop: $('#about_us_container').position().top-30
     },500);
 
-    if( checkWindow(x) == true){
+    if( checkWindow(largeWindow) == true || checkWindow(mediumWindow) == true || checkWindow(smallWindow) == true){
         closeSideNav();
     }
 }
@@ -314,7 +324,7 @@ function scrollToMembership(){
         scrollTop: $('#membership_container').position().top-77
     },500);
 
-    if( checkWindow(x) == true){
+    if( checkWindow(largeWindow) == true || checkWindow(mediumWindow) == true || checkWindow(smallWindow) == true){
         closeSideNav();
     }
 }
@@ -325,7 +335,7 @@ function scrollToResources(){
         scrollTop: $('#resources_container').position().top-77
     },500);
 
-    if( checkWindow(x) == true){
+    if( checkWindow(largeWindow) == true || checkWindow(mediumWindow) == true || checkWindow(smallWindow) == true){
         closeSideNav();
     }
 }
@@ -336,7 +346,7 @@ function scrollToCareers(){
         scrollTop: $('#careers_container').position().top-77
     },500);
 
-    if( checkWindow(x) == true){
+    if( checkWindow(largeWindow) == true || checkWindow(mediumWindow) == true || checkWindow(smallWindow) == true){
         closeSideNav();
     }
 }
@@ -347,7 +357,7 @@ function scrollToContacts(){
         scrollTop: $('#contact_us_container').position().top-77
     },500);
 
-    if( checkWindow(x) == true){
+    if( checkWindow(largeWindow) == true || checkWindow(mediumWindow) == true || checkWindow(smallWindow) == true){
         closeSideNav();
     }
 }
