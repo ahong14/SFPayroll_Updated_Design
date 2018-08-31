@@ -5,6 +5,18 @@ function setDate(){
     date_div.textContent = date.toDateString();
 }
 
+//check mobile site window width
+var x = window.matchMedia("(max-width: 520px)");
+
+//check mediaquery for desktop or mobile
+function checkWindow(x) {
+    if (x.matches) { // If media query matches
+        return true;
+    } else {
+        return false;
+    }
+}
+
 setDate();
 
 //toggle about sections 
@@ -193,7 +205,14 @@ function showStudy(){
     more_info.style.visibility = 'hidden';
 
     var membership_container = document.getElementById('membership_container');
-    membership_container.style.minHeight = "1500px";
+
+    if(checkWindow(x) == true){
+        membership_container.style.minHeight = "1800px";
+    }
+
+    else{
+        membership_container.style.minHeight = "1500px";
+    }
 
 }
 
@@ -251,13 +270,16 @@ function sendJobPost(){
 
 }
 
-
 //scroll animation functions
 function scrollHome(){
     $('html, body').animate(
     {
         scrollTop: $('#welcome_container').position().top-77
     },500);
+
+    if( checkWindow(x) == true){
+        closeSideNav();
+    }
 }
 
 
@@ -268,6 +290,10 @@ function scrollToEvents(){
     {
         scrollTop: $('#events_container').position().top-77
     },500);
+
+    if( checkWindow(x) == true){
+        closeSideNav();
+    }
     
 }
 
@@ -276,6 +302,10 @@ function scrollToAbout(){
     {
         scrollTop: $('#about_us_container').position().top-30
     },500);
+
+    if( checkWindow(x) == true){
+        closeSideNav();
+    }
 }
 
 function scrollToMembership(){
@@ -283,6 +313,10 @@ function scrollToMembership(){
     {
         scrollTop: $('#membership_container').position().top-77
     },500);
+
+    if( checkWindow(x) == true){
+        closeSideNav();
+    }
 }
 
 function scrollToResources(){
@@ -290,6 +324,10 @@ function scrollToResources(){
     {
         scrollTop: $('#resources_container').position().top-77
     },500);
+
+    if( checkWindow(x) == true){
+        closeSideNav();
+    }
 }
 
 function scrollToCareers(){
@@ -297,6 +335,10 @@ function scrollToCareers(){
     {
         scrollTop: $('#careers_container').position().top-77
     },500);
+
+    if( checkWindow(x) == true){
+        closeSideNav();
+    }
 }
 
 function scrollToContacts(){
@@ -304,6 +346,10 @@ function scrollToContacts(){
     {
         scrollTop: $('#contact_us_container').position().top-77
     },500);
+
+    if( checkWindow(x) == true){
+        closeSideNav();
+    }
 }
 
 function showSideNav(){
@@ -314,5 +360,4 @@ function showSideNav(){
 function closeSideNav(){
     document.getElementById("sidebar").style.width = "0";
     document.getElementById("close_icon").style.display = "none";
-
 }
