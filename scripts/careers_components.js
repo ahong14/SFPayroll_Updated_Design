@@ -578,5 +578,3 @@ var careersContainer = React.createElement(
 );
 
 ReactDOM.render(careersContainer, document.getElementById('careers_container'));
-
-module.exports.SubmitButton;

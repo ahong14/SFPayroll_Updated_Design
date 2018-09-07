@@ -1,3 +1,5 @@
+//react component for membership section
+
 class MembershipContent extends React.Component{
     render(){
         return(

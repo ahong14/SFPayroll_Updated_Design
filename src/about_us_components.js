@@ -1,3 +1,6 @@
+//react components for about us section
+
+//about us header
 class AboutHeader extends React.Component{
     render(){
         return(
@@ -8,6 +11,7 @@ class AboutHeader extends React.Component{
     }
 }
 
+//about us section
 class AboutUsFirst extends React.Component{
     render(){
         return(
@@ -32,6 +36,7 @@ class AboutUsFirst extends React.Component{
     }
 }
 
+//APA description section
 class APASection extends React.Component{
     render(){
         return(
@@ -48,7 +53,7 @@ class APASection extends React.Component{
     }
 }
 
-
+//GPMI section
 class GPMISection extends React.Component{
     render(){
         return(
@@ -65,6 +70,7 @@ class GPMISection extends React.Component{
     }
 }
 
+//Chapter History Section
 class HistorySection extends React.Component{
     render(){
         return(
@@ -81,6 +87,7 @@ class HistorySection extends React.Component{
     }
 }
 
+//Bylaws Section
 class ByLaws extends React.Component{
     render(){
         return(
@@ -99,6 +106,7 @@ class ByLaws extends React.Component{
     }
 }
 
+//story components as one component
 class AboutSections extends React.Component{
     render(){
         return(
@@ -112,6 +120,7 @@ class AboutSections extends React.Component{
     }
 }
 
+//president object
 class President extends React.Component{
     render(){
         return(
@@ -127,6 +136,7 @@ class President extends React.Component{
     }
 }
 
+//class of officer members
 class OfficerMember extends React.Component{
     render(){
         return(
@@ -142,6 +152,7 @@ class OfficerMember extends React.Component{
     }
 }
 
+//store president/officer components
 class Officers extends React.Component{
     render(){
         return(
@@ -173,10 +184,7 @@ class Officers extends React.Component{
     }
 }
 
-
-
-
-
+//store all components into one container
 const AboutContainer = (
     <div>
         <AboutHeader/>
@@ -186,6 +194,7 @@ const AboutContainer = (
     </div>
 );
 
+//render
 ReactDOM.render(
     AboutContainer,
     document.getElementById('about_us_container')

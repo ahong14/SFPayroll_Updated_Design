@@ -1,17 +1,9 @@
-// //set date for events section
-// function setDate(){
-//     var date = new Date();
-//     var date_div = document.getElementById('time_date');
-//     date_div.textContent = date.toDateString();
-// }
+//Function declarations 
 
 //check mobile site window width
 var largeWindow = window.matchMedia("(min-width: 500px)");
 var mediumWindow = window.matchMedia("(max-width: 480px)");
 var smallWindow = window.matchMedia("(max-width: 360px)");
-
-var aboutMinHeight = document.getElementById('about_us_container');
-aboutMinHeightValue = window.getComputedStyle(aboutMinHeight).getPropertyValue('min-height');
 
 //check mediaquery for desktop or mobile
 function checkWindow(x) {
@@ -22,12 +14,11 @@ function checkWindow(x) {
     }
 }
 
-// setDate();
-
 //toggle about sections 
 function showHistory(){
     var history_content = document.getElementById('history_section');
     
+    //create div to hold blockquotes and content
     var history_content_div = document.createElement('div');
  
     history_content_div.className = "align_center";
@@ -58,9 +49,6 @@ function showHistory(){
     history_content_div.appendChild(blockquote_content);
     
 
-    // //vanilla js way
-    // history_content.appendChild(history_content_div);
-
     //jquery way
     $(history_content_div).hide().appendTo(history_content).fadeIn(500);
 
@@ -70,22 +58,21 @@ function showHistory(){
 
 
 function hideHistory(){
+
+    //remove blockquote and delete div containing blockquote
     var history_content = document.getElementById('history_content');
     while(history_content.hasChildNodes()){
         history_content.removeChild(history_content.lastChild);
     }
 
     history_content.remove();
-    // $(history_content).fadeOut(500, function() {
-    //     $(this).remove();    
-    // });
-
     var more_info = document.getElementById('history_more_info');
     more_info.style.visibility = 'visible'; 
  
 }
 
 function showAPA(){
+    //same logic as above
     var apa_content = document.getElementById('apa_section');
     var apa_content_div = document.createElement('div');
     apa_content_div.className = "align_center";
@@ -215,6 +202,8 @@ function showStudy(){
 
     var membership_container = document.getElementById('membership_container');
 
+
+    //adjust size of membership container depending on size of screen
     if(checkWindow(largeWindow) == true){
         membership_container.style.minHeight = "1600px";
     }
@@ -281,10 +270,6 @@ function sendJobPost(){
     //         alert("Job Posting Sent!");
 
     // }
-
-  
-
-
 }
 
 //scroll animation functions
@@ -294,6 +279,7 @@ function scrollHome(){
         scrollTop: $('#welcome_container').position().top-77
     },500);
 
+    //close sidebar if mobile version
     if( checkWindow(largeWindow) == true || checkWindow(mediumWindow) == true || checkWindow(smallWindow) == true){
         closeSideNav();
     }
@@ -317,7 +303,7 @@ function scrollToEvents(){
 function scrollToAbout(){
     $('html, body').animate(
     {
-        scrollTop: $('#about_us_container').position().top-30
+        scrollTop: $('#about_us_container').position().top-77
     },500);
 
     if( checkWindow(largeWindow) == true || checkWindow(mediumWindow) == true || checkWindow(smallWindow) == true){
@@ -369,7 +355,7 @@ function scrollToContacts(){
     }
 }
 
-//togle sidebar for mobile
+//toggle sidebar for mobile
 function showSideNav(){
     document.getElementById("sidebar").style.width = "200px";
     document.getElementById("close_icon").style.display = "block";

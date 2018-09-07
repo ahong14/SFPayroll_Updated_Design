@@ -551,6 +551,7 @@ ul{
 }
 
 
+
 /* mobile version */ 
 @media screen and (min-width: 500px) and (max-width: 520px){
 
@@ -618,6 +619,7 @@ ul{
     overflow-x: hidden;
     left:0;
   }
+
 
   #close_navbar{
     display:flex;

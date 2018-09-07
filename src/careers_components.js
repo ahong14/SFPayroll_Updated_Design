@@ -1,3 +1,6 @@
+//react component for careers section
+
+
 class OpenPositions extends React.Component{
     render(){
         return(
@@ -154,4 +157,3 @@ ReactDOM.render(
     document.getElementById('careers_container')
 )
 
-module.exports.SubmitButton;

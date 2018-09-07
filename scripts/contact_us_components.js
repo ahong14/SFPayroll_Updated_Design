@@ -6,9 +6,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = require('./careers_components'),
-    SubmitButton = _require.SubmitButton;
-
 var twitter = {
     siteName: "Twitter",
     siteId: "twitter",
@@ -20,6 +17,7 @@ var facebook = {
     siteName: "Facebook",
     siteId: "facebook",
     source: "https://www.facebook.com/payrollpeeps/",
+    image_id: "facebook_logo",
     image: "photos/facebook_logo.png"
 };
 
@@ -55,7 +53,7 @@ var FollowContainer = function (_React$Component) {
                 React.createElement(
                     "a",
                     { href: this.props.src, target: "_blank" },
-                    React.createElement("img", { className: "follow_image", src: this.props.imagesrc })
+                    React.createElement("img", { className: "follow_image", id: this.props.imageId, src: this.props.imagesrc })
                 )
             );
         }
@@ -76,9 +74,9 @@ var ContactUs = function (_React$Component2) {
     _createClass(ContactUs, [{
         key: "render",
         value: function render() {
-            React.createElement(
+            return React.createElement(
                 "div",
-                { id: "contact_info" },
+                { className: "align_center", id: "contact_info" },
                 React.createElement(
                     "p",
                     null,
@@ -136,7 +134,7 @@ var ContactUs = function (_React$Component2) {
                 ),
                 React.createElement(FollowContainer, { siteId: linkedin.siteId, site: linkedin.siteName, src: linkedin.source, imagesrc: linkedin.image }),
                 React.createElement(FollowContainer, { siteId: twitter.siteId, site: twitter.siteName, src: twitter.source, imagesrc: twitter.image }),
-                React.createElement(FollowContainer, { siteId: facebook.siteId, site: facebook.siteName, src: facebook.source, imagesrc: facebook.image })
+                React.createElement(FollowContainer, { siteId: facebook.siteId, site: facebook.siteName, src: facebook.source, imagesrc: facebook.image, imageId: facebook.image_id })
             );
         }
     }]);
@@ -144,8 +142,35 @@ var ContactUs = function (_React$Component2) {
     return ContactUs;
 }(React.Component);
 
-var HearFrom = function (_React$Component3) {
-    _inherits(HearFrom, _React$Component3);
+var SubmitButton = function (_React$Component3) {
+    _inherits(SubmitButton, _React$Component3);
+
+    function SubmitButton() {
+        _classCallCheck(this, SubmitButton);
+
+        return _possibleConstructorReturn(this, (SubmitButton.__proto__ || Object.getPrototypeOf(SubmitButton)).apply(this, arguments));
+    }
+
+    _createClass(SubmitButton, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                { id: "submit_container" },
+                React.createElement(
+                    "button",
+                    { type: "button", "class": "btn btn-outlined btn-primary", id: "submit_button", onclick: "sendJobPost()" },
+                    "  Submit "
+                )
+            );
+        }
+    }]);
+
+    return SubmitButton;
+}(React.Component);
+
+var HearFrom = function (_React$Component4) {
+    _inherits(HearFrom, _React$Component4);
 
     function HearFrom() {
         _classCallCheck(this, HearFrom);
@@ -158,7 +183,7 @@ var HearFrom = function (_React$Component3) {
         value: function render() {
             return React.createElement(
                 "div",
-                { id: "hear_from_container" },
+                { className: "align_center", id: "hear_from_container" },
                 React.createElement(
                     "h3",
                     { "class": "text-center" },
@@ -201,7 +226,7 @@ var HearFrom = function (_React$Component3) {
 
 var contactContainer = React.createElement(
     "div",
-    null,
+    { className: "flex_column" },
     React.createElement(
         "h3",
         { "class": "section_header" },

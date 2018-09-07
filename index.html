@@ -51,6 +51,7 @@
                 <p onclick = "scrollToContacts()"> Contact Us </p>
             </div>
         </div> 
+
         <!-- navbar container-->
         <div id = "navbar_container"> 
             <!-- nav bar -->
@@ -95,7 +96,7 @@
             </nav> 
             <!-- end of navbar -->
 
-            <!-- mobile navbar -->
+            <!-- mobile navbar, this navbar used when mobile screen is detected in media query -->
             <nav class="navbar navbar-toggleable-lg navbar-light bg-faded fixed-top" id = "mobile_navbar">
                 <div id = "mobile_bar">
                     <i id = "bar_icon" class="fa fa-bars" onclick = "showSideNav()"></i>
@@ -110,6 +111,10 @@
 
         </div> 
         <!-- end of navbar container -->
+
+
+
+        <!-- components of webpage are rendered using react-->
 
         <div id = "welcome_container">
 
@@ -147,58 +152,7 @@
         <!-- end of careers container -->
 
         <div id = "contact_us_container">
-            <!-- <h3 class = "section_header"> Contact Us </h3>
 
-            <br> 
-            <div id = "contact_info">
-                <p> General Information/Government Update: <a href="mailto:info@sfpayroll.org" target = "_blank"> info@sfpayroll.org </a> </p>
-                <p> Reservation: <a href = "mailto:RSVP@sfpayroll.org" target = "_blank"> RSVP@sfpayroll.org </a> </p>
-                <p> Membership: <a href = "mailto:member@sfpayroll.org" target = "_blank" > member@sfpayroll.org </a> </p>
-                <p> Study Group: <a href = "mailto:studygroup@sfpayroll.org" target = "_blank"> studygroup@sfpayroll.org </a> </p>
-                <p> Job Posting/Webmaster: <a href = "mailto:admin@sfpayroll.org" target = "_blank"> admin@sfpayroll.org </a> </p>
-
-                <div class = "follow_us_container" id = "linkedin">
-                    <h3 class = "font-weight-bold"> LinkedIn: </h3>
-                    <a href = "https://www.linkedin.com/in/sfbac-apa-74bb7421/" target = "_blank"><img class = "follow_image" src = "photos/linkedin_logo.png"/ alt = "linkedin logo">
-                    </a>
-                 </div>
-        
-                <div class = "follow_us_container" id = "twitter">
-                    <h3 class = "font-weight-bold"> Twitter: </h3>
-                    <a href = "https://twitter.com/SFBAC_APA" target = "_blank">
-                        <img class = "follow_image" src = "photos/twitter_logo.png" alt = "twitter logo">
-                    </a>
-                </div>
-        
-                <div class = "follow_us_container" id = "facebook">
-                    <h3 class = "font-weight-bold"> Facebook: </h3>
-                    <a href = "https://www.facebook.com/payrollpeeps/" target = "_blank">
-                        <img class = "follow_image" id = "facebook_logo" src = "photos/facebook_logo.png" alt = "facebook logo">
-                    </a>
-                </div> -->
-            <!-- </div>  -->
-            <!-- end of contact info -->
-
-            <!-- <br>
-
-            <div id = "hear_from_container">
-                <h3 class = "text-center"> We would love to hear from you! </h3>
-                <p id = "hear_content">We want to know how we can serve you better. Feel free to drop us a note, ask a question about our Chapter, or join us a sponsor. We will get back to you right away.</p>
-                <div class = "form-group" id = "hear_from_form">
-                    <label for="usr">Name: </label>
-                    <input type="text" class="form-control" id="name">
-
-                    <label for="usr">Email: </label>
-                    <input type="text" class="form-control" id="email"> 
-
-                    <label for="usr">Message:</label>
-                    <textarea class="form-control" rows="5" id="message"></textarea>
-                </div>
-
-                <div id = "submit_container">
-                    <button type="button" class="btn btn-outlined btn-primary" id = "submit_button">  Submit </button>
-                </div>
-            </div> -->
         </div>
 
         <div id = "ending">
@@ -221,18 +175,20 @@
 
         </div> end of footer -->
         
-   
-                
      </div> <!-- end of entire container -->
 
      <!-- load scripts-->
      <script type = "text/javascript" src = "scripts/payroll.js"> </script>
+
+     <!-- react components for each part of webpage-->
+     <!-- babel preprocessor used to translate JSX-->
      <script type = "text/javascript" src = "scripts/welcome_components.js"></script>
      <script type = "text/javascript" src = "scripts/event_components.js"></script>
      <script type = "text/javascript" src = "scripts/about_us_components.js"></script>
      <script type = "text/javascript" src = "scripts/membership_components.js"></script>
      <script type = "text/javascript" src = "scripts/resources_components.js"></script>
      <script type = "text/javascript" src = "scripts/careers_components.js"></script>
+     <script type = "text/javascript" src = "scripts/contact_us_components.js"></script>
 
      <script type = "text/javascript">
         var date = new Date();

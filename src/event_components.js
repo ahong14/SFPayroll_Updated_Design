@@ -1,3 +1,6 @@
+//react component for event section
+
+//page header
 class EventHeader extends React.Component{
     render(){
         return(
@@ -9,6 +12,7 @@ class EventHeader extends React.Component{
     }
 }
 
+//time/date portion
 class TimeDate extends React.Component{
     //set date for events section
     render(){
@@ -19,6 +23,7 @@ class TimeDate extends React.Component{
     }
 }
 
+//div storing multiple events
 class Events extends React.Component{
     render(){
         return(
@@ -46,6 +51,7 @@ class Events extends React.Component{
     }
 }
 
+//container holding components
 const eventContainer = (
     <div className = "align_center">
         <EventHeader/>
@@ -54,6 +60,7 @@ const eventContainer = (
     </div>
 );
 
+//render 
 ReactDOM.render(
     eventContainer,
     document.getElementById('events_container')

@@ -1,3 +1,7 @@
+//react components for welcome section of webpage
+
+
+//page header
 class PageHeader extends React.Component{
     render(){
         return(
@@ -12,7 +16,7 @@ class PageHeader extends React.Component{
     }
 }
 
-
+//div containing image carousel, awards, sponsors
 class WelcomeJoin extends React.Component{
     render(){
         return(

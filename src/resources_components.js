@@ -1,3 +1,6 @@
+//react component for resources section
+
+
 class StudyGroupResources extends React.Component{
     render(){
         return(
