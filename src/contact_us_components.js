@@ -1,3 +1,6 @@
+//react components for contact us section
+
+//image information for social media accounts
 
 const twitter = {
     siteName: "Twitter",

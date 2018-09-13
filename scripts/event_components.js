@@ -1,3 +1,5 @@
+"use strict";
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -6,6 +8,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//react component for event section
+
+//page header
 var EventHeader = function (_React$Component) {
     _inherits(EventHeader, _React$Component);
 
@@ -34,6 +39,9 @@ var EventHeader = function (_React$Component) {
     return EventHeader;
 }(React.Component);
 
+//time/date portion
+
+
 var TimeDate = function (_React$Component2) {
     _inherits(TimeDate, _React$Component2);
 
@@ -54,6 +62,9 @@ var TimeDate = function (_React$Component2) {
 
     return TimeDate;
 }(React.Component);
+
+//div storing multiple events
+
 
 var Events = function (_React$Component3) {
     _inherits(Events, _React$Component3);
@@ -76,7 +87,7 @@ var Events = function (_React$Component3) {
                     React.createElement(
                         "h3",
                         { className: "underline" },
-                        " NPW Luncheon -  Wage & Hour Law Update "
+                        " Paycards/EY Topic "
                     ),
                     React.createElement(
                         "p",
@@ -87,7 +98,7 @@ var Events = function (_React$Component3) {
                             null,
                             "Date:"
                         ),
-                        " September 7th, 2018   "
+                        " November 15th, 2018   "
                     ),
                     React.createElement(
                         "p",
@@ -98,7 +109,7 @@ var Events = function (_React$Component3) {
                             null,
                             "Speakers:"
                         ),
-                        "  Jeanine DeBacker from Partner at McPharlin Sprinkles & Thomas LLP "
+                        " Jennifer Wall from Rapid Paycards, Stephanie Pfister from EY Employment Tax Services "
                     ),
                     React.createElement(
                         "p",
@@ -109,7 +120,7 @@ var Events = function (_React$Component3) {
                             null,
                             "Time:"
                         ),
-                        "  11:30 am - 3:00 pm"
+                        "  2:00 - 4:00 pm"
                     ),
                     React.createElement(
                         "p",
@@ -131,19 +142,7 @@ var Events = function (_React$Component3) {
                             null,
                             "Registration:"
                         ),
-                        " ",
-                        React.createElement(
-                            "span",
-                            null,
-                            "View the ",
-                            React.createElement(
-                                "a",
-                                { href: "http://www.cvent.com/d/1gq63b/1Q", target: "_blank" },
-                                "event invitation"
-                            ),
-                            "."
-                        ),
-                        "  "
+                        " "
                     )
                 ),
                 React.createElement(
@@ -152,7 +151,7 @@ var Events = function (_React$Component3) {
                     React.createElement(
                         "h3",
                         { className: "underline" },
-                        " Summer 2018 Study Group"
+                        " Holiday Dinner & Year End Legislation Updates "
                     ),
                     React.createElement(
                         "p",
@@ -161,9 +160,20 @@ var Events = function (_React$Component3) {
                         React.createElement(
                             "strong",
                             null,
-                            "Dates:"
+                            "Date:"
                         ),
-                        " July 11 - September 12, Every Wednesday Night"
+                        " December 7th, 2018   "
+                    ),
+                    React.createElement(
+                        "p",
+                        null,
+                        " ",
+                        React.createElement(
+                            "strong",
+                            null,
+                            "Speakers:"
+                        ),
+                        " Bill Schmalle CPP, Brookelyn Sproviero  "
                     ),
                     React.createElement(
                         "p",
@@ -174,29 +184,7 @@ var Events = function (_React$Component3) {
                             null,
                             "Time:"
                         ),
-                        " 6:00 pm - 8:00 pm "
-                    ),
-                    React.createElement(
-                        "p",
-                        null,
-                        " ",
-                        React.createElement(
-                            "strong",
-                            null,
-                            "Organizer:"
-                        ),
-                        " Hannah Huneidi - Silicon Valley Chapter "
-                    ),
-                    React.createElement(
-                        "p",
-                        null,
-                        " ",
-                        React.createElement(
-                            "strong",
-                            null,
-                            "Supporter:"
-                        ),
-                        " Iggy Svoboda -- San Francisco Bay Area Chapter"
+                        "  6:00 - 9:00 pm"
                     ),
                     React.createElement(
                         "p",
@@ -207,7 +195,7 @@ var Events = function (_React$Component3) {
                             null,
                             "Location:"
                         ),
-                        " Adobe, 345 Park Ave, San Jose, near Caltrain Station "
+                        " Salesforce East, 350 Mission Street, San Francisco "
                     ),
                     React.createElement(
                         "p",
@@ -217,12 +205,6 @@ var Events = function (_React$Component3) {
                             "strong",
                             null,
                             "Registration:"
-                        ),
-                        " ",
-                        React.createElement(
-                            "a",
-                            { href: "https://svapa.org/meetinginfo.php?id=55", target: "_blank" },
-                            " Link "
                         ),
                         " "
                     )
@@ -234,6 +216,9 @@ var Events = function (_React$Component3) {
     return Events;
 }(React.Component);
 
+//container holding components
+
+
 var eventContainer = React.createElement(
     "div",
     { className: "align_center" },
@@ -242,4 +227,5 @@ var eventContainer = React.createElement(
     React.createElement(Events, null)
 );
 
+//render 
 ReactDOM.render(eventContainer, document.getElementById('events_container'));

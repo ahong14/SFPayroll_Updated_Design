@@ -29,23 +29,23 @@ class Events extends React.Component{
         return(
             <div id = "events">
                 <div className = "event_info">
-                    <h3 className = "underline"> NPW Luncheon -  Wage & Hour Law Update </h3>
-                    <p> <strong>Date:</strong> September 7th, 2018   </p>
-                    <p> <strong>Speakers:</strong>  Jeanine DeBacker from Partner at McPharlin Sprinkles & Thomas LLP </p>    
-                    <p> <strong>Time:</strong>  11:30 am - 3:00 pm</p>
+                    <h3 className = "underline"> Paycards/EY Topic </h3>
+                    <p> <strong>Date:</strong> November 15th, 2018   </p>
+                    <p> <strong>Speakers:</strong> Jennifer Wall from Rapid Paycards, Stephanie Pfister from EY Employment Tax Services </p>    
+                    <p> <strong>Time:</strong>  2:00 - 4:00 pm</p>
                     <p> <strong>Location:</strong> Salesforce East, 350 Mission Street, San Francisco </p>
-                    <p> <strong>Registration:</strong> <span>View the <a href="http://www.cvent.com/d/1gq63b/1Q" target = "_blank">event invitation</a>.</span>  </p>
+                    <p> <strong>Registration:</strong> </p>
                 </div>
 
-                <div className = "event_info">
-                    <h3 className = "underline"> Summer 2018 Study Group</h3>
-                    <p> <strong>Dates:</strong> July 11 - September 12, Every Wednesday Night</p>
-                    <p> <strong>Time:</strong> 6:00 pm - 8:00 pm </p>
-                    <p> <strong>Organizer:</strong> Hannah Huneidi - Silicon Valley Chapter </p>
-                    <p> <strong>Supporter:</strong> Iggy Svoboda -- San Francisco Bay Area Chapter</p>
-                    <p> <strong>Location:</strong> Adobe, 345 Park Ave, San Jose, near Caltrain Station </p>
-                    <p> <strong>Registration:</strong> <a href = "https://svapa.org/meetinginfo.php?id=55" target = "_blank"> Link </a> </p>
+                 <div className = "event_info">
+                    <h3 className = "underline"> Holiday Dinner & Year End Legislation Updates </h3>
+                    <p> <strong>Date:</strong> December 7th, 2018   </p>
+                    <p> <strong>Speakers:</strong> Bill Schmalle CPP, Brookelyn Sproviero  </p>    
+                    <p> <strong>Time:</strong>  6:00 - 9:00 pm</p>
+                    <p> <strong>Location:</strong> Salesforce East, 350 Mission Street, San Francisco </p>
+                    <p> <strong>Registration:</strong> </p>
                 </div>
+                
             </div>
         )
     }

@@ -1,3 +1,5 @@
+"use strict";
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -6,6 +8,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//react components for about us section
+
+//about us header
 var AboutHeader = function (_React$Component) {
     _inherits(AboutHeader, _React$Component);
 
@@ -32,6 +37,9 @@ var AboutHeader = function (_React$Component) {
 
     return AboutHeader;
 }(React.Component);
+
+//about us section
+
 
 var AboutUsFirst = function (_React$Component2) {
     _inherits(AboutUsFirst, _React$Component2);
@@ -76,6 +84,9 @@ var AboutUsFirst = function (_React$Component2) {
     return AboutUsFirst;
 }(React.Component);
 
+//APA description section
+
+
 var APASection = function (_React$Component3) {
     _inherits(APASection, _React$Component3);
 
@@ -114,6 +125,9 @@ var APASection = function (_React$Component3) {
 
     return APASection;
 }(React.Component);
+
+//GPMI section
+
 
 var GPMISection = function (_React$Component4) {
     _inherits(GPMISection, _React$Component4);
@@ -154,6 +168,9 @@ var GPMISection = function (_React$Component4) {
     return GPMISection;
 }(React.Component);
 
+//Chapter History Section
+
+
 var HistorySection = function (_React$Component5) {
     _inherits(HistorySection, _React$Component5);
 
@@ -192,6 +209,9 @@ var HistorySection = function (_React$Component5) {
 
     return HistorySection;
 }(React.Component);
+
+//Bylaws Section
+
 
 var ByLaws = function (_React$Component6) {
     _inherits(ByLaws, _React$Component6);
@@ -236,6 +256,9 @@ var ByLaws = function (_React$Component6) {
     return ByLaws;
 }(React.Component);
 
+//story components as one component
+
+
 var AboutSections = function (_React$Component7) {
     _inherits(AboutSections, _React$Component7);
 
@@ -261,6 +284,9 @@ var AboutSections = function (_React$Component7) {
 
     return AboutSections;
 }(React.Component);
+
+//president object
+
 
 var President = function (_React$Component8) {
     _inherits(President, _React$Component8);
@@ -309,6 +335,9 @@ var President = function (_React$Component8) {
 
     return President;
 }(React.Component);
+
+//class of officer members
+
 
 var OfficerMember = function (_React$Component9) {
     _inherits(OfficerMember, _React$Component9);
@@ -368,6 +397,9 @@ var OfficerMember = function (_React$Component9) {
     return OfficerMember;
 }(React.Component);
 
+//store president/officer components
+
+
 var Officers = function (_React$Component10) {
     _inherits(Officers, _React$Component10);
 
@@ -418,6 +450,9 @@ var Officers = function (_React$Component10) {
     return Officers;
 }(React.Component);
 
+//store all components into one container
+
+
 var AboutContainer = React.createElement(
     "div",
     null,
@@ -427,4 +462,5 @@ var AboutContainer = React.createElement(
     React.createElement(Officers, null)
 );
 
+//render
 ReactDOM.render(AboutContainer, document.getElementById('about_us_container'));
