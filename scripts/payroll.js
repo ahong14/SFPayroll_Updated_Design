@@ -14,6 +14,20 @@ function checkWindow(x) {
     }
 }
 
+//about us min heights for each viewport
+
+//regular
+//min-height: 5000px;
+
+//mobile
+//min-height:5000px;
+
+
+
+//small screen
+//5500px
+
+
 //toggle about sections 
 function showHistory(){
     var history_content = document.getElementById('history_section');
@@ -236,41 +250,6 @@ function hideStudy(){
     membership_container.style.minHeight = "1300px";
 }
 //end of toggle functions
-
-function sendJobPost(){
-    // var position_title = document.getElementById('position');
-    // var city = document.getElementById('city');
-    // var state  = document.getElementById('state');
-    // var payroll_position = document.getElementById('payroll_position');
-    // var job_description = document.getElementById('job_description');
-
-    // if(position_title.value == ""){
-    //     alert("Empty Position Title: Please enter a position title.");
-    // }
-
-    // else if (city.value == ""){
-    //     alert("Empty City: Please enter a city location");
-    // }
-
-    // else if (state.value == ""){
-    //     alert("Empty State: Please enter a state");
-    // }
-
-    // else if (job_description.value == ""){
-    //     alert("Empty Job Description: Please enter a job description");
-    // }
-
-    // else{
-    //         var link = "mailto:alexhong681@gmail.com"
-    //          + "&subject=" + escape("New Job Position")
-    //          + "&body=" + escape("Position Title: " + position_title.value) + escape("City: " + city.value) + escape("State: " + state.value) 
-    //                     + escape("Payroll Position: " + payroll_position.value) + escape("Job Description: " + job_description.value);
-
-    //         window.location.href = link;
-    //         alert("Job Posting Sent!");
-
-    // }
-}
 
 //scroll animation functions
 function scrollHome(){

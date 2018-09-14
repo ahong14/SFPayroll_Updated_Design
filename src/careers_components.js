@@ -79,28 +79,31 @@ class FormGroup extends React.Component{
     render(){
         return(
             <div className="form-group" id = "job_form_input">
-                <label for="usr">Title of Position:</label>
-                <input type="text" class="form-control" id="position"/>
+                <form className = "gform" method = "POST"  
+                    action = "https://script.google.com/macros/s/AKfycbwIDCwkXJ8tTWdub-SUQKxpS4LccZwcp9iSi9DR/exec" >
+                    <label for="title">Title of Position:</label>
+                    <input type="text" class="form-control" id="position"/>
 
-                <label for="usr">City: </label>
-                <input type="text" class="form-control" id="city"/>
+                    <label for="city">City: </label>
+                    <input type="text" class="form-control" id="city"/>
 
 
-                <label for="usr">State: </label>
-                <input type="text" className="form-control" id="state"/>
+                    <label for="state">State: </label>
+                    <input type="text" className="form-control" id="state"/>
 
-                <label for="sel1">Select Position:</label>
-                <select className="form-control" id="payroll_position">
-                    <option>Payroll Position- Full Time </option>
-                    <option>Payroll Position- Part Time</option>
-                    <option>Payroll Position- Temp</option>
-                    <option>Non Payroll Position - Full Time </option>
-                    <option>Non Payroll Position - Part Time </option>
-                    <option>Non Payroll Position - Temp </option>
-                </select>
+                    <label for="position">Select Position:</label>
+                    <select className="form-control" id="payroll_position">
+                        <option>Payroll Position- Full Time </option>
+                        <option>Payroll Position- Part Time</option>
+                        <option>Payroll Position- Temp</option>
+                        <option>Non Payroll Position - Full Time </option>
+                        <option>Non Payroll Position - Part Time </option>
+                        <option>Non Payroll Position - Temp </option>
+                    </select>
 
-                <label for="usr">Job Description:</label>
-                <textarea className="form-control" rows="5" id="job_description"></textarea>
+                    <label for="description">Job Description:</label>
+                    <textarea className="form-control" rows="5" id="job_description"></textarea>
+                </form>
             </div>
         )
     }
@@ -110,7 +113,7 @@ class SubmitButton extends React.Component{
     render(){
         return(
             <div id = "submit_container">
-                <button type="button" class="btn btn-outlined btn-primary" id = "submit_button" onclick = "sendJobPost()">  Submit </button>
+                <button type="button" class="btn btn-outlined btn-primary" id = "submit_button" onClick = {sendJobPost}>  Submit </button>
             </div>
         )
     }

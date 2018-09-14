@@ -164,7 +164,8 @@
         </div>
 
         <!-- footer for sponsors -->
-<!--          <div class = "footer">
+        <!--         
+            <div class = "footer">
             <p class = "text-center font-weight-bold font-italic" > Sponsors: </p>
 
             <div  class = "text-center" id = "sponsor_logos">
@@ -179,6 +180,15 @@
 
      <!-- load scripts-->
      <script type = "text/javascript" src = "scripts/payroll.js"> </script>
+     <script type = "text/javascript" src = "scripts/gmailAuth.js"></script>
+
+     <script async defer src="https://apis.google.com/js/api.js"
+        onload="this.onload=function(){};handleClientLoad()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+
+    <script type = "text/javascript" src = "scripts/handler.js"></script>
+
 
      <!-- react components for each part of webpage-->
      <!-- babel preprocessor used to translate JSX-->

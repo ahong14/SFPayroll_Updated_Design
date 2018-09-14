@@ -434,68 +434,73 @@ var FormGroup = function (_React$Component5) {
                 "div",
                 { className: "form-group", id: "job_form_input" },
                 React.createElement(
-                    "label",
-                    { "for": "usr" },
-                    "Title of Position:"
-                ),
-                React.createElement("input", { type: "text", "class": "form-control", id: "position" }),
-                React.createElement(
-                    "label",
-                    { "for": "usr" },
-                    "City: "
-                ),
-                React.createElement("input", { type: "text", "class": "form-control", id: "city" }),
-                React.createElement(
-                    "label",
-                    { "for": "usr" },
-                    "State: "
-                ),
-                React.createElement("input", { type: "text", className: "form-control", id: "state" }),
-                React.createElement(
-                    "label",
-                    { "for": "sel1" },
-                    "Select Position:"
-                ),
-                React.createElement(
-                    "select",
-                    { className: "form-control", id: "payroll_position" },
+                    "form",
+                    { className: "gform", method: "POST",
+                        action: "https://script.google.com/macros/s/AKfycbwIDCwkXJ8tTWdub-SUQKxpS4LccZwcp9iSi9DR/exec" },
                     React.createElement(
-                        "option",
-                        null,
-                        "Payroll Position- Full Time "
+                        "label",
+                        { "for": "title" },
+                        "Title of Position:"
+                    ),
+                    React.createElement("input", { type: "text", "class": "form-control", id: "position" }),
+                    React.createElement(
+                        "label",
+                        { "for": "city" },
+                        "City: "
+                    ),
+                    React.createElement("input", { type: "text", "class": "form-control", id: "city" }),
+                    React.createElement(
+                        "label",
+                        { "for": "state" },
+                        "State: "
+                    ),
+                    React.createElement("input", { type: "text", className: "form-control", id: "state" }),
+                    React.createElement(
+                        "label",
+                        { "for": "position" },
+                        "Select Position:"
                     ),
                     React.createElement(
-                        "option",
-                        null,
-                        "Payroll Position- Part Time"
+                        "select",
+                        { className: "form-control", id: "payroll_position" },
+                        React.createElement(
+                            "option",
+                            null,
+                            "Payroll Position- Full Time "
+                        ),
+                        React.createElement(
+                            "option",
+                            null,
+                            "Payroll Position- Part Time"
+                        ),
+                        React.createElement(
+                            "option",
+                            null,
+                            "Payroll Position- Temp"
+                        ),
+                        React.createElement(
+                            "option",
+                            null,
+                            "Non Payroll Position - Full Time "
+                        ),
+                        React.createElement(
+                            "option",
+                            null,
+                            "Non Payroll Position - Part Time "
+                        ),
+                        React.createElement(
+                            "option",
+                            null,
+                            "Non Payroll Position - Temp "
+                        )
                     ),
                     React.createElement(
-                        "option",
-                        null,
-                        "Payroll Position- Temp"
+                        "label",
+                        { "for": "description" },
+                        "Job Description:"
                     ),
-                    React.createElement(
-                        "option",
-                        null,
-                        "Non Payroll Position - Full Time "
-                    ),
-                    React.createElement(
-                        "option",
-                        null,
-                        "Non Payroll Position - Part Time "
-                    ),
-                    React.createElement(
-                        "option",
-                        null,
-                        "Non Payroll Position - Temp "
-                    )
-                ),
-                React.createElement(
-                    "label",
-                    { "for": "usr" },
-                    "Job Description:"
-                ),
-                React.createElement("textarea", { className: "form-control", rows: "5", id: "job_description" })
+                    React.createElement("textarea", { className: "form-control", rows: "5", id: "job_description" })
+                )
             );
         }
     }]);
@@ -520,7 +525,7 @@ var SubmitButton = function (_React$Component6) {
                 { id: "submit_container" },
                 React.createElement(
                     "button",
-                    { type: "button", "class": "btn btn-outlined btn-primary", id: "submit_button", onclick: "sendJobPost()" },
+                    { type: "button", "class": "btn btn-outlined btn-primary", id: "submit_button", onClick: sendJobPost },
                     "  Submit "
                 )
             );
