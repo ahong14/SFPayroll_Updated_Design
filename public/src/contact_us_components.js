@@ -1,5 +1,4 @@
 //react components for contact us section
-
 //image information for social media accounts
 
 const twitter = {
@@ -59,7 +58,7 @@ class SubmitButton extends React.Component{
     render(){
         return(
             <div id = "submit_container">
-                <button type="button" class="btn btn-outlined btn-primary" id = "submit_button" onclick = "sendJobPost()">  Submit </button>
+                <button type="button" class="btn btn-outlined btn-primary" id = "submit_button" onClick = {sendContactInfo}>  Submit </button>
             </div>
         )
     }

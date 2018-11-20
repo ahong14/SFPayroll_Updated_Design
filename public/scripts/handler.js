@@ -107,19 +107,31 @@ function sendContactInfo(){
 
     if(invalid_input == false){
         var message = '';
-        message += 'Name: ' + contact_name.value + '\n';
-        message += 'Email: ' + contact_email.value + '\n';
-        message += 'Message: ' + contact_message.value + '\n';
+        // message += 'Name: ' + contact_name.value + '\n';
+        // message += 'Email: ' + contact_email.value + '\n';
+        // message += 'Message: ' + contact_message.value + '\n';
 
-        sendMessage(
-            {
-              'To': 'alexhong681@gmail.com',
-              'Subject': 'Contact Us Message'
-            }
-            ,
-            message,
-            success
-        );
+        var contactInfo = {};
+
+        contactInfo.name = contact_name.value;
+        contactInfo.email = contact_email.value;
+        contactInfo.message = contact_message.value;
+
+        console.log(contactInfo);
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('POST', 'http://localhost:8080/contactUs', true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(JSON.stringify(contactInfo));
+
+        // sendMessage(
+        //     {
+        //       'To': 'alexhong681@gmail.com',
+        //       'Subject': 'Contact Us Message'
+        //     }
+        //     ,
+        //     message,
+        //     success
+        // );
 
     }
 

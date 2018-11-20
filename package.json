@@ -1,0 +1,35 @@
+{
+  "name": "sf_payroll_updated",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahong14/SFPayroll_Updated_Design.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahong14/SFPayroll_Updated_Design/issues"
+  },
+  "homepage": "https://github.com/ahong14/SFPayroll_Updated_Design#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.0",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-generator": "^4.16.0",
+    "nodemailer": "^4.7.0",
+    "nodemon": "^1.18.6",
+    "path": "^0.12.7",
+    "query-string": "^6.1.0"
+  }
+}
