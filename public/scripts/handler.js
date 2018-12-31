@@ -90,6 +90,7 @@ function sendContactInfo(){
     var invalid_input = false;
 
     var url_string = heroku_url + '/contactUs';
+    var local = 'http://localhost:3000/contactUs';
 
     console.log(url_string);
 
@@ -118,10 +119,10 @@ function sendContactInfo(){
         contactInfo.name = contact_name.value;
         contactInfo.email = contact_email.value;
         contactInfo.message = contact_message.value;
-        
+
         //send ajax request for contact information
         var xhttp = new XMLHttpRequest();
-        xhttp.open('POST', url_string , true);
+        xhttp.open('POST', url_string, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify(contactInfo));
     }
