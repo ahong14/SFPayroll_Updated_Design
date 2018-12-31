@@ -40,14 +40,6 @@ app.use(cors());
 //serve files in public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-//delayed response middleware
-// app.use(function (req, res, next) {
-//     console.log("in middleware");
-//     var delayed = new delay(req, res);
-//     delayed.json();
-//     next(delayed.start());
-// });
-
 //code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
 const extendTimeoutMiddleware = (req, resp, next) => {
     const space = ' ';
@@ -113,7 +105,7 @@ app.post('/contactUs', (req,resp) => {
     //send email for contact us
     transporter.sendMail(contactUsOptions, function (err, info) {
         if(err){
-            console.log(err)
+            console.err(err)
             resp.status(400);
         }
        
