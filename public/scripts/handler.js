@@ -1,3 +1,4 @@
+var heroku_url = "http://sfpayroll.herokuapp.com";
 
 //send email using gmail api
 function sendMessage(headers_obj, message,callback)
@@ -67,9 +68,13 @@ function sendJobPost(){
         jobPosting.state = state.value;
         jobPosting.description = job_description.value;
 
+        var url_string = heroku_url + '/sendJob';
+
+        console.log(url_string);
+
         //send job posting with ajax request
         var xhttp = new XMLHttpRequest();
-        xhttp.open('POST', 'http://localhost:3000/sendJob', true);
+        xhttp.open('POST', url_string, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify(jobPosting));    
     }
@@ -83,6 +88,10 @@ function sendContactInfo(){
     var contact_message = document.getElementById('message');
 
     var invalid_input = false;
+
+    var url_string = heroku_url + '/contactUs';
+
+    console.log(url_string);
 
     //check to for invalid inputs
     if (contact_name.value == ""){
@@ -112,7 +121,7 @@ function sendContactInfo(){
 
         //send ajax request for contact information
         var xhttp = new XMLHttpRequest();
-        xhttp.open('POST', 'http://localhost:3000/contactUs', true);
+        xhttp.open('POST', url_string , true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify(contactInfo));
     }
