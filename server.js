@@ -42,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //delayed response middleware
 app.use(function (req, res, next) {
+    console.log("in middleware");
     var delayed = new delay(req, res);
     delayed.json();
     next(delayed.start());
@@ -50,6 +51,7 @@ app.use(function (req, res, next) {
 //send email for contact us information
 app.post('/contactUs', (req,resp) => {
 
+    console.log("in contact us");
     //mail options
     const contactUsOptions = {
         from: 'sfpayrollweb@gmail.com', // sender address
