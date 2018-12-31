@@ -41,12 +41,61 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //delayed response middleware
-app.use(function (req, res, next) {
-    console.log("in middleware");
-    var delayed = new delay(req, res);
-    delayed.json();
-    next(delayed.start());
-});
+// app.use(function (req, res, next) {
+//     console.log("in middleware");
+//     var delayed = new delay(req, res);
+//     delayed.json();
+//     next(delayed.start());
+// });
+
+//code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
+const extendTimeoutMiddleware = (req, resp, next) => {
+    const space = ' ';
+    let isFinished = false;
+    let isDataSent = false;
+
+    resp.once('finish', () => {
+      isFinished = true;
+    });
+  
+    resp.once('end', () => {
+      isFinished = true;
+    });
+  
+    resp.once('close', () => {
+      isFinished = true;
+    });
+  
+    resp.on('data', (data) => {
+      // Look for something other than our blank space to indicate that real
+      // data is now being sent back to the client.
+      if (data !== space) {
+        isDataSent = true;
+      }
+    });
+  
+    const waitAndSend = () => {
+      setTimeout(() => {
+        // If the response hasn't finished and hasn't sent any data back....
+        if (!isFinished && !isDataSent) {
+          // Need to write the status code/headers if they haven't been sent yet.
+          if (!resp.headersSent) {
+            resp.writeHead(202);
+          }
+  
+          resp.write(space);
+  
+          // Wait another 15 seconds
+          waitAndSend();
+        }
+      }, 15000);
+    };
+  
+    waitAndSend();
+    next();
+  };
+  
+  app.use(extendTimeoutMiddleware);
 
 //send email for contact us information
 app.post('/contactUs', (req,resp) => {
@@ -77,6 +126,7 @@ app.post('/contactUs', (req,resp) => {
 //email job posting
 app.post('/sendJob', (req,resp) => {
 
+    console.log("in send job");
     //send job email options
     const options = {
         from: 'sfpayrollweb@gmail.com', // sender address
