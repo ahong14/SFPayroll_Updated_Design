@@ -40,13 +40,11 @@ app.use(cors());
 //serve files in public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app
+//delayed response middleware
 app.use(function (req, res, next) {
     var delayed = new delay(req, res);
-    delayed.on('heartbeat', function () {
-      // anything you need to do to keep the connection alive
-    });
-    next(delayed.start(1000));
+    delayed.json();
+    next(delayed.start());
 });
 
 //send email for contact us information
@@ -104,5 +102,3 @@ app.post('/sendJob', (req,resp) => {
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT);
 server.timeout = 120000;
-
-
