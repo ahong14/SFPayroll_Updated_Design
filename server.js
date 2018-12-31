@@ -12,34 +12,35 @@ var cors = require('cors')
 //body parse for requests
 var bodyParser = require('body-parser');
 
-app.use(bodyParser.json());
-
-
+//send emails
 var nodemailer = require('nodemailer');
 
+//email options
 var transporter = nodemailer.createTransport({
+    secure: false, // use SSL
     service: 'gmail',
     auth: {
            user: 'sfpayrollweb@gmail.com',
            pass: 'sfpayroll123'
-       }
-   });
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
+
+//parse body request
+app.use(bodyParser.json());
 
 //use cors;
 app.use(cors());
 
-
-
 //serve files in public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-//choose port based on environment
-const PORT = process.env.PORT || 8080;
-
-
-//send email
+//send email for contact us information
 app.post('/contactUs', (req,resp) => {
-    console.log(req.body);
+
+    //mail options
     const contactUsOptions = {
         from: 'sfpayrollweb@gmail.com', // sender address
         to: 'sfpayrollweb@gmail.com', // list of receivers
@@ -49,8 +50,31 @@ app.post('/contactUs', (req,resp) => {
 
 
     //send email for contact us
-    //NEED TO FIX
     transporter.sendMail(contactUsOptions, function (err, info) {
+        if(err){
+            console.log(err)
+            resp.status(400);
+        }
+       
+        else{
+            resp.status(200);            
+        }
+    });
+});
+
+//email job posting
+app.post('/sendJob', (req,resp) => {
+
+    //send job email options
+    const options = {
+        from: 'sfpayrollweb@gmail.com', // sender address
+        to: 'sfpayrollweb@gmail.com', // list of receivers
+        subject: 'Job Posting', // Subject line
+        html: '<p> Position: ' + req.body.position + '\n' + 'City: ' + req.body.city + '\n' + 'State: ' + req.body.state + '\n'  + 'Description: ' + req.body.description + '</p>'
+    }
+
+    //send email
+    transporter.sendMail(options, function(err,info){
         if(err){
             console.log(err)
             resp.status(400);
@@ -64,6 +88,8 @@ app.post('/contactUs', (req,resp) => {
 
 
 //listen to requests on port
+//choose port based on environment
+const PORT = process.env.PORT || 3000;
 app.listen(PORT);
 
 

@@ -59,22 +59,19 @@ function sendJobPost(){
     //if valid inputs, send email
     if(invalid_input == false){
 
-        var message = '';
-        message += 'Position: ' + position_title.value + '\n';
-        message += 'City: ' + city.value + '\n';
-        message += 'State: ' + state.value + '\n';
-        message += 'Job Description: ' + job_description.value + '\n';
+        //create job posting object
+        var jobPosting = {};
 
-        sendMessage(
-            {
-              'To': 'alexhong681@gmail.com',
-              'Subject': 'Job Posting'
-            }
-            ,
-            message,
-            success
-        );
-    
+        jobPosting.position = position_title.value;
+        jobPosting.city = city.value;
+        jobPosting.state = state.value;
+        jobPosting.description = job_description.value;
+
+        //send job posting with ajax request
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('POST', 'http://localhost:8080/sendJob', true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(JSON.stringify(jobPosting));    
     }
   
 }
@@ -87,6 +84,7 @@ function sendContactInfo(){
 
     var invalid_input = false;
 
+    //check to for invalid inputs
     if (contact_name.value == ""){
         alert("Empty Name: Please enter name.");
         invalid_input = true;
@@ -95,44 +93,28 @@ function sendContactInfo(){
     else if (contact_email.value == ""){
         alert("Empty Email: Please enter email.");
         invalid_input = true;
-
     }
 
     else if (contact_message.value == ""){
         alert("Empty Message: Please enter message.");
         invalid_input = true;
-
     }
 
 
     if(invalid_input == false){
-        var message = '';
-        // message += 'Name: ' + contact_name.value + '\n';
-        // message += 'Email: ' + contact_email.value + '\n';
-        // message += 'Message: ' + contact_message.value + '\n';
 
+        //create object for contact information
         var contactInfo = {};
 
         contactInfo.name = contact_name.value;
         contactInfo.email = contact_email.value;
         contactInfo.message = contact_message.value;
 
-        console.log(contactInfo);
+        //send ajax request for contact information
         var xhttp = new XMLHttpRequest();
         xhttp.open('POST', 'http://localhost:8080/contactUs', true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify(contactInfo));
-
-        // sendMessage(
-        //     {
-        //       'To': 'alexhong681@gmail.com',
-        //       'Subject': 'Contact Us Message'
-        //     }
-        //     ,
-        //     message,
-        //     success
-        // );
-
     }
 
 }
