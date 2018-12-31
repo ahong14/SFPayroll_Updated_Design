@@ -69,7 +69,7 @@ function sendJobPost(){
 
         //send job posting with ajax request
         var xhttp = new XMLHttpRequest();
-        xhttp.open('POST', 'http://localhost:8080/sendJob', true);
+        xhttp.open('POST', 'http://localhost:3000/sendJob', true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify(jobPosting));    
     }
@@ -112,7 +112,7 @@ function sendContactInfo(){
 
         //send ajax request for contact information
         var xhttp = new XMLHttpRequest();
-        xhttp.open('POST', 'http://localhost:8080/contactUs', true);
+        xhttp.open('POST', 'http://localhost:3000/contactUs', true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify(contactInfo));
     }
