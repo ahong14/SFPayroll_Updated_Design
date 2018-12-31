@@ -1,25 +1,25 @@
 var heroku_url = "http://sfpayroll.herokuapp.com";
 
 //send email using gmail api
-function sendMessage(headers_obj, message,callback)
-{
-    var email = '';
+// function sendMessage(headers_obj, message,callback)
+// {
+//     var email = '';
 
-    for(var header in headers_obj)
-        email += header += ": "+headers_obj[header]+"\r\n";
+//     for(var header in headers_obj)
+//         email += header += ": "+headers_obj[header]+"\r\n";
 
-    email += "\r\n" + message;
-    console.log(email);
+//     email += "\r\n" + message;
+//     console.log(email);
 
-    var sendRequest = gapi.client.gmail.users.messages.send({
-        'userId': 'me',
-        'resource': {
-        'raw': window.btoa(email)
-        }
-    });
-    sendRequest.execute(callback);
+//     var sendRequest = gapi.client.gmail.users.messages.send({
+//         'userId': 'me',
+//         'resource': {
+//         'raw': window.btoa(email)
+//         }
+//     });
+//     sendRequest.execute(callback);
 
-}
+// }
 
 function success(){
     console.log("message sent");
