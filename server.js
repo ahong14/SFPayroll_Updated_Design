@@ -15,6 +15,9 @@ var bodyParser = require('body-parser');
 //send emails
 var nodemailer = require('nodemailer');
 
+//delay http
+var delay = require('http-delayed-response');
+
 //email options
 var transporter = nodemailer.createTransport({
     secure: false, // use SSL
@@ -36,6 +39,15 @@ app.use(cors());
 
 //serve files in public folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+//app
+app.use(function (req, res, next) {
+    var delayed = new delay(req, res);
+    delayed.on('heartbeat', function () {
+      // anything you need to do to keep the connection alive
+    });
+    next(delayed.start(1000));
+});
 
 //send email for contact us information
 app.post('/contactUs', (req,resp) => {
@@ -90,6 +102,7 @@ app.post('/sendJob', (req,resp) => {
 //listen to requests on port
 //choose port based on environment
 const PORT = process.env.PORT || 3000;
-app.listen(PORT);
+const server = app.listen(PORT);
+server.timeout = 120000;
 
 

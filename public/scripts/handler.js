@@ -118,10 +118,7 @@ function sendContactInfo(){
         contactInfo.name = contact_name.value;
         contactInfo.email = contact_email.value;
         contactInfo.message = contact_message.value;
-
-        var url_string = heroku_url + '/contactUs';
-        console.log(url_string);
-
+        
         //send ajax request for contact information
         var xhttp = new XMLHttpRequest();
         xhttp.open('POST', url_string , true);
