@@ -15,9 +15,6 @@ var bodyParser = require('body-parser');
 //send emails
 var nodemailer = require('nodemailer');
 
-//delay http
-var delay = require('http-delayed-response');
-
 //email options
 var transporter = nodemailer.createTransport({
     secure: false, // use SSL
@@ -41,6 +38,8 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
+//code to workaround heroku deployment 30second timeout
+//sending emails takes longer than 30 seconds, herokue will timeout and return 503 service unavailable
 const extendTimeoutMiddleware = (req, resp, next) => {
     const space = ' ';
     let isFinished = false;
