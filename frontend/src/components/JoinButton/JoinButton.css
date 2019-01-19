@@ -1,0 +1,17 @@
+#join{
+    margin-top: 50px;
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+#join_link{
+    padding: 5px;
+}
+
+#join_button{
+    width: 200px;
+    border-radius: 0px;
+    cursor: pointer;
+}
+

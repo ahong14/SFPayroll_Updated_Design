@@ -5,7 +5,7 @@
 } */
 
 #navBar{
-    background-color: lightgray;
+    background-color: white;
 }
 
 
@@ -16,7 +16,6 @@ ul li{
     align-self: center;
     width: 150px;
 }
-
 
 #imageLogo{
     width: 180px;

@@ -27,10 +27,6 @@ class Carousel extends Component{
                     <div className="carousel-item">
                         <img className= "slide_image img-responsive" src={image3} alt="fourth image"/>
                     </div>
-
-                    <div className="carousel-item">
-                        <img className= "slide_image img-responsive" src="photos/carousel_image.jpg" alt="fifth image"/>
-                    </div>
                 </div>
             </div> 
         );

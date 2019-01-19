@@ -1,16 +1,25 @@
-.jumbotron{
-    background-color: white;
-    width: 100vw;
+#welcomeContainer{
+    display:flex;
+    flex-direction: column;
+    min-height: 1500px;
+    background-color: #D8D8D8;
 }
 
-
-.jumbotronImage{
-    width: 100%;
-    height: 100%;
+#welcome_awards_join{
+    margin-top: 20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-#jumbotronHeader{
-    text-align: center;
+#welcome_text{
+    font-style: italic;
+}
+
+#page_header{
+    margin:auto;
+    font-style: italic;
+    margin-top: 30px;
 }
 
 .centered{
@@ -20,6 +29,11 @@
     transform: translate(-50%, -50%);
 }
 
+#golden_gate_background{
+    width: 100vw;
+    height: 580px;
+  }
+
 #header_text{
     color:white;
 }
@@ -28,25 +42,4 @@
     width: 800px;
 }
 
-.carouselImage{
-    width: 800px;
-    height: 500px;
-}
 
-.carouselImage img{
-    width: 100%;
-    height: 100%;
-    align-self: center;
-}
-
-#gallery{
-    width: 100vw;
-    height:30%;
-    display:flex;
-    justify-content: center;
-}
-
-#galleryComponent{
-    align-self: center;
-    width: 800px;
-}

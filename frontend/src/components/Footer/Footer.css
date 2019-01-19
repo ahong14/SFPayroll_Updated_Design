@@ -1,0 +1,13 @@
+#ending{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #252525;
+    width: 100vw;
+    min-height: 200px;
+}
+
+#ending_content{
+    align-self: center;
+    color: white;
+}
