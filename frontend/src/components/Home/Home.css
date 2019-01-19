@@ -3,6 +3,7 @@
     flex-direction: column;
     min-height: 1500px;
     background-color: #D8D8D8;
+    margin: 0 auto;
 }
 
 #welcome_awards_join{
@@ -42,4 +43,22 @@
     width: 800px;
 }
 
+
+@media screen and (max-width: 520px){
+
+    #golden_gate_background{
+        height: 300px;
+    }
+
+    #page_header{
+        position: relative;
+        font-style: italic;
+        min-height: 100px;
+    }
+
+
+
+
+
+}
 

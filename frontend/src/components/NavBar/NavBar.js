@@ -31,7 +31,7 @@ class NavBar extends Component{
         const windowWidth = this.state.width;
 
         //if the window width is a desktop or laptop
-        if(windowWidth > 800){
+        if(windowWidth > 520){
             return(
                 <nav id = "navBar" className = "navbar navbar-expand-lg navbar-inverse fixed-top">
                    <Link to = "/" className = "navbar-brand" id = "navbarLogo"> <img id = "imageLogo" src = {navbarLogo} /> </Link>
@@ -51,10 +51,15 @@ class NavBar extends Component{
         else{
             return(
                 <div>
-                    <SideBar/>
-                    <div id = "page-wrap">
-
-                    </div>
+                    <nav className="navbar navbar-toggleable-lg navbar-light bg-faded fixed-top" id = "mobile_navbar">
+                        <div id = "mobile_bar">
+                            <i id = "bar_icon"> {FaBars} </i>
+                        </div>
+                        
+                        <div className = "navbar-header" id = "mobile_banner">
+                            <Link to = "/"> <img id = "banner_logo_mobile" src = {navbarLogo} alt = "banner logo"/> </Link>
+                        </div>
+                    </nav>
                 </div>
             );
         }

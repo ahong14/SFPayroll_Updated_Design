@@ -22,9 +22,27 @@ ul li{
     height: 100px;
 }
 
-@media screen and (min-width: 400px) and (max-width: 520px){
-    #mobileBar{
+@media screen and (max-width: 520px){
+    #mobile_navbar{
+        display:flex;
+        justify-content: space-between;
         visibility: visible;
+        width:100vw;
+    }
+
+    #navBar{
+        visibility: hidden;
+    }
+
+    #mobile_banner{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    
+      #banner_logo_mobile{
+        width: 60%;
+        align-self: flex-end;
     }
 
 }
