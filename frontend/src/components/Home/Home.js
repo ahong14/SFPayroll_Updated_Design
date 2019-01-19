@@ -1,31 +1,8 @@
 import React, {Component} from 'react';
 import Carousel from '../Carousel/Carousel';
-// import { Carousel } from 'react-responsive-carousel';
-// import ImageGallery from 'react-image-gallery';
-// import "react-image-gallery/styles/css/image-gallery.css";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Awards from '../Awards/Awards';
 import '../Home/Home.css';
 import BannerImage from '../../photos/golden_gate_bridge.jpg';
-
-
-// const images = [
-//     {
-//         original: image1,
-//         thumbnail: image1
-//     },
-
-//     {
-//         original: image2,
-//         thumbnail: image2
-//     },
-
-//     {
-//         original: image3,
-//         thumbnail: image3
-//     }
-// ]
-
-
 
 class Home extends Component {
     render(){
@@ -38,7 +15,7 @@ class Home extends Component {
                     </div>
                     <img className = "jumbotronImage" src = {BannerImage}/>
                 </div>
-
+                <Awards/>
                 <Carousel/>
             </div>
         );

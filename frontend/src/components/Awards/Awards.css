@@ -1,0 +1,13 @@
+#awards{
+    min-height: 110px;
+    display:flex;
+    flex-direction: row;  
+    align-self:center;
+    justify-content: space-around;
+}
+
+.award_image{
+    padding: 5px;
+    width:110px;
+    height: 100%;
+  }
