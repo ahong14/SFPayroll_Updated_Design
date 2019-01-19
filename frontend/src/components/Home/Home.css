@@ -1,0 +1,52 @@
+.jumbotron{
+    background-color: white;
+    width: 100vw;
+}
+
+
+.jumbotronImage{
+    width: 100%;
+    height: 100%;
+}
+
+#jumbotronHeader{
+    text-align: center;
+}
+
+.centered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#header_text{
+    color:white;
+}
+
+.slider-wrapper {
+    width: 800px;
+}
+
+.carouselImage{
+    width: 800px;
+    height: 500px;
+}
+
+.carouselImage img{
+    width: 100%;
+    height: 100%;
+    align-self: center;
+}
+
+#gallery{
+    width: 100vw;
+    height:30%;
+    display:flex;
+    justify-content: center;
+}
+
+#galleryComponent{
+    align-self: center;
+    width: 800px;
+}
