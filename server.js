@@ -12,22 +12,6 @@ mongoose.connection.on('error', function(error) {
     console.error('Database connection error:', error);
 });
 
-//send emails
-var nodemailer = require('nodemailer');
-
-//email options
-var transporter = nodemailer.createTransport({
-    secure: false, // use SSL
-    service: 'gmail',
-    auth: {
-           user: 'sfpayrollweb@gmail.com',
-           pass: 'sfpayroll123'
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-});
-
 //application, running express app
 var app = express();
 
@@ -43,8 +27,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 //routes
 var router = express.Router();
 var events = require('./routes/events');
+var contact = require('./routes/contact');
+var job = require('./routes/job');
+
 
 app.use('/events', events);
+app.use('/contact', contact);
+app.use('/job', job);
 
 //code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
 //code to workaround heroku deployment 30second timeout
@@ -96,58 +85,6 @@ const extendTimeoutMiddleware = (req, resp, next) => {
   };
   
   app.use(extendTimeoutMiddleware);
-
-//send email for contact us information
-app.post('/contactUs', (req,resp) => {
-
-    console.log("in contact us");
-    //mail options
-    const contactUsOptions = {
-        from: 'sfpayrollweb@gmail.com', // sender address
-        to: 'sfpayrollweb@gmail.com', // list of receivers
-        subject: 'Message From Visitor', // Subject line
-        html: '<p>Name: ' + req.body.name + '\n' + 'Email: ' + req.body.email + '\n' + 'Message: ' + req.body.message + '</p>'
-    }
-
-
-    //send email for contact us
-    transporter.sendMail(contactUsOptions, function (err, info) {
-        if(err){
-            console.err(err)
-            resp.status(400);
-        }
-       
-        else{
-            resp.status(200);            
-        }
-    });
-});
-
-//email job posting
-app.post('/sendJob', (req,resp) => {
-
-    console.log("in send job");
-    //send job email options
-    const options = {
-        from: 'sfpayrollweb@gmail.com', // sender address
-        to: 'sfpayrollweb@gmail.com', // list of receivers
-        subject: 'Job Posting', // Subject line
-        html: '<p> Position: ' + req.body.position + '\n' + 'City: ' + req.body.city + '\n' + 'State: ' + req.body.state + '\n'  + 'Description: ' + req.body.description + '</p>'
-    }
-
-    //send email
-    transporter.sendMail(options, function(err,info){
-        if(err){
-            console.log(err)
-            resp.status(400);
-        }
-       
-        else{
-            resp.status(200);            
-        }
-    });
-});
-
 
 //listen to requests on port
 //choose port based on environment
