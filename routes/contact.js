@@ -37,3 +37,5 @@ router.post('/contactUs', (req,resp) => {
         }
     });
 });
+
+module.exports = router;

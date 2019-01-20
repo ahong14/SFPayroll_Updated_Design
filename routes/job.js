@@ -37,3 +37,5 @@ router.post('/sendJob', (req,resp) => {
         }
     });
 });
+
+module.exports = router;

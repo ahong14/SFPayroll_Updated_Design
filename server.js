@@ -38,53 +38,54 @@ app.use('/job', job);
 //code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
 //code to workaround heroku deployment 30second timeout
 //sending emails takes longer than 30 seconds, herokue will timeout and return 503 service unavailable
-const extendTimeoutMiddleware = (req, resp, next) => {
-    const space = ' ';
-    let isFinished = false;
-    let isDataSent = false;
 
-    resp.once('finish', () => {
-      isFinished = true;
-    });
+// const extendTimeoutMiddleware = (req, resp, next) => {
+//     const space = ' ';
+//     let isFinished = false;
+//     let isDataSent = false;
+
+//     resp.once('finish', () => {
+//       isFinished = true;
+//     });
   
-    resp.once('end', () => {
-      isFinished = true;
-    });
+//     resp.once('end', () => {
+//       isFinished = true;
+//     });
   
-    resp.once('close', () => {
-      isFinished = true;
-    });
+//     resp.once('close', () => {
+//       isFinished = true;
+//     });
   
-    resp.on('data', (data) => {
-      // Look for something other than our blank space to indicate that real
-      // data is now being sent back to the client.
-      if (data !== space) {
-        isDataSent = true;
-      }
-    });
+//     resp.on('data', (data) => {
+//       // Look for something other than our blank space to indicate that real
+//       // data is now being sent back to the client.
+//       if (data !== space) {
+//         isDataSent = true;
+//       }
+//     });
   
-    const waitAndSend = () => {
-      setTimeout(() => {
-        // If the response hasn't finished and hasn't sent any data back....
-        if (!isFinished && !isDataSent) {
-          // Need to write the status code/headers if they haven't been sent yet.
-          if (!resp.headersSent) {
-            resp.writeHead(202);
-          }
+//     const waitAndSend = () => {
+//       setTimeout(() => {
+//         // If the response hasn't finished and hasn't sent any data back....
+//         if (!isFinished && !isDataSent) {
+//           // Need to write the status code/headers if they haven't been sent yet.
+//           if (!resp.headersSent) {
+//             resp.writeHead(202);
+//           }
   
-          resp.write(space);
+//           resp.write(space);
   
-          // Wait another 15 seconds
-          waitAndSend();
-        }
-      }, 15000);
-    };
+//           // Wait another 15 seconds
+//           waitAndSend();
+//         }
+//       }, 15000);
+//     };
   
-    waitAndSend();
-    next();
-  };
+//     waitAndSend();
+//     next();
+//   };
   
-  app.use(extendTimeoutMiddleware);
+//   app.use(extendTimeoutMiddleware);
 
 //listen to requests on port
 //choose port based on environment

@@ -1,0 +1,15 @@
+#benefits{
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+    margin: auto;
+    width: 80%;
+}
+
+#benefitsList{
+    align-self:center;
+}
+
+#benefitsList li {
+    width: 100%;
+}
