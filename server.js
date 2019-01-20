@@ -1,16 +1,16 @@
 //express server module
 var express = require('express');
-
-//application, running express app
-var app = express();
-
 var path = require('path');
-
 //cors
 var cors = require('cors')
-
 //body parse for requests
 var bodyParser = require('body-parser');
+
+var mongoose = require('mongoose');
+mongoose.connect("mongodb://ahong14:aa12345@ds161804.mlab.com:61804/sfpayroll");
+mongoose.connection.on('error', function(error) {
+    console.error('Database connection error:', error);
+});
 
 //send emails
 var nodemailer = require('nodemailer');
@@ -28,6 +28,9 @@ var transporter = nodemailer.createTransport({
     }
 });
 
+//application, running express app
+var app = express();
+
 //parse body request
 app.use(bodyParser.json());
 
@@ -36,6 +39,12 @@ app.use(cors());
 
 //serve files in public folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+//routes
+var router = express.Router();
+var events = require('./routes/events');
+
+app.use('/events', events);
 
 //code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
 //code to workaround heroku deployment 30second timeout
@@ -142,6 +151,6 @@ app.post('/sendJob', (req,resp) => {
 
 //listen to requests on port
 //choose port based on environment
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const server = app.listen(PORT);
 server.timeout = 120000;

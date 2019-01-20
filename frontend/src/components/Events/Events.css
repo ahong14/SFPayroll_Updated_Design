@@ -3,6 +3,7 @@
     flex-direction: column;
     align-content: center;
     margin-top: 60px;
+    background-color: #D8D8D8;
 }
 
 .align_center{
@@ -16,10 +17,16 @@
 }
 
 #events_image{
-    width: 700px;
+    width: 850px;
     height: 380px;
 }
 
 #event_header{
     align-self: center;
+}
+
+.eventPosts{
+    display:flex;
+    flex-direction: column; 
+    justify-content: space-between;
 }

@@ -8,11 +8,13 @@ class EventItem extends Component {
 
     render(){
         return(
-            <div className="card-body">
-                <h5 className ="card-title"> {this.props.eventTitle} </h5>
-                <p className ="card-text"> <strong> Date: </strong> {this.props.date} </p>
-                <p className ="card-text"> <strong> Time: </strong> {this.props.time} </p>
-                <p className ="card-text"> <strong> Location: </strong> {this.props.location} </p>
+            <div className = "card border-info eventCard">
+                <div className="card-body">
+                    <h5 className ="card-title text-center"> {this.props.eventTitle} </h5>
+                    <p className ="card-text text-center"> <strong> Date: </strong> {this.props.date} </p>
+                    <p className ="card-text text-center"> <strong> Time: </strong> {this.props.time} </p>
+                    <p className ="card-text text-center"> <strong> Location: </strong> {this.props.location} </p>
+                </div>
             </div>
         );
     }
