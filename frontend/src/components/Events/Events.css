@@ -2,7 +2,7 @@
     display:flex;
     flex-direction: column;
     align-content: center;
-    margin-top: 60px;
+    margin-top: 30px;
     background-color: #D8D8D8;
 }
 
@@ -17,7 +17,7 @@
 }
 
 #events_image{
-    width: 850px;
+    width: 900px;
     height: 380px;
 }
 

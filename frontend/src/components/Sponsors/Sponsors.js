@@ -8,7 +8,7 @@ class Sponsors extends Component{
     render(){
         return(
             <div id = "sponsors">
-                <p className = "text-center font-weight-bold font-italic" > Sponsors: </p>
+                <p className = "text-center font-weight-bold font-italic" > <u> Sponsors </u> </p>
 
                 <div  className = "text-center" id = "sponsor_logos">
                     <a href = "https://www.mckesson.com/" target = "_blank"> <img className = "sponsor_images" id = "mckesson" src = {McKesson} alt = "mckesson_logo"/> </a>

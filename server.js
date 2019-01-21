@@ -29,11 +29,13 @@ var router = express.Router();
 var events = require('./routes/events');
 var contact = require('./routes/contact');
 var job = require('./routes/job');
+var positions = require('./routes/positions');
 
 
 app.use('/events', events);
 app.use('/contact', contact);
 app.use('/job', job);
+app.use('/positions', positions);
 
 //code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
 //code to workaround heroku deployment 30second timeout

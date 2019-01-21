@@ -1,6 +1,7 @@
 #sponsors{
     display:flex;
     flex-direction: column;
+    align-self:center;
 }
 
 #sponsor_logos{
@@ -12,6 +13,6 @@
 }
 
 .sponsor_images{
-    width: 80px;
-    height: 45px;
+    width: 110px;
+    height: 100px;
 }

@@ -17,23 +17,25 @@ var transporter = nodemailer.createTransport({
 
 //send email for contact us information
 router.post('/contactUs', (req,resp) => {
+    var params = req.body.params;
+    console.log(req.body);
     //mail options
     const contactUsOptions = {
         from: 'sfpayrollweb@gmail.com', // sender address
         to: 'sfpayrollweb@gmail.com', // list of receivers
         subject: 'Message From Visitor', // Subject line
-        html: '<p>Name: ' + req.body.name + '\n' + 'Email: ' + req.body.email + '\n' + 'Message: ' + req.body.message + '</p>'
+        html: '<p>Name: ' + params.name + '\n' + 'Email: ' + params.email + '\n' + 'Message: ' + params.message + '</p>'
     }
     
     //send email for contact us
     transporter.sendMail(contactUsOptions, function (err, info) {
         if(err){
             console.err(err)
-            resp.status(400);
+            resp.status(400).send("Email wasn't sent");
         }
        
         else{
-            resp.status(200);            
+            resp.status(200).send("Thank you! Message was sent");            
         }
     });
 });

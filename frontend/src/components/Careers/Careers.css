@@ -1,0 +1,16 @@
+.careers_container{
+    margin-top: 30px;
+    display:flex;
+    flex-direction: column;
+}
+
+#career_header{
+    display:flex;
+    flex-direction: column;
+}
+
+#career_image{
+    width: 500px;
+    height: 300px;
+    align-self: center;
+}

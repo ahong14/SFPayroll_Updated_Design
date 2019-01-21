@@ -1,0 +1,17 @@
+.follow_us_container{
+    display:flex;
+    flex-direction: row;
+    align-self: center;
+}
+
+#contact_us_container{
+    margin-top: 30px;
+    display:flex;
+    flex-direction: column;
+    background-color: #D8D8D8;
+}
+
+#contact_info{
+    align-self: center;
+    font-weight: bold;
+}
