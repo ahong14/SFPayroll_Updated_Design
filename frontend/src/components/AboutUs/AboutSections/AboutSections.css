@@ -1,0 +1,12 @@
+.about_section{
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.section_image{
+    width: 200px;
+    height:100px;
+    align-self: center;
+}
+
