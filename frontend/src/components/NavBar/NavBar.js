@@ -31,7 +31,7 @@ class NavBar extends Component{
         const windowWidth = this.state.width;
 
         //if the window width is a desktop or laptop
-        if(windowWidth > 520){
+        if(windowWidth > 600){
             return(
                 <nav id = "navBar" className = "navbar navbar-expand-lg navbar-inverse fixed-top">
                    <Link to = "/" className = "navbar-brand" id = "navbarLogo"> <img id = "imageLogo" src = {navbarLogo} /> </Link>

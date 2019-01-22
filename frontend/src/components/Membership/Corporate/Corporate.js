@@ -4,7 +4,7 @@ import '../../Membership/Corporate/Corporate.css';
 class Corporate extends Component{
     render(){
         return(
-            <div id = "corporateContainer">
+            <div className = "container-fluid" id = "corporateContainer">
                 <div className = "card border-dark corporateCard" id = "silverCard">
                     <div className="card-header header" >Silver</div>
                     <div className="card-body text-primary">

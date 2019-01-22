@@ -25,3 +25,15 @@
     width: 700px;
 }
 
+@media screen and (max-width: 600px){
+
+    #about_us_1{
+        display:none;
+    }
+
+    #about_us_part1_blockquote{
+        width: 400px;
+    }
+}
+
+

@@ -24,5 +24,11 @@
     align-self: center;
 }
 
+@media screen and (max-width: 600px){
+  #studyBlockInfo{
+      width:350px;
+  }
+}
+
   
 

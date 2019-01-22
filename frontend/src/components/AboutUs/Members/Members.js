@@ -16,9 +16,9 @@ import angela from '../../../photos/angela_image.jpg';
 class Members extends Component{
     render(){
         return(
-            <div id = "officers_conatiner">
+            <div className = "container-fluid" id = "officers_container">
                 <h2 className = "text-center"> Officers </h2>
-                <div className = "card-group">
+                <div className = "members container-fluid card-group">
                     <President/>
                     <OfficerMember imagesrc={erin} name = "Erin Svobada, CPP" position = "First Vice President" company = "Clif Bar" 
                                         phone = "510-597-3923" email = "isvoboda@clifbar.com"/> 
@@ -30,7 +30,7 @@ class Members extends Component{
                                         phone = '415-476-2327' email = 'becky.ng@ucsf.edu'/>
                 </div>
 
-                <div className = "card-group">
+                <div className = "members card-group">
                     <OfficerMember imagesrc= {bill} name = 'Bill Schmalle, CPP' position = 'Government Liaison Officer' company = 'McKesson' 
                                         phone = '510-597-3923' email = 'William.schmalle@mckesson.com'/>
                     <OfficerMember imagesrc= {christine} name = 'Christine Corral, CPP' position = 'Membership Chairperson' company = 'Bio-Rad Laboratories' 

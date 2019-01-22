@@ -1,28 +1,9 @@
-.corporate_type{
+  .corporate_type{
     display:flex;
     flex-direction: row;
     align-self: center;
   }
   
-  #silver{
-    width:30px;
-    height:30px;
-    background-color: silver;
-  }
-  
-  #gold{
-    width:30px;
-    height:30px;
-    background-color: gold;
-  }
-  
-  #platinum{
-    width:30px;
-    height:30px;
-    background-color: #E5E4E2;
-    margin-left: 80px;
-  }
-
   #corporateContainer{
       display:flex;
       flex-direction: column;
@@ -49,4 +30,10 @@
 
   #platinumCard *{
     color: #E5E4E2;
+  }
+
+  @media screen and (max-width: 600px){
+    .corporateCard{
+      width: 320px;
+    }
   }
