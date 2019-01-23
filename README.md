@@ -5,7 +5,8 @@
 ## Description:
 Redesigned website, original site at http://www.sfpayroll.org/.
 Full-stack web application that shows information, events, career
-openings etc. for San Francisco Payroll Association.
+openings etc. for San Francisco Payroll Association. Built using
+Node.js, Express.js, React.js, HTML/CSS, MongoDB, and Bootstrap.
 
 ## Backend:
 Used Express.js for server logic and APIs.
