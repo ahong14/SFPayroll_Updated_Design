@@ -10,8 +10,8 @@ class HearFrom extends Component{
     }
 
     sendContact = () =>{
-        // const apiURL = 'http://sfpayroll.herokuapp.com/contact/contactUs';
-        const apiURL = 'http://localhost:4000/contact/contactUs';
+        const apiURL = 'http://sfpayroll.herokuapp.com/contact/contactUs';
+        // const apiURL = 'http://localhost:4000/contact/contactUs';
 
         if(this.nameInput.value.trim() === '' || this.emailInput.value.trim() === '' || this.messageInput.value.trim() === ''){
             alert("Fields still empty");
