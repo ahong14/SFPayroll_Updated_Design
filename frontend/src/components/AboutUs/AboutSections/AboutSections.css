@@ -11,4 +11,11 @@
 }
 
 
+@media screen and (max-width: 600px){
+    .card-group{
+        display:flex;
+        flex-direction: column;
+    }
+}
+
 

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Positions = require('../models/Postings');
 
+//get all available job postings from database
 router.get('/getPostings', (req,resp) => {
     Positions.find()
         .then(positions => {

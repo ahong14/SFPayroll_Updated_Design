@@ -5,6 +5,7 @@ import AboutSections from '../AboutUs/AboutSections/AboutSections';
 import Members from '../AboutUs/Members/Members';
 import bylaws from '../../photos/bylaws.jpg';
 
+//About Us Section
 class AboutUs extends Component{
     render(){
         return(
@@ -13,7 +14,7 @@ class AboutUs extends Component{
                 <img className = "align_center" id = "about_us_1" src = {aboutUs} alt = "chapter photo" />
                 <h2 className = "text-center font-italic " > San Francisco Bay Area Chapter </h2>
                 <div className = "blockquote_caption align_center">
-                    <blockquote class = "font-weight-bold " id = "about_us_part1_blockquote">
+                    <blockquote className = "font-weight-bold " id = "about_us_part1_blockquote">
                         The SFBAC has been providing educational and networking opportunities for the local Payroll 
                         Professional since 1983. Every day, we strive to support the Payroll Professional with member benefits 
                         including educational workshops, meetings, payroll legislative update, and scholarship programs. 
@@ -32,7 +33,6 @@ class AboutUs extends Component{
                         <p className = "text-center font-italic" > Click here for details: <a href = "http://www.sfpayroll.org/boardfiles/2014_Bylaws_Constitution.pdf" target = "_blank"> By Laws </a> </p>
                     </div>
                 </div>
-
                 <AboutSections/>
                 <Members/>
             </div>

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Events = require('../models/Events');
 
-//send all events
+//get all upcoming events from database
 router.get('/', (req,resp) => {
     Events.find()
         .then(events =>{

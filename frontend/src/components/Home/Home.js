@@ -6,6 +6,7 @@ import JoinButton from '../JoinButton/JoinButton';
 import '../Home/Home.css';
 import BannerImage from '../../photos/golden_gate_bridge.jpg';
 
+//Home page component
 class Home extends Component {
     render(){
         return(

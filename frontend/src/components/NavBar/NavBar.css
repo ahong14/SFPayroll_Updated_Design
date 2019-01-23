@@ -1,18 +1,12 @@
-/* #navbarList{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-} */
-
 #navBar{
     background-color: #f7f7f7;
     height: 100px;
 }
 
-
 #mobileBar{
     visibility: hidden;
 }
+
 ul li{
     align-self: center;
     width: 150px;
@@ -27,12 +21,14 @@ ul li a{
     height: 100px;
 }
 
-@media screen and (max-width: 520px){
+/* mobile screen */
+@media screen and (max-width: 600px){
     #mobile_navbar{
         display:flex;
         justify-content: space-between;
         visibility: visible;
         width:100vw;
+        background-color: #f7f7f7;
     }
 
     #navBar{
@@ -47,7 +43,28 @@ ul li a{
     
       #banner_logo_mobile{
         width: 60%;
-        align-self: flex-end;
+        float:right;
     }
 
+    #sidebar{
+        visibility: visible;
+        height: 100%;
+        width: 0vw;
+        position: fixed;
+        z-index: 200;
+        background-color: #F7F7F7;
+        transition: 0.8s;
+        padding-top: 60px;
+        overflow-x: hidden;
+        left:0;
+        margin-top: 270px;
+    }
+
+    #close_navbar{
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        font-size: 20px;
+        color: grey;
+      }
 }

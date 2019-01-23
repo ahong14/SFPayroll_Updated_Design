@@ -1,11 +1,10 @@
-//express server module
+//require packages
 var express = require('express');
 var path = require('path');
-//cors
 var cors = require('cors')
-//body parse for requests
 var bodyParser = require('body-parser');
 
+//mongoose, connect to mongoDB on mLab
 var mongoose = require('mongoose');
 mongoose.connect("mongodb://ahong14:aa12345@ds161804.mlab.com:61804/sfpayroll");
 mongoose.connection.on('error', function(error) {
@@ -21,8 +20,8 @@ app.use(bodyParser.json());
 //use cors;
 app.use(cors());
 
-//serve files in public folder
-app.use(express.static(path.join(__dirname, 'public')));
+//serve react files
+app.use(express.static(path.join(__dirname, 'frontend/build')));
 
 //routes
 var router = express.Router();
@@ -31,11 +30,12 @@ var contact = require('./routes/contact');
 var job = require('./routes/job');
 var positions = require('./routes/positions');
 
-
 app.use('/events', events);
 app.use('/contact', contact);
 app.use('/job', job);
 app.use('/positions', positions);
+
+
 
 //code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
 //code to workaround heroku deployment 30second timeout

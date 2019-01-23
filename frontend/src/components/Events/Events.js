@@ -4,6 +4,8 @@ import '../Events/Events.css';
 import EventItem from '../Events/EventItem/EventItem';
 import eventHeaderImage from '../../photos/events_photo.jpg';
 
+//Events component to display events
+//state contains array of events retrieved from mongoDB
 
 class Events extends Component{
     constructor(props){
@@ -13,8 +15,9 @@ class Events extends Component{
 
     componentDidMount(){
         const apiURL = 'http://localhost:4000/events';
-        //const apiURL = 'http://nbarosters2018.herokuapp.com/teams';
+        //const apiURL = 'http://sfpayroll.herokuapp.com/events';
 
+        //set state to new array of events
         axios.get(apiURL)
             .then(resp => {
                 this.setState({
@@ -24,7 +27,7 @@ class Events extends Component{
     }
 
     render(){
-
+        //render current state of events
         const eventList = this.state.events.map(result => {
             return <EventItem key = {result._id} eventTitle = {result.event} date = {result.date} time = {result.time} location = {result.Location}/>
         });

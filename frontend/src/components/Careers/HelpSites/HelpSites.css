@@ -11,3 +11,18 @@
 ul{
     align-self: center;
 }
+
+@media screen and (max-width: 600px){
+    #sites_container{
+        flex-direction: column;
+    }
+
+    ul{
+        display:flex;
+        flex-direction: column;
+    }
+
+    ul a{
+        align-self: center;
+    }
+}

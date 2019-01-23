@@ -2,6 +2,7 @@
     margin-top: 30px;
     display:flex;
     flex-direction: column;
+    background-color: #D8D8D8;
 }
 
 #career_header{
@@ -13,4 +14,12 @@
     width: 500px;
     height: 300px;
     align-self: center;
+}
+
+@media screen and (max-width: 600px){
+    #career_image{
+        display:none;
+    }
+
+
 }

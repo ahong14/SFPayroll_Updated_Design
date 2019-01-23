@@ -1,7 +1,6 @@
 #welcomeContainer{
     display:flex;
     flex-direction: column;
-    min-height: 1500px;
     background-color: #D8D8D8;
     margin: 0 auto;
 }
@@ -52,12 +51,17 @@
 
     #golden_gate_background{
         height: 280px;
-        width: 80vw;
+        width: 90vw;
     }
 
     #page_header{
         position: relative;
         font-style: italic;
+        height:300px;
+    }
+
+    #welcome_awards_join{
+        margin-top: 0px;
     }
 }
 

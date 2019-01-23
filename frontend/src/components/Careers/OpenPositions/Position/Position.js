@@ -4,7 +4,7 @@ import '../../../Careers/OpenPositions/Position/Position.css';
 class Position extends Component{
     render(){
         return(
-            <div className = "card border-secondary ">
+            <div className = "card border-secondary container-fluid">
                 <div className="card-body">
                     <a href = {this.props.link} target = "_blank"> <h5> {this.props.title} </h5> </a>
                     <p className ="card-text text-center"> <strong> Date Posted: </strong> {this.props.postedDate} </p>

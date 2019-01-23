@@ -4,7 +4,7 @@ import '../../Resources/LearningResources/LearningResources.css';
 class LearningResources extends Component{
     render(){
         return(
-            <div className = "card">
+            <div className = "resourcesCard container-fluid card">
                  <div id = "learning_resources_container">
                     <div className = "learning_resources">
                         <h3 className = "text-center underline"> Learning Resources </h3>
