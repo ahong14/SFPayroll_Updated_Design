@@ -26,6 +26,10 @@ class HearFrom extends Component{
                 }
             }).then(resp => {
                 alert(resp.data);
+                //reset input values
+                this.nameInput.value = '';  
+                this.emailInput.value = '';
+                this.messageInput.value = '';
             })
         }
     }

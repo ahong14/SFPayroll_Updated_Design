@@ -26,6 +26,12 @@ class JobForm extends Component{
                 }
             }).then(resp => {
                 alert(resp.data);
+                //reset input values
+                this.emailInput.value = ''; 
+                this.positionInput.value = ''; 
+                this.cityInput.value = ''; 
+                this.stateInput.value = ''; 
+                this.descriptionInput.value = '';
             })
         }
     }

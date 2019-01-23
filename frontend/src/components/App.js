@@ -9,23 +9,27 @@ import Resources from '../components/Resources/Resources';
 import Careers from '../components/Careers/Careers';
 import ContactUs from '../components/ContactUs/ContactUs';
 import AboutUs from '../components/AboutUs/AboutUs';
+import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 class App extends Component {
+
   render() {
     return (
       <Router>
-          <div> 
-            <NavBar/>
-            <Route exact path = "/" component = {Home}/> 
-            <Route exact path = "/Home" component = {Home}/>
-            <Route exact path = "/Events" component = {Events}/>
-            <Route exact path = "/AboutUs" component = {AboutUs}/>
-            <Route exact path = "/Membership" component = {Membership}/>
-            <Route exact path = "/Resources" component = {Resources}/> 
-            <Route exact path = "/Careers" component = {Careers}/>
-            <Route exact path = "/ContactUs" component = {ContactUs}/>
-            <Footer/>
-          </div>
+              <ScrollToTop>
+                <div>
+                  <NavBar/>
+                  <Route exact path = "/" component = {Home}/> 
+                  <Route exact path = "/Home" component = {Home}/>
+                  <Route exact path = "/Events" component = {Events}/>
+                  <Route exact path = "/AboutUs" component = {AboutUs}/>
+                  <Route exact path = "/Membership" component = {Membership}/>
+                  <Route exact path = "/Resources"  component = {Resources}/> 
+                  <Route exact path = "/Careers" component = {Careers}/>
+                  <Route exact path = "/ContactUs" component = {ContactUs}/>
+                  <Footer/>
+                </div>
+              </ScrollToTop>
       </Router>
     );
   }

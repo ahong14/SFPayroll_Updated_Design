@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import SideBar from '../SideBar/SideBar';
 import {Route, Link, BrowserRouter as Router} from 'react-router-dom';
 import {FaBars} from 'react-icons/fa';
 import NavElement from '../NavElement/NavElement';
