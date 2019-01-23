@@ -12,8 +12,8 @@ class JobForm extends Component{
         }
 
         else{    
-            //const apiURL = 'http://sfpayroll.herokuapp.com/job/sendJob';
-            const apiURL = 'http://localhost:4000/job/sendJob';
+            const apiURL = 'http://sfpayroll.herokuapp.com/job/sendJob';
+            // const apiURL = 'http://localhost:4000/job/sendJob';
             console.log("testing ref", this.positionInput.value);
             axios.post(apiURL,{
                 params: {
