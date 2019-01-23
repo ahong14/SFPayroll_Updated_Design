@@ -1,0 +1,17 @@
+.memberImage{
+    width:100px;
+    height:100px;
+    align-self:center;
+}
+
+.memberCard{
+    width: 300px;
+    display:flex;
+}
+
+
+@media screen and (max-width: 600px){
+    .memberCard{
+        align-self: center;
+    }
+}

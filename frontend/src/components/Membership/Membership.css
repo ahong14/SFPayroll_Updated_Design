@@ -1,0 +1,39 @@
+#membership_container{
+    margin-top: 30px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #D8D8D8;
+}
+
+#membership_fees{
+    margin-top: 50px;
+    display:flex;
+    flex-direction: column;
+}
+
+#membership_photo{
+    width: 650px;
+    height: 400px;
+    align-self: center;
+}
+
+.section_header{
+    text-decoration: underline;
+    font-style: italic;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px){
+
+    #membership_container{
+        margin-top:5px;
+    }
+
+
+    #membership_photo{
+        display:none;
+    }
+}
+
+

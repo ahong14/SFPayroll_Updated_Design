@@ -1,0 +1,13 @@
+li{
+    width: 100%;
+    font-style: italic;
+}
+
+@media screen and (max-width: 600px){
+
+    li{
+        list-style-type: none;
+    }
+
+
+}

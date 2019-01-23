@@ -1,0 +1,28 @@
+
+.resourcesCard{
+    display:flex;
+}
+
+.learning_resources{
+    display:flex;
+    flex-direction: column;
+    font-style: italic;
+    text-align: center;
+}
+
+#learning_resources_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 600px){
+
+    #learning_resources_container{
+        display:flex;
+        flex-direction: column;
+    }
+    
+}
+
+

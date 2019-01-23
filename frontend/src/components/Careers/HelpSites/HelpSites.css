@@ -1,0 +1,28 @@
+#sites_container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.underline_header{
+    text-decoration: underline;
+}
+
+ul{
+    align-self: center;
+}
+
+@media screen and (max-width: 600px){
+    #sites_container{
+        flex-direction: column;
+    }
+
+    ul{
+        display:flex;
+        flex-direction: column;
+    }
+
+    ul a{
+        align-self: center;
+    }
+}

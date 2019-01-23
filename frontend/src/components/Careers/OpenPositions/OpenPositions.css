@@ -1,0 +1,19 @@
+#open_positions{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: center;
+    font-style: italic;
+    width: 100%;
+}
+
+#postingsList{
+    display: flex;
+    flex-direction: column;
+}
+
+ul li{
+    width: 100%;
+    align-self: flex-start;
+}
+

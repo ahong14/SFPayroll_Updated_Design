@@ -1,0 +1,39 @@
+  .corporate_type{
+    display:flex;
+    flex-direction: row;
+    align-self: center;
+  }
+  
+  #corporateContainer{
+      display:flex;
+      flex-direction: column;
+      align-self: center;
+  }
+
+  .header{
+      font-weight: bold;
+  }
+
+  .corporateCard{
+      width: 650px;
+      align-self: center;
+      font-weight: bold;
+  }
+
+  #silverCard *{
+    color: silver;
+  }
+
+  #goldCard *{
+    color: gold;
+  }
+
+  #platinumCard *{
+    color: #E5E4E2;
+  }
+
+  @media screen and (max-width: 600px){
+    .corporateCard{
+      width: 320px;
+    }
+  }

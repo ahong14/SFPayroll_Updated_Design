@@ -1,32 +1,18 @@
-//express server module
+//require packages
 var express = require('express');
+var path = require('path');
+var cors = require('cors')
+var bodyParser = require('body-parser');
+
+//mongoose, connect to mongoDB on mLab
+var mongoose = require('mongoose');
+mongoose.connect("mongodb://ahong14:aa12345@ds161804.mlab.com:61804/sfpayroll");
+mongoose.connection.on('error', function(error) {
+    console.error('Database connection error:', error);
+});
 
 //application, running express app
 var app = express();
-
-var path = require('path');
-
-//cors
-var cors = require('cors')
-
-//body parse for requests
-var bodyParser = require('body-parser');
-
-//send emails
-var nodemailer = require('nodemailer');
-
-//email options
-var transporter = nodemailer.createTransport({
-    secure: false, // use SSL
-    service: 'gmail',
-    auth: {
-           user: 'sfpayrollweb@gmail.com',
-           pass: 'sfpayroll123'
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-});
 
 //parse body request
 app.use(bodyParser.json());
@@ -34,114 +20,77 @@ app.use(bodyParser.json());
 //use cors;
 app.use(cors());
 
-//serve files in public folder
-app.use(express.static(path.join(__dirname, 'public')));
+//serve react files
+app.use(express.static(path.join(__dirname, 'frontend/build')));
+
+//routes
+var router = express.Router();
+var events = require('./routes/events');
+var contact = require('./routes/contact');
+var job = require('./routes/job');
+var positions = require('./routes/positions');
+
+app.use('/events', events);
+app.use('/contact', contact);
+app.use('/job', job);
+app.use('/positions', positions);
+
+
 
 //code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
 //code to workaround heroku deployment 30second timeout
 //sending emails takes longer than 30 seconds, herokue will timeout and return 503 service unavailable
-const extendTimeoutMiddleware = (req, resp, next) => {
-    const space = ' ';
-    let isFinished = false;
-    let isDataSent = false;
 
-    resp.once('finish', () => {
-      isFinished = true;
-    });
+// const extendTimeoutMiddleware = (req, resp, next) => {
+//     const space = ' ';
+//     let isFinished = false;
+//     let isDataSent = false;
+
+//     resp.once('finish', () => {
+//       isFinished = true;
+//     });
   
-    resp.once('end', () => {
-      isFinished = true;
-    });
+//     resp.once('end', () => {
+//       isFinished = true;
+//     });
   
-    resp.once('close', () => {
-      isFinished = true;
-    });
+//     resp.once('close', () => {
+//       isFinished = true;
+//     });
   
-    resp.on('data', (data) => {
-      // Look for something other than our blank space to indicate that real
-      // data is now being sent back to the client.
-      if (data !== space) {
-        isDataSent = true;
-      }
-    });
+//     resp.on('data', (data) => {
+//       // Look for something other than our blank space to indicate that real
+//       // data is now being sent back to the client.
+//       if (data !== space) {
+//         isDataSent = true;
+//       }
+//     });
   
-    const waitAndSend = () => {
-      setTimeout(() => {
-        // If the response hasn't finished and hasn't sent any data back....
-        if (!isFinished && !isDataSent) {
-          // Need to write the status code/headers if they haven't been sent yet.
-          if (!resp.headersSent) {
-            resp.writeHead(202);
-          }
+//     const waitAndSend = () => {
+//       setTimeout(() => {
+//         // If the response hasn't finished and hasn't sent any data back....
+//         if (!isFinished && !isDataSent) {
+//           // Need to write the status code/headers if they haven't been sent yet.
+//           if (!resp.headersSent) {
+//             resp.writeHead(202);
+//           }
   
-          resp.write(space);
+//           resp.write(space);
   
-          // Wait another 15 seconds
-          waitAndSend();
-        }
-      }, 15000);
-    };
+//           // Wait another 15 seconds
+//           waitAndSend();
+//         }
+//       }, 15000);
+//     };
   
-    waitAndSend();
-    next();
-  };
+//     waitAndSend();
+//     next();
+//   };
   
-  app.use(extendTimeoutMiddleware);
-
-//send email for contact us information
-app.post('/contactUs', (req,resp) => {
-
-    console.log("in contact us");
-    //mail options
-    const contactUsOptions = {
-        from: 'sfpayrollweb@gmail.com', // sender address
-        to: 'sfpayrollweb@gmail.com', // list of receivers
-        subject: 'Message From Visitor', // Subject line
-        html: '<p>Name: ' + req.body.name + '\n' + 'Email: ' + req.body.email + '\n' + 'Message: ' + req.body.message + '</p>'
-    }
-
-
-    //send email for contact us
-    transporter.sendMail(contactUsOptions, function (err, info) {
-        if(err){
-            console.err(err)
-            resp.status(400);
-        }
-       
-        else{
-            resp.status(200);            
-        }
-    });
-});
-
-//email job posting
-app.post('/sendJob', (req,resp) => {
-
-    console.log("in send job");
-    //send job email options
-    const options = {
-        from: 'sfpayrollweb@gmail.com', // sender address
-        to: 'sfpayrollweb@gmail.com', // list of receivers
-        subject: 'Job Posting', // Subject line
-        html: '<p> Position: ' + req.body.position + '\n' + 'City: ' + req.body.city + '\n' + 'State: ' + req.body.state + '\n'  + 'Description: ' + req.body.description + '</p>'
-    }
-
-    //send email
-    transporter.sendMail(options, function(err,info){
-        if(err){
-            console.log(err)
-            resp.status(400);
-        }
-       
-        else{
-            resp.status(200);            
-        }
-    });
-});
-
+//   app.use(extendTimeoutMiddleware);
 
 //listen to requests on port
 //choose port based on environment
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const server = app.listen(PORT);
 server.timeout = 120000;

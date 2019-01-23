@@ -1,0 +1,6 @@
+#resources_container{
+    margin-top: 30px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

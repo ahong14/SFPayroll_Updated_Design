@@ -1,2 +1,4 @@
-chmod -R +rw .
-
+sudo chmod +rw server.js
+sudo chmod -R +rw public/
+sudo chmod -R +rw routes/
+sudo chmod -R +rw models/

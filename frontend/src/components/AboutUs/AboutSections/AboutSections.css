@@ -1,0 +1,21 @@
+.about_section{
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.section_image{
+    width: 200px;
+    height:100px;
+    align-self: center;
+}
+
+
+@media screen and (max-width: 600px){
+    .card-group{
+        display:flex;
+        flex-direction: column;
+    }
+}
+
+
