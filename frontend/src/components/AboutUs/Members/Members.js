@@ -20,14 +20,14 @@ class Members extends Component{
                 <h2 className = "text-center"> Officers </h2>
                 <div className = "members container-fluid card-group">
                     <President/>
-                    <OfficerMember imagesrc={erin} name = "Erin Svobada, CPP" position = "First Vice President" company = "Clif Bar" 
-                                        phone = "510-597-3923" email = "isvoboda@clifbar.com"/> 
                     <OfficerMember imagesrc={darcy} name = "Darcy French, CPP" position = "Second Vice President" company = "Gensler" 
                                         phone = '' email = "darcy_frecnh@gensler.com"/>
                     <OfficerMember imagesrc={rowerna} name = 'Rowerna Lau, CPP' position = 'Secretary' company = 'McKesson' 
                                         phone = '415-983-8905' email = 'rowerna.lau@mckesson.com'/>
-                    <OfficerMember imagesrc={becky} name = 'Becky Ng, CPP' position = 'Treasuer' company = '' 
+                    <OfficerMember imagesrc={becky} name = 'Becky Ng, CPP' position = 'Treasurer, WebMaster' company = '' 
                                         phone = '415-476-2327' email = 'becky.ng@ucsf.edu'/>
+                    <OfficerMember imagesrc= {angela} name = 'Angela Martin, CPP' position = 'Community Service Chairperson' company = 'iiPay' 
+                                        phone = '408-712-9873' email = 'angela.martin@iipay.com'/>
                 </div>
 
                 <div className = "members card-group">
@@ -39,8 +39,7 @@ class Members extends Component{
                                         phone = '' email = 'Loisfried35@gmail.com'/>
                     <OfficerMember imagesrc= {kim} name = 'Kim Norton, CPP' position = 'Bulletin Chairperson' company = 'Bio-Rad Laboratories' 
                                         phone = '510-741-6273' email = 'kimberly_norton@bio-rad.com'/>
-                    <OfficerMember imagesrc= {angela} name = 'Angela Martin, CPP' position = 'Community Service Chairperson' company = 'iiPay' 
-                                        phone = '408-712-9873' email = 'angela.martin@iipay.com'/>
+                    <OfficerMember name = 'Catherine Zolli' position = 'Hospitality Chairperson'/>
                 </div>                    
             </div>
         );
