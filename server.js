@@ -13,7 +13,7 @@ mongoose.connection.on('error', function(error) {
 
 //code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
 //code to workaround heroku deployment 30second timeout
-//sending emails takes longer than 30 seconds, herokue will timeout and return 503 service unavailable
+//sending emails takes longer than 30 seconds, heroku will timeout and return 503 service unavailable
 
 const extendTimeoutMiddleware = (req, resp, next) => {
     const space = ' ';
