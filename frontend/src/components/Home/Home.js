@@ -5,6 +5,7 @@ import Sponsors from '../Sponsors/Sponsors';
 import JoinButton from '../JoinButton/JoinButton';
 import '../Home/Home.css';
 import BannerImage from '../../photos/golden_gate_bridge.jpg';
+import apa from '../../photos/american_payroll_association_logo.png';
 
 //Home page component
 class Home extends Component {
@@ -18,18 +19,15 @@ class Home extends Component {
                     </div>
                     <img src = {BannerImage} id = "golden_gate_background"/>
                 </div>
-
-
+                
                 <div className = "welcome_awards_join">
                     <h3 className = "text-center" id = "welcome_text" > Welcome to the San Francisco Bay Area Chapter
                         of the American Payroll Association
                     </h3>
                     <Carousel/>
                     <Awards/>
-                    <Sponsors/>
                     <JoinButton/>
                 </div>
-             
             </div>
         );
     }

@@ -12,6 +12,14 @@
     height: 100px;
 }
 
+#awardsCard{
+  align-self: center;
+}
+
+.awardsBody{
+  align-self: center;
+}
+
 @media screen and (max-width: 600px){
     .award_image{
         width: 50px;

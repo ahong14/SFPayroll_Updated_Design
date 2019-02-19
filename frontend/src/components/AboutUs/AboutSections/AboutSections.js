@@ -11,25 +11,27 @@ class AboutSections extends Component{
                 <div className="card">
                     <img className="card-img-top section_image" src= {apa} alt="Card image cap"/>
                     <div className="card-body">
-                    <h5 className="card-title text-center">American Payroll Association </h5>
-                        <blockquote className = "text-center font-italic">  
-                            Established in 1982, the American Payroll Association (APA), headquartered in San Antonio , TX , is the nation's leader in payroll education, training, and publications. 
-                            The nonprofit association conducts more than 300 payroll education conferences and seminars across the country each year and publishes a complete library of resource texts and newsletters. 
-                            Every year, nearly 18,000 professionals attend APA training sessions. Representing over 22,000 members, APA is the industry's highly respected, collective voice in Washington DC.
-                            If you want to become a member of APA National, check out www.americanpayroll.org/members to learn more and join today, or fill out the Membership Application."
-                        </blockquote>
+                      <h5 className="card-title text-center">American Payroll Association </h5>
+                      <p className = "text-center"> <a href = "https://www.americanpayroll.org/" target = "_blank"> More Info </a> </p>
+                      <blockquote className = "text-center font-italic">  
+                          Established in 1982, the American Payroll Association (APA), headquartered in San Antonio , TX , is the nation's leader in payroll education, training, and publications. 
+                          The nonprofit association conducts more than 300 payroll education conferences and seminars across the country each year and publishes a complete library of resource texts and newsletters. 
+                          Every year, nearly 18,000 professionals attend APA training sessions. Representing over 22,000 members, APA is the industry's highly respected, collective voice in Washington DC.
+                          If you want to become a member of APA National, check out www.americanpayroll.org/members to learn more and join today, or fill out the Membership Application."
+                      </blockquote>
                     </div>
                 </div>
 
                 <div className="card">
                     <img className="card-img-top section_image" src= {gpmi} alt="Card image cap"/>
                     <div className="card-body">
-                        <h5 className="card-title text-center"> GPMI </h5>
-                        <blockquote className = "text-center font-italic">  
-                            "The Global Payroll Management Institute (GPMI) is the world’s leading community of payroll leaders, managers, practitioners, researchers, and technology experts. 
-                            GPMI's mission is to create opportunities and forge a community by providing the education, skills, and resources necessary for global payroll professionals to become successful leaders and strategic partners within their organizations. 
-                            Subscribe To GPMI Exclusive education, publications, and whitepapers dedicated to global payroll strategies, knowledge, research, employment, and training."
-                        </blockquote>
+                      <h5 className="card-title text-center"> GPMI </h5>
+                      <p className = "text-center"> <a href = "https://www.gpminstitute.com/" target = "_blank"> More Info </a> </p>
+                      <blockquote className = "text-center font-italic">  
+                        "The Global Payroll Management Institute (GPMI) is the world’s leading community of payroll leaders, managers, practitioners, researchers, and technology experts. 
+                        GPMI's mission is to create opportunities and forge a community by providing the education, skills, and resources necessary for global payroll professionals to become successful leaders and strategic partners within their organizations. 
+                        Subscribe To GPMI Exclusive education, publications, and whitepapers dedicated to global payroll strategies, knowledge, research, employment, and training."
+                      </blockquote>
                     </div>
                 </div>
 
