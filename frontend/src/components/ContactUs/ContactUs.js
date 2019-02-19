@@ -16,7 +16,7 @@ class ContactUs extends Component{
                     <p> Reservation: <a href = "mailto:RSVP@sfpayroll.org" target = "_blank"> RSVP@sfpayroll.org </a> </p>
                     <p> Membership: <a href = "mailto:member@sfpayroll.org" target = "_blank" > member@sfpayroll.org </a> </p>
                     <p> Study Group: <a href = "mailto:studygroup@sfpayroll.org" target = "_blank"> studygroup@sfpayroll.org </a> </p>
-                    <p> Job Posting/Webmaster: <a href = "mailto:admin@sfpayroll.org" target = "_blank"> admin@sfpayroll.org </a> </p>
+                    <p> Job Posting/Webmaster: <a href = "mailto:admin@sfpayroll.org" target = "_blank"> alexhong681@gmail.com </a> </p>
                 </div>
 
                 <div class = "follow_us_container">

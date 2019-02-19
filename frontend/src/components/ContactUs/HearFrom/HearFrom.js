@@ -40,13 +40,13 @@ class HearFrom extends Component{
                 <h3 class = "text-center"> We would love to hear from you! </h3>
                 <p id = "hear_content">We want to know how we can serve you better. Feel free to drop us a note, ask a question about our Chapter, or join us a sponsor. We will get back to you right away.</p>
                 
-                <label htmlFor="usr">Name: </label>
+                <label htmlFor="usr" className = "font-weight-bold"> Name:  </label>
                 <input type="text" className="form-control" id="name" ref = {(input) => {this.nameInput = input}}/>
 
-                 <label htmlFor="usr">Email: </label>
+                 <label htmlFor="usr" className = "font-weight-bold"> Email: </label>
                 <input type="text" className="form-control" id="email" ref = {(input) => {this.emailInput = input}}/> 
 
-                <label htmlFor="usr">Message:</label>
+                <label htmlFor="usr" className = "font-weight-bold">Message:</label>
                 <textarea className="form-control" rows="5" id="message" ref = {(textarea) => {this.messageInput = textarea}}></textarea>
                 <SubmitButton click = {this.sendContact}/>
             </div>

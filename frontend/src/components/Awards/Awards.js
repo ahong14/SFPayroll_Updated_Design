@@ -18,10 +18,11 @@ class AwardsSponsors extends Component{
         return(
           <div className = "card border-dark" id = "awardsCard">
             <div className="card-body awardsBody">
-            
-              <div id = "APALogoImage">
-                <img id = "apaLogo" src = {apa} alt = "APA Logo"/>
-              </div>
+
+              <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
+                <a href = "https://www.americanpayroll.org/" target = "_blank"> <img id = "apaLogo" src = {apa} alt = "APA Logo"/> </a>
+              </Grid>
+
               <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
                 <img className = "award_image" alt = "2018 first chapter pictorial " src = {Award1}/> 
                 <img className = "award_image" alt = "first npw photo contest" src = {Award2}/> 
@@ -33,10 +34,10 @@ class AwardsSponsors extends Component{
               </Grid>
 
               <p className = "text-center font-weight-bold font-italic" > <u> Sponsors </u> </p>
-              <Grid container direction = "row"  justify="center" alignItems="center">
+              <Grid container direction = "row"  justify="center" alignItems="center" spacing = {24}>
                 <a href = "https://www.mckesson.com/" target = "_blank"> <img className = "sponsor_images" id = "mckesson" src = {McKesson} alt = "mckesson_logo"/> </a>
-                <a href = "https://www.clifbar.com/" target = "_blank"> <img className = "sponsor_images" src = {Clif} alt = "clif-logo"/> </a>
-                <a href = "https://www.iipay.com/" target = "_blank"> <img className = "sponsor_images" src = {iipay} alt = "iipay_logo"/> </a>
+                <a href = "https://www.clifbar.com/" target = "_blank"> <img className = "sponsor_images" id = "clif" src = {Clif} alt = "clif-logo"/> </a>
+                <a href = "https://www.iipay.com/" target = "_blank"> <img className = "sponsor_images" id = "iipay" src = {iipay} alt = "iipay_logo"/> </a>
               </Grid>
             </div>
           </div>

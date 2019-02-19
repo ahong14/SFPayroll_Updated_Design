@@ -16,8 +16,22 @@
   align-self: center;
 }
 
+#APALogoImage{
+  align-self: center;
+}
+
 .awardsBody{
   align-self: center;
+}
+
+#clif{
+  width:120px;
+  height: 70px;
+}
+
+#iipay{
+  width:140px;
+  height: 60px;
 }
 
 @media screen and (max-width: 600px){
