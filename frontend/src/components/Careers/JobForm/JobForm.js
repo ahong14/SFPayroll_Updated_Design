@@ -40,15 +40,15 @@ class JobForm extends Component{
         return(
             <div className="form-group" id = "job_form_input">
                 <form>
-                    <label htmlFor="email">Email:</label>
+                    <label htmlFor="email" className = "font-weight-bold">Email:</label>
                     <input type="text" className="form-control" id="email" ref = {(input) => {this.emailInput = input}}/>
-                    <label htmlFor="title">Title of Position:</label>
+                    <label htmlFor="title" className = "font-weight-bold">Title of Position:</label>
                     <input type="text" className="form-control" id="position" ref = {(input) => {this.positionInput = input}}/>
-                    <label htmlFor="city">City: </label>
+                    <label htmlFor="city" className = "font-weight-bold">City: </label>
                     <input type="text" className="form-control" id="city" ref = {(input) => {this.cityInput = input}}/>
-                    <label htmlFor="state">State: </label>
+                    <label htmlFor="state" className = "font-weight-bold">State: </label>
                     <input type="text" className="form-control" id="state" ref = {(input) => {this.stateInput = input}}/>
-                    <label htmlFor="position">Select Position:</label>
+                    <label htmlFor="position" className = "font-weight-bold">Select Position:</label>
                     <select className="form-control" id="payroll_position" ref = {(select) => {this.selectInput = select}}>
                         <option>Payroll Position- Full Time </option>
                         <option>Payroll Position- Part Time</option>
@@ -57,7 +57,7 @@ class JobForm extends Component{
                         <option>Non Payroll Position - Part Time </option>
                         <option>Non Payroll Position - Temp </option>
                     </select>
-                    <label htmlFor="description">Job Description:</label>
+                    <label htmlFor="description" className = "font-weight-bold">Job Description:</label>
                     <textarea className="form-control" rows="5" id="job_description" ref = {(textarea) => {this.descriptionInput = textarea}}></textarea>
                 </form>
                 <SubmitButton click = {this.sendJob}/>

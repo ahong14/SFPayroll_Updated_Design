@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "backend": "node server.js",
+    "frontend": "cd frontend/ && npm run start",
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "repository": {
@@ -23,6 +25,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "bson": "^4.0.1",
+    "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "create-react-app": "^2.1.3",
     "express": "^4.16.4",

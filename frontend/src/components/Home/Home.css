@@ -42,6 +42,16 @@
     width: 800px;
 }
 
+#APALogoImage{
+ display:flex;
+ flex-direction: column;
+}
+
+#apaLogo{
+  width: 200px;
+  height:100px;
+  align-self: center;
+}
 
 @media screen and (max-width: 600px){
 

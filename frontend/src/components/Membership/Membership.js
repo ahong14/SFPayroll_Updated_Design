@@ -4,6 +4,7 @@ import Corporate from '../Membership/Corporate/Corporate';
 import Benefits from '../Membership/Benefits/Benefits';
 import StudyGroup from '../Membership/StudyGroup/StudyGroup';
 import JoinButton from '../JoinButton/JoinButton';
+import APASignUp from '../Membership/APASignUp/APASignUp';
 import membershipPhoto from '../../photos/membership_photo.jpg';
 
 
@@ -14,7 +15,7 @@ class Membership extends Component{
                 <div className = "text-center" id = "membership_fess">
                     <h2 className = "section_header text-center"> Membership </h2>
                     <img src = {membershipPhoto} id = "membership_photo"/>
-                    <h3> Individual Membership - $60 </h3>
+                    <APASignUp/>
                     <h3> <u> Corporate Membership </u> </h3>
                     <Corporate/>
                     <Benefits/>
