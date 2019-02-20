@@ -29,7 +29,15 @@ class Events extends Component{
     render(){
         //render current state of events
         const eventList = this.state.events.map(result => {
-            return <EventItem key = {result._id} eventTitle = {result.event} date = {result.date} time = {result.time} location = {result.Location}/>
+            //if the event has a registration, return registration link
+            if(result.registration != undefined){
+              return <EventItem key = {result._id} eventTitle = {result.event} date = {result.date} time = {result.time} location = {result.Location} registration = {result.registration}/>
+            }
+
+            //no registration link
+            else{
+              return <EventItem key = {result._id} eventTitle = {result.event} date = {result.date} time = {result.time} location = {result.Location}/>
+            }
         });
 
         return(

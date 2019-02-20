@@ -17,6 +17,10 @@ const EventSchema = new Schema({
 
     Location:{
         type: String
+    },
+
+    registration:{
+      type: String
     }
 });
 

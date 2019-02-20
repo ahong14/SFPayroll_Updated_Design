@@ -31,7 +31,7 @@
 
 #golden_gate_background{
     width: 100vw;
-    height: 580px;
+    height: 480px;
   }
 
 #header_text{
@@ -42,14 +42,16 @@
     width: 800px;
 }
 
-#APALogoImage{
- display:flex;
- flex-direction: column;
+#apaLogo{
+  display:flex;
+  justify-content: center;
+  width: 200px;
+  height:130px;
+  align-self: center;
 }
 
-#apaLogo{
-  width: 200px;
-  height:100px;
+#apaImage{
+  display:flex;
   align-self: center;
 }
 

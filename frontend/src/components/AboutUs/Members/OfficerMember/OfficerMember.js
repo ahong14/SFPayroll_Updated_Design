@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../../../AboutUs/Members/OfficerMember/OfficerMember.css';
+import Card from '@material-ui/core/Card';
 
 class OfficerMember extends Component{
     constructor(props){

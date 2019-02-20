@@ -3,7 +3,8 @@ import Carousel from '../Carousel/Carousel';
 import Awards from '../Awards/Awards';
 import Sponsors from '../Sponsors/Sponsors';
 import JoinButton from '../JoinButton/JoinButton';
-import '../Home/Home.css';
+import './Home.css';
+import Grid from '@material-ui/core/Grid';
 import BannerImage from '../../photos/golden_gate_bridge.jpg';
 import apa from '../../photos/american_payroll_association_logo.png';
 
@@ -21,6 +22,12 @@ class Home extends Component {
                 </div>
                 
                 <div className = "welcome_awards_join">
+                    <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
+                      <div id = "apaLogo">
+                        <img src = {apa} alt = "apa logo"/>
+                      </div>
+                    </Grid>
+
                     <h3 className = "text-center" id = "welcome_text" > Welcome to the San Francisco Bay Area Chapter
                         of the American Payroll Association
                     </h3>

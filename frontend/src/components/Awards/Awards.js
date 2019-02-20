@@ -9,6 +9,7 @@ import Award5  from '../../photos/award5.jpg';
 import Award6  from '../../photos/award6.jpg';
 import Award7  from '../../photos/award7.jpg';
 import Award8  from '../../photos/award8.jpg';
+import Award9 from '../../photos/chapterphoto2018third.png';
 import McKesson from '../../photos/mckesson_logo.gif';
 import Clif from '../../photos/clif_logo.jpg';
 import iipay from '../../photos/iipay_logo.jpg';
@@ -24,13 +25,14 @@ class AwardsSponsors extends Component{
               </Grid>
 
               <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
-                <img className = "award_image" alt = "2018 first chapter pictorial " src = {Award1}/> 
-                <img className = "award_image" alt = "first npw photo contest" src = {Award2}/> 
-                <img className = "award_image" alt = "gavel award innovator" src = {Award4}/> 
-                <img className = "award_image" alt = "2018 participant regional/statewide meeting" src = {Award5}/> 
-                <img className = "award_image" alt = "2017 participant" src = {Award6}/> 
-                <img className = "award_image" alt = "2017 chapter pictorial particpant" src = {Award7}/> 
-                <img className = "award_image" alt = "honorable mention chapter of the year" src = {Award8}/> 
+                <img className = "award_image" alt = "2018 chapter pictorial first" src = {Award7}/>
+                <img className = "award_image" alt = "chapter photo contest first" src = {Award8}/> 
+                <img className = "award_image" alt = "2017 chapter pictorial third place" src = {Award9}/> 
+                <img className = "award_image" alt = "gavel award innovator" src = {Award5}/> 
+                <img className = "award_image" alt = "2017 honorable mention chapter of year " src = {Award1}/>
+                <img className = "award_image" alt = "participant 2018 statewide meeting" src = {Award6}/>  
+                <img className = "award_image" alt = "participant 2017 statewide meeting" src = {Award2}/> 
+                <img className = "award_image" alt = "participant 2017 chapter pictorial" src = {Award4}/> 
               </Grid>
 
               <p className = "text-center font-weight-bold font-italic" > <u> Sponsors </u> </p>
