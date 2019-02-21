@@ -24,7 +24,7 @@ class AwardsSponsors extends Component{
                 <a href = "https://www.americanpayroll.org/" target = "_blank"> <img id = "apaLogo" src = {apa} alt = "APA Logo"/> </a>
               </Grid>
 
-              <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
+              <Grid id = "awardsGrid" spacing = {16} container direction = "row"  justify="space-evenly" alignItems="center" wrap = "nowrap">
                 <img className = "award_image" alt = "2018 chapter pictorial first" src = {Award7}/>
                 <img className = "award_image" alt = "chapter photo contest first" src = {Award8}/> 
                 <img className = "award_image" alt = "2017 chapter pictorial third place" src = {Award9}/> 
