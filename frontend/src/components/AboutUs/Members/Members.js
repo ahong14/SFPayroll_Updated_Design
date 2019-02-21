@@ -3,7 +3,9 @@ import '../../AboutUs/Members/Members.css';
 import Grid from '@material-ui/core/Grid';
 import President from './President/President';
 import OfficerMember from '../../AboutUs/Members/OfficerMember/OfficerMember';
+import EmptyMember from './EmptyMember/EmptyMember';
 
+import owhen from '../../../photos/owhen_image.jpg';
 import erin from '../../../photos/erin_image.jpg';
 import darcy from '../../../photos/darcy_image.jpg';
 import rowerna from '../../../photos/rowerna_image.jpg';
@@ -20,11 +22,11 @@ class Members extends Component{
         return(
             <div className = "container-fluid" id = "officers_container">
                 <h2 className = "text-center"> Officers </h2>
-
-                <Grid container direction = "row"  justify="center" alignItems="flex-start">
-                  <President/>
+                <div className = "row">
+                  <OfficerMember imagesrc = {owhen} name = "Owhen Astorga" position = "President" company = "Salesforce.com"
+                                        phone = "415-536-4524" email = "oastorga@salesforce.com"/>
                   <OfficerMember imagesrc={darcy} name = "Darcy French, CPP" position = "Second Vice President" company = "Gensler" 
-                                        phone = '' email = "darcy_frecnh@gensler.com"/>
+                                        phone = '' email = "darcy_french@gensler.com"/>
                   <OfficerMember imagesrc={rowerna} name = 'Rowerna Lau, CPP' position = 'Secretary' company = 'McKesson' 
                                         phone = '415-983-8905' email = 'rowerna.lau@mckesson.com'/>
                   <OfficerMember imagesrc={becky} name = 'Becky Ng, CPP' position = 'Treasurer, WebMaster' company = '' 
@@ -42,10 +44,10 @@ class Members extends Component{
                                         
                   <OfficerMember imagesrc = {kim} name = 'Kim Norton, CPP' position = 'Bulletin Chairperson' company = 'Bio-Rad Laboratories' 
                                         phone = '510-741-6273' email = 'kimberly_norton@bio-rad.com'/>
-                  <OfficerMember imagesrc = '//:0' name = 'Catherine Zolli' position = 'Hospitality Chairperson'/>
                   <OfficerMember imagesrc = {alex} name = 'Alex Hong' position = 'Web Developer Intern' email = 'alexhong681@gmail.com'/>
-
-                </Grid>
+                  <OfficerMember imagesrc = '//:0' name = 'Catherine Zolli' position = 'Hospitality Chairperson'/>
+                  <EmptyMember/>
+                </div>
             </div>
         );
     }

@@ -24,7 +24,7 @@ class Home extends Component {
                 <div className = "welcome_awards_join">
                     <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
                       <div id = "apaLogo">
-                        <img src = {apa} alt = "apa logo"/>
+                        <a href = "https://www.americanpayroll.org/" target = "_blank"> <img src = {apa} alt = "apa logo"/> </a>
                       </div>
                     </Grid>
 

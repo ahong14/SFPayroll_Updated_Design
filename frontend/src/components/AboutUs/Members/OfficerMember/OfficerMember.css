@@ -1,11 +1,11 @@
 .memberImage{
-    width:120px;
-    height:130px;
+    width:170px;
+    height:150px;
     align-self:center;
 }
 
 .memberCard{
-    width: 310px;
-    height: 330px;
+    width: 400px;
+    height: 350px;
     display:flex;
 }
