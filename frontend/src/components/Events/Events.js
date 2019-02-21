@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../Events/Events.css';
 import EventItem from '../Events/EventItem/EventItem';
 import eventHeaderImage from '../../photos/events_photo.jpg';
+import EventCarousel from './EventCarousel/EventCarousel';
 
 //Events component to display events
 //state contains array of events retrieved from mongoDB
@@ -43,9 +44,10 @@ class Events extends Component{
         return(
             <div className = "container-fluid" id = "event_container">
                 <div className = "align_center">
-                    <div id = "event_header">
+                    <div className = "container-fluid" id = "event_header">
                         <h2 className = "section_header"> Events </h2>
-                        <img id = "events_image" src = {eventHeaderImage} alt = "event image"/>
+                        {/* <img id = "events_image" src = {eventHeaderImage} alt = "event image"/> */}
+                        <EventCarousel/>
                     </div>
 
                     <div id = "eventPosts">
