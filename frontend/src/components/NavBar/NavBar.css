@@ -41,7 +41,7 @@ ul li a{
         justify-content: flex-end;
     }
     
-      #banner_logo_mobile{
+    #banner_logo_mobile{
         width: 60%;
         float:right;
     }
@@ -57,7 +57,7 @@ ul li a{
         padding-top: 60px;
         overflow-x: hidden;
         left:0;
-        margin-top: 270px;
+        margin-top: 350px;
     }
 
     #close_navbar{
@@ -66,5 +66,11 @@ ul li a{
         justify-content: flex-end;
         font-size: 20px;
         color: grey;
-      }
+    }
+
+    #mobile_nav_links{
+      height: 100%;
+      display:flex;
+      flex-direction: column;
+    }
 }

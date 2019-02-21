@@ -69,7 +69,7 @@ class NavBar extends Component{
         //if the window width is mobile, render sidebar
         else{
             return(
-                <div ref = {(element) => this.element = element}>
+                <div>
                     <nav className="navbar navbar-toggleable-lg navbar-light bg-faded fixed-top" id = "mobile_navbar">
                         <div id = "mobile_bar" onClick = {this.showSideNav}>
                             <FaBars/>
@@ -81,17 +81,17 @@ class NavBar extends Component{
 
                         <div id = "sidebar" ref = {(sidebar) => {this.sideBar = sidebar}}>
                             <div id = "close_navbar" onClick = {this.closeSideNav}>
-                                <p id = "close_icon"> &times; </p>
+                                <p id = "close_icon" className = "font-weight-bold"> &times; </p> 
                             </div>
                                         
                             <div className = "text-center" id = "mobile_nav_links">
-                                <NavElement section = "Home"/>
-                                <NavElement section = "Events"/>
-                                <NavElement section = "About Us"/>
-                                <NavElement section = "Membership"/>
-                                <NavElement section = "Resources"/>
-                                <NavElement section = "Careers"/>
-                                <NavElement section = "Contact Us"/>
+                                <NavElement onClick = {this.closeSideNav} section = "Home"/>
+                                <NavElement onClick = {this.closeSideNav} section = "Events"/>
+                                <NavElement onClick = {this.closeSideNav} section = "About Us"/>
+                                <NavElement onClick = {this.closeSideNav} section = "Membership"/>
+                                <NavElement onClick = {this.closeSideNav} section = "Resources"/>
+                                <NavElement onClick = {this.closeSideNav} section = "Careers"/>
+                                <NavElement onClick = {this.closeSideNav} section = "Contact Us"/>
                             </div>
                         </div>
                     </nav>

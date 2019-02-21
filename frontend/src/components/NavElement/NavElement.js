@@ -8,7 +8,7 @@ class NavElement extends Component {
     render(){
         return(
             <li className = "nav-item">
-                <Link to = {this.props.section.replace(/\s/g, '')}> <strong> {this.props.section}  </strong> </Link>
+                <Link onClick = {this.props.onClick} to = {this.props.section.replace(/\s/g, '')}> <strong> {this.props.section}  </strong> </Link>
             </li>
         );
     }
