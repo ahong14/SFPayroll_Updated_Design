@@ -32,12 +32,12 @@ class Events extends Component{
         const eventList = this.state.events.map(result => {
             //if the event has a registration, return registration link
             if(result.registration != undefined){
-              return <EventItem key = {result._id} eventTitle = {result.event} date = {result.date} time = {result.time} location = {result.Location} registration = {result.registration}/>
+              return <EventItem key = {result._id} eventTitle = {result.event} date = {result.date} time = {result.time} speakers = {result.speakers} location = {result.Location} registration = {result.registration}/>
             }
 
             //no registration link
             else{
-              return <EventItem key = {result._id} eventTitle = {result.event} date = {result.date} time = {result.time} location = {result.Location}/>
+              return <EventItem key = {result._id} eventTitle = {result.event} date = {result.date} time = {result.time} speakers = {result.speakers} location = {result.Location}/>
             }
         });
 
