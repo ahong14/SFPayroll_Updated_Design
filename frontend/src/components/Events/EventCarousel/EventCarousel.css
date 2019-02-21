@@ -6,9 +6,6 @@
 	margin-right:auto;
 }
 
-@media screen and (max-width: 600px){
-	.slide_image{
-		height: 250px;
-		width: 300px;
-	}
+.carousel-inner > .item{
+  width: 100%;
 }

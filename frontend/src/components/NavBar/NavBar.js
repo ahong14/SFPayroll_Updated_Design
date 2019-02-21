@@ -45,7 +45,6 @@ class NavBar extends Component{
         this.updateWindowSize();
     }
 
-
     render(){
         const windowWidth = this.state.width;
         

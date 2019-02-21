@@ -13,5 +13,12 @@
 }
 
 #apa_link{
-  text-decoration: white
+  color: inherit;
+  text-decoration: none;
+}
+
+.footerLink{
+  padding: 5px;
+  color: inherit;
+  text-decoration: none;
 }

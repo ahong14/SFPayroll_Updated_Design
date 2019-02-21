@@ -15,8 +15,16 @@ const EventSchema = new Schema({
         type: String
     },
 
+    speakers:{
+      type: String
+    },
+
     Location:{
         type: String
+    },
+
+    registration:{
+      type: String
     }
 });
 

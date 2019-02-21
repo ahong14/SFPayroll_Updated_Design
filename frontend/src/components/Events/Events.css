@@ -25,11 +25,11 @@
     align-self: center;
 }
 
-.eventPosts{
+/* .eventPosts{
     display:flex;
     flex-direction: column; 
     justify-content: space-between;
-}
+} */
 
 @media screen and (max-width: 600px){
 

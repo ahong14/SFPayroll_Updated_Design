@@ -4,7 +4,7 @@ const Events = require('../models/Events');
 
 //get all upcoming events from database
 router.get('/', (req,resp) => {
-    Events.find()
+    Events.find({})
         .then(events =>{
             resp.status(200).json(events);
         })

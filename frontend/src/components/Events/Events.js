@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../Events/Events.css';
 import EventItem from '../Events/EventItem/EventItem';
 import eventHeaderImage from '../../photos/events_photo.jpg';
+import EventCarousel from './EventCarousel/EventCarousel';
 
 //Events component to display events
 //state contains array of events retrieved from mongoDB
@@ -29,15 +30,24 @@ class Events extends Component{
     render(){
         //render current state of events
         const eventList = this.state.events.map(result => {
-            return <EventItem key = {result._id} eventTitle = {result.event} date = {result.date} time = {result.time} location = {result.Location}/>
+            //if the event has a registration, return registration link
+            if(result.registration != undefined){
+              return <EventItem key = {result._id} eventTitle = {result.event} date = {result.date} time = {result.time} speakers = {result.speakers} location = {result.Location} registration = {result.registration}/>
+            }
+
+            //no registration link
+            else{
+              return <EventItem key = {result._id} eventTitle = {result.event} date = {result.date} time = {result.time} speakers = {result.speakers} location = {result.Location}/>
+            }
         });
 
         return(
             <div className = "container-fluid" id = "event_container">
                 <div className = "align_center">
-                    <div id = "event_header">
+                    <div className = "container-fluid" id = "event_header">
                         <h2 className = "section_header"> Events </h2>
-                        <img id = "events_image" src = {eventHeaderImage} alt = "event image"/>
+                        {/* <img id = "events_image" src = {eventHeaderImage} alt = "event image"/> */}
+                        <EventCarousel/>
                     </div>
 
                     <div id = "eventPosts">
