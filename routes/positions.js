@@ -4,12 +4,12 @@ const Positions = require('../models/Postings');
 
 //get all available job postings from database
 router.get('/getPostings', (req,resp) => {
-    Positions.find()
+    Positions.find({},null,{sort:{'sortDate':-1}})
         .then(positions => {
-            resp.status(200).send(positions);
+            return resp.status(200).send(positions);
         })
         .catch(err => {
-            resp.status(500).send("Error with database");
+            return resp.status(500).send("Error with database");
         })
 })
 

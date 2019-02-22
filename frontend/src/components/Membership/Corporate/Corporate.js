@@ -5,6 +5,12 @@ class Corporate extends Component{
     render(){
         return(
             <div className = "container-fluid" id = "corporateContainer">
+                <div className = "card border-dark corporateCard">
+                    <div className="card-header header" > Individual Membership </div>
+                    <div className="card-body text-primary">
+                        <h5 className="card-title">$60 </h5>
+                    </div>
+                </div>
                 <div className = "card border-dark corporateCard" id = "silverCard">
                     <div className="card-header header" >Silver</div>
                     <div className="card-body text-primary">

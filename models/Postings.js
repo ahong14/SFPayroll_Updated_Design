@@ -21,6 +21,10 @@ const PostingSchema = new Schema({
 
     date:{
         type: String
+    },
+
+    sortDate:{
+      type: Date
     }
 });
 
