@@ -12,11 +12,10 @@ class ContactUs extends Component{
                 <h3 class = "section_header"> Contact Us </h3>
 
                 <div className = "align_center" id = "contact_info">
-                    <p> General Information/Government Update: <a href="mailto:info@sfpayroll.org" target = "_blank"> info@sfpayroll.org </a> </p>
+                    <p> General Information <a href="mailto:sfbac.apa@gmail.com" target = "_blank"> sfbac.apa@gmail.comg </a> </p>
                     <p> Reservation: <a href = "mailto:RSVP@sfpayroll.org" target = "_blank"> RSVP@sfpayroll.org </a> </p>
-                    <p> Membership: <a href = "mailto:member@sfpayroll.org" target = "_blank" > member@sfpayroll.org </a> </p>
-                    <p> Study Group: <a href = "mailto:studygroup@sfpayroll.org" target = "_blank"> studygroup@sfpayroll.org </a> </p>
-                    <p> Job Posting/Webmaster: <a href = "mailto:admin@sfpayroll.org" target = "_blank"> alexhong681@gmail.com </a> </p>
+                    <p> Job Posting: <a href = "mailto:sfbac.apa@gmail.com" target = "_blank"> sfbac.apa@gmail.com </a> </p>
+                    <p> Webmaster <a href = "mailto:alexhong681@gmail.com" target = "_blank"> alexhong681@gmail.com </a> </p>
                 </div>
 
                 <div class = "follow_us_container">

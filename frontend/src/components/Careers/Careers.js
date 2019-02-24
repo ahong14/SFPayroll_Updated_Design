@@ -17,7 +17,7 @@ class Careers extends Component{
                 <OpenPositions/>
                 <HelpSites/>
                 <div className = "text-center" id = "job_form">
-                    <h3> For job posting, please fill out the following form: </h3>
+                    <h3> For job posting, please email sfbac.apa@gmail.com or fill out the following form: </h3>
                 </div>
                 <JobForm/>
             </div>

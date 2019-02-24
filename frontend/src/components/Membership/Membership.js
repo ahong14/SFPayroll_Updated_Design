@@ -15,9 +15,8 @@ class Membership extends Component{
                 <div className = "text-center" id = "membership_fess">
                     <h2 className = "section_header text-center"> Membership </h2>
                     <img src = {membershipPhoto} id = "membership_photo"/>
-                    <APASignUp/>
-                    <h3> <u> Corporate Membership </u> </h3>
                     <Corporate/>
+                    <APASignUp/>
                     <Benefits/>
                     <StudyGroup/>
                     <JoinButton/>  
