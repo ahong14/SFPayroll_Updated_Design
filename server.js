@@ -92,7 +92,7 @@ app.use('/api/positions', positions);
 
 //fix react app crashing on refresh
 app.get('*', (req,res) => {
-  res.sendFile(__dirname, 'client', 'public', 'index.html');
+  res.sendFile(__dirname, 'frontend', 'public', 'index.html');
 })
 
 //listen to requests on port
