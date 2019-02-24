@@ -10,9 +10,8 @@ class HearFrom extends Component{
     }
 
     sendContact = () =>{
-        const apiURL = 'http://sfpayroll.herokuapp.com/contact/contactUs';
-        // const apiURL = 'http://localhost:4000/contact/contactUs';
-
+        const apiURL = '/api/contact/contactUs';
+        
         if(this.nameInput.value.trim() === '' || this.emailInput.value.trim() === '' || this.messageInput.value.trim() === ''){
             alert("Fields still empty");
         }
@@ -37,10 +36,12 @@ class HearFrom extends Component{
     render(){
         return(
             <div className = "form-group" id = "hear_from_form">
-                <h3 className = "text-center"> We would love to hear from you! </h3>
-                <h3 className = "text-center"> Fill out the form below or send an email to sfbac.apa@gmail.com! </h3>
+                <div id = "hearHeader">
+                  <blockquote id = "headerHeader" className = "text-center font-weight-bold">
+                    We would love to hear from you! Fill out the form below or send an email to sfbac.apa@gmail.com! 
+                  </blockquote>
+                </div>
                 <p id = "hear_content">We want to know how we can serve you better. Feel free to drop us a note, ask a question about our Chapter, or join us a sponsor. We will get back to you right away.</p>
-                
                 <label htmlFor="usr" className = "font-weight-bold"> Name:  </label>
                 <input type="text" className="form-control" id="name" ref = {(input) => {this.nameInput = input}}/>
 

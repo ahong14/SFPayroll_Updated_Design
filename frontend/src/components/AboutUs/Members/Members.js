@@ -16,6 +16,7 @@ import lois from '../../../photos/lois_image.jpg';
 import kim from '../../../photos/kim_image.jpg';
 import angela from '../../../photos/angela_image.jpg';
 import alex from '../../../photos/alex_image.jpg';
+import noImage from '../../../photos/default.jpg';
 
 class Members extends Component{
     render(){
@@ -45,7 +46,7 @@ class Members extends Component{
                   <OfficerMember imagesrc = {kim} name = 'Kim Norton, CPP' position = 'Bulletin Chairperson' company = 'Bio-Rad Laboratories' 
                                         phone = '510-741-6273' email = 'kimberly_norton@bio-rad.com'/>
                   <OfficerMember imagesrc = {alex} name = 'Alex Hong' position = 'Web Developer Intern' email = 'alexhong681@gmail.com'/>
-                  <OfficerMember imagesrc = '//:0' name = 'Catherine Zolli' position = 'Hospitality Chairperson'/>
+                  <OfficerMember imagesrc = {noImage} name = 'Catherine Zolli' position = 'Hospitality Chairperson'/>
                   <EmptyMember/>
                 </div>
             </div>

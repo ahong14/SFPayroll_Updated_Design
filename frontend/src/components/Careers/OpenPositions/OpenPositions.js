@@ -6,18 +6,15 @@ import axios from 'axios';
 class OpenPositions extends Component{
     constructor(props){
         super(props);
-
         this.state = {
             openings: []
         };
     }
 
     componentDidMount(){
-        const apiURL = 'http://sfpayroll.herokuapp.com/api/positions/getPostings';
-        // const apiURL = 'http://localhost:4000/positions/getPostings';
+        const apiURL = '/api/positions/getPostings';
         axios.get(apiURL)
             .then(resp=> {
-                console.log(resp.data);
                 this.setState({
                     openings: resp.data
                 })
