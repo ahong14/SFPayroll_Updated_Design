@@ -82,7 +82,7 @@ router.post('/contactUs', (req,resp) => {
     //send email for contact us
     transporter.sendMail(contactUsOptions, function (err, info) {
         if(err){
-            console.err(err)
+            console.error(err)
             resp.status(400).send("Email wasn't sent");
         }
        
