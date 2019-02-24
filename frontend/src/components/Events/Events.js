@@ -16,7 +16,7 @@ class Events extends Component{
 
     componentDidMount(){
         // const apiURL = 'http://localhost:4000/events';
-        const apiURL = 'http://sfpayroll.herokuapp.com/events';
+        const apiURL = 'http://sfpayroll.herokuapp.com/api/events';
 
         //set state to new array of events
         axios.get(apiURL)
