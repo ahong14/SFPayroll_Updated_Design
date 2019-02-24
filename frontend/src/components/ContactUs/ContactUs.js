@@ -19,18 +19,24 @@ class ContactUs extends Component{
                 </div>
 
                 <div class = "follow_us_container">
+                  <a href = "https://www.linkedin.com/in/sfbac-apa-74bb7421/" target = "_blank">
                     <h3 class = "font-weight-bold">  LinkedIn </h3>
-                    <a href = "https://www.linkedin.com/in/sfbac-apa-74bb7421/" target = "_blank"> <FaLinkedin className = "follow_image"/> </a>
+                  </a>
+                  <FaLinkedin className = "follow_image"/> 
                 </div>
 
                 <div class = "follow_us_container">
+                  <a href = "https://twitter.com/SFBAC_APA" target = "_blank">
                     <h3 class = "font-weight-bold"> Twitter </h3>
-                    <a href = "https://twitter.com/SFBAC_APA" target = "_blank"> <FaTwitter className = "follow_image"/> </a>
+                  </a>
+                  <FaTwitter className = "follow_image"/> 
                 </div>
 
                 <div class = "follow_us_container">
+                  <a href = "https://www.facebook.com/payrollpeeps/" target = "_blank">
                     <h3 class = "font-weight-bold">  Facebook </h3>
-                    <a href = "https://www.facebook.com/payrollpeeps/" target = "_blank"> <FaFacebook className = "follow_image"/> </a>
+                  </a>
+                  <FaFacebook className = "follow_image"/> 
                 </div>
 
                 <HearFrom/>
