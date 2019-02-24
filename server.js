@@ -90,6 +90,11 @@ app.use('/contact', contact);
 app.use('/job', job);
 app.use('/positions', positions);
 
+//fix react app crashing on refresh
+app.get('/*', (req,res) => {
+  res.sendFile(path.join(__dirname + '/frontend/build/index.html'))
+})
+
 //listen to requests on port
 //choose port based on environment
 const PORT = process.env.PORT || 4000;
