@@ -6,15 +6,12 @@ import SubmitButton from '../../SubmitButton/SubmitButton';
 class JobForm extends Component{
 
     sendJob = () =>{
-
         if(this.emailInput.value.trim() === '' || this.positionInput.value.trim() === '' || this.cityInput.value.trim() === '' || this.stateInput.value.trim() === '' || this.descriptionInput.value.trim() === ''){
             alert("Please do not leave job posting inputs blank");
         }
 
         else{    
-            const apiURL = 'http://sfpayroll.herokuapp.com/job/sendJob';
-            // const apiURL = 'http://localhost:4000/job/sendJob';
-            console.log("testing ref", this.positionInput.value);
+            const apiURL = '/api/job/sendJob';
             axios.post(apiURL,{
                 params: {
                     email: this.emailInput.value,

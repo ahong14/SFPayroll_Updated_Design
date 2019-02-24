@@ -7,7 +7,6 @@ import JoinButton from '../JoinButton/JoinButton';
 import APASignUp from '../Membership/APASignUp/APASignUp';
 import membershipPhoto from '../../photos/membership_photo.jpg';
 
-
 class Membership extends Component{
     render(){
         return(
@@ -17,9 +16,9 @@ class Membership extends Component{
                     <img src = {membershipPhoto} id = "membership_photo"/>
                     <Corporate/>
                     <APASignUp/>
+                    <JoinButton/>  
                     <Benefits/>
                     <StudyGroup/>
-                    <JoinButton/>  
                 </div>
             </div>
         );

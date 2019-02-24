@@ -15,8 +15,7 @@ class Events extends Component{
     }
 
     componentDidMount(){
-        // const apiURL = 'http://localhost:4000/events';
-        const apiURL = 'http://sfpayroll.herokuapp.com/api/events';
+        const apiURL = '/api/events';
 
         //set state to new array of events
         axios.get(apiURL)
@@ -46,7 +45,6 @@ class Events extends Component{
                 <div className = "align_center">
                     <div className = "container-fluid" id = "event_header">
                         <h2 className = "section_header"> Events </h2>
-                        {/* <img id = "events_image" src = {eventHeaderImage} alt = "event image"/> */}
                         <EventCarousel/>
                     </div>
 

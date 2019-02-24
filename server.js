@@ -86,7 +86,7 @@ var job = require('./routes/job');
 var positions = require('./routes/positions');
 
 app.use('/api/events', events);
-app.use('/api//contact', contact);
+app.use('/api/contact', contact);
 app.use('/api/job', job);
 app.use('/api/positions', positions);
 
