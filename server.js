@@ -91,8 +91,8 @@ app.use('/api/job', job);
 app.use('/api/positions', positions);
 
 //fix react app crashing on refresh
-app.get('*', (req,res) => {
-  res.sendFile(__dirname, 'frontend', 'public', 'index.html');
+app.get('/*', (req,res) => {
+  res.sendFile(path.join(__dirname + '/frontend/build/index.html'))
 })
 
 //listen to requests on port
