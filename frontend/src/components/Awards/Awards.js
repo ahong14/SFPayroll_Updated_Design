@@ -38,21 +38,21 @@ class AwardsSponsors extends Component{
               </Grid>
 
               <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
-                <img className = "bannerImage" alt = "2018 chapter pictorial first banner" src = {banner1}/>
-                <img className = "bannerImage" id = "thirdPlaceBanner" alt = "honorable mention banner" src = {banner2}/>
-                <img className = "bannerImage" alt = "gavel banner" src = {banner3}/>
+                <Grid item xs = {6} sm = {4}> <img className = "bannerImage" alt = "2018 chapter pictorial first banner" src = {banner1}/> </Grid>
+                <Grid item xs = {6} sm = {4}> <img className = "bannerImage" id = "thirdPlaceBanner" alt = "honorable mention banner" src = {banner2}/> </Grid>
+                <Grid item xs = {6} sm = {4}> <img className = "bannerImage" alt = "gavel banner" src = {banner3}/> </Grid>
               </Grid>
 
               <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
-                <img className = "bannerImage" alt = "2018 chapter pictorial first banner" src = {banner4}/>
-                <img className = "bannerImage" alt = "2018 photo contest third" src = {banner5}/>
-                <img className = "bannerImage" alt = "participation 2017" src = {banner6}/>
+                <Grid item xs = {6} sm = {4}> <img className = "bannerImage" alt = "2018 chapter pictorial first banner" src = {banner4}/> </Grid>
+                <Grid item xs = {6} sm = {4}> <img className = "bannerImage" alt = "2018 photo contest third" src = {banner5}/> </Grid>
+                <Grid item xs = {6} sm = {4}> <img className = "bannerImage" alt = "participation 2017" src = {banner6}/> </Grid>
               </Grid>
 
               <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
-                <img className = "bannerImage" alt = "participation banner" src = {banner7}/>
-                <img className = "bannerImage" alt = "statewide part banner" src = {banner8}/>
-                <img className = "bannerImage" alt = "gavel banner" src = {banner9}/>
+                <Grid item xs = {6} sm = {4}> <img className = "bannerImage" alt = "participation banner" src = {banner7}/> </Grid>
+                <Grid item xs = {6} sm = {4}> <img className = "bannerImage" alt = "statewide part banner" src = {banner8}/> </Grid>
+                <Grid item xs = {6} sm = {4}> <img className = "bannerImage" alt = "gavel banner" src = {banner9}/> </Grid>
               </Grid>
 
               <Grid id = "awardsGrid" spacing = {16} container direction = "row"  justify="space-evenly" alignItems="center" wrap = "nowrap">
