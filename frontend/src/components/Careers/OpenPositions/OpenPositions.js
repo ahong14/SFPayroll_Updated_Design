@@ -13,7 +13,7 @@ class OpenPositions extends Component{
     }
 
     componentDidMount(){
-        const apiURL = 'http://sfpayroll.herokuapp.com/positions/getPostings';
+        const apiURL = 'http://sfpayroll.herokuapp.com/api/positions/getPostings';
         // const apiURL = 'http://localhost:4000/positions/getPostings';
         axios.get(apiURL)
             .then(resp=> {
