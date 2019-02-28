@@ -34,7 +34,7 @@ class AwardsSponsors extends Component{
             <div className="card-body awardsBody">
 
               <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
-                <a href = "https://www.americanpayroll.org/" target = "_blank"> <img id = "apaLogo" src = {apa} alt = "APA Logo"/> </a>
+                <a href = "https://www.americanpayroll.org/" target = "_blank"> <img className = "logoImage" src = {apa} alt = "APA Logo"/> </a>
               </Grid>
 
               <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">

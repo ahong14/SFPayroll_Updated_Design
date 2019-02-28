@@ -3,6 +3,7 @@ import '../../AboutUs/AboutSections/AboutSections.css';
 import apa from '../../../photos/american_payroll_association_logo.png';
 import gpmi from '../../../photos/GPMILogo.png';
 import payrollLogo from '../../../photos/sf_payroll_logo.gif';
+import cpc from '../../../photos/cpclogo.png';
 
 class AboutSections extends Component{
     render(){
@@ -36,14 +37,13 @@ class AboutSections extends Component{
                 </div>
 
                 <div className="card">
-                    <img className="card-img-top section_image" src= {payrollLogo} alt="Card image cap"/>
+                    <img className="card-img-top section_image" src= {cpc} alt="Card image cap"/>
                     <div className="card-body">
-                    <h5 className="card-title text-center">San Francisco Bay Area Chapter History </h5>
+                        <h5 className="card-title text-center"> California Payroll Conference </h5>
+                        <p className = "text-center"> <a href = "https://californiapayroll.org/" target = "_blank"> More Info </a> </p>
                         <blockquote className = "text-center font-italic">  
-                            The San Francisco Bay Area Chapter (SFBAC) of the American Payroll Association was formed in 1983 to provide educational and networking opportunities for local Payroll Professionals, as well as to support the goals of the National Organization. 
-                            Payroll is a demanding profession, and deserves to be recognized as such.Payroll Professionals are called upon to constantly update their education and skills, to produce work that conforms to the highest technical standards, and to maintain the highest level of professional ethics. 
-                            SFBAC holds regular meetings featuring speakers on topics ranging from taxation and regulation to personal and professional development. Continuing Education Units (CEUs) are available for all meetings.In 2010, the Chapter provided a scholarship to attend the Annual APA Congress. 
-                            We also awarded 3 scholarships to the California Payroll Conference. We intend to continue this scholarship program, so keep an eye out for announcements!        
+                            The California Payroll Conference provides opportunites for networking among conference attendees and sponsors. Payroll professionals gather to speak and provide expertise information among various payroll fields. 
+                            The goal of the conference is to educate and entertain payroll professionals. We also awarded 3 scholarships to the California Payroll Conference. We intend to continue this scholarship program, so keep an eye out for announcements!
                         </blockquote>
                     </div>
                 </div>

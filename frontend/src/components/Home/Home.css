@@ -42,7 +42,7 @@
     width: 800px;
 }
 
-#apaLogo{
+.companyLogo{
   display:flex;
   justify-content: center;
   width: 200px;
@@ -53,6 +53,12 @@
 #apaImage{
   display:flex;
   align-self: center;
+}
+
+.logoImage{
+    width: 180px;
+    height: 150px;
+    padding: 10px;
 }
 
 @media screen and (max-width: 600px){

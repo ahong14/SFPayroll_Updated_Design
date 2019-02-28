@@ -4,6 +4,7 @@ import {FaBars} from 'react-icons/fa';
 import NavElement from '../NavElement/NavElement';
 import '../NavBar/NavBar.css';
 import navbarLogo from '../../photos/sf_payroll_logo.gif';
+import newLogo from '../../photos/sfpayroll-red.png';
 
 //Navigation Bar Component
 //Consits of NavElement components
@@ -52,7 +53,7 @@ class NavBar extends Component{
         if(windowWidth > 600){
             return(
                 <nav id = "navBar" className = "navbar navbar-expand-lg navbar-inverse fixed-top">
-                   <Link to = "/" className = "navbar-brand" id = "navbarLogo"> <img id = "imageLogo" src = {navbarLogo} /> </Link>
+                   <Link to = "/" className = "navbar-brand" id = "navbarLogo"> <img id = "imageLogo" src = {newLogo} /> </Link>
                    <ul className = "navbar-nav nav-fill w-100" id = "navbarList">
                        <NavElement section = "Home"/>
                        <NavElement section = "Events"/>

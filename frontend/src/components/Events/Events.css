@@ -25,6 +25,16 @@
     align-self: center;
 }
 
+#conferenceLinks{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.conference{
+    align-self: center;
+}
+
 /* .eventPosts{
     display:flex;
     flex-direction: column; 

@@ -7,6 +7,8 @@ import './Home.css';
 import Grid from '@material-ui/core/Grid';
 import BannerImage from '../../photos/golden_gate_bridge.jpg';
 import apa from '../../photos/american_payroll_association_logo.png';
+import gpmi from '../../photos/GPMILogo.png';
+import cpc from '../../photos/cpclogo.png';
 
 //Home page component
 class Home extends Component {
@@ -23,9 +25,9 @@ class Home extends Component {
                 
                 <div className = "welcome_awards_join">
                     <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
-                      <div id = "apaLogo">
-                        <a href = "https://www.americanpayroll.org/" target = "_blank"> <img src = {apa} alt = "apa logo"/> </a>
-                      </div>
+                        <a href = "https://www.americanpayroll.org/" target = "_blank"> <img className = "logoImage" src = {apa} alt = "APA Logo"/> </a>
+                        <a href = "https://www.gpminstitute.com/" target = "_blank"> <img className = "logoImage" src = {gpmi} /> </a>
+                        <a href = "https://californiapayroll.org/" target = "_blank"> <img className = "logoImage" src = {cpc} /> </a>
                     </Grid>
 
                     <h3 className = "text-center" id = "welcome_text" > Welcome to the San Francisco Bay Area Chapter
