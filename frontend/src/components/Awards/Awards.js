@@ -65,13 +65,6 @@ class AwardsSponsors extends Component{
                 <img className = "award_image" alt = "participant 2017 statewide meeting" src = {Award2}/> 
                 <img className = "award_image" alt = "participant 2017 chapter pictorial" src = {Award4}/> 
               </Grid>
-
-              <p className = "text-center font-weight-bold font-italic" > <u> Sponsors </u> </p>
-              <Grid container direction = "row"  justify="center" alignItems="center" spacing = {24}>
-                <a href = "https://www.mckesson.com/" target = "_blank"> <img className = "sponsor_images" id = "mckesson" src = {McKesson} alt = "mckesson_logo"/> </a>
-                <a href = "https://www.clifbar.com/" target = "_blank"> <img className = "sponsor_images" id = "clif" src = {Clif} alt = "clif-logo"/> </a>
-                <a href = "https://www.iipay.com/" target = "_blank"> <img className = "sponsor_images" id = "iipay" src = {iipay} alt = "iipay_logo"/> </a>
-              </Grid>
             </div>
           </div>
         );

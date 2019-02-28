@@ -5,14 +5,14 @@ import President from './President/President';
 import OfficerMember from '../../AboutUs/Members/OfficerMember/OfficerMember';
 import EmptyMember from './EmptyMember/EmptyMember';
 
-import owhen from '../../../photos/owhen_image.jpg';
+import owhen from '../../../photos/owhenupdatedpic.jpg';
 import erin from '../../../photos/erin_image.jpg';
 import darcy from '../../../photos/darcy_image.jpg';
 import rowerna from '../../../photos/rowerna_image.jpg';
 import becky from '../../../photos/becky_image.jpg';
 import bill from '../../../photos/bill_image.JPG';
 import christine from '../../../photos/christine_image.jpg';
-import lois from '../../../photos/lois_image.jpg';
+import lois from '../../../photos/loispicture.jpg';
 import kim from '../../../photos/kim_image.jpg';
 import angela from '../../../photos/angela_image.jpg';
 import alex from '../../../photos/alex_image.jpg';
