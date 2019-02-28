@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../AboutUs/AboutUs.css';
-import aboutUs from '../../photos/about_us_3.JPG';
+import aboutUs from '../../photos/eventsphoto3.png';
 import AboutSections from '../AboutUs/AboutSections/AboutSections';
 import Members from '../AboutUs/Members/Members';
 import bylaws from '../../photos/bylaws.jpg';
