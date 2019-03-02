@@ -26,6 +26,8 @@ import Award9 from '../../photos/chapterphoto2018third.png';
 import McKesson from '../../photos/mckesson_logo.gif';
 import Clif from '../../photos/clif_logo.jpg';
 import iipay from '../../photos/iipay_logo.jpg';
+import npw from '../../photos/npw2019.jpg';
+
 
 class AwardsSponsors extends Component{
     render(){
@@ -34,7 +36,12 @@ class AwardsSponsors extends Component{
             <div className="card-body awardsBody">
 
               <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">
-                <a href = "https://www.americanpayroll.org/" target = "_blank"> <img className = "logoImage" src = {apa} alt = "APA Logo"/> </a>
+                <div id = "apaImageContainer">
+                  <a href = "https://www.americanpayroll.org/" target = "_blank"> <img className = "logoImage" src = {apa} alt = "APA Logo"/> </a>
+                </div>
+                <div id = "npwContainer">
+                  <a href = "https://www.nationalpayrollweek.com/" target = "_blank"> <img id = "npwImage" src = {npw}/> </a>
+                </div>
               </Grid>
 
               <Grid container direction = "row"  justify="center" alignItems="center" wrap = "nowrap">

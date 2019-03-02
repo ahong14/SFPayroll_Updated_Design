@@ -51,7 +51,7 @@ class Events extends Component{
                         <EventCarousel/>
                         <div id = "conferenceLinks">
                             <div className = "conference">
-                                <a href = "https://www.americanpayroll.org/" target = "_blank"> <h4> American Payroll Congress Schedule </h4> </a>
+                                <a href = "https://www.apacongress.com/" target = "_blank"> <h4> American Payroll Congress Schedule </h4> </a>
                             </div>
 
                             <div className = "conference">

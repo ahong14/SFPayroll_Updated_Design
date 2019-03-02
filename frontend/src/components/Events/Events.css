@@ -17,12 +17,14 @@
 }
 
 #events_image{
-    width: 850px;
-    height: 380px;
+    width: 90%;
+    height: 80%;
 }
 
 #event_header{
     align-self: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #conferenceLinks{
@@ -34,6 +36,17 @@
 .conference{
     align-self: center;
 }
+
+#npwContainer{
+    align-self: center;
+}
+
+#npwImage{
+    width: 100%;
+    height: 100%;
+}
+
+
 
 /* .eventPosts{
     display:flex;
@@ -52,6 +65,10 @@
     }
 
     #event_header{
+        align-self: center;
+    }
+
+    #conferenceLinks{
         align-self: center;
     }
 
