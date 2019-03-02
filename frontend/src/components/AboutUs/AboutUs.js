@@ -25,7 +25,7 @@ class AboutUs extends Component{
                         <a href = "http://currencsf.org ">http://currencsf.org </a>
 
                         Payroll is a demanding profession, and deserves to be recognized as such. Payroll Professionals are called upon to constantly update their education and skills, to produce work that conforms to the highest technical standards, and to maintain the highest level of professional ethics. 
-                        SFBAC holds regular meetings featuring speakers on topics ranging from taxation and regulation to personal and professional development. Continuing Education Units (CEUs) are available for all meetings.In 2010, the Chapter provided a scholarship to attend the Annual APA Congress. 
+                        SFBAC holds regular meetings featuring speakers on topics ranging from taxation and regulation to personal and professional development. Continuing Education Units (CEUs) are available for all meetings. In 2010, the Chapter provided a scholarship to attend the Annual APA Congress. 
                     </blockquote>
                 </div>
 
