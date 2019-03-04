@@ -8,6 +8,7 @@
 
 #benefitsList{
     align-self:center;
+    text-align: left;
 }
 
 #benefitsList li {

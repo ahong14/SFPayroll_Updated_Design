@@ -62,6 +62,7 @@ class NavBar extends Component{
                        <NavElement section = "Resources"/>
                        <NavElement section = "Careers"/>
                        <NavElement section = "Contact Us"/>
+                       <NavElement section = "Gallery"/>
                    </ul>
                </nav>
             );
@@ -93,6 +94,7 @@ class NavBar extends Component{
                                 <NavElement onClick = {this.closeSideNav} section = "Resources"/>
                                 <NavElement onClick = {this.closeSideNav} section = "Careers"/>
                                 <NavElement onClick = {this.closeSideNav} section = "Contact Us"/>
+                                <NavElement onClick = {this.closeSideNav} section = "Gallery"/>
                             </div>
                         </div>
                     </nav>

@@ -9,6 +9,7 @@ import Resources from '../components/Resources/Resources';
 import Careers from '../components/Careers/Careers';
 import ContactUs from '../components/ContactUs/ContactUs';
 import AboutUs from '../components/AboutUs/AboutUs';
+import Gallery from '../components/Gallery/Gallery';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
                   <Route exact path = "/Resources"  component = {Resources}/> 
                   <Route exact path = "/Careers" component = {Careers}/>
                   <Route exact path = "/ContactUs" component = {ContactUs}/>
+                  <Route exact path = "/Gallery" component = {Gallery}/>
                   <Footer/>
                 </div>
               </ScrollToTop>
