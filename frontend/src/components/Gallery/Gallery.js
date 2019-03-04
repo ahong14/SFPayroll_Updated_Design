@@ -117,7 +117,7 @@ const imageJSON = {
 
       {
         "src": image24,
-        "caption": "NPW"
+        "caption": "Congress"
       },
 
       {
@@ -147,7 +147,7 @@ const imageJSON = {
 
       {
         "src": image23,
-        "caption": "NPW"
+        "caption": "CPC"
       },
 
       
