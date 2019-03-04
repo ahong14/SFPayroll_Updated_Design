@@ -78,7 +78,7 @@ class NavBar extends Component{
                         </div>
                         
                         <div className = "navbar-header" id = "mobile_banner">
-                            <Link to = "/"> <img id = "banner_logo_mobile" src = {navbarLogo} alt = "banner logo"/> </Link>
+                            <Link to = "/"> <img id = "banner_logo_mobile" src = {newLogo} alt = "banner logo"/> </Link>
                         </div>
 
                         <div id = "sidebar" ref = {(sidebar) => {this.sideBar = sidebar}}>

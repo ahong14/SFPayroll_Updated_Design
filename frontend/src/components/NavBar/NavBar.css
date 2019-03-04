@@ -42,7 +42,8 @@ ul li a{
     }
     
     #banner_logo_mobile{
-        width: 60%;
+        height: 90px;
+        width: 100px;        
         float:right;
     }
 
