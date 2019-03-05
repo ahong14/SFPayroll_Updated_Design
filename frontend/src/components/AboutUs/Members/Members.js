@@ -23,7 +23,7 @@ class Members extends Component{
             <div className = "container-fluid" id = "officers_container">
                 <h2 className = "text-center"> Officers </h2>
                 <div className = "row">
-                  <OfficerMember imagesrc = {owhen} name = "Owhen Astorga" position = "President" company = "Salesforce.com"
+                  <OfficerMember imagesrc = {owhen} name = "Owhen Astorga" position = "President, President Advice" company = "Salesforce.com"
                                         phone = "415-536-4524" email = "oastorga@salesforce.com"/>
                   <OfficerMember imagesrc={darcy} name = "Darcy French, CPP" position = "Second Vice President" company = "Gensler" 
                                         phone = '' email = "darcy_french@gensler.com"/>
