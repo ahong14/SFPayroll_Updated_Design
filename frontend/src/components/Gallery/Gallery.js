@@ -25,7 +25,9 @@ import image21 from '../../photos/about_us_4.JPG';
 import image22 from '../../photos/about_us_5.JPG';
 import image23 from '../../photos/carousel_image.jpg';
 import image24 from '../../photos/events_photo.jpg';
-
+import image25 from '../../photos/studygroup1.png';
+import image26 from '../../photos/studygroup2.png';
+import image27 from '../../photos/studygroup3.png';
 
 const imageJSON = {
   "images": 
@@ -150,10 +152,22 @@ const imageJSON = {
         "caption": "CPC"
       },
 
-      
+      {
+        "src": image25,
+        "caption": "Study Group"
+      },
+
+      {
+        "src": image26,
+        "caption": "Events"
+      },
+
+      {
+        "src": image27,
+        "caption": "Congress"
+      },      
     ]
 }
-
 
 class Gallery extends Component {
   constructor(props){
@@ -162,11 +176,7 @@ class Gallery extends Component {
       images: imageJSON.images
     }
   }
-
-  componentDidMount(){
-    console.log(this.state.images);
-  }
-
+  
   render() {
     const images = this.state.images.map(image => {
       console.log(image);
