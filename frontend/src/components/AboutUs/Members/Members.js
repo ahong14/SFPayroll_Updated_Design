@@ -27,16 +27,16 @@ class Members extends Component{
                                         phone = "415-536-4524" email = "oastorga@salesforce.com"/>
                   <OfficerMember imagesrc={darcy} name = "Darcy French, CPP" position = "Second Vice President" company = "Gensler" 
                                         phone = '' email = "darcy_french@gensler.com"/>
-                  <OfficerMember imagesrc={rowerna} name = 'Rowerna Lau, CPP' position = 'Secretary' company = 'McKesson' 
-                                        phone = '415-983-8905' email = 'rowerna.lau@mckesson.com'/>
+                  <OfficerMember imagesrc={rowerna} name = 'Rowerna Lau, CPP' position = 'Secretary' company = 'California Academy of Sciences' 
+                                        phone = '415-379-5840' email = 'rlau@calacademy.org'/>
                   <OfficerMember imagesrc={becky} name = 'Becky Ng, CPP' position = 'Treasurer, WebMaster' company = '' 
                                         phone = '415-476-2327' email = 'becky.ng@ucsf.edu'/>
                   <OfficerMember imagesrc= {angela} name = 'Angela Martin, CPP' position = 'Community Service Chairperson' company = 'iiPay' 
                                         phone = '408-712-9873' email = 'angela.martin@iipay.com'/>
 
-
-                  <OfficerMember imagesrc= {bill} name = 'Bill Schmalle, CPP' position = 'Government Liaison Officer' company = 'McKesson' 
-                                        phone = '510-597-3923' email = 'William.schmalle@mckesson.com'/>
+x
+                  <OfficerMember imagesrc= {bill} name = 'Bill Schmalle, CPP' position = 'Government Liaison Officer' company = 'Penumbra' 
+                                        phone = '510-995-2373' email = 'bschmalle@penumbrainc.com'/>
                   <OfficerMember imagesrc= {christine} name = 'Christine Corral, CPP' position = 'Membership Chairperson' company = 'Bio-Rad Laboratories' 
                                         phone = '' email = 'Chris_Corral@bio-rad.com'/>
                   <OfficerMember imagesrc= {lois} name = 'Lois Fried, CPP' position = 'Historian' company = 'Consultant' 
