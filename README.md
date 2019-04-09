@@ -1,9 +1,8 @@
 # SFPayroll_Updated_Design
 ## Redesigned SF Payroll Website.
-### Link: http://sfpayroll.herokuapp.com
+### Link: www.sfpayroll.org
 
 ## Description:
-Redesigned website, original site at http://www.sfpayroll.org/.
 Full-stack web application that shows information, events, career
 openings etc. for San Francisco Payroll Association. Built using
 Node.js, Express.js, React.js, HTML/CSS, MongoDB, and Bootstrap.
