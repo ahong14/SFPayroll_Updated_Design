@@ -28,7 +28,7 @@ class Members extends Component{
                   <OfficerMember imagesrc={darcy} name = "Darcy French, CPP" position = "Second Vice President" company = "Gensler" 
                                         phone = '' email = "darcy_french@gensler.com"/>
                   <OfficerMember imagesrc={rowerna} name = 'Rowerna Lau, CPP' position = 'Secretary' company = 'California Academy of Sciences' 
-                                        phone = '415-379-5840' email = 'rlau@calacademy.org'/>
+                                        phone = '415-379-5840' email = 'rowsfbac@gmail.com'/>
                   <OfficerMember imagesrc={becky} name = 'Becky Ng, CPP' position = 'Treasurer, WebMaster' company = '' 
                                         phone = '415-476-2327' email = 'becky.ng@ucsf.edu'/>
                   <OfficerMember imagesrc= {angela} name = 'Angela Martin, CPP' position = 'Community Service Chairperson' company = 'iiPay' 
