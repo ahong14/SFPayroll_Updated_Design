@@ -1,11 +1,11 @@
 {
-  "name": "sfpayroll_updated_design",
+  "name": "sf_payroll_updated",
   "version": "1.0.0",
-  "description": "## Description: Full-stack web application that shows information, events, career openings etc. for San Francisco Payroll Association. Built using Node.js, Express.js, React.js, HTML/CSS, MongoDB, and Bootstrap.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "backend": "cd server/ && nodemon server.js",
+    "backend": "nodemon server.js",
     "frontend": "cd frontend/ && npm run start",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
     "start": "node server.js",
@@ -15,13 +15,27 @@
     "type": "git",
     "url": "git+https://github.com/ahong14/SFPayroll_Updated_Design.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ahong14/SFPayroll_Updated_Design/issues"
   },
   "homepage": "https://github.com/ahong14/SFPayroll_Updated_Design#readme",
+  "devDependencies": {},
   "dependencies": {
-    "concurrently": "^5.0.1"
+    "body-parser": "^1.18.3",
+    "bson": "^4.0.1",
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
+    "create-react-app": "^2.1.3",
+    "express": "^4.16.4",
+    "express-generator": "^4.16.0",
+    "mongoose": "^5.7.5",
+    "nodemailer": "^4.7.0",
+    "nodemon": "^1.18.6",
+    "path": "^0.12.7",
+    "popper.js": "^1.14.6",
+    "query-string": "^6.1.0"
   }
 }

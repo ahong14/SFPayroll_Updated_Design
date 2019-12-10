@@ -74,7 +74,7 @@ router.post('/contactUs', (req,resp) => {
     //mail options
     const contactUsOptions = {
         from: 'sfpayrollweb@gmail.com', // sender address
-        to: 'sfpayrollweb@gmail.com', // list of receivers
+        to: 'sfbac.apa@gmail.com', // list of receivers
         subject: 'Message From Visitor', // Subject line
         html: '<p>Name: ' + params.name + '\n' + 'Email: ' + params.email + '\n' + 'Message: ' + params.message + '</p>'
     }

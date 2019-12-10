@@ -70,12 +70,11 @@ var transporter = nodemailer.createTransport({
 //email job posting
 router.post('/sendJob', (req,resp) => {
     var params = req.body.params;
-    console.log(params);
 
     //send job email options
     const options = {
         from: 'sfpayrollweb@gmail.com', // sender address
-        to: 'sfpayrollweb@gmail.com', // list of receivers
+        to: 'sfbac.apa@gmail.com', // list of receivers
         subject: 'Job Posting', // Subject line
         html: '<p> Email ' + params.email + '\n' + 'Title: ' + params.title + '\n' + 'City: ' + params.city + '\n' + 'State: ' + params.state + '\n' + 'Position: ' + params.position + '\n' + 'Description: ' + params.description + '</p>'
     }
