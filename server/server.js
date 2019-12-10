@@ -72,14 +72,13 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //serve react files
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, '/frontend/build')));
 
 //use middleware
 app.use(extendTimeoutMiddleware);
 
 
 //routes
-var router = express.Router();
 var events = require('./routes/events');
 var contact = require('./routes/contact');
 var job = require('./routes/job');
