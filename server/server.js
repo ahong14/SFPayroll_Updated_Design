@@ -72,7 +72,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //serve react files
-app.use(express.static(path.join(__dirname, 'frontend/build')));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 //use middleware
 app.use(extendTimeoutMiddleware);
@@ -90,9 +90,10 @@ app.use('/api/contact', contact);
 app.use('/api/job', job);
 app.use('/api/positions', positions);
 
+
 //fix react app crashing on refresh
 app.get('/*', (req,res) => {
-  res.sendFile(path.join(__dirname + '../frontend/build/index.html'))
+  res.sendFile(path.join(__dirname + 'frontend/build/index.html'))
 })
 
 //listen to requests on port
