@@ -83,12 +83,13 @@ var events = require('./routes/events');
 var contact = require('./routes/contact');
 var job = require('./routes/job');
 var positions = require('./routes/positions');
+var pdfs = require('./routes/pdfs');
 
 app.use('/api/events', events);
 app.use('/api/contact', contact);
 app.use('/api/job', job);
 app.use('/api/positions', positions);
-
+app.use('/pdfs', pdfs);
 
 //fix react app crashing on refresh
 app.get('/*', (req,res) => {
