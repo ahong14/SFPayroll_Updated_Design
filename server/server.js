@@ -89,7 +89,7 @@ app.use('/api/events', events);
 app.use('/api/contact', contact);
 app.use('/api/job', job);
 app.use('/api/positions', positions);
-app.use('/pdfs', pdfs);
+app.use('/api/pdfs', pdfs);
 
 //fix react app crashing on refresh
 app.get('/*', (req,res) => {

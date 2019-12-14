@@ -9,7 +9,7 @@ class OfficerMember extends Component{
 
     render(){
         return(
-          <div className = "col-md ">
+          <div className = "col-md-3">
             <div className="card memberCard">
                 <img className="card-img-top memberImage" src= {this.props.imagesrc} alt="Member Image"/>
                 <div className="card-body">
