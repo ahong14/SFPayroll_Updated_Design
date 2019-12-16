@@ -16,7 +16,6 @@ class OfficerMember extends Component{
                     <h5 className="card-title text-center font-weight-bold"> {this.props.name} </h5>
                     <p className="card-text text-center font-weight-bold"> {this.props.position} </p>
                     <p className="card-text text-center font-weight-bold"> {this.props.company} </p>
-                    <p className="card-text text-center font-weight-bold"> Phone: {this.props.phone} </p>
                     <p className="card-text text-center font-weight-bold"> Email: {this.props.email} </p>
                 </div>
             </div>

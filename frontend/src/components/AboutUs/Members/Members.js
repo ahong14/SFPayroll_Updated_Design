@@ -24,22 +24,22 @@ class Members extends Component{
                 <h2 className = "text-center"> Officers </h2>
                 <div className = "row">
                   <OfficerMember imagesrc = {owhen} name = "Owhen Astorga" position = "President, President Advice" company = "SFBAC"
-                                        phone = "415-536-4524" email = "sfbac.apa@gmail.com"/>
+                                         email = "sfbac.apa@gmail.com"/>
                   <OfficerMember imagesrc={darcy} name = "Darcy French, CPP" position = "Second Vice President" company = "SFBAC"
-                                        phone = '' email = "sfbac.apa@gmail.com"/>
+                                         email = "sfbac.apa@gmail.com"/>
                   <OfficerMember imagesrc={rowerna} name = 'Rowerna Lau, CPP' position = 'Secretary' company = "SFBAC" 
-                                        phone = '415-379-5840' email = 'sfbac.apa@gmail.com'/>
+                                         email = 'sfbac.apa@gmail.com'/>
                   <OfficerMember imagesrc={becky} name = 'Becky Ng, CPP' position = 'Treasurer, WebMaster' company = "SFBAC" 
-                                        phone = '415-476-2327' email = 'sfbac.apa@gmail.com'/>
+                                         email = 'sfbac.apa@gmail.com'/>
                   <OfficerMember imagesrc= {bill} name = 'Bill Schmalle, CPP' position = 'Government Liaison Officer' company = "SFBAC"
-                                        phone = '510-995-2373' email = 'sfbac.apa@gmail.com'/>
+                                         email = 'sfbac.apa@gmail.com'/>
                   <OfficerMember imagesrc= {christine} name = 'Christine Corral, CPP' position = 'Membership Chairperson' company = "SFBAC"
-                                        phone = '' email = 'sfbac.apa@gmail.com'/>
+                                         email = 'sfbac.apa@gmail.com'/>
                   <OfficerMember imagesrc= {lois} name = 'Lois Fried, CPP' position = 'Historian' company = "SFBAC" 
-                                        phone = '' email = 'Loisfried35@gmail.com'/>
+                                         email = 'Loisfried35@gmail.com'/>
                                         
                   <OfficerMember imagesrc = {kim} name = 'Kim Norton, CPP' position = 'Bulletin Chairperson' company = "SFBAC"
-                                        phone = '510-741-6273' email = 'sfbac.apa@gmail.com'/>
+                                         email = 'sfbac.apa@gmail.com'/>
                   <OfficerMember imagesrc = {alex} name = 'Alex Hong' position = 'Web Developer Intern' email = 'alexhong681@gmail.com'/>
                   <OfficerMember imagesrc = {noImage} name = 'Catherine Zolli' position = 'Hospitality Chairperson'/>
                   <EmptyMember/>
