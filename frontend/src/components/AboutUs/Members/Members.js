@@ -36,12 +36,12 @@ class Members extends Component{
                   <OfficerMember imagesrc= {christine} name = 'Christine Corral, CPP' position = 'Membership Chairperson' company = "SFBAC"
                                          email = 'sfbac.apa@gmail.com'/>
                   <OfficerMember imagesrc= {lois} name = 'Lois Fried, CPP' position = 'Historian' company = "SFBAC" 
-                                         email = 'Loisfried35@gmail.com'/>
+                                         email = 'sfbac.apa@gmail.com'/>
                                         
                   <OfficerMember imagesrc = {kim} name = 'Kim Norton, CPP' position = 'Bulletin Chairperson' company = "SFBAC"
                                          email = 'sfbac.apa@gmail.com'/>
                   <OfficerMember imagesrc = {alex} name = 'Alex Hong' position = 'Web Developer Intern' email = 'alexhong681@gmail.com'/>
-                  <OfficerMember imagesrc = {noImage} name = 'Catherine Zolli' position = 'Hospitality Chairperson'/>
+                  <OfficerMember imagesrc = {noImage} name = 'Catherine Zolli' position = 'Hospitality Chairperson' email = 'sfbac.apa@gmail.com'/>
                   <EmptyMember/>
                 </div>
             </div>
