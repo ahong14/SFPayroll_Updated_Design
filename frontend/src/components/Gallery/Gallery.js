@@ -179,14 +179,13 @@ class Gallery extends Component {
   
   render() {
     const images = this.state.images.map(image => {
-      console.log(image);
-      return <GalleryItem imageSrc = {image.src} caption = {image.caption}/>
+      return <GalleryItem imageSrc={image.src} caption={image.caption}/>
     });
 
     return (
-      <div className = "container galleryContainer">
-        <h1 className = "text-center"> Gallery </h1>
-        <div className = "row"> 
+      <div className="container galleryContainer">
+        <h1 className="text-center"> Gallery </h1>
+        <div className="row"> 
           {images}
         </div>
       </div>

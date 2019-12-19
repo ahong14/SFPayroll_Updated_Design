@@ -9,14 +9,14 @@ import JobForm from '../Careers/JobForm/JobForm';
 class Careers extends Component{
     render(){
         return(
-            <div className = "container-fluid careers_container">
-                <div id = "career_header">
-                    <h2 className = "section_header text-center"> Careers </h2>
-                    <img src = {gpmi} id = "career_image"/>
+            <div className="container-fluid careers_container">
+                <div id="career_header">
+                    <h2 className="section_header text-center"> Careers </h2>
+                    <img src={gpmi} id="career_image"/>
                 </div>
                 <OpenPositions/>
                 <HelpSites/>
-                <div className = "text-center" id = "job_form">
+                <div className="text-center" id="job_form">
                     <h3> For job posting, please email sfbac.apa@gmail.com or fill out the following form: </h3>
                 </div>
                 <JobForm/>

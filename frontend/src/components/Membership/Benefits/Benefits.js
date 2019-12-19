@@ -4,9 +4,9 @@ import '../../Membership/Benefits/Benefits.css';
 class Benefits extends Component{
     render(){
         return(
-            <div id = "benefits">
+            <div id="benefits">
                 <h3> <u> Membership Benefits </u> </h3>
-                <ul id = "benefitsList">
+                <ul id="benefitsList">
                     <li> Educational workshops and meetings </li>
                     <li> Informative industry speakers</li>
                     <li> Networking and community service opportunities </li>

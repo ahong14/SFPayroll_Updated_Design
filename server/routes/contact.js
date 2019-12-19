@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
 // code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
 // code to workaround heroku deployment 30second timeout
@@ -59,8 +59,8 @@ var transporter = nodemailer.createTransport({
     secure: false, // use SSL
     service: 'gmail',
     auth: {
-           user: 'sfpayrollweb@gmail.com',
-           pass: 'sfpayroll123'
+           user: process.env.EMAIL_USER,
+           pass: process.env.EMAIL_PASS
     },
     tls: {
         rejectUnauthorized: false
@@ -70,11 +70,10 @@ var transporter = nodemailer.createTransport({
 //send email for contact us information
 router.post('/contactUs', (req,resp) => {
     var params = req.body.params;
-    console.log(req.body);
     //mail options
     const contactUsOptions = {
-        from: 'sfpayrollweb@gmail.com', // sender address
-        to: 'sfbac.apa@gmail.com', // list of receivers
+        from: process.env.EMAIL_USER, // sender address
+        to: process.env.EMAIL_RECEIVER, // list of receivers
         subject: 'Message From Visitor', // Subject line
         html: '<p>Name: ' + params.name + '\n' + 'Email: ' + params.email + '\n' + 'Message: ' + params.message + '</p>'
     }
@@ -82,12 +81,13 @@ router.post('/contactUs', (req,resp) => {
     //send email for contact us
     transporter.sendMail(contactUsOptions, function (err, info) {
         if(err){
-            console.error(err)
-            resp.status(400).send("Email wasn't sent");
+          console.error(err)
+          resp.status(400).send("Email wasn't sent");
         }
        
         else{
-            resp.status(200).send("Thank you! Message was sent");            
+          console.log(info);
+          resp.status(200).send("Thank you! Message was sent");            
         }
     });
 });
