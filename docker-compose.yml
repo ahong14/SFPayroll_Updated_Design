@@ -1,13 +1,13 @@
 version: "3"
 
 services:
-  server:
+  node_server:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "4000:4000"
-    container_name: server
+    container_name: node_server
     restart: unless-stopped
   
   nginx:
@@ -19,4 +19,4 @@ services:
     container_name: nginx
     restart: unless-stopped
     depends_on:
-      - server
+      - node_server
