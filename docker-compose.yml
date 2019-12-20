@@ -9,3 +9,12 @@ services:
       - "4000:4000"
     container_name: server
     restart: unless-stopped
+  
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    container_name: nginx
+    restart: unless-stopped
