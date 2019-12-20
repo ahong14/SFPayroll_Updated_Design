@@ -18,3 +18,5 @@ services:
       - "80:80"
     container_name: nginx
     restart: unless-stopped
+    depends_on:
+      - server
