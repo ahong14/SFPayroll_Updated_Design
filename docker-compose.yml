@@ -1,6 +1,7 @@
 version: "3"
 
 services:
+  #node/react application
   node_server:
     build:
       context: .
@@ -10,6 +11,7 @@ services:
     container_name: node_server
     restart: unless-stopped
   
+  #nginx web server
   nginx:
     build:
       context: ./nginx
@@ -20,3 +22,16 @@ services:
     restart: unless-stopped
     depends_on:
       - node_server
+  #lets encrypt 
+  certbot:
+    build:
+      context: ./certbot
+      dockerfile: Dockerfile
+    container_name: certbot
+    restart: unless-stopped
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - nginx
