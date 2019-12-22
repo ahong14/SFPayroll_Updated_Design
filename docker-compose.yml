@@ -19,19 +19,24 @@ services:
     ports:
       - "80:80"
     container_name: nginx
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
     restart: unless-stopped
     depends_on:
       - node_server
   #lets encrypt 
   certbot:
-    build:
-      context: ./certbot
-      dockerfile: Dockerfile
+    image: certbot/certbot
     container_name: certbot
     restart: unless-stopped
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
-      - web-root:/var/www/html
     depends_on:
       - nginx
+    command: certonly --webroot  --email alexhong681@gmail.com --agree-tos --no-eff-email --staging -d 157.245.228.173
+
+volumes:
+  certbot-etc:
+  certbot-var:
