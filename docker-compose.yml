@@ -18,25 +18,22 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /etc/ssl/certs:/etc/ssl/certs
     container_name: nginx
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
     restart: unless-stopped
     depends_on:
-      - node_server
-  #lets encrypt 
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    restart: unless-stopped
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-    depends_on:
-      - nginx
-    command: certonly --webroot  --email alexhong681@gmail.com --agree-tos --no-eff-email --staging -d 157.245.228.173
-
-volumes:
-  certbot-etc:
-  certbot-var:
+      - node_server  
+#lets encrypt 
+  
+  #certbot:
+  #  image: certbot/certbot
+  #  container_name: certbot
+  #  restart: unless-stopped
+  #  volumes:
+  #    - certbot-etc:/etc/letsencrypt
+  #    - certbot-var:/var/lib/letsencrypt
+  #  depends_on:
+  #    - nginx
+  #  command: certonly --webroot  --email alexhong681@gmail.com --agree-tos --no-eff-email --staging -d sfpayroll.org
