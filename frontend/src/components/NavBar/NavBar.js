@@ -52,17 +52,17 @@ class NavBar extends Component{
         //if the window width is a desktop or laptop
         if(windowWidth > 600){
             return(
-                <nav id = "navBar" className = "navbar navbar-expand-lg navbar-inverse fixed-top">
-                   <Link to = "/" className = "navbar-brand" id = "navbarLogo"> <img id = "imageLogo" src = {newLogo} /> </Link>
-                   <ul className = "navbar-nav nav-fill w-100" id = "navbarList">
-                       <NavElement section = "Home"/>
-                       <NavElement section = "Events"/>
-                       <NavElement section = "About Us"/>
-                       <NavElement section = "Membership"/>
-                       <NavElement section = "Resources"/>
-                       <NavElement section = "Careers"/>
-                       <NavElement section = "Contact Us"/>
-                       <NavElement section = "Gallery"/>
+                <nav id="navBar" className="navbar navbar-expand-lg navbar-inverse fixed-top">
+                   <Link to="/" className="navbar-brand" id="navbarLogo"> <img id="imageLogo" src={newLogo} /> </Link>
+                   <ul className="navbar-nav nav-fill w-100" id="navbarList">
+                       <NavElement section="Home"/>
+                       <NavElement section="Events"/>
+                       <NavElement section="About Us"/>
+                       <NavElement section="Membership"/>
+                       <NavElement section="Resources"/>
+                       <NavElement section="Careers"/>
+                       <NavElement section="Contact Us"/>
+                       <NavElement sectio ="Gallery"/>
                    </ul>
                </nav>
             );
@@ -72,29 +72,29 @@ class NavBar extends Component{
         else{
             return(
                 <div>
-                    <nav className="navbar navbar-toggleable-lg navbar-light bg-faded fixed-top" id = "mobile_navbar">
-                        <div id = "mobile_bar" onClick = {this.showSideNav}>
+                    <nav className="navbar navbar-toggleable-lg navbar-light bg-faded fixed-top" id="mobile_navbar">
+                        <div id="mobile_bar" onClick={this.showSideNav}>
                             <FaBars/>
                         </div>
                         
-                        <div className = "navbar-header" id = "mobile_banner">
-                            <Link to = "/"> <img id = "banner_logo_mobile" src = {newLogo} alt = "banner logo"/> </Link>
+                        <div className="navbar-header" id="mobile_banner">
+                            <Link to="/"> <img id="banner_logo_mobile" src={newLogo} alt="banner logo"/> </Link>
                         </div>
 
-                        <div id = "sidebar" ref = {(sidebar) => {this.sideBar = sidebar}}>
-                            <div id = "close_navbar" onClick = {this.closeSideNav}>
-                                <p id = "close_icon" className = "font-weight-bold"> &times; </p> 
+                        <div id="sidebar" ref={(sidebar) => {this.sideBar = sidebar}}>
+                            <div id="close_navbar" onClick={this.closeSideNav}>
+                                <p id="close_icon" className="font-weight-bold"> &times; </p> 
                             </div>
                                         
-                            <div className = "text-center" id = "mobile_nav_links">
-                                <NavElement onClick = {this.closeSideNav} section = "Home"/>
-                                <NavElement onClick = {this.closeSideNav} section = "Events"/>
-                                <NavElement onClick = {this.closeSideNav} section = "About Us"/>
-                                <NavElement onClick = {this.closeSideNav} section = "Membership"/>
-                                <NavElement onClick = {this.closeSideNav} section = "Resources"/>
-                                <NavElement onClick = {this.closeSideNav} section = "Careers"/>
-                                <NavElement onClick = {this.closeSideNav} section = "Contact Us"/>
-                                <NavElement onClick = {this.closeSideNav} section = "Gallery"/>
+                            <div className="text-center" id="mobile_nav_links">
+                                <NavElement onClick={this.closeSideNav} section = "Home"/>
+                                <NavElement onClick={this.closeSideNav} section = "Events"/>
+                                <NavElement onClick={this.closeSideNav} section = "About Us"/>
+                                <NavElement onClick={this.closeSideNav} section = "Membership"/>
+                                <NavElement onClick={this.closeSideNav} section = "Resources"/>
+                                <NavElement onClick={this.closeSideNav} section = "Careers"/>
+                                <NavElement onClick={this.closeSideNav} section = "Contact Us"/>
+                                <NavElement onClick={this.closeSideNav} section = "Gallery"/>
                             </div>
                         </div>
                     </nav>

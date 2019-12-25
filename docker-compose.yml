@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  #node/react application
+  node_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    container_name: node_server
+    restart: unless-stopped
+  
+  #nginx web server
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /etc/ssl/certs:/etc/ssl/certs
+    container_name: nginx
+    restart: unless-stopped
+    depends_on:
+      - node_server  

@@ -4,31 +4,32 @@ import SubmitButton from '../../SubmitButton/SubmitButton';
 import axios from 'axios';
 
 class HearFrom extends Component{
-
     constructor(props){
         super(props);
+        this.state = {
+            name: "",
+            email: "",
+            message: ""
+        }
     }
 
+    //send contact info to email
     sendContact = () =>{
         const apiURL = '/api/contact/contactUs';
         
-        if(this.nameInput.value.trim() === '' || this.emailInput.value.trim() === '' || this.messageInput.value.trim() === ''){
-            alert("Fields still empty");
+        if(this.state.name.trim() === '' || this.state.email.trim() === '' || this.state.message.trim() === ''){
+            alert("One or more fields empty");
         }
 
         else{
             axios.post(apiURL, {
                 params:{
-                    name: this.nameInput.value,
-                    email: this.emailInput.value,
-                    message: this.messageInput.value
+                    name: this.state.name,
+                    email: this.state.email,
+                    message: this.state.message
                 }
             }).then(resp => {
                 alert(resp.data);
-                //reset input values
-                this.nameInput.value = '';  
-                this.emailInput.value = '';
-                this.messageInput.value = '';
             })
         }
     }
@@ -42,15 +43,15 @@ class HearFrom extends Component{
                   </blockquote>
                 </div>
                 <p id = "hear_content">We want to know how we can serve you better. Feel free to drop us a note, ask a question about our Chapter, or join us a sponsor. We will get back to you right away.</p>
-                <label htmlFor="usr" className = "font-weight-bold"> Name:  </label>
-                <input type="text" className="form-control" id="name" ref = {(input) => {this.nameInput = input}}/>
+                <label htmlFor="usr" className="font-weight-bold"> Name:  </label>
+                <input type="text" className="form-control" id="name" onChange={(event) => {this.setState({name: event.target.value})}}/>
 
-                 <label htmlFor="usr" className = "font-weight-bold"> Email: </label>
-                <input type="text" className="form-control" id="email" ref = {(input) => {this.emailInput = input}}/> 
+                 <label htmlFor="usr" className="font-weight-bold"> Email: </label>
+                <input type="text" className="form-control" id="email" onChange={(event) => {this.setState({email: event.target.value})}}/> 
 
-                <label htmlFor="usr" className = "font-weight-bold">Message:</label>
-                <textarea className="form-control" rows="5" id="message" ref = {(textarea) => {this.messageInput = textarea}}></textarea>
-                <SubmitButton click = {this.sendContact}/>
+                <label htmlFor="usr" className="font-weight-bold">Message:</label>
+                <textarea className="form-control" rows="5" id="message" onChange={(event) => {this.setState({message: event.target.value})}}></textarea>
+                <SubmitButton click={this.sendContact}/>
             </div>
         );
     }

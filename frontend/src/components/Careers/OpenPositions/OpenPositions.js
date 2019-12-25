@@ -27,7 +27,7 @@ class OpenPositions extends Component{
         })
 
         return(
-            <div className = "learning_resources underline" id = "open_positions">
+            <div className="learning_resources underline" id="open_positions">
                 <h3> Open Positions </h3>
                 {postings}
             </div> 

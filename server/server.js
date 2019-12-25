@@ -1,15 +1,18 @@
 //require packages
-var express = require('express');
-var path = require('path');
-var cors = require('cors')
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const cors = require('cors')
+const bodyParser = require('body-parser');
+require('dotenv').config();
 
 //mongoose, connect to mongoDB on mLab
-var mongoose = require('mongoose');
-mongoose.connect("mongodb://ahong14:aa12345@ds161804.mlab.com:61804/sfpayroll");
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MLAB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on('error', function(error) {
     console.error('Database connection error:', error);
 });
+
+//TODO: remove heroku dependencies
 
 //code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
 //code to workaround heroku deployment 30second timeout
@@ -61,9 +64,8 @@ const extendTimeoutMiddleware = (req, resp, next) => {
     next();
 };
   
-
 //application, running express app
-var app = express();
+const app = express();
 
 //parse body request
 app.use(bodyParser.json());
@@ -77,13 +79,12 @@ app.use(express.static(path.join(__dirname, '/../frontend/build')));
 //use middleware
 app.use(extendTimeoutMiddleware);
 
-
 //routes
-var events = require('./routes/events');
-var contact = require('./routes/contact');
-var job = require('./routes/job');
-var positions = require('./routes/positions');
-var pdfs = require('./routes/pdfs');
+const events = require('./routes/events');
+const contact = require('./routes/contact');
+const job = require('./routes/job');
+const positions = require('./routes/positions');
+const pdfs = require('./routes/pdfs');
 
 app.use('/api/events', events);
 app.use('/api/contact', contact);

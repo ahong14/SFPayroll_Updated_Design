@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
 // code sourced from https://spin.atomicobject.com/2018/05/15/extending-heroku-timeout-node/
 // code to workaround heroku deployment 30second timeout
@@ -59,8 +59,8 @@ var transporter = nodemailer.createTransport({
     secure: false, // use SSL
     service: 'gmail',
     auth: {
-           user: 'sfpayrollweb@gmail.com',
-           pass: 'sfpayroll123'
+           user: process.env.EMAIL_USER,
+           pass: process.env.EMAIL_PASS
     },
     tls: {
         rejectUnauthorized: false
@@ -73,10 +73,10 @@ router.post('/sendJob', (req,resp) => {
 
     //send job email options
     const options = {
-        from: 'sfpayrollweb@gmail.com', // sender address
-        to: 'sfbac.apa@gmail.com', // list of receivers
+        from: process.env.EMAIL_USER, // sender address
+        to: process.env.EMAIL_RECEIVER, // list of receivers
         subject: 'Job Posting', // Subject line
-        html: '<p> Email ' + params.email + '\n' + 'Title: ' + params.title + '\n' + 'City: ' + params.city + '\n' + 'State: ' + params.state + '\n' + 'Position: ' + params.position + '\n' + 'Description: ' + params.description + '</p>'
+        html: ' <p> Email ' + params.email  + '</p>' + 'Title: ' + params.title  + '</p>' + 'City: ' + params.city  +  '</p>' +'State: ' + params.state  +  '</p>' + 'Position: ' + params.position  +  '</p>' + 'Description: ' + params.description + '</p>' + '<p>' + 'Payroll Position: ' + params.payrollPosition + '</p>'
     }
     
     //send email
@@ -87,6 +87,7 @@ router.post('/sendJob', (req,resp) => {
         }
        
         else{
+            console.log(info);
             resp.status(200).send("Job posting was sent to email!");            
         }
     });

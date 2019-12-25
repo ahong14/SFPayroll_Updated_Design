@@ -8,13 +8,12 @@ class GalleryItem extends Component {
 
   render() {
     return (
-      <div className = "col-md-4">
-        <div className = "thumbnail">
-          <a href = {this.props.imageSrc} target = "_blank">
-            <img className = "galleryImage" src = {this.props.imageSrc} alt="Gallery Image"/>
-
+      <div className="col-md-4">
+        <div className="thumbnail">
+          <a href={this.props.imageSrc} rel="noopener noreferrer" target="_blank">
+            <img className="galleryImage" src={this.props.imageSrc} alt="Gallery Image"/>
             <div className="caption">
-              <p className = "text-center"> <strong> {this.props.caption} </strong> </p>
+              <p className="text-center"> <strong> {this.props.caption} </strong> </p>
             </div>
             
           </a>

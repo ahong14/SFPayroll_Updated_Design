@@ -6,8 +6,8 @@ import LearningResources from '../Resources/LearningResources/LearningResources'
 class Resources extends Component {
     render(){
         return(
-            <div className = "container-fluid" id = "resources_container">
-                <h2 className = "section_header text-center"> Resources </h2>
+            <div className="container-fluid" id = "resources_container">
+                <h2 className="section_header text-center"> Resources </h2>
                 <StudyGroupResources/>
                 <LearningResources/>
             </div>

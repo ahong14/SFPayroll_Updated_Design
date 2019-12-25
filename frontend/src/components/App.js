@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Home from '../components/Home/Home';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import NavBar from '../components/NavBar/NavBar';
 import Footer from '../components/Footer/Footer';
 import Events from '../components/Events/Events';
@@ -13,26 +13,25 @@ import Gallery from '../components/Gallery/Gallery';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 class App extends Component {
-
   render() {
     return (
-      <Router>
-              <ScrollToTop>
-                <div>
-                  <NavBar/>
-                  <Route exact path = "/" component = {Home}/> 
-                  <Route exact path = "/Home" component = {Home}/>
-                  <Route exact path = "/Events" component = {Events}/>
-                  <Route exact path = "/AboutUs" component = {AboutUs}/>
-                  <Route exact path = "/Membership" component = {Membership}/>
-                  <Route exact path = "/Resources"  component = {Resources}/> 
-                  <Route exact path = "/Careers" component = {Careers}/>
-                  <Route exact path = "/ContactUs" component = {ContactUs}/>
-                  <Route exact path = "/Gallery" component = {Gallery}/>
-                  <Footer/>
-                </div>
-              </ScrollToTop>
-      </Router>
+      <div>
+        <ScrollToTop>
+          <NavBar/>
+          <Switch>
+            <Route exact path = "/" component = {Home}/> 
+            <Route exact path = "/Home" component = {Home}/>
+            <Route exact path = "/Events" component = {Events}/>
+            <Route exact path = "/AboutUs" component = {AboutUs}/>
+            <Route exact path = "/Membership" component = {Membership}/>
+            <Route exact path = "/Resources"  component = {Resources}/> 
+            <Route exact path = "/Careers" component = {Careers}/>
+            <Route exact path = "/ContactUs" component = {ContactUs}/>
+            <Route exact path = "/Gallery" component = {Gallery}/>
+          </Switch>
+          <Footer/>
+        </ScrollToTop>
+      </div>
     );
   }
 }
