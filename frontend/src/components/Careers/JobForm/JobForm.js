@@ -12,7 +12,18 @@ class JobForm extends Component{
             cityInput: "",
             stateInput: "",
             descriptionInput:"",
-            selectInput: "Payroll Position- Full Time"
+            selectInput: "Payroll Position- Full Time",
+            uploadedFile: {},
+            disableForms: false
+        }
+    }
+
+    handleFileUpload = (event) => {
+        if(event.target.files){
+            this.setState({
+                uploadedFile: event.target.files[0],
+                disableForms: true
+            });
         }
     }
 
@@ -46,29 +57,43 @@ class JobForm extends Component{
 
     render(){
         return(
-            <div className="form-group" id = "job_form_input">
-                <form>
-                    <label htmlFor="email" className = "font-weight-bold">Email:</label>
-                    <input type="text" className="form-control" id="email" onChange={(event) => {this.setState({emailInput: event.target.value})}}/>
-                    <label htmlFor="title" className = "font-weight-bold">Title of Position:</label>
-                    <input type="text" className="form-control" id="position" onChange={(event) => {this.setState({positionInput: event.target.value})}}/>
-                    <label htmlFor="city" className = "font-weight-bold">City: </label>
-                    <input type="text" className="form-control" id="city" onChange={(event) => {this.setState({cityInput: event.target.value})}}/>
-                    <label htmlFor="state" className = "font-weight-bold">State: </label>
-                    <input type="text" className="form-control" id="state" onChange={(event) => {this.setState({stateInput: event.target.value})}}/>
-                    <label htmlFor="position" className = "font-weight-bold">Select Position:</label>
-                    <select className="form-control" id="payroll_position" onChange={(event) => {this.setState({selectInput: event.target.value})}}>
-                        <option>Payroll Position- Full Time </option>
-                        <option>Payroll Position- Part Time</option>
-                        <option>Payroll Position- Temp</option>
-                        <option>Non Payroll Position - Full Time </option>
-                        <option>Non Payroll Position - Part Time </option>
-                        <option>Non Payroll Position - Temp </option>
-                    </select>
-                    <label htmlFor="description" className = "font-weight-bold">Job Description:</label>
-                    <textarea className="form-control" rows="5" id="job_description" onChange={(event) => {this.setState({descriptionInput: event.target.value})}}></textarea>
-                </form>
-                <SubmitButton click={this.sendJob}/>
+            <div className="job_container">
+                <div id="job_upload">
+                    <h4>  <span className="font-weight-bold"> Option 1 </span> : Upload PDF/Text file regarding job information </h4>
+                    <input type="file" onChange={this.handleFileUpload}/>
+                    <div id="file_submit_button">
+                        <button type="button" className="btn btn-outlined btn-primary" >  Submit </button>
+                    </div>
+                </div>
+
+                <div id="job_form_option2_container">
+                    <h4> <span className="font-weight-bold"> Option 2 </span>  : Fill out following form </h4>
+                </div>
+
+                <div className="form-group" id = "job_form_input">
+                    <form>
+                        <label htmlFor="email" className = "font-weight-bold">Email:</label>
+                        <input disabled={this.state.disableForms} type="text" className="form-control" id="email" onChange={(event) => {this.setState({emailInput: event.target.value})}}/>
+                        <label htmlFor="title" className = "font-weight-bold">Title of Position:</label>
+                        <input disabled={this.state.disableForms} type="text" className="form-control" id="position" onChange={(event) => {this.setState({positionInput: event.target.value})}}/>
+                        <label htmlFor="city" className = "font-weight-bold">City: </label>
+                        <input disabled={this.state.disableForms} type="text" className="form-control" id="city" onChange={(event) => {this.setState({cityInput: event.target.value})}}/>
+                        <label htmlFor="state" className = "font-weight-bold">State: </label>
+                        <input disabled={this.state.disableForms} type="text" className="form-control" id="state" onChange={(event) => {this.setState({stateInput: event.target.value})}}/>
+                        <label htmlFor="position" className = "font-weight-bold">Select Position:</label>
+                        <select className="form-control" id="payroll_position" onChange={(event) => {this.setState({selectInput: event.target.value})}}>
+                            <option>Payroll Position- Full Time </option>
+                            <option>Payroll Position- Part Time</option>
+                            <option>Payroll Position- Temp</option>
+                            <option>Non Payroll Position - Full Time </option>
+                            <option>Non Payroll Position - Part Time </option>
+                            <option>Non Payroll Position - Temp </option>
+                        </select>
+                        <label htmlFor="description" className = "font-weight-bold">Job Description:</label>
+                        <textarea disabled={this.state.disableForms} className="form-control" rows="5" id="job_description" onChange={(event) => {this.setState({descriptionInput: event.target.value})}}></textarea>
+                    </form>
+                    <SubmitButton click={this.sendJob}/>
+                </div>
             </div>
         );
     }
