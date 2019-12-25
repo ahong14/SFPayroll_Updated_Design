@@ -4,6 +4,8 @@
     align-self: center;
     text-align: center;
     font-style: italic;
+    height: 450px;
+    overflow: auto;
     width: 100%;
 }
 
