@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors')
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 require('dotenv').config();
 
 //mongoose, connect to mongoDB on mLab
@@ -20,6 +21,9 @@ app.use(bodyParser.json());
 
 //use cors;
 app.use(cors());
+
+//morgan loggin
+app.use(morgan('combined'));
 
 //serve react files
 app.use(express.static(path.join(__dirname, '/../frontend/build')));
