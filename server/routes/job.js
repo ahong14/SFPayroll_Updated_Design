@@ -24,7 +24,7 @@ router.post('/sendJob', (req,resp) => {
         from: process.env.EMAIL_USER, // sender address
         to: process.env.EMAIL_RECEIVER, // list of receivers
         subject: 'Job Posting', // Subject line
-        html: ' <p> Email ' + params.email  + '</p>' + 'Title: ' + params.title  + '</p>' + 'City: ' + params.city  +  '</p>' +'State: ' + params.state  +  '</p>' + 'Position: ' + params.position  +  '</p>' + 'Description: ' + params.description + '</p>' + '<p>' + 'Payroll Position: ' + params.payrollPosition + '</p>'
+        html: ' <p> Email ' + params.email  + '</p>' + ' <p> Company '  + params.company + '</p>' +  'Title: ' + params.title  + '</p>' + 'City: ' + params.city  +  '</p>' +'State: ' + params.state  +  '</p>' + 'Position: ' + params.position  +  '</p>' + 'Description: ' + params.description + '</p>' + '<p>' + 'Payroll Position: ' + params.payrollPosition + '</p>'
     }
     
     //send email
