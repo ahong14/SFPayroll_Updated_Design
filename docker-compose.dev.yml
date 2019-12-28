@@ -25,6 +25,15 @@ services:
     depends_on:
       - node_server
 
+  redis:
+    image: redis
+    ports: 
+      - "6379:6379"
+    container_name: redis
+    restart: unless-stopped
+    depends_on:
+      - node_server
+
   nginx:
     build:
       context: ./nginx_local

@@ -33,7 +33,7 @@ class JobForm extends Component{
     //function to send email with inputted params
     sendJob = () => {
         if(this.state.emailInput.trim() === '' || this.state.positionInput.trim() === '' || this.state.cityInput.trim() === '' || this.state.stateInput.trim() === '' || this.state.descriptionInput.trim() === ''){
-            alert("Please do not leave job posting inputs blank");
+            alert("One or more fields empty");
         }
 
         else if(validator.isEmail(this.state.emailInput) === false){
@@ -110,7 +110,7 @@ class JobForm extends Component{
 
                 case "Description":
                     return(
-                        <div>
+                        <div className="job_description_container">
                             <span className="font-weight-bold"> {title} </span>: {this.state.descriptionInput}
                         </div>
                     )
@@ -164,28 +164,26 @@ class JobForm extends Component{
                         <textarea disabled={this.state.disableForms} className="form-control" rows="5" id="job_description" onChange={(event) => {this.setState({descriptionInput: event.target.value})}}></textarea>
                     </form>
 
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    <button id="submit-job-button" type="button" className="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">
                         Submit Job Posting
                     </button>
-                    {/* <SubmitButton click={this.sendJob}/> */}
                 </div>
 
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel"> Job Posting </h4>
+                <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h4 className="modal-title" id="job-posting-header"> Job Posting </h4>
                             </div>
 
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 { formConfirmation }
                             </div>
 
-                            <div class="modal-footer">
-                                <h6> Job Posting Information Correct? </h6>
+                            <div className="modal-footer">
+                                <h6 className="job-posting-footer-header"> Job Posting Information Correct? </h6>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button onClick={this.sendJob} type="button" class="btn btn-primary"> Submit Posting </button>
                             </div>
                         </div>
                     </div>

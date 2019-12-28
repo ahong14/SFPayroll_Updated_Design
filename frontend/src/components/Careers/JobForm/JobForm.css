@@ -28,3 +28,16 @@
     margin: auto;
     padding: 5px;
 }
+
+.job_description_container{
+    height: 100px;
+    overflow: auto;
+}
+ 
+.job-posting-footer-header{
+    padding-left: 0px;
+}
+
+#submit-job-button{
+    margin: 5px;
+}
