@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import '../../Careers/JobForm/JobForm.css';
 import axios from 'axios';
-import SubmitButton from '../../SubmitButton/SubmitButton';
 import validator from 'validator';
 
 class JobForm extends Component{
