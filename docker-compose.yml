@@ -10,6 +10,16 @@ services:
       - "4000:4000"
     container_name: node_server
     restart: unless-stopped
+
+  #redis cache
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    container_name: redis
+    restart: unless-stopped
+    depends_on:
+      - node_server
   
   #nginx web server
   nginx:
