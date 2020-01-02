@@ -169,7 +169,7 @@ router.post('/sendJob', upload.single('jobPosting'), (req,res) => {
         pdfWriteSteam.on('finish', () => {
             //generate new posting record as db entry
             let newPosition = {};
-            let pdfLink = process.env.HOST + '/api/pdfs/?pdfName=' + pdfName;
+            let pdfLink = '/api/pdfs/?pdfName=' + pdfName;
             let positionDate = new Date();
             let sortDate = new Date();
             positionDate = moment(positionDate).tz('America/Los_Angeles').format('MM/DD/YYYY');
