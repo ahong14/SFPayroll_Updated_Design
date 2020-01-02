@@ -8,7 +8,7 @@ require('dotenv').config();
 
 //mongoose, connect to mongoDB on mLab
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MLAB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on('error', function(error) {
     console.error('Database connection error:', error);
 });

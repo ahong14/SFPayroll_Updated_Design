@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
           //update redis cache
           //set key mapping events to db results
           //set expiration based on seconds
-          redisClient.setex('events', 300, JSON.stringify(events));
+          redisClient.setex('events', 60, JSON.stringify(events));
           return res.status(200).json(events);
         })
         .catch(err => {

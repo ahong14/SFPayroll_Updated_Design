@@ -14,17 +14,17 @@ class JobForm extends Component{
             stateInput: "",
             descriptionInput:"",
             selectInput: "Payroll Position- Full Time",
-            formInputTitles: ["Email", "Company", "City", "State", "Position", "Selected", "Description"],
+            formInputTitles: ["Email", "Company", "City", "State", "Position", "Selected", "Description", "PDF"],
             uploadedFile: {},
             disableForms: false
         }
     }
 
+    //function to handle file uploaded
     handleFileUpload = (event) => {
         if(event.target.files){
             this.setState({
                 uploadedFile: event.target.files[0],
-                disableForms: true
             });
         }
     }
@@ -41,7 +41,17 @@ class JobForm extends Component{
 
         else{    
             const apiURL = '/api/job/sendJob';
-            axios.post(apiURL,{
+            const fileData = new FormData();
+            fileData.append('jobPosting', this.state.uploadedFile);
+
+            //convert axios params to send form data and accept json
+            const requestParams = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Accept': 'application/json'
+                },
+
+                //data for body of requests, post request
                 params: {
                     email: this.state.emailInput,
                     company: this.state.companyInput,
@@ -52,13 +62,15 @@ class JobForm extends Component{
                     description: this.state.descriptionInput,
                     payrollPosition: this.state.selectInput
                 }
-            })
-            .then(resp => {
-                alert(resp.data);
-            })
-            .catch(err => {
-                alert(err);
-            })
+            }
+
+            axios.post(apiURL, fileData, requestParams)
+                .then(res => {
+                    alert(res.data);
+                })
+                .catch(err => {
+                    alert(err);
+                })
         }
     }
 
@@ -113,6 +125,13 @@ class JobForm extends Component{
                             <span className="font-weight-bold"> {title} </span>: {this.state.descriptionInput}
                         </div>
                     )
+                
+                case "PDF":
+                    return(
+                        <div className="job_description_container">
+                            <span className="font-weight-bold"> {title} </span>: {this.state.uploadedFile.name ? this.state.uploadedFile.name : "No PDF uploaded"} 
+                        </div>
+                    )
 
                 default:
                     return;
@@ -121,18 +140,6 @@ class JobForm extends Component{
 
         return(
             <div className="job_container">
-                <div id="job_upload">
-                    <h4>  <span className="font-weight-bold"> Option 1 </span> : Upload PDF/Text file regarding job information </h4>
-                    <input type="file" onChange={this.handleFileUpload}/>
-                    <div id="file_submit_button">
-                        <button type="button" className="btn btn-outlined btn-primary" >  Submit </button>
-                    </div>
-                </div>
-
-                <div id="job_form_option2_container">
-                    <h4> <span className="font-weight-bold"> Option 2 </span>  : Fill out following form </h4>
-                </div>
-
                 <div className="form-group" id = "job_form_input">
                     <form>
                         <label htmlFor="email" className = "font-weight-bold"> Email: </label>
@@ -159,8 +166,12 @@ class JobForm extends Component{
                             <option>Non Payroll Position - Part Time </option>
                             <option>Non Payroll Position - Temp </option>
                         </select>
-                        <label htmlFor="description" className = "font-weight-bold">Job Description:</label>
+                        <label htmlFor="description" className="font-weight-bold">Job Description:</label>
                         <textarea disabled={this.state.disableForms} className="form-control" rows="5" id="job_description" onChange={(event) => {this.setState({descriptionInput: event.target.value})}}></textarea>
+                        <label htmlFor="file" className="font-weight-bold"> Upload PDF (Optional): </label>
+                        <div>
+                            <input type="file" name='jobPosting' onChange={this.handleFileUpload}/>
+                        </div>
                     </form>
 
                     <button id="submit-job-button" type="button" className="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">

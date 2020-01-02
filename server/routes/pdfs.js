@@ -18,13 +18,12 @@ router.get('/', (req, res) => {
     let fileLocation = path.join(__dirname, '/../pdfs/' + pdfName);
 
     if(fs.existsSync(fileLocation)){
-        return res.sendFile(path.join(__dirname, '/../pdfs/' + pdfName));
+        return res.sendfile(path.join(__dirname, '/../pdfs/' + pdfName));
     }
 
     else{
         return res.status(500).send("Error: PDF does not exist");
     }
-
 })
 
 //send back specific pdf names

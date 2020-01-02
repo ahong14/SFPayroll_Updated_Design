@@ -14,17 +14,19 @@ router.get('/getPostings', (req,res) => {
             })
         }
 
+        //cache hit
         else if(results){
             let postingsJSON = JSON.parse(results);
             return res.status(200).json(postingsJSON);
         }
 
+        //cache miss, query db
         else{
             Positions.find({},null,{sort:{'sortDate':-1}})
                 .then(positions => {
                     //update cache with postings results
                     //set expiration
-                    redisClient.setex('postings', 300, JSON.stringify(positions))
+                    redisClient.setex('postings', 20, JSON.stringify(positions))
                     return res.status(200).send(positions);
                 })
                 .catch(err => {
