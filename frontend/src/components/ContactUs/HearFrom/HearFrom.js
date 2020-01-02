@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../../ContactUs/HearFrom/HearFrom.css';
 import SubmitButton from '../../SubmitButton/SubmitButton';
 import axios from 'axios';
+import validator from 'validator';
 
 class HearFrom extends Component{
     constructor(props){
@@ -14,11 +15,15 @@ class HearFrom extends Component{
     }
 
     //send contact info to email
-    sendContact = () =>{
+    sendContact = () => {
         const apiURL = '/api/contact/contactUs';
         
         if(this.state.name.trim() === '' || this.state.email.trim() === '' || this.state.message.trim() === ''){
             alert("One or more fields empty");
+        }
+
+        else if(validator.isEmail(this.state.email) === false){
+            alert("Invalid email inserted")
         }
 
         else{
@@ -47,7 +52,7 @@ class HearFrom extends Component{
                 <input type="text" className="form-control" id="name" onChange={(event) => {this.setState({name: event.target.value})}}/>
 
                  <label htmlFor="usr" className="font-weight-bold"> Email: </label>
-                <input type="text" className="form-control" id="email" onChange={(event) => {this.setState({email: event.target.value})}}/> 
+                <input type="email" className="form-control" id="email" onChange={(event) => {this.setState({email: event.target.value})}}/> 
 
                 <label htmlFor="usr" className="font-weight-bold">Message:</label>
                 <textarea className="form-control" rows="5" id="message" onChange={(event) => {this.setState({message: event.target.value})}}></textarea>

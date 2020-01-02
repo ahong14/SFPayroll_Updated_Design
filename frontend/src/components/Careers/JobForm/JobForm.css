@@ -1,3 +1,21 @@
+.job_container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+#job_upload{
+    align-self: center;
+}
+
+#file_submit_button{
+    padding: 5px;
+}
+
+#job_form_option2_container{
+    align-self: center;
+}
+
 #job_form{
     display:flex;
     flex-direction: column;
@@ -9,4 +27,18 @@
     align-self: center;
     margin: auto;
     padding: 5px;
+}
+
+.job_description_container{
+    height: 100px;
+    overflow: auto;
+}
+ 
+.job-posting-footer-header{
+    padding-left: 0px;
+}
+
+#submit-job-button{
+    padding-top: 5px;
+    margin-top: 5px;
 }

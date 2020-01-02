@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  node_server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./server:/app/src/server
+    container_name: node_server
+    restart: unless-stopped
+    
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app/src/frontend
+    container_name: frontend
+    restart: unless-stopped
+    depends_on:
+      - node_server
+
+  redis:
+    image: redis
+    ports: 
+      - "6379:6379"
+    container_name: redis
+    restart: unless-stopped
+    depends_on:
+      - node_server
+
+  nginx:
+    build:
+      context: ./nginx_local
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    container_name: nginx_local
+    restart: unless-stopped
+    depends_on:
+      - node_server
+      - frontend

@@ -46,6 +46,10 @@
     height: 100%;
 }
 
+#eventPosts{
+    height: 400px;
+    overflow: auto;
+}
 
 
 /* .eventPosts{

@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/ahong14/SFPayroll_Updated_Design#readme",
   "dependencies": {
-    "concurrently": "^5.0.1"
+    "concurrently": "^5.0.2"
   }
 }

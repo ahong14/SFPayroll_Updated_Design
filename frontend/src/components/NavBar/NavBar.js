@@ -62,7 +62,7 @@ class NavBar extends Component{
                        <NavElement section="Resources"/>
                        <NavElement section="Careers"/>
                        <NavElement section="Contact Us"/>
-                       <NavElement sectio ="Gallery"/>
+                       <NavElement section="Gallery"/>
                    </ul>
                </nav>
             );
