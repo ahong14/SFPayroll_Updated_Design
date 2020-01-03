@@ -1,6 +1,7 @@
 # SFPayroll_Updated_Design
 ## Redesigned SF Payroll Website.
 ### Link: www.sfpayroll.org
+#### Homepage Banner Image Source: https://www.pexels.com/photo/architecture-bay-bridge-construction-417236/
 
 ## Description:
 Full-stack web application that shows information, events, career
