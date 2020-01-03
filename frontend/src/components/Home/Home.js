@@ -10,6 +10,8 @@ import apa from '../../photos/american_payroll_association_logo.png';
 import gpmi from '../../photos/GPMILogo.png';
 import cpc from '../../photos/cpclogo.png';
 
+//banner image source:
+//https://www.pexels.com/photo/architecture-bay-bridge-construction-417236/
 //Home page component
 class Home extends Component {
     render(){

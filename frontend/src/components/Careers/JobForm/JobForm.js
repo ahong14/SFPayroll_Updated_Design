@@ -16,7 +16,8 @@ class JobForm extends Component{
             selectInput: "Payroll Position- Full Time",
             formInputTitles: ["Email", "Company", "City", "State", "Position", "Selected", "Description", "PDF"],
             uploadedFile: {},
-            disableForms: false
+            disableForms: false,
+            showLoading: false
         }
     }
 
@@ -39,38 +40,46 @@ class JobForm extends Component{
             alert("Invalid email inserted");
         }
 
-        else{    
-            const apiURL = '/api/job/sendJob';
-            const fileData = new FormData();
-            fileData.append('jobPosting', this.state.uploadedFile);
-
-            //convert axios params to send form data and accept json
-            const requestParams = {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'Accept': 'application/json'
-                },
-
-                //data for body of requests, post request
-                params: {
-                    email: this.state.emailInput,
-                    company: this.state.companyInput,
-                    title: this.state.positionInput,
-                    city: this.state.cityInput,
-                    state: this.state.stateInput,
-                    position: this.state.positionInput,
-                    description: this.state.descriptionInput,
-                    payrollPosition: this.state.selectInput
+        else{
+            this.setState({
+                showLoading: true
+            }, () => {
+                const apiURL = '/api/job/sendJob';
+                const fileData = new FormData();
+                fileData.append('jobPosting', this.state.uploadedFile);
+    
+                //convert axios params to send form data and accept json
+                const requestParams = {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': 'application/json'
+                    },
+    
+                    //data for body of requests, post request
+                    params: {
+                        email: this.state.emailInput,
+                        company: this.state.companyInput,
+                        title: this.state.positionInput,
+                        city: this.state.cityInput,
+                        state: this.state.stateInput,
+                        position: this.state.positionInput,
+                        description: this.state.descriptionInput,
+                        payrollPosition: this.state.selectInput
+                    }
                 }
-            }
-
-            axios.post(apiURL, fileData, requestParams)
-                .then(res => {
-                    alert(res.data);
-                })
-                .catch(err => {
-                    alert(err);
-                })
+    
+                axios.post(apiURL, fileData, requestParams)
+                    .then(res => {
+                        alert(res.data);
+                        this.setState({
+                            showLoading: false
+                        })
+                    })
+                    .catch(err => {
+                        alert(err);
+                    })
+            })    
+            
         }
     }
 
@@ -193,7 +202,7 @@ class JobForm extends Component{
                             <div className="modal-footer">
                                 <h6 className="job-posting-footer-header"> Job Posting Information Correct? </h6>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button onClick={this.sendJob} type="button" class="btn btn-primary"> Submit Posting </button>
+                                <button onClick={this.sendJob} type="button" class="btn btn-primary"> {this.state.showLoading ? "Posting..." : "Submit Posting" } </button>
                             </div>
                         </div>
                     </div>
