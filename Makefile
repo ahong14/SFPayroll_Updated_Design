@@ -8,7 +8,7 @@ stop-dev:
 
 #start containers in prod mode
 start-production:
-	docker-compose -f docker-compose.yml up -d --build --remove-orphans
+	docker-compose -f docker-compose.yml up -d --build --remove-orphans --scale node_server=3
 
 stop-production:
 	docker-compose -f docker-compose.yml down --remove-orphans

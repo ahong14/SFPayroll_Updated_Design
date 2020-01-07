@@ -7,8 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "4000:4000"
-    container_name: node_server
+      - "4001-4003:4000"
     restart: always
     depends_on:
       - redis
