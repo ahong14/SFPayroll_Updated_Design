@@ -9,7 +9,9 @@ services:
     ports:
       - "4000:4000"
     container_name: node_server
-    restart: unless-stopped
+    restart: always
+    depends_on:
+      - redis
 
   #redis cache
   redis:
@@ -17,9 +19,7 @@ services:
     ports:
       - "6379:6379"
     container_name: redis
-    restart: unless-stopped
-    depends_on:
-      - node_server
+    restart: always
   
   #nginx web server
   nginx:
@@ -33,6 +33,6 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt
       - /etc/ssl/certs:/etc/ssl/certs
     container_name: nginx
-    restart: unless-stopped
+    restart: always
     depends_on:
       - node_server  
