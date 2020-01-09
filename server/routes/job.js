@@ -60,7 +60,7 @@ router.post('/sendJob', upload.single('jobPosting'), (req,res) => {
         //use file's original name, if no original name construct filename
         req.file.originalname ? pdfName = req.file.originalname : pdfName = params.title + "_" + params.company + ".pdf";
 
-        let pdfLink = process.env.HOST + '/api/pdfs/?pdfName=' + pdfName;
+        let pdfLink = '/api/pdfs/?pdfName=' + pdfName;
         let positionDate = new Date();
         let sortDate = new Date();
         positionDate = moment(positionDate).tz('America/Los_Angeles').format('MM/DD/YYYY');
