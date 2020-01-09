@@ -22,4 +22,10 @@ RUN npm install nodemon -g
 
 EXPOSE 4000
 
+EXPOSE 4001
+
+EXPOSE 4002
+
+EXPOSE 4003
+
 CMD ["nodemon", "server.js"]

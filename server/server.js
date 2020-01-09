@@ -53,4 +53,3 @@ if(process.env.production){
 //choose port based on environment
 const PORT = process.env.PORT || 4000;
 const server = app.listen(PORT);
-server.timeout = 120000;
