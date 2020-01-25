@@ -11,6 +11,8 @@ import ContactUs from '../components/ContactUs/ContactUs';
 import AboutUs from '../components/AboutUs/AboutUs';
 import Gallery from '../components/Gallery/Gallery';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
+import AdminLogin from '../components/AdminLogin/AdminLogin';
+import AdminSignup from '../components/AdminSignup/AdminSignup';
 
 class App extends Component {
   render() {
@@ -19,15 +21,17 @@ class App extends Component {
         <ScrollToTop>
           <NavBar/>
           <Switch>
-            <Route exact path = "/" component = {Home}/> 
-            <Route exact path = "/Home" component = {Home}/>
-            <Route exact path = "/Events" component = {Events}/>
-            <Route exact path = "/AboutUs" component = {AboutUs}/>
-            <Route exact path = "/Membership" component = {Membership}/>
-            <Route exact path = "/Resources"  component = {Resources}/> 
-            <Route exact path = "/Careers" component = {Careers}/>
-            <Route exact path = "/ContactUs" component = {ContactUs}/>
-            <Route exact path = "/Gallery" component = {Gallery}/>
+            <Route exact path="/" component={Home}/> 
+            <Route exact path="/Home" component={Home}/>
+            <Route exact path="/Events" component={Events}/>
+            <Route exact path="/AboutUs" component={AboutUs}/>
+            <Route exact path="/Membership" component={Membership}/>
+            <Route exact path="/Resources"  component={Resources}/> 
+            <Route exact path="/Careers" component={Careers}/>
+            <Route exact path="/ContactUs" component={ContactUs}/>
+            <Route exact path="/Gallery" component={Gallery}/>
+            <Route exact path="/Admin" component={AdminLogin}/>
+            <Route exact path="/AdminSignup" component={AdminSignup}/>
           </Switch>
           <Footer/>
         </ScrollToTop>

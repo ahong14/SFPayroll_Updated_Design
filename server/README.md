@@ -7,7 +7,7 @@ Used Mongoose.js to connect backend and mLab.
 ## /contact/contactUs: send contact information and message
 Params: 
     Name:
-    Email:
+    EmailDe
     Message:
 
 ## /events: Retrieve events from database

@@ -11,7 +11,6 @@ import newLogo from '../../photos/sfpayroll-red.png';
 //renders standard navigation bar or mobile depending on window width
 
 class NavBar extends Component{
-
     //initialize props, state, and bind functions
     constructor(props){
         super(props);
@@ -63,6 +62,7 @@ class NavBar extends Component{
                        <NavElement section="Careers"/>
                        <NavElement section="Contact Us"/>
                        <NavElement section="Gallery"/>
+                       <NavElement section="Admin"/>
                    </ul>
                </nav>
             );
