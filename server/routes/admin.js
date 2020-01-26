@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Admin = require('../models/Admin');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 
 //create new admin
@@ -113,9 +114,20 @@ router.post('/login', (req, res) => {
 
                 //sign jwt for successful login
                 else{
+                    let tokenPayload = {
+                        firstName: result.firstName,
+                        lastName: result.lastName,
+                        userName: result.userName
+                    };
+
+                    let token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
+                        expiresIn: 3600
+                    });
+
                     return res.status(200).json({
                         success: true,
-                        message: "Login successful"
+                        message: "Login successful",
+                        token: token
                     })
                 }
             })

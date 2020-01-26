@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './AdminLogin.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 class AdminLogin extends Component{
     constructor(props){
@@ -33,7 +34,12 @@ class AdminLogin extends Component{
                 }
             })
             .then(res => {
-                console.log(res);
+                if(res.data.success == true){
+                    alert(res.data.message);
+                    //extract JWT and assign as cookie
+                    let newToken = res.data.token;
+                    Cookies.set('authToken', newToken);
+                }
             })
             .catch(err => {
                 alert(err.response.data.message);
