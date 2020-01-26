@@ -7,10 +7,24 @@ class EditEvents extends Component{
     constructor(props){
         super(props);
         this.state = {
-            events: []
+            events: [],
+            event: '',
+            date: '',
+            time: '',
+            speakers: '',
+            Location: '',
+            registration: '',
         }
     }
 
+    //handle event forms
+    handleCreateEvent = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    //submit new event
     createNewEvent = () => {
 
     }
@@ -34,11 +48,11 @@ class EditEvents extends Component{
                 <EditEventItem
                     key={event._id}
                     id={event.event.toLowerCase().replace(/ /g,'')}
-                    eventTitle={event.event}
+                    event={event.event}
                     date={event.date}
                     time={event.time}
                     speakers={event.speakers}
-                    location={event.Location}
+                    Location={event.Location}
                     registration={event.registration}
                 />
             )
@@ -49,7 +63,44 @@ class EditEvents extends Component{
                 <div id="editEventsContainer">
                     <div id="createEvent">
                         <h3> Edit Events </h3>
-                        <button type="button" className="btn btn-success" onClick={this.createNewEvent}> Create New Event </button>
+                        <button type="button" className="btn btn-success" data-toggle="modal" data-target="#create"> Create New Event </button>
+                        <div className="modal fade" id="create">
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h4 className="modal-title"> Create Event </h4>
+                                        <button className="form-control" type="button" className="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <div className="modal-body">
+                                        <form>
+                                            <label> Event Title </label>
+                                            <input name="event" onChange={this.handleCreateEvent} className="form-control" placeholder="Event Title" type="text"/>
+
+                                            <label> Date </label>
+                                            <input name="date" onChange={this.handleCreateEvent} className="form-control" placeholder="Date" type="text"/>
+
+                                            <label> Time </label>
+                                            <input name="time" onChange={this.handleCreateEvent} className="form-control" placeholder="Time" type="text"/>
+
+                                            <label> Speakers</label>
+                                            <input name="speakers" onChange={this.handleCreateEvent} className="form-control" placeholder="Speakers" type="text"/>
+
+                                            <label> Location </label>
+                                            <input name="Location" onChange={this.handleCreateEvent} className="form-control" placeholder="Location" type="text"/>
+
+                                            <label> Registration </label>
+                                            <input name="registration" onChange={this.handleCreateEvent} className="form-control" placeholder="Registration Link" type="text"/>
+                                        </form>
+                                    </div>
+
+                                    <div className="modal-footer">
+                                        <button className="form-control" type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button className="form-control" type="button" className="btn btn-success" onClick={this.createNewEvent}> Create Event </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     { editEvents }
                 </div>
