@@ -58,7 +58,7 @@ class NavBar extends Component{
                        <NavElement section={this.props.login == true ? "Edit Careers" : "Careers"}/>
                        <NavElement section="Contact Us"/>
                        <NavElement section="Gallery"/>
-                       <NavElement section="Admin"/>
+                       <NavElement section={this.props.login == true ? "Logout" : "Admin"}/>
                    </ul>
                </nav>
             );

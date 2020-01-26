@@ -32,6 +32,8 @@ class EditEvents extends Component{
         const editEvents = this.state.events.map(event => {
             return(
                 <EditEventItem
+                    key={event._id}
+                    id={event.event.toLowerCase().replace(/ /g,'')}
                     eventTitle={event.event}
                     date={event.date}
                     time={event.time}
