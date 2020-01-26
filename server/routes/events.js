@@ -122,7 +122,7 @@ router.put('/edit', (req, res) => {
     newEventUpdates = {...req.body.newEdits};
     event = req.body.originalEventTitle
   }
-  
+
   //find event with original name
   //replace record with updated fields
   //reference: https://stackoverflow.com/questions/40709695/mongoose-equivalences-for-updateone-and-replaceone-mongo-native-drivers-restfu
@@ -136,7 +136,6 @@ router.put('/edit', (req, res) => {
 
     //update result with new edits
     if(result){
-      console.log(result);
       return res.status(200).json({
         success: true,
         message: "Event updated successfully."
@@ -150,6 +149,33 @@ router.put('/edit', (req, res) => {
         message: "Event not found"
       })
     }
+  })
+})
+
+//delete event
+router.delete('/delete', (req, res) => {
+  var event;
+  if(req.query.params){
+    event = req.query.params.event;
+  }
+
+  else if(req.query){
+    event = req.query.event;
+  }
+
+  //find event by event name and delete from database
+  Events.deleteOne({event: event}, (err, result) =>{
+    if(err){
+      return res.status(500).json({
+        success: false,
+        message: "Error with database"
+      })
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Event deleted successfully."
+    })
   })
 })
 

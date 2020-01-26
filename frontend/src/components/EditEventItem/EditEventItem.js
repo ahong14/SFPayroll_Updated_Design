@@ -12,6 +12,7 @@ class EditEventItem extends Component{
             speakers: '',
             Location: '',
             registration: '',
+            deleteClicked: false
         }
     }
 
@@ -22,19 +23,57 @@ class EditEventItem extends Component{
         })
     }
 
+    //function to handle delete clicked
+    handleDeleteClicked = () => {
+        this.setState({
+            deleteClicked: !this.state.deleteClicked
+        });
+    }
+
+    handleCloseDelete = () => {
+        this.setState({
+            deleteClicked: false
+        })
+    }
+
+    //delete event from database
+    deleteEvent = () => {
+        axios.delete('/api/events/delete', {
+            params: {
+                event: this.props.event
+            }
+        })
+        .then(res => {
+            alert(res.data.message);
+        })
+        .catch(err => {
+            alert(err.response.data.message);
+        })
+    }
+
     //submit updates to event
     updateEvent = () => {
-        //get copy of state, check which values have updates
-        let currentEdits= {...this.state};
+        //array to keep track of edit keys
+        let currentEdits = [];
+
         //check if an update was found, avoid request if no changes found
         let updateFound = false;
-        Object.keys(currentEdits).forEach(edit => {
+
+        //return keys not equal to deleteClicked
+        currentEdits = Object.keys(this.state).filter(key => {
+            return key != "deleteClicked";
+        });
+
+        //go through each edit key
+        let editObject = {};
+        currentEdits.forEach(edit => {
             //if value was not modified, use previous values from props
-            if(currentEdits[edit] == ''){
-                currentEdits[edit] = this.props[edit];
+            if(this.state[edit] == ''){
+                editObject[edit] = this.props[edit];
             }
 
             else{
+                editObject[edit] = this.state[edit];
                 updateFound = true;
             }
         });
@@ -49,7 +88,7 @@ class EditEventItem extends Component{
         else{
             axios.put('/api/events/edit', {
                 params: {
-                    newEdits: {...currentEdits},
+                    newEdits: {...editObject},
                     originalEventTitle: this.props.event
                 }
             })
@@ -77,7 +116,7 @@ class EditEventItem extends Component{
 
                 <div className="editEventButtonsContainer">
                     <button className="form-control" type="button" className="btn btn-secondary editButton" data-toggle="modal" data-target={"#" + this.props.id}> Edit </button>
-                    <button className="form-control" type="button" className="btn btn-danger editButton"> Delete </button>
+                    <button className="form-control" type="button" className="btn btn-danger editButton" onClick={this.handleDeleteClicked} data-toggle="modal" data-target={"#" + this.props.id}> Delete </button>
                 </div>
 
                 <div className="modal fade" id={this.props.id}>
@@ -85,39 +124,46 @@ class EditEventItem extends Component{
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h4 className="modal-title"> Edit Event </h4>
-                                <button className="form-control" type="button" className="close" data-dismiss="modal">&times;</button>
+                                <button className="form-control" type="button" className="close" data-dismiss="modal" onClick={this.handleCloseDelete}>&times;</button>
                             </div>
 
                             <div className="modal-body">
-                                <form>
-                                    <label> Event Title </label>
-                                    <input name="event" onChange={this.editEvent} className="form-control" placeholder={this.props.event} type="text"/>
+                                {this.state.deleteClicked != true ? 
+                                        <form>
+                                            <label> Event Title </label>
+                                            <input name="event" onChange={this.editEvent} className="form-control" placeholder={this.props.event} type="text"/>
 
-                                    <label> Date </label>
-                                    <input name="date" onChange={this.editEvent} className="form-control" placeholder={this.props.date} type="text"/>
+                                            <label> Date </label>
+                                            <input name="date" onChange={this.editEvent} className="form-control" placeholder={this.props.date} type="text"/>
 
-                                    <label> Time </label>
-                                    <input name="time" onChange={this.editEvent} className="form-control" placeholder={this.props.time} type="text"/>
+                                            <label> Time </label>
+                                            <input name="time" onChange={this.editEvent} className="form-control" placeholder={this.props.time} type="text"/>
 
-                                    <label> Speakers</label>
-                                    <input name="speakers" onChange={this.editEvent} className="form-control" placeholder={this.props.speakers} type="text"/>
+                                            <label> Speakers</label>
+                                            <input name="speakers" onChange={this.editEvent} className="form-control" placeholder={this.props.speakers} type="text"/>
 
-                                    <label> Location </label>
-                                    <input name="Location" onChange={this.editEvent} className="form-control" placeholder={this.props.Location} type="text"/>
+                                            <label> Location </label>
+                                            <input name="Location" onChange={this.editEvent} className="form-control" placeholder={this.props.Location} type="text"/>
 
-                                    <label> Registration </label>
-                                    <input name="registration" onChange={this.editEvent} className="form-control" placeholder={this.props.registration} type="text"/>
-                                </form>
+                                            <label> Registration </label>
+                                            <input name="registration" onChange={this.editEvent} className="form-control" placeholder={this.props.registration} type="text"/>
+                                        </form>
+                                    :
+                                        <p> Confirm Deleting {this.props.event} ? </p>
+                                }
                             </div>
 
                             <div className="modal-footer">
-                                <button className="form-control" type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
-                                <button className="form-control" type="button" className="btn btn-success" onClick={this.updateEvent}> Submit Edit </button>
+                                <button className="form-control" type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.handleCloseDelete}>Close</button>
+                                {this.state.deleteClicked == false ? 
+                                    <button className="form-control" type="button" className="btn btn-success" onClick={this.updateEvent}> Submit Edit </button>
+                                    :
+                                    <button className="form-control" type="button" className="btn btn-danger" onClick={this.deleteEvent}> Delete Event </button>
+                                }
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         )
     }

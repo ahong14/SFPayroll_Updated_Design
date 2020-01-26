@@ -26,11 +26,35 @@ class EditEvents extends Component{
 
     //submit new event
     createNewEvent = () => {
+        if(this.state.event == ''|| this.state.date == ''|| this.state.time == '' || this.state.speakers == ''|| this.state.Location == ''|| this.state.registration == ''){
+            alert("One or more fields empty");
+            return;
+        }
 
+        else{
+            axios.post('/api/events/createEvent', {
+                params:{
+                    event: this.state.event,
+                    date: this.state.date,
+                    time: this.state.time,
+                    speakers: this.state.speakers,
+                    location: this.state.Location,
+                    registration: this.state.registration
+                }
+            })
+            .then(res => {
+                alert(res.data.message);
+                //make call to get updated events
+                this.getEvents();
+            })
+            .catch(err => {
+                alert(err.response.data.message);
+            })
+        }
     }
 
-    //get list of events from database
-    componentDidMount(){
+    //get events from database
+    getEvents = () => {
         axios.get('/api/events')
             .then(res => {
                 this.setState({
@@ -40,6 +64,11 @@ class EditEvents extends Component{
             .catch(err => {
                 alert(err);
             })
+    }
+
+    //get list of events from database
+    componentDidMount(){
+        this.getEvents();
     }
 
     render(){
@@ -102,7 +131,12 @@ class EditEvents extends Component{
                             </div>
                         </div>
                     </div>
-                    { editEvents }
+
+                    {this.state.events.length > 0 ? 
+                        { editEvents }
+                        :
+                        <p> No events found </p>
+                    }
                 </div>
             </div>
         )
