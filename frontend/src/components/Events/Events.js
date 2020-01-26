@@ -27,6 +27,9 @@ class Events extends Component{
                     events: resp.data
                 })
             })
+            .catch(err => {
+                alert(err);
+            })
     }
 
     render(){

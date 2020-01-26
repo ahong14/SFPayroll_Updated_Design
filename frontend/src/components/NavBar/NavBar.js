@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Route, Link, BrowserRouter as Router} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {FaBars} from 'react-icons/fa';
 import NavElement from '../NavElement/NavElement';
 import '../NavBar/NavBar.css';

@@ -13,6 +13,7 @@ import Gallery from '../components/Gallery/Gallery';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 import AdminLogin from '../components/AdminLogin/AdminLogin';
 import AdminSignup from '../components/AdminSignup/AdminSignup';
+import EditEvents from '../components/EditEvents/EditEvents';
 
 class App extends Component {
   render() {
@@ -32,6 +33,7 @@ class App extends Component {
             <Route exact path="/Gallery" component={Gallery}/>
             <Route exact path="/Admin" component={AdminLogin}/>
             <Route exact path="/AdminSignup" component={AdminSignup}/>
+            <Route exact path="/EditEvents" component={EditEvents}/>
           </Switch>
           <Footer/>
         </ScrollToTop>
