@@ -3,6 +3,8 @@ import './AdminLogin.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { connect } from 'react-redux';
+import actions from '../../actions';
 
 class AdminLogin extends Component{
     constructor(props){
@@ -38,7 +40,10 @@ class AdminLogin extends Component{
                     alert(res.data.message);
                     //extract JWT and assign as cookie
                     let newToken = res.data.token;
+                    let userPayload = res.data.payload;
                     Cookies.set('authToken', newToken);
+                    //update redux store, retrieve user info payload
+                    this.props.updateLogin(userPayload.userName, userPayload.firstName, userPayload.lastName);
                 }
             })
             .catch(err => {
@@ -75,4 +80,17 @@ class AdminLogin extends Component{
     }
 }
 
-export default AdminLogin;
+const mapDispatchToProps = dispatch => {
+    return{
+        updateLogin: (userName, firstName, lastName) => {
+            dispatch({
+                type: actions.UPDATE_LOGIN,
+                userName: userName,
+                firstName: firstName,
+                lastName: lastName
+            })
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(AdminLogin);

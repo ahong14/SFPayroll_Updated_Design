@@ -5,6 +5,7 @@ import NavElement from '../NavElement/NavElement';
 import '../NavBar/NavBar.css';
 import navbarLogo from '../../photos/sf_payroll_logo.gif';
 import newLogo from '../../photos/sfpayroll-red.png';
+import { connect } from 'react-redux'; 
 
 //Navigation Bar Component
 //Consits of NavElement components
@@ -14,27 +15,20 @@ class NavBar extends Component{
     //initialize props, state, and bind functions
     constructor(props){
         super(props);
-        this.state = {width: 0};// keep track of width of screen
-        this.updateWindowSize = this.updateWindowSize.bind(this);
-        this.showSideNav = this.showSideNav.bind(this);
-        this.closeSideNav = this.closeSideNav.bind(this);
-    }
-
-    //update window size based on device width
-    updateWindowSize(){
-        this.setState({
-            width: window.innerWidth
-        })
+        // keep track of width of screen
+        this.state = {
+            width: 0
+        };
     }
 
     //toggle sidebar for mobile navbar, show
-    showSideNav(){
+    showSideNav = () => {
         this.sideBar.style.width = "200px";
         this.sideBar.style.display = "block";
     }
 
     //toggle sidebar for mobile navbar, close
-    closeSideNav(){
+    closeSideNav = () => {
         this.sideBar.style.width = "0px";
         this.sideBar.style.transition = "0.8s";
         this.sideBar.style.display = "none";
@@ -42,24 +36,26 @@ class NavBar extends Component{
 
     //update window width after rendering
     componentDidMount(){
-        this.updateWindowSize();
+        this.setState({
+            width: window.innerWidth
+        });    
     }
 
-    render(){
-        const windowWidth = this.state.width;
-        
+    render(){        
         //if the window width is a desktop or laptop
-        if(windowWidth > 600){
+        if(this.state.width > 600){
             return(
                 <nav id="navBar" className="navbar navbar-expand-lg navbar-inverse fixed-top">
-                   <Link to="/" className="navbar-brand" id="navbarLogo"> <img id="imageLogo" src={newLogo} /> </Link>
+                   <Link to="/" className="navbar-brand" id="navbarLogo"> 
+                        <img id="imageLogo" src={newLogo} /> 
+                    </Link>
                    <ul className="navbar-nav nav-fill w-100" id="navbarList">
                        <NavElement section="Home"/>
-                       <NavElement section="Events"/>
+                       <NavElement section={this.props.login == true ? "Edit Events" : "Events"}/>
                        <NavElement section="About Us"/>
                        <NavElement section="Membership"/>
                        <NavElement section="Resources"/>
-                       <NavElement section="Careers"/>
+                       <NavElement section={this.props.login == true ? "Edit Careers" : "Careers"}/>
                        <NavElement section="Contact Us"/>
                        <NavElement section="Gallery"/>
                        <NavElement section="Admin"/>
@@ -88,11 +84,11 @@ class NavBar extends Component{
                                         
                             <div className="text-center" id="mobile_nav_links">
                                 <NavElement onClick={this.closeSideNav} section = "Home"/>
-                                <NavElement onClick={this.closeSideNav} section = "Events"/>
+                                <NavElement section={this.props.login == true ? "Edit Events" : "Events"}/>
                                 <NavElement onClick={this.closeSideNav} section = "About Us"/>
                                 <NavElement onClick={this.closeSideNav} section = "Membership"/>
                                 <NavElement onClick={this.closeSideNav} section = "Resources"/>
-                                <NavElement onClick={this.closeSideNav} section = "Careers"/>
+                                <NavElement section={this.props.login == true ? "Edit Careers" : "Careers"}/>
                                 <NavElement onClick={this.closeSideNav} section = "Contact Us"/>
                                 <NavElement onClick={this.closeSideNav} section = "Gallery"/>
                             </div>
@@ -104,4 +100,10 @@ class NavBar extends Component{
     }
 }
 
-export default NavBar;
+const mapStateToProps = state => {
+    return{
+        login: state.authReducer.login
+    }
+}
+
+export default connect(mapStateToProps, null)(NavBar);

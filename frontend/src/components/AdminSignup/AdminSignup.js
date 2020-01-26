@@ -41,7 +41,7 @@ class AdminSignup extends Component{
                 }
             })
             .then(res => {
-                console.log(res);
+                alert(res.data.message);
             })
             .catch(err => {
                 alert(err.response.data.message);
