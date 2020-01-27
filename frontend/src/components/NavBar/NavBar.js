@@ -6,6 +6,7 @@ import '../NavBar/NavBar.css';
 import navbarLogo from '../../photos/sf_payroll_logo.gif';
 import newLogo from '../../photos/sfpayroll-red.png';
 import { connect } from 'react-redux'; 
+import actions from '../../actions';
 
 //Navigation Bar Component
 //Consits of NavElement components
@@ -34,6 +35,14 @@ class NavBar extends Component{
         this.sideBar.style.display = "none";
     }
 
+    //logout user
+    logoutUser = () => {
+        if(this.props.login == true){
+            this.props.updateLogout();
+            this.props.history.push('/');
+        }
+    }
+
     //update window width after rendering
     componentDidMount(){
         this.setState({
@@ -58,7 +67,7 @@ class NavBar extends Component{
                        <NavElement section={this.props.login == true ? "Edit Careers" : "Careers"}/>
                        <NavElement section="Contact Us"/>
                        <NavElement section="Gallery"/>
-                       <NavElement section={this.props.login == true ? "Logout" : "Admin"}/>
+                       <NavElement onClick={this.logoutUser} section={this.props.login == true ? "Logout" : "Admin"}/>
                    </ul>
                </nav>
             );
@@ -106,4 +115,14 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(NavBar);
+const mapDispatchToProps = dispatch => {
+    return({
+        updateLogout: () => {
+            dispatch({
+                type: actions.UPDATE_LOGOUT
+            })
+        }
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

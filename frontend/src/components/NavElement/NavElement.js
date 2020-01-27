@@ -23,6 +23,15 @@ class NavElement extends Component {
         }
     }
 
+    //check if route updated based on login status
+    componentDidUpdate(prevProps){
+        if(prevProps.section != this.props.section){
+            this.setState({
+                route: this.props.section
+            })
+        }
+    }
+
     render(){
         return(
             <li className="nav-item">

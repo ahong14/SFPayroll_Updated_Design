@@ -44,6 +44,7 @@ class AdminLogin extends Component{
                     Cookies.set('authToken', newToken);
                     //update redux store, retrieve user info payload
                     this.props.updateLogin(userPayload.userName, userPayload.firstName, userPayload.lastName);
+                    this.props.history.push('/');
                 }
             })
             .catch(err => {
