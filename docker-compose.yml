@@ -17,8 +17,6 @@ services:
   #redis cache
   redis:
     image: redis
-    ports:
-      - "6379:6379"
     container_name: redis
     restart: always
   
