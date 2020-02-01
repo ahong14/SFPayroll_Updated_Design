@@ -13,6 +13,7 @@ import banner6 from '../../photos/chapterpictorialpart2017.jpg';
 import banner7 from '../../photos/statewidepart2017.jpg';
 import banner8 from '../../photos/chapterpictorialsecond2016.jpg';
 import banner9 from '../../photos/photocontesthird2015.jpg';
+import banner10 from '../../photos/2019_ Chapter_Photo_Contest_Banner_360x75_01.png';
 
 //award tiles
 import Award1  from '../../photos/award1.jpg';
@@ -23,9 +24,7 @@ import Award6  from '../../photos/award6.jpg';
 import Award7  from '../../photos/award7.jpg';
 import Award8  from '../../photos/award8.jpg';
 import Award9 from '../../photos/chapterphoto2018third.png';
-import McKesson from '../../photos/mckesson_logo.gif';
-import Clif from '../../photos/clif_logo.jpg';
-import iipay from '../../photos/iipay_logo.jpg';
+import Award10 from '../../photos/2019_Chapter_Photo_Contest_125x125_01.png';
 import npw from '../../photos/npw2019.jpg';
 
 
@@ -45,24 +44,25 @@ class AwardsSponsors extends Component{
               </Grid>
 
               <Grid container direction="row"  justify="center" alignItems="center" wrap="nowrap">
+                <Grid item xs={6} sm={4}> <img className="bannerImage" alt="2019 first place banner pictorial" src={banner10}/> </Grid>
                 <Grid item xs={6} sm={4}> <img className="bannerImage" alt="2018 chapter pictorial first banner" src={banner1}/> </Grid>
                 <Grid item xs={6} sm={4}> <img className="bannerImage" id="thirdPlaceBanner" alt="honorable mention banner" src={banner2}/> </Grid>
-                <Grid item xs={6} sm={4}> <img className="bannerImage" alt="gavel banner" src={banner3}/> </Grid>
               </Grid>
 
               <Grid container direction="row"  justify="center" alignItems="center" wrap = "nowrap">
+                <Grid item xs={6} sm={4}> <img className="bannerImage" alt="gavel banner" src={banner3}/> </Grid>
                 <Grid item xs={6} sm={4}> <img className="bannerImage" alt="2018 chapter pictorial first banner" src={banner4}/> </Grid>
                 <Grid item xs={6} sm={4}> <img className="bannerImage" alt="2018 photo contest third" src={banner5}/> </Grid>
-                <Grid item xs={6} sm={4}> <img className="bannerImage" alt="participation 2017" src={banner6}/> </Grid>
               </Grid>
 
               <Grid container direction="row"  justify="center" alignItems="center" wrap="nowrap">
+                <Grid item xs={6} sm={4}> <img className="bannerImage" alt="participation 2017" src={banner6}/> </Grid>
                 <Grid item xs={6} sm={4}> <img className="bannerImage" alt="participation banner" src={banner7}/> </Grid>
                 <Grid item xs={6} sm={4}> <img className="bannerImage" alt="statewide part banner" src={banner8}/> </Grid>
-                <Grid item xs={6} sm={4}> <img className="bannerImage" alt="gavel banner" src={banner9}/> </Grid>
               </Grid>
 
               <Grid id="awardsGrid" spacing={16} container direction="row"  justify="space-evenly" alignItems="center" wrap="nowrap">
+                <img className="award_image" alt="2019 chapter pictorial first place" src={Award10}/>
                 <img className="award_image" alt="2018 chapter pictorial first" src={Award7}/>
                 <img className="award_image" alt="2017 chapter photo contest first" src={Award8}/> 
                 <img className="award_image" alt="2018 chapter pictorial third place" src={Award9}/> 
@@ -70,7 +70,6 @@ class AwardsSponsors extends Component{
                 <img className="award_image" alt="2017 honorable mention chapter of year " src={Award1}/>
                 <img className="award_image" alt="participant 2018 statewide meeting" src={Award6}/>  
                 <img className="award_image" alt="participant 2017 statewide meeting" src={Award2}/> 
-                <img className="award_image" alt="participant 2017 chapter pictorial" src={Award4}/> 
               </Grid>
             </div>
           </div>
