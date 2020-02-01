@@ -10,7 +10,6 @@ import becky from '../../../photos/beckypic.jpg';
 import bill from '../../../photos/billpic.JPG';
 import christine from '../../../photos/christinepic.jpg';
 import lois from '../../../photos/loispicture.jpg';
-import kim from '../../../photos/kimnortonpic.jpg';
 import alex from '../../../photos/alex_image.jpg';
 import noImage from '../../../photos/default.jpg';
 

@@ -22,6 +22,13 @@ class AdminLogin extends Component{
         })
     }
 
+    //enter key pressed
+    handleEnterKey = (event) => {
+        if(event.key == "Enter"){
+            this.submitLogin();
+        }
+    }
+
     //submit login
     submitLogin = () => {
         if(this.state.login == '' || this.state.password == ''){
@@ -55,7 +62,7 @@ class AdminLogin extends Component{
 
     render(){
         return(
-            <div className="container-fluid loginContainer">
+            <div className="container-fluid loginContainer" onKeyPress={this.handleEnterKey}>
                 <div id="signupForm">
                     <h3> Admin Login </h3>
                     <form>

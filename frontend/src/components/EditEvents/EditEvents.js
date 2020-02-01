@@ -82,7 +82,7 @@ class EditEvents extends Component{
                     time={event.time}
                     speakers={event.speakers}
                     Location={event.Location}
-                    registration={event.registration}
+                    registration={"http://" + event.registration}
                 />
             )
         });
@@ -133,7 +133,7 @@ class EditEvents extends Component{
                     </div>
 
                     {this.state.events.length > 0 ? 
-                        { editEvents }
+                        editEvents 
                         :
                         <p> No events found </p>
                     }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Link, BrowserRouter as Router} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../NavElement/NavElement.css';
 
 //NavElement component for NavBar
@@ -24,10 +24,13 @@ class NavElement extends Component {
     }
 
     //check if route updated based on login status
+    //remove all white spaces
     componentDidUpdate(prevProps){
         if(prevProps.section != this.props.section){
+            let currentSection = this.props.section;
+            currentSection = currentSection.replace(/\s/g, '');
             this.setState({
-                route: this.props.section
+                route: currentSection
             })
         }
     }

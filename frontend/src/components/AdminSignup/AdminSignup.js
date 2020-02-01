@@ -20,6 +20,13 @@ class AdminSignup extends Component{
         })
     }
 
+    //enter key pressed
+    handleEnterKey = (event) => {
+        if(event.key == "Enter"){
+            this.submitLogin();
+        }
+    }
+
     //send signup info to backend
     submitSignup = () => {
         if(this.state.firstName == '' || this.state.lastName == '' || this.state.password == '' || this.state.confirmPassword == ''){
@@ -51,7 +58,7 @@ class AdminSignup extends Component{
 
     render(){
         return(
-            <div className="container-fluid signupContainer">
+            <div className="container-fluid signupContainer" onKeyPress={this.handleEnterKey}>
                 <div id="signupForm">
                     <h3> Admin Sign Up </h3>
                     <form>

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import {FaBars} from 'react-icons/fa';
 import NavElement from '../NavElement/NavElement';
 import '../NavBar/NavBar.css';
-import navbarLogo from '../../photos/sf_payroll_logo.gif';
 import newLogo from '../../photos/sfpayroll-red.png';
 import { connect } from 'react-redux'; 
 import actions from '../../actions';
