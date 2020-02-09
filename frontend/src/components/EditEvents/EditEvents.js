@@ -2,6 +2,7 @@ import React , { Component } from 'react';
 import './EditEvents.css';
 import axios from 'axios';
 import EditEventItem from '../EditEventItem/EditEventItem';
+import validator from 'validator';
 
 class EditEvents extends Component{
     constructor(props){
@@ -26,8 +27,15 @@ class EditEvents extends Component{
 
     //submit new event
     createNewEvent = () => {
+        //check empty fields
         if(this.state.event == ''|| this.state.date == ''|| this.state.time == '' || this.state.speakers == ''|| this.state.Location == ''|| this.state.registration == ''){
             alert("One or more fields empty");
+            return;
+        }
+
+        //check URL validate
+        else if(validator.isURL(this.state.registration) === false){
+            alert("Please enter valid URL for registration");
             return;
         }
 
@@ -76,7 +84,7 @@ class EditEvents extends Component{
             return(
                 <EditEventItem
                     key={event._id}
-                    id={event.event.toLowerCase().replace(/ /g,'')}
+                    id={event.event.toLowerCase().replace(/[^0-9a-z]/g,'')}
                     event={event.event}
                     date={event.date}
                     time={event.time}
@@ -88,7 +96,7 @@ class EditEvents extends Component{
         });
 
         return(
-            <div id="createEventsContainer">
+            <div className="editContainer">
                 <div id="editEventsContainer">
                     <div id="createEvent">
                         <h3> Edit Events </h3>

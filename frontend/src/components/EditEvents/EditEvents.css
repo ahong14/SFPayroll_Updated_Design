@@ -1,4 +1,4 @@
-#createEventsContainer{
+.editContainer{
     display: flex;
     flex-direction: column;
     align-content: center;

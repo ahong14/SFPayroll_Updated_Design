@@ -14,6 +14,7 @@ import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 import AdminLogin from '../components/AdminLogin/AdminLogin';
 import AdminSignup from '../components/AdminSignup/AdminSignup';
 import EditEvents from '../components/EditEvents/EditEvents';
+import EditCareers from '../components/EditCareers/EditCareers';
 import Logout from '../components/Logout/Logout';
 
 class App extends Component {
@@ -35,6 +36,7 @@ class App extends Component {
             <Route exact path="/Admin" component={AdminLogin}/>
             <Route exact path="/AdminSignup" component={AdminSignup}/>
             <Route exact path="/EditEvents" component={EditEvents}/>
+            <Route exact path="/EditCareers" component={EditCareers}/>
             <Route exact path="/Logout" component={Logout}/>
           </Switch>
           <Footer/>

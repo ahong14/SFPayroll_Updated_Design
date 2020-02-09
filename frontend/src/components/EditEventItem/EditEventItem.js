@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './EditEventItem.css';
 import axios from 'axios';
+import validator from 'validator';
 
 class EditEventItem extends Component{
     constructor(props){
@@ -86,6 +87,11 @@ class EditEventItem extends Component{
 
         //make request to update event
         else{
+            if(validator.isURL(editObject.registration) === false){
+                alert("Please insert valid URL");
+                return;
+            }
+
             axios.put('/api/events/edit', {
                 params: {
                     newEdits: {...editObject},
@@ -114,7 +120,7 @@ class EditEventItem extends Component{
                     <p className= "card-text text-center"> <a href={this.props.registration} rel="noopener noreferrer" target="_blank"> Registration </a> </p>
                 </div>
 
-                <div className="editEventButtonsContainer">
+                <div className="editButtonsContainer">
                     <button className="form-control" type="button" className="btn btn-secondary editButton" data-toggle="modal" data-target={"#" + this.props.id}> Edit </button>
                     <button className="form-control" type="button" className="btn btn-danger editButton" onClick={this.handleDeleteClicked} data-toggle="modal" data-target={"#" + this.props.id}> Delete </button>
                 </div>
