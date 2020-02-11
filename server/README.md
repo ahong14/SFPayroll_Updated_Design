@@ -6,18 +6,22 @@ Used Mongoose.js to connect backend and mLab.
 ## APIs:
 ## /contact/contactUs: send contact information and message
 Params: 
-        Name:
-        Email:
-        Message:
+    Name:
+    EmailDe
+    Message:
 
 ## /events: Retrieve events from database
 
 ## /sendJob: Send job posting to email
 Params: 
-        Email: Email of user
-        Title: Job position title
-        City: City of job
-        State: State of job
-        Position: Type of position (paid, fulltime)
-        Description: Description of job
+    Email: Email of user
+    Title: Job position title
+    City: City of job
+    State: State of job
+    Position: Type of position (paid, fulltime)
+    Description: Description of job
+
+## /pdfs: Sends back pdf files hosted on server, file name based on query param
+Params:
+    pdfName: File name of pdf to send back to client
           

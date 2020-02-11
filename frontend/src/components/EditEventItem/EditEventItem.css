@@ -1,0 +1,12 @@
+.editButtonsContainer{
+    display:flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+.editButton{
+    align-self: center;
+    margin: 5px;
+    width: 30%;
+}

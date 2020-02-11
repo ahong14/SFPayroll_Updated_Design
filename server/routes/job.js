@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const nodemailer = require('nodemailer');
+const transporter = require('../routes/email');
 const path = require('path');
 const fs = require('fs');
 const moment = require('moment-timezone');
@@ -19,19 +19,6 @@ const storage = multer.diskStorage({
     }
 })
 const upload = multer({storage: storage});
-
-//email options
-const transporter = nodemailer.createTransport({
-    secure: false, // use SSL
-    service: 'gmail',
-    auth: {
-           user: process.env.EMAIL_USER,
-           pass: process.env.EMAIL_PASS
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-});
 
 //email job posting
 router.post('/sendJob', upload.single('jobPosting'), (req,res) => {
@@ -190,8 +177,7 @@ router.post('/sendJob', upload.single('jobPosting'), (req,res) => {
                         message: "Error with mongo database"
                     })
                 }
-
-                console.log(result);
+                
                 //send email notifying new job was posted 
                 transporter.sendMail(options, (err,info) => {
                     if(err){

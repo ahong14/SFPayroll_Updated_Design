@@ -11,7 +11,10 @@ services:
       - ./server:/app/src/server
     container_name: node_server
     restart: unless-stopped
-    
+    depends_on:
+      - redis
+      - mongo
+
   frontend:
     build:
       context: ./frontend
@@ -25,14 +28,21 @@ services:
     depends_on:
       - node_server
 
+  mongo:
+    image: mongo
+    volumes:
+      - ./mongo/data/db:/data/db
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+
   redis:
     image: redis
     ports: 
       - "6379:6379"
     container_name: redis
     restart: unless-stopped
-    depends_on:
-      - node_server
 
   nginx:
     build:
