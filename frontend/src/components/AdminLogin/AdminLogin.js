@@ -11,7 +11,8 @@ class AdminLogin extends Component{
         super(props);
         this.state = {
             userName: '',
-            password: ''
+            password: '',
+            loginLoading: false
         }
     }
 
@@ -36,26 +37,40 @@ class AdminLogin extends Component{
         }
 
         else{
-            axios.post('/api/admin/login', {
-                params: {
-                    userName: this.state.userName,
-                    password: this.state.password
-                }
-            })
-            .then(res => {
-                if(res.data.success == true){
-                    alert(res.data.message);
-                    //extract JWT and assign as cookie
-                    let newToken = res.data.token;
-                    let userPayload = res.data.payload;
-                    Cookies.set('authToken', newToken);
-                    //update redux store, retrieve user info payload
-                    this.props.updateLogin(userPayload.userName, userPayload.firstName, userPayload.lastName);
-                    this.props.history.push('/');
-                }
-            })
-            .catch(err => {
-                alert(err.response.data.message);
+            this.setState({
+                loginLoading: true
+            }, () => {
+                axios.post('/api/admin/login', {
+                    params: {
+                        userName: this.state.userName,
+                        password: this.state.password
+                    }
+                })
+                .then(res => {
+                    if(res.data.success == true){
+                        alert(res.data.message);
+                        //extract JWT and assign as cookie
+                        let newToken = res.data.token;
+                        let userPayload = res.data.payload;
+                        Cookies.set('authToken', newToken);
+                        //update redux store, retrieve user info payload
+                        this.props.updateLogin(userPayload.userName, userPayload.firstName, userPayload.lastName);
+                        this.props.history.push('/');
+                        this.setState({
+                            loginLoading: false
+                        })
+                    }
+    
+                    else{
+                        alert(res.data.message);
+                        this.setState({
+                            loginLoading: false
+                        })
+                    }
+                })
+                .catch(err => {
+                    alert(err.response.data.message);
+                })
             })
         }
     }
@@ -72,7 +87,7 @@ class AdminLogin extends Component{
                         </div>
 
                         <div>
-                            <Link to="/AdminSignup"> Click here to signup </Link>
+                            <Link to="/AdminSignup"> Click here to Sign Up</Link>
                         </div>
 
                         <div className="form-group">
@@ -80,7 +95,7 @@ class AdminLogin extends Component{
                             <input name="password" onChange={this.handleLoginForms} type="password" className="form-control" placeholder="Enter Password"/>
                         </div>
 
-                        <button type="button" className="btn btn-primary" onClick={this.submitLogin}> Login </button>
+                        <button type="button" className="btn btn-primary" onClick={this.submitLogin}> {this.state.loginLoading ? "Loading..." : "Login"} </button>
                     </form>
                 </div>
             </div>
