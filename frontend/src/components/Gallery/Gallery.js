@@ -34,87 +34,87 @@ const imageJSON = {
     [
       {
         "src": image2NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
     
       {
         "src": image4NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image1NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image5NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image6NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image3NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image7NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image8NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image9NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image10NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image11NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image12NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image13NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image14NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image15NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image16NPW,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {
         "src": image17,
-        "caption": "NPW 2018"
+        "caption": "NPW"
       },
 
       {

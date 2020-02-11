@@ -26,7 +26,10 @@ router.get('/getPostings', (req,res) => {
 
         //cache miss, query db
         else{
-            Positions.find({},null,{sort:{'sortDate':-1}})
+            //get positions within past 60 days
+            //reference: https://stackoverflow.com/questions/42712006/how-to-filter-last-10-days-records-from-mongodb
+            //https://stackoverflow.com/questions/38553885/mongodb-aggregate-the-record-count-based-on-last-30-days
+            Positions.find({} , null, {sort:{'sortDate':-1}})
                 .then(positions => {
                     //update cache with postings results
                     //set expiration
