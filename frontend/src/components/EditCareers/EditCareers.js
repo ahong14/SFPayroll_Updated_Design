@@ -28,11 +28,14 @@ class EditCareer extends Component{
         const editCareers = this.state.careers.map(career => {
             return(
                 <EditCareerItem
-                    id={career.title.toLowerCase().replace(/[^0-9a-z]/gi,'')}
+                    objectid={career._id}
+                    id={career._id.toLowerCase().replace(/[^a-z]/gi,'')}
                     title={career.title}
                     date={career.date}
                     city={career.city}
                     company={career.company}
+                    link={career.link}
+                    email={career.email}
                 />
             )
         });

@@ -84,7 +84,7 @@ class EditEvents extends Component{
             return(
                 <EditEventItem
                     key={event._id}
-                    id={event.event.toLowerCase().replace(/[^0-9a-z]/g,'')}
+                    id={event._id.toLowerCase().replace(/[^a-z]/g,'')}
                     event={event.event}
                     date={event.date}
                     time={event.time}
