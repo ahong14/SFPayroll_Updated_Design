@@ -90,7 +90,7 @@ class EditEvents extends Component{
                     time={event.time}
                     speakers={event.speakers}
                     Location={event.Location}
-                    registration={"http://" + event.registration}
+                    registration={event.registration}
                 />
             )
         });
