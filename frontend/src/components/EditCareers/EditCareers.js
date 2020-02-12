@@ -47,7 +47,15 @@ class EditCareer extends Component{
                     <div>
                         <h3> Edit Careers </h3>
                     </div>
-                    { editCareers }
+                    { 
+                        editCareers.length > 0 ? 
+                        
+                        editCareers
+
+                        :
+
+                        <p> No careers found. </p>
+                    }
                 </div>
             </div>
         )
