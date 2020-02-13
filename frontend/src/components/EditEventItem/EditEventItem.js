@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './EditEventItem.css';
 import axios from 'axios';
 import validator from 'validator';
+import moment from 'moment-timezone';
+import { connect } from 'react-redux';
 
 class EditEventItem extends Component{
     constructor(props){
@@ -79,6 +81,11 @@ class EditEventItem extends Component{
             }
         });
 
+        //create lastEdited property with user and current date/time
+        let currentEditDate = new Date();
+        currentEditDate = moment(currentEditDate).tz('America/Los_Angeles').format('YYYY-MM-DD hh:mm:ss');
+        editObject['lastEdited'] = this.props.firstName + " " + this.props.lastName + " " + currentEditDate;
+
         //no updates found, return 
         if(updateFound == false){
             alert("No edits found");
@@ -117,7 +124,8 @@ class EditEventItem extends Component{
                     <p className="card-text text-center"> <strong> Time: </strong> {this.props.time} </p>
                     <p className="card-text text-center"> <strong> Speakers: </strong> {this.props.speakers} </p>
                     <p className="card-text text-center"> <strong> Location: </strong> {this.props.Location} </p>
-                    <p className= "card-text text-center"> <a href={this.props.registration} rel="noopener noreferrer" target="_blank"> Registration </a> </p>
+                    <p className="card-text text-center"> <a href={this.props.registration} rel="noopener noreferrer" target="_blank"> Registration </a> </p>
+                    <p className="card-text text-center"> Last Edited By: {this.props.lastEdited} </p>
                 </div>
 
                 <div className="editButtonsContainer">
@@ -175,4 +183,11 @@ class EditEventItem extends Component{
     }
 }
 
-export default EditEventItem;
+const mapStateToProps = state => {
+    return{
+        firstName: state.authReducer.firstName,
+        lastName: state.authReducer.lastName
+    }
+}
+
+export default connect(mapStateToProps, null)(EditEventItem);

@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
 
 //create new event
 router.post('/createEvent', (req, res) => {
-  var event, date, time, speakers, location, registration;
+  var event, date, time, speakers, location, registration, lastEdited;
 
   if(req.body.params){
     event = req.body.params.event;
@@ -50,6 +50,7 @@ router.post('/createEvent', (req, res) => {
     speakers = req.body.params.speakers;
     location = req.body.params.location;
     registration = req.body.params.registration;
+    lastEdited = req.body.params.lastEdited;
   }
 
   else if(req.body){
@@ -59,6 +60,7 @@ router.post('/createEvent', (req, res) => {
     speakers = req.body.speakers;
     location = req.body.location;
     registration = req.body.registration;
+    lastEdited = req.body.lastEdited;
   }
 
   var sortDate = moment(date).format('YYYY-MM-DD');
@@ -89,6 +91,7 @@ router.post('/createEvent', (req, res) => {
       newEvent.Location = location;
       newEvent.registration = registration;
       newEvent.sortDate = sortDate;
+      newEvent.lastEdited = lastEdited;
 
       //save new event
       newEvent.save( (err) => {

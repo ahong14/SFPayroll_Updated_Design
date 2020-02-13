@@ -28,6 +28,11 @@ const EventSchema = new Schema({
 
     registration:{
       type: String
+    },
+
+    lastEdited: {
+      type: String,
+      default: ''
     }
 });
 

@@ -3,6 +3,8 @@ import './EditEvents.css';
 import axios from 'axios';
 import EditEventItem from '../EditEventItem/EditEventItem';
 import validator from 'validator';
+import moment from 'moment-timezone';
+import { connect } from 'react-redux';
 
 class EditEvents extends Component{
     constructor(props){
@@ -40,6 +42,9 @@ class EditEvents extends Component{
         }
 
         else{
+            //create lastEdited property with current date/time
+            let currentEditDate = new Date();
+            currentEditDate = moment(currentEditDate).tz('America/Los_Angeles').format('YYYY-MM-DD hh:mm:ss');
             axios.post('/api/events/createEvent', {
                 params:{
                     event: this.state.event,
@@ -47,7 +52,8 @@ class EditEvents extends Component{
                     time: this.state.time,
                     speakers: this.state.speakers,
                     location: this.state.Location,
-                    registration: this.state.registration
+                    registration: this.state.registration,
+                    lastEdited: this.props.firstName + " " + this.props.lastName + " " + currentEditDate
                 }
             })
             .then(res => {
@@ -91,6 +97,7 @@ class EditEvents extends Component{
                     speakers={event.speakers}
                     Location={event.Location}
                     registration={event.registration}
+                    lastEdited={event.lastEdited}
                 />
             )
         });
@@ -151,4 +158,11 @@ class EditEvents extends Component{
     }
 }
 
-export default EditEvents;
+const mapStateToProps = state => {
+    return{
+        firstName: state.authReducer.firstName,
+        lastName: state.authReducer.lastName
+    }
+}
+
+export default connect(mapStateToProps, null)(EditEvents);
