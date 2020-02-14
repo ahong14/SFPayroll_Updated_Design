@@ -52,6 +52,7 @@ class EditCareer extends Component{
                     company={career.company}
                     link={career.link}
                     email={career.email}
+                    lastEdited={career.lastEdited}
                 />
             )
         });

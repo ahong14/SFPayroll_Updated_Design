@@ -25,6 +25,21 @@ const PostingSchema = new Schema({
 
     sortDate:{
       type: Date
+    },
+
+    lastEdited:{
+        type: String,
+        default: ''
+    },
+
+    deleted:{
+        type: Boolean,
+        default: false
+    },
+
+    deletedMessage:{
+        type: String,
+        default: ''
     }
 });
 

@@ -79,10 +79,6 @@ router.put('/edit', upload.single('newPdf'), (req, res) => {
 
     //if using same pdf link, update other info 
     if(newPdf == false){
-        let sortDate = new Date();
-        sortDate = moment(sortDate).tz('America/Los_Angeles').format('YYYY-MM-DD');
-        newCareerContent['sortDate'] = sortDate;
-
         //insert object into mongo db
         Positions.update({_id: id}, {...newCareerContent}, {overwrite: true}, (err, result) => {
             if(err){
@@ -110,11 +106,7 @@ router.put('/edit', upload.single('newPdf'), (req, res) => {
             //create new pdf link
             let pdfLink = '/api/pdfs/?pdfName=' + pdfName;
             newCareerContent.link = pdfLink;
-            //create new sort date
-            let sortDate = new Date();
-            sortDate = moment(sortDate).tz('America/Los_Angeles').format('YYYY-MM-DD');
 
-            console.log("inserting uploaded pdf", newCareerContent);
             //insert object into mongo db
             Positions.update({_id: id}, {...newCareerContent}, {overwrite: true}, (err, result) => {
                 if(err){
@@ -199,10 +191,6 @@ router.put('/edit', upload.single('newPdf'), (req, res) => {
             pdfWriteSteam.on('finish', () => {
                 //replace mongo record with updated info
                 let pdfLink = '/api/pdfs/?pdfName=' + pdfName;
-                let sortDate = new Date();
-                sortDate = moment(sortDate).tz('America/Los_Angeles').format('YYYY-MM-DD');
-
-                newCareerContent['sortDate'] = sortDate;
                 newCareerContent['link'] = pdfLink;
 
                 //insert object into mongo db

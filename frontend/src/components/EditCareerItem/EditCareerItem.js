@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import moment from 'moment-timezone';
 
 class EditCareerItem extends Component{
     constructor(props){
@@ -90,6 +92,14 @@ class EditCareerItem extends Component{
         //create form data
         const fileData = new FormData();
         fileData.append('newPdf', this.state.uploadedFile);
+
+        //create last edited information
+        let lastEditedDate = new Date();
+        lastEditedDate = moment(lastEditedDate).tz('America/Los_Angeles').format('YYYY-MM-DD hh:mm:ss');
+
+        let lastEdited = this.props.firstName + " " + this.props.lastName + " " + lastEditedDate;
+        newCareerContent["lastEdited"] = lastEdited;
+
         //make api request to update record
         axios.put('/api/positions/edit', fileData, {
             headers:{
@@ -152,6 +162,7 @@ class EditCareerItem extends Component{
                     <p className="card-text text-center"> <strong> Date Posted: </strong> {this.props.date} </p>
                     <p className="card-text text-center"> <strong> City: </strong> {this.props.city} </p>
                     <p className="card-text text-center"> <strong> Company: </strong> {this.props.company} </p>
+                    <p className="card-text text-center"> <strong> Last Edited By: </strong> {this.props.lastEdited} </p>
                 </div>
 
                 <div className="editButtonsContainer">
@@ -244,4 +255,11 @@ class EditCareerItem extends Component{
     }
 }
 
-export default EditCareerItem;
+const mapStateToProps = state => {
+    return{
+        firstName: state.authReducer.firstName,
+        lastName: state.authReducer.lastName
+    }
+}
+
+export default connect(mapStateToProps, null)(EditCareerItem);
