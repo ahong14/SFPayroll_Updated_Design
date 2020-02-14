@@ -5,7 +5,6 @@ const redisClient = require('./redis');
 const PDFDocument = require('pdfkit');
 const path = require('path');
 const fs = require('fs');
-const moment = require('moment-timezone');
 
 //multer setup
 const multer = require('multer');
@@ -224,7 +223,7 @@ router.delete('/delete', (req, res) => {
         id = req.query.id;
     }
 
-    Positions.deleteOne({_id: id}, (err, result) => {
+    Positions.findOneAndUpdate({_id: id}, {$set:{deleted: true}}, (err, result) => {
         if(err){
             console.log(err);
             return res.status(500).json({

@@ -153,6 +153,42 @@ router.get('/authentication/:token', (req, res) => {
                 });
             })
         }
+
+        else{
+            //handle logic for expired token
+            //reference: https://codemoto.io/coding/nodejs/email-verification-node-express-mongodb
+            //create token and send email for verification for created user
+            let tokenString = new Token();
+            let tokenValue = crypto.randomBytes(16).toString('hex');
+            tokenString.token = tokenValue;
+            tokenString.save(err => {
+                if(err){
+                    return res.status(500).json({
+                        success: false,
+                        message: "Error saving to db"
+                    })
+                }
+                //send email for verification
+                const options = {
+                    from: process.env.EMAIL_USER, // sender address
+                    to: process.env.EMAIL_RECEIVER, // list of receivers
+                    subject: 'Signup Verification', // Subject line
+                    html: `<p> Please click the following link to complete verification process. http://sfpayroll.org/api/admin/authentication/${tokenValue} </p>` 
+                }
+
+                transporter.sendMail(options, (err,info) => {
+                    if(err){
+                        console.log(err)
+                        res.status(500).send("email failed to send");
+                    }
+                
+                    else{
+                        console.log(info);
+                        return res.redirect('/TokenExpiration');
+                    }
+                });
+            });
+        }
     })
 })
 

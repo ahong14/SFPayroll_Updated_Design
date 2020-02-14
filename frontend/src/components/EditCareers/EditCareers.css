@@ -5,3 +5,15 @@
     width: 50%;
     padding: 10px;
 }
+
+.tabItem{
+    width: 30%;
+}
+
+.viewPostingsButtons{
+    margin-top: 5px;
+}
+
+.postingsButton{
+    margin-right: 5px;
+}
