@@ -80,6 +80,7 @@ class EditCareer extends Component{
                     link={career.link}
                     email={career.email}
                     lastEdited={career.lastEdited}
+                    deleted={career.deleted}
                     deletedMessage={career.deletedMessage}
                 />
             )
@@ -97,7 +98,8 @@ class EditCareer extends Component{
                     link={career.link}
                     email={career.email}
                     lastEdited={career.lastEdited}
-
+                    deleted={career.deleted}
+                    deletedMessage={career.deletedMessage}
                 />
             )
         })
@@ -109,23 +111,18 @@ class EditCareer extends Component{
                         <h3> Edit Careers </h3>
                         {
                             this.state.showJobForm ? 
-                            <button className="btn btn-danger" onClick={this.hideJobForm}> Hide </button>
-
+                                <button className="btn btn-danger" onClick={this.hideJobForm}> Hide </button>
                             :
-
-                            <button className="btn btn-success" onClick={this.handleJobForm}> Create New Position </button>
+                                <button className="btn btn-success" onClick={this.handleJobForm}> Create New Position </button>
                         }
                     </div>
                     
                     {
-                            this.state.showJobForm ?
-
+                        this.state.showJobForm ?
                             <div>
                                 <JobForm/>
                             </div>
-                            
-                            :
-                    
+                        :
                             <Fragment/>
                     }
 

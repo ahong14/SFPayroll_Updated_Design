@@ -213,17 +213,20 @@ router.put('/edit', upload.single('newPdf'), (req, res) => {
 
 //delete career posting based on matching id
 router.delete('/delete', (req, res) => {
-    var id;
+    var id, deletedMessage;
 
     if(req.query.params){
         id = req.query.params.id;
+        deletedMessage = req.query.params.deletedMessage;
     }
 
     else if(req.query){
         id = req.query.id;
+        deletedMessage = req.query.deletedMessage;
     }
 
-    Positions.findOneAndUpdate({_id: id}, {$set:{deleted: true}}, (err, result) => {
+    //update delete flag and deletedMessage to indicate element is deleted
+    Positions.findOneAndUpdate({_id: id}, {$set:{deleted: true, deletedMessage: deletedMessage}}, (err, result) => {
         if(err){
             console.log(err);
             return res.status(500).json({
