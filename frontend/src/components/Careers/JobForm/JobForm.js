@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import '../../Careers/JobForm/JobForm.css';
 import axios from 'axios';
 import validator from 'validator';
+import { connect } from 'react-redux';
+import moment from 'moment-timezone';
 
 class JobForm extends Component{
     constructor(props) {
@@ -47,6 +49,19 @@ class JobForm extends Component{
                 const apiURL = '/api/job/sendJob';
                 const fileData = new FormData();
                 fileData.append('jobPosting', this.state.uploadedFile);
+
+                //check if admin is logged in, determine last edited
+                let lastEditedDate = new Date();
+                lastEditedDate = moment(lastEditedDate).tz('America/Los_Angeles').format('YYYY-MM-DD hh:mm:ss');
+
+                let lastEdited = "";
+                if(this.props.login == true){
+                    lastEdited = this.props.firstName + " " + this.props.lastName + " " + lastEditedDate;
+                }
+
+                else{
+                    lastEdited = "Job Poster " + lastEditedDate;
+                }
     
                 //convert axios params to send form data and accept json
                 const requestParams = {
@@ -64,7 +79,8 @@ class JobForm extends Component{
                         state: this.state.stateInput,
                         position: this.state.positionInput,
                         description: this.state.descriptionInput,
-                        payrollPosition: this.state.selectInput
+                        payrollPosition: this.state.selectInput,
+                        lastEdited: lastEdited
                     }
                 }
     
@@ -212,4 +228,12 @@ class JobForm extends Component{
     }
 }
 
-export default JobForm;
+const mapStateToProps = state => {
+    return{
+        firstName: state.authReducer.firstName,
+        lastName: state.authReducer.lastName,
+        login: state.authReducer.login
+    }
+}
+
+export default connect(mapStateToProps, null)(JobForm);

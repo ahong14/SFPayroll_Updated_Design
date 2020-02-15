@@ -59,6 +59,7 @@ router.post('/sendJob', upload.single('jobPosting'), (req,res) => {
         newPosition['date'] = positionDate;
         newPosition['sortDate'] = sortDate;
         newPosition['link'] = pdfLink;
+        newPosition['lastEdited'] = params.lastEdited;
 
         //insert object into mongo db
         Positions.create(newPosition, (err, result) => {
@@ -168,6 +169,7 @@ router.post('/sendJob', upload.single('jobPosting'), (req,res) => {
             newPosition['date'] = positionDate;
             newPosition['sortDate'] = sortDate;
             newPosition['link'] = pdfLink;
+            newPosition['lastEdited'] = params.lastEdited;
 
             //insert object into mongo db
             Positions.create(newPosition, (err, result) => {

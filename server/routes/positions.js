@@ -5,7 +5,6 @@ const redisClient = require('./redis');
 const PDFDocument = require('pdfkit');
 const path = require('path');
 const fs = require('fs');
-const moment = require('moment-timezone');
 
 //multer setup
 const multer = require('multer');
@@ -79,10 +78,6 @@ router.put('/edit', upload.single('newPdf'), (req, res) => {
 
     //if using same pdf link, update other info 
     if(newPdf == false){
-        let sortDate = new Date();
-        sortDate = moment(sortDate).tz('America/Los_Angeles').format('YYYY-MM-DD');
-        newCareerContent['sortDate'] = sortDate;
-
         //insert object into mongo db
         Positions.update({_id: id}, {...newCareerContent}, {overwrite: true}, (err, result) => {
             if(err){
@@ -110,11 +105,7 @@ router.put('/edit', upload.single('newPdf'), (req, res) => {
             //create new pdf link
             let pdfLink = '/api/pdfs/?pdfName=' + pdfName;
             newCareerContent.link = pdfLink;
-            //create new sort date
-            let sortDate = new Date();
-            sortDate = moment(sortDate).tz('America/Los_Angeles').format('YYYY-MM-DD');
 
-            console.log("inserting uploaded pdf", newCareerContent);
             //insert object into mongo db
             Positions.update({_id: id}, {...newCareerContent}, {overwrite: true}, (err, result) => {
                 if(err){
@@ -199,10 +190,6 @@ router.put('/edit', upload.single('newPdf'), (req, res) => {
             pdfWriteSteam.on('finish', () => {
                 //replace mongo record with updated info
                 let pdfLink = '/api/pdfs/?pdfName=' + pdfName;
-                let sortDate = new Date();
-                sortDate = moment(sortDate).tz('America/Los_Angeles').format('YYYY-MM-DD');
-
-                newCareerContent['sortDate'] = sortDate;
                 newCareerContent['link'] = pdfLink;
 
                 //insert object into mongo db
@@ -226,17 +213,20 @@ router.put('/edit', upload.single('newPdf'), (req, res) => {
 
 //delete career posting based on matching id
 router.delete('/delete', (req, res) => {
-    var id;
+    var id, deletedMessage;
 
     if(req.query.params){
         id = req.query.params.id;
+        deletedMessage = req.query.params.deletedMessage;
     }
 
     else if(req.query){
         id = req.query.id;
+        deletedMessage = req.query.deletedMessage;
     }
 
-    Positions.deleteOne({_id: id}, (err, result) => {
+    //update delete flag and deletedMessage to indicate element is deleted
+    Positions.findOneAndUpdate({_id: id}, {$set:{deleted: true, deletedMessage: deletedMessage}}, (err, result) => {
         if(err){
             console.log(err);
             return res.status(500).json({

@@ -14,10 +14,17 @@ class OpenPositions extends Component{
     componentDidMount(){
         const apiURL = '/api/positions/getPostings';
         axios.get(apiURL)
-            .then(resp=> {
+            .then(res=> {
+                let activePositions = res.data.filter(position => {
+                    return position.deleted == false;
+                });
+
                 this.setState({
-                    openings: resp.data
+                    openings: activePositions
                 })
+            })
+            .catch(err => {
+                alert(err.repsonse.data.message);
             })
     }
 
