@@ -16,6 +16,7 @@ import AdminSignup from '../components/AdminSignup/AdminSignup';
 import EditEvents from '../components/EditEvents/EditEvents';
 import EditCareers from '../components/EditCareers/EditCareers';
 import Logout from '../components/Logout/Logout';
+import TokenExpiration from '../components/TokenExpiration/TokenExpiration';
 
 class App extends Component {
   render() {
@@ -38,6 +39,7 @@ class App extends Component {
             <Route exact path="/EditEvents" component={EditEvents}/>
             <Route exact path="/EditCareers" component={EditCareers}/>
             <Route exact path="/Logout" component={Logout}/>
+            <Route exact path="/TokenExpiration" component={TokenExpiration}/>
           </Switch>
           <Footer/>
         </ScrollToTop>

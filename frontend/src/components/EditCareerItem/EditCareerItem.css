@@ -1,0 +1,4 @@
+.deleteConfirmMessage{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import moment from 'moment-timezone';
+import './EditCareerItem.css';
 
 class EditCareerItem extends Component{
     constructor(props){
@@ -12,6 +15,7 @@ class EditCareerItem extends Component{
             title: '',
             //boolean clicked values
             deleteClicked: false,
+            deletedMessage: '',
             newPdf: false,
             //new pdf state values
             email: "",
@@ -90,6 +94,14 @@ class EditCareerItem extends Component{
         //create form data
         const fileData = new FormData();
         fileData.append('newPdf', this.state.uploadedFile);
+
+        //create last edited information
+        let lastEditedDate = new Date();
+        lastEditedDate = moment(lastEditedDate).tz('America/Los_Angeles').format('YYYY-MM-DD hh:mm:ss');
+
+        let lastEdited = this.props.firstName + " " + this.props.lastName + " " + lastEditedDate;
+        newCareerContent["lastEdited"] = lastEdited;
+
         //make api request to update record
         axios.put('/api/positions/edit', fileData, {
             headers:{
@@ -111,19 +123,34 @@ class EditCareerItem extends Component{
         })
     }
 
+    //handle input for delete message
+    handleDeleteMessage = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
     //delete career from database
     deleteCareer = () => {
-        axios.delete('/api/positions/delete', {
-            params: {
-                id: this.props.objectid
-            }
-        })
-        .then(res => {
-            alert(res.data.message);
-        })
-        .catch(err => {
-            alert(err.response.data.message);
-        })
+        if(this.state.deletedMessage.length == 0 || this.state.deletedMessage == ''){
+            alert("Please insert delete message");
+            return;
+        }
+
+        else{
+            axios.delete('/api/positions/delete', {
+                params: {
+                    id: this.props.objectid,
+                    deletedMessage: this.state.deletedMessage
+                }
+            })
+            .then(res => {
+                alert(res.data.message);
+            })
+            .catch(err => {
+                alert(err.response.data.message);
+            })
+        }
     }
 
     //new PDF content functions
@@ -152,12 +179,23 @@ class EditCareerItem extends Component{
                     <p className="card-text text-center"> <strong> Date Posted: </strong> {this.props.date} </p>
                     <p className="card-text text-center"> <strong> City: </strong> {this.props.city} </p>
                     <p className="card-text text-center"> <strong> Company: </strong> {this.props.company} </p>
+                    <p className="card-text text-center"> <strong> Last Edited By: </strong> {this.props.lastEdited} </p>
+                    {this.props.deleted == true ? 
+                        <p className="card-text text-center"> <strong> Deleted Message: </strong> {this.props.deletedMessage} </p>
+                        :
+                        <Fragment/>
+                    }
                 </div>
 
-                <div className="editButtonsContainer">
-                    <button type="button" className="form-control btn btn-secondary editButton" data-toggle="modal" data-target={"#" + this.props.id}> Edit </button>
-                    <button type="button" className="form-control btn btn-danger editButton" data-toggle="modal" data-target={"#" + this.props.id} onClick={this.handleDeleteClicked}> Delete </button> 
-                </div>
+                {
+                    this.props.deleted == false ? 
+                        <div className="editButtonsContainer">
+                            <button type="button" className="form-control btn btn-secondary editButton" data-toggle="modal" data-target={"#" + this.props.id}> Edit </button>
+                            <button type="button" className="form-control btn btn-danger editButton" data-toggle="modal" data-target={"#" + this.props.id} onClick={this.handleDeleteClicked}> Delete </button> 
+                        </div>
+                    :
+                    <Fragment/>
+                }
 
                 <div className="modal fade" id={this.props.id}>
                     <div className="modal-dialog">
@@ -190,7 +228,14 @@ class EditCareerItem extends Component{
 
                                     :
                                     
-                                    <p> Confirm Deleting {this.props.title} ? </p>
+                                    <div>
+                                        <p> Confirm Deleting {this.props.title} ? </p>
+                                        <form className="deleteConfirmMessage">
+                                            <label> Input Delete Message </label>
+                                            <textarea name="deletedMessage" onChange={this.handleDeleteMessage}/> 
+                                        </form>
+                                    </div>
+
                                 }
 
                                 {this.state.newPdf == true ? 
@@ -244,4 +289,11 @@ class EditCareerItem extends Component{
     }
 }
 
-export default EditCareerItem;
+const mapStateToProps = state => {
+    return{
+        firstName: state.authReducer.firstName,
+        lastName: state.authReducer.lastName
+    }
+}
+
+export default connect(mapStateToProps, null)(EditCareerItem);
