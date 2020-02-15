@@ -29,10 +29,11 @@
     transform: translate(-50%, -50%);
 }
 
-#golden_gate_background{
+#backgroundImage{
     width: 100vw;
-    height: 450px;
-  }
+    height: 900px;
+    margin-left: -30px;
+}
 
 #header_text{
     color:white;
