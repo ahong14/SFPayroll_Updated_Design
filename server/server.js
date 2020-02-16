@@ -35,6 +35,7 @@ const job = require('./routes/job');
 const positions = require('./routes/positions');
 const pdfs = require('./routes/pdfs');
 const admin = require('./routes/admin');
+const images = require('./routes/images');
 
 app.use('/api/events', events);
 app.use('/api/contact', contact);
@@ -42,6 +43,10 @@ app.use('/api/job', job);
 app.use('/api/positions', positions);
 app.use('/api/pdfs', pdfs);
 app.use('/api/admin', admin);
+app.use('/api/images', images);
+
+//serve images directory for gallery image sources
+app.use('/api/imageSource', express.static(path.join(__dirname, '/images')));
 
 //check if dev or production mode
 //fix react app crashing on refresh
