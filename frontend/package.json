@@ -7,6 +7,7 @@
     "@material-ui/core": "^3.9.4",
     "axios": "^0.18.1",
     "bootstrap": "^4.4.1",
+    "exif-js": "^2.3.0",
     "history": "^4.10.1",
     "jquery": "^3.4.1",
     "js-cookie": "^2.2.1",
@@ -43,7 +44,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "exif-js": "^2.3.0"
-  }
+  "devDependencies": {}
 }
