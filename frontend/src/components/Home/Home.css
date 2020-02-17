@@ -62,14 +62,14 @@
     padding: 10px;
 }
 
-@media screen and (max-width: 600px){
-
+/*mobile screens */
+@media screen and (max-width: 900px){
     h1 {
         font-size: 1.5rem;
     }
 
-    #golden_gate_background{
-        height: 280px;
+    #backgroundImage{
+        height: 200px;
         width: 90vw;
     }
 
@@ -83,7 +83,6 @@
         margin-top: -30px;
     }
 
-
     .logoImage{
         width: 120px;
         height: 130px;
@@ -95,3 +94,9 @@
     }
 }
 
+/*laptop screens */
+@media screen and (max-width: 1500px){
+    #backgroundImage{
+        margin-left: 0px;
+    }
+}

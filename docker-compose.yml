@@ -10,6 +10,7 @@ services:
       - "4001-4003:4000"
     volumes:
       - ./server/pdfs:/app/src/server/pdfs
+      - ./server/images:/app/src/server/images
     restart: always
     depends_on:
       - redis
