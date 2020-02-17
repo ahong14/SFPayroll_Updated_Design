@@ -35,7 +35,8 @@ class GalleryGroup extends Component{
             return(
                 <GalleryItem imageSrc={image}/>
             )
-        })
+        });
+        
         return(
             <div className="row galleryGroupContainer">
                 { renderImages }
