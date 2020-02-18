@@ -35,7 +35,7 @@ class AwardsSponsors extends Component{
                 </div>
 
                 <div>
-                  <a href="https://www.nationalpayrollweek.com/"> <img src="/images/NPW20_Logo-200.png"/></a>
+                  <a href="https://www.nationalpayrollweek.com/" rel="noopener noreferrer" target="_blank"> <img src="/images/NPW20_Logo-200.png"/></a>
                 </div>
             </Grid>
 
