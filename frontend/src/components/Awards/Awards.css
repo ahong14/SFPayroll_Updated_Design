@@ -26,12 +26,17 @@
   align-self: center;
 }
 
-#APALogoImage{
-  align-self: center;
+#apaImageEvent{
+  width: 95%;
 }
 
 .awardsBody{
   align-self: center;
+}
+
+#npwContainer{
+  margin: 10px;
+  padding-right: 5px;
 }
 
 @media screen and (max-width: 600px){

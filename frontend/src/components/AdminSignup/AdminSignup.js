@@ -49,6 +49,14 @@ class AdminSignup extends Component{
             })
             .then(res => {
                 alert(res.data.message);
+                //clear fields after submission
+                this.setState({
+                    firstName: '',
+                    lastName: '',
+                    userName: '',
+                    password: '',
+                    confirmPassword: ''
+                });
             })
             .catch(err => {
                 alert(err.response.data.message);
@@ -64,27 +72,27 @@ class AdminSignup extends Component{
                     <form>
                          <div className="form-group">
                             <label> First Name: </label>
-                            <input onChange={this.handleInputChange} name="firstName" type="text" className="form-control" placeholder="Enter First Name"/>
+                            <input onChange={this.handleInputChange} value={this.state.firstName} name="firstName" type="text" className="form-control" placeholder="Enter First Name"/>
                         </div>
 
                         <div className="form-group">
                             <label> Last Name: </label>
-                            <input onChange={this.handleInputChange}  name="lastName" type="text" className="form-control" placeholder="Enter Last Name"/>
+                            <input onChange={this.handleInputChange} value={this.state.lastName} name="lastName" type="text" className="form-control" placeholder="Enter Last Name"/>
                         </div>
 
                         <div className="form-group">
                             <label> Enter Username: </label>
-                            <input onChange={this.handleInputChange}  name="userName" type="text" className="form-control" placeholder="Enter Username"/>
+                            <input onChange={this.handleInputChange} value={this.state.userName} name="userName" type="text" className="form-control" placeholder="Enter Username"/>
                         </div>
 
                         <div className="form-group">
                             <label> Password: </label>
-                            <input onChange={this.handleInputChange}  name="password" type="password" className="form-control" placeholder="Enter Password"/>
+                            <input onChange={this.handleInputChange} value={this.state.password} name="password" type="password" className="form-control" placeholder="Enter Password"/>
                         </div>
 
                         <div className="form-group">
                             <label> Confirm Password: </label>
-                            <input onChange={this.handleInputChange}  name="confirmPassword" type="password" className="form-control" placeholder="Confirm Password"/>
+                            <input onChange={this.handleInputChange} value={this.state.confirmPassword} name="confirmPassword" type="password" className="form-control" placeholder="Confirm Password"/>
                         </div>
 
                         <button type="button" className="btn btn-primary" onClick={this.submitSignup}> Sign Up </button>
