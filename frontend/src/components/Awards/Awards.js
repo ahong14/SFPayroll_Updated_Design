@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import '../Awards/Awards.css';
 import Grid from '@material-ui/core/Grid';
-import apa from '../../photos/american_payroll_association_logo.png';
 
 //award banners
 import banner1 from '../../photos/chapterpictorialfirst2018.jpg';
@@ -25,24 +24,33 @@ import Award7  from '../../photos/award7.jpg';
 import Award8  from '../../photos/award8.jpg';
 import Award9 from '../../photos/chapterphoto2018third.png';
 import Award10 from '../../photos/2019_Chapter_Photo_Contest_125x125_01.png';
-import npw from '../../photos/npw2019.jpg';
-
 
 class AwardsSponsors extends Component{
     render(){
         return(
           <div className="card border-dark" id="awardsCard">
-            <div className="card-body awardsBody">
-
-              <Grid container direction="row"  justify="center" alignItems="center" wrap="nowrap">
-                <div id="apaImageContainer">
-                  <a href="https://www.americanpayroll.org/" rel="noopener noreferrer" target="_blank"> <img className="logoImage" src={apa} alt="APA Logo"/> </a>
-                </div>
+            <Grid container direction="row" justify="center" alignItems="center" wrap="nowrap">
                 <div id="npwContainer">
-                  <a href="https://www.nationalpayrollweek.com/" rel="noopener noreferrer" target="_blank"> <img id="npwImage" src={npw}/> </a>
+                  <a href="https://gpminstitute.com/education-events/global-payroll-week" rel="noopener noreferrer" target="_blank"> <img id="npwImage" src="/images/gpmi_week_2020.png"/> </a>
                 </div>
-              </Grid>
 
+                <div>
+                  <a href="https://www.nationalpayrollweek.com/"> <img src="/images/NPW20_Logo-200.png"/></a>
+                </div>
+            </Grid>
+
+            <Grid container direction="row" justify="center" alignItems="center" wrap="nowrap">
+                <div id="apaImageContainer">
+                  <a 
+                    href="https://ebiz.americanpayroll.org/ebusiness/Education/ViewCourse.aspx?CourseID=1&utm_source=DFP&utm_medium=APAWebsite-DeskHoriz&utm_campaign=2020Congress" 
+                    rel="noopener noreferrer" 
+                    target="_blank"> 
+                    <img id="apaImageEvent" src="/images/apa_congress_38th.jpg" alt="APA Logo"/> 
+                  </a>
+                </div>
+            </Grid>
+
+            <div className="card-body awardsBody">
               <Grid container direction="row"  justify="center" alignItems="center" wrap="nowrap">
                 <Grid item xs={6} sm={4}> <img className="bannerImage" alt="2019 first place banner pictorial" src={banner10}/> </Grid>
                 <Grid item xs={6} sm={4}> <img className="bannerImage" alt="2018 chapter pictorial first banner" src={banner1}/> </Grid>

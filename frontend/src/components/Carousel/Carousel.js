@@ -19,6 +19,10 @@ class Carousel extends Component{
 
                 <div className="carousel-inner">
                     <div className="carousel-item active">
+                        <img className= "slide_image img-responsive" src="/images/sfpayroll2019cover.jpg" alt="start image"/>
+                    </div>
+
+                    <div className="carousel-item">
                         <img className= "slide_image img-responsive" src={image1} alt="first image"/>
                     </div>
 

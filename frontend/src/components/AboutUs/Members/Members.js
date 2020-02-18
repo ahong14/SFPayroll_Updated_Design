@@ -11,6 +11,7 @@ import bill from '../../../photos/billpic.JPG';
 import christine from '../../../photos/christinepic.jpg';
 import lois from '../../../photos/loispicture.jpg';
 import alex from '../../../photos/alex_image.jpg';
+import trinity from '../../../photos/trinity_img.JPG';
 import noImage from '../../../photos/default.jpg';
 
 class Members extends Component{
@@ -27,6 +28,7 @@ class Members extends Component{
                   <OfficerMember imagesrc={christine} name='Christine Corral, CPP' position='Membership Chairperson'/>
                   <OfficerMember imagesrc= {lois} name='Lois Fried, CPP' position = 'APA Ambassador, President Elect'/>
                   <OfficerMember imagesrc={alex} name='Alex Hong' position='Webmaster' email='alexhong681@gmail.com'/>
+                  <OfficerMember imagesrc={trinity} name='Trinity Au' position="Bulletin Intern" email='Trinitytau112@gmail.com'/>
                   <OfficerMember imagesrc={noImage} name='Catherine Zolli' position='Hospitality Chairperson'/>
                   <EmptyMember/>
                 </div>

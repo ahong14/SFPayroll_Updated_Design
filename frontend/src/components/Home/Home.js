@@ -17,11 +17,11 @@ class Home extends Component {
         return(
             <div className="container-fluid" id="welcomeContainer">
                 <div className="text-center" id="page_header">
-                    <div id="header_text">
+                    <div className="centered" id="header_text">
                         <h1> San Francisco Bay Area Chapter </h1>
                         <h1> American Payroll Association   </h1>
                     </div>
-                    <img className="img-fluid" id="backgroundImage" src="/images/sfpayroll2019cover.jpg"/>
+                    <img className="img-fluid" id="golden_gate_background" src={BannerImage}/>
                 </div>
                 
                 <div className="welcome_awards_join">
