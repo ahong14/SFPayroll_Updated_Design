@@ -3,11 +3,18 @@ const Schema = mongoose.Schema;
 
 const BulletinSchema = new Schema({
     month: {
-        type: String
+        type: String,
+        default: ''
     },
 
     link: {
-        
+        type: String,
+        default: ''
+    },
+
+    lastEdited: {
+        type: String,
+        default: ''
     }
 })
 

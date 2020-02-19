@@ -36,6 +36,7 @@ const positions = require('./routes/positions');
 const pdfs = require('./routes/pdfs');
 const admin = require('./routes/admin');
 const images = require('./routes/images');
+const bulletin = require('./routes/bulletin');
 
 app.use('/api/events', events);
 app.use('/api/contact', contact);
@@ -44,6 +45,7 @@ app.use('/api/positions', positions);
 app.use('/api/pdfs', pdfs);
 app.use('/api/admin', admin);
 app.use('/api/images', images);
+app.use('/api/bulletin', bulletin);
 
 //serve images directory for gallery image sources
 app.use('/api/imageSource', express.static(path.join(__dirname, '/images')));
