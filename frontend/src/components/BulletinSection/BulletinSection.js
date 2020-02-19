@@ -98,8 +98,8 @@ class BulletinSection extends Component{
         return(
             <div className="card bannerContainer">
                 <div id="bannerContent">
-                    <h1> {this.state.bulletinValues['month'] + " Bulletin" || "Month"}</h1>
-                    <a href={this.state.bulletinValues['link'] || "http://www.sfpayroll.org"} rel="noopener noreferrer" target="_blank"> 
+                    <h1> {this.state.bulletinValues['month'] != undefined ? this.state.bulletinValues['month'] + " Bulletin" : "Month"}</h1>
+                    <a href={this.state.bulletinValues['link'] != undefined ? this.state.bulletinValues['link'] : "http://www.sfpayroll.org"} rel="noopener noreferrer" target="_blank"> 
                         <button className="btn btn-primary">
                             View Bulletin 
                         </button>
