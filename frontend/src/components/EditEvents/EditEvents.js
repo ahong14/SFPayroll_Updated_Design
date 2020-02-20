@@ -30,14 +30,8 @@ class EditEvents extends Component{
     //submit new event
     createNewEvent = () => {
         //check empty fields
-        if(this.state.event == ''|| this.state.date == ''|| this.state.time == '' || this.state.speakers == ''|| this.state.Location == ''|| this.state.registration == ''){
+        if(this.state.event == ''|| this.state.date == ''|| this.state.time == '' || this.state.speakers == ''|| this.state.Location == ''){
             alert("One or more fields empty");
-            return;
-        }
-
-        //check URL validate
-        else if(validator.isURL(this.state.registration) === false){
-            alert("Please enter valid URL for registration");
             return;
         }
 
