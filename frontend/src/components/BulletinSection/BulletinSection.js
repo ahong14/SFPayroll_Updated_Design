@@ -11,7 +11,9 @@ class BulletinSection extends Component{
         this.state = {
             bulletinMonth: '',
             bulletinLink: '',
-            bulletinValues: {}
+            bulletinValues: {},
+            linkReady: false,
+            bulletinText: ''
         }
     }
 
@@ -22,56 +24,71 @@ class BulletinSection extends Component{
         })
     }
 
+    //handle bulletin available
+    handleBulletinLink = () => {
+        this.setState({
+            linkReady: !this.state.linkReady
+        })
+    }
+
     //submit bulletin edit changes
     submitBulletinEdit = () => {
         //error handling 
         //empty fields
-        if(this.state.bulletinMonth == '' || this.state.bulletinLink == ''){
-            alert("Month or link field is empty");
+        if(this.state.bulletinMonth == ''){
+            alert("Month field is empty");
             return;
         }
 
-        //invalid url
-        else if(validator.isURL(this.state.bulletinLink) == false){
-            alert("Please insert proper URL");
-            return;
-        }
-
-        //check for http://
-        else if(this.state.bulletinLink.includes("http://") == false){
-            alert("Please insert http:// or https:// at beginning of URL");
-            return;
-        }
-
-        else{
-            //create last edited with name and date
-            let lastEditDate = new Date();
-            lastEditDate = moment(lastEditDate).tz('America/Los_Angeles').format('YYYY-MM-DD hh:mm:ss');
-
-            let lastEdited = this.props.firstName + " " + this.props.lastName + " " + lastEditDate;
-
-            //create new bulletin object
-            let newBulletinUpdates = {
-                month: this.state.bulletinMonth,
-                link: this.state.bulletinLink,
-                lastEdited: lastEdited,
-                id: this.state.bulletinValues._id
+        //if bulletin link set to ready, check for valid inputs
+        else if(this.state.linkReady == true){
+            //empty field
+            if(this.state.bulletinLink == ''){
+                alert("Link field empty");
+                return;
             }
 
-            //make request to update record
-            axios.put('/api/bulletin', {
-                params: {
-                    newBulletinUpdates: newBulletinUpdates
-                }
-            })
-            .then(res => {
-                alert(res.data.message);
-                this.getBulletin();
-            })
-            .catch(err => {
-                alert(err.response.data.message);
-            })
+            //invalid url
+            else if(validator.isURL(this.state.bulletinLink) == false){
+                alert("Please insert proper URL");
+                return;
+            }
+
+            //check for http://
+            else if(this.state.bulletinLink.includes("http://") == false){
+                alert("Please insert http:// or https:// at beginning of URL");
+                return;
+            }
         }
+
+        //create last edited with name and date
+        let lastEditDate = new Date();
+        lastEditDate = moment(lastEditDate).tz('America/Los_Angeles').format('YYYY-MM-DD hh:mm:ss');
+
+        let lastEdited = this.props.firstName + " " + this.props.lastName + " " + lastEditDate;
+
+        //create new bulletin object
+        let newBulletinUpdates = {
+            month: this.state.bulletinMonth,
+            link: this.state.bulletinLink,
+            lastEdited: lastEdited,
+            id: this.state.bulletinValues._id,
+            linkReady: this.state.linkReady
+        }
+
+        //make request to update record
+        axios.put('/api/bulletin', {
+            params: {
+                newBulletinUpdates: newBulletinUpdates
+            }
+        })
+        .then(res => {
+            alert(res.data.message);
+            this.getBulletin();
+        })
+        .catch(err => {
+            alert(err.response.data.message);
+        })
     }
 
     //function to get latest bulletin record from database
@@ -82,6 +99,20 @@ class BulletinSection extends Component{
                     let currentBulletin = res.data.values[0];
                     this.setState({
                         bulletinValues: {...currentBulletin}
+                    }, () => {
+                        //{this.state.bulletinValues['month'] != undefined ? this.state.bulletinValues['month'] + " Bulletin" : "Month"}
+                        if(this.state.bulletinValues['month'] != undefined && this.state.bulletinValues['linkReady'] == true){
+                            this.setState({
+                                bulletinText: this.state.bulletinValues['month'] + " Bulletin"
+                            })
+                        }
+
+                        //{this.state.bulletinValues['month'] != undefined ? this.state.bulletinValues['month'] + " Bulletin" : "Month"}
+                        else if(this.state.bulletinValues['month'] != undefined && this.state.bulletinValues['linkReady'] == false){
+                            this.setState({
+                                bulletinText: this.state.bulletinValues['month'] + " Bulletin Coming Soon"
+                            })
+                        }
                     })
                 }
             })
@@ -98,9 +129,9 @@ class BulletinSection extends Component{
         return(
             <div className="card bannerContainer">
                 <div id="bannerContent">
-                    <h1> {this.state.bulletinValues['month'] != undefined ? this.state.bulletinValues['month'] + " Bulletin" : "Month"}</h1>
+                    <h1> {this.state.bulletinText}</h1>
                     <a href={this.state.bulletinValues['link'] != undefined ? this.state.bulletinValues['link'] : "http://www.sfpayroll.org"} rel="noopener noreferrer" target="_blank"> 
-                        <button className="btn btn-primary">
+                        <button disabled={!this.state.bulletinValues['linkReady']}className="btn btn-primary">
                             View Bulletin 
                         </button>
                     </a>
@@ -128,9 +159,14 @@ class BulletinSection extends Component{
                                 <form>
                                     <label> Set Bulletin Month </label>
                                     <input className="form-control" name="bulletinMonth" type="text" value={this.state.bulletinMonth} onChange={this.handleBulletinUpdate} placeholder="Insert Month Name"/>
+                                    
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" onChange={this.handleBulletinLink}/>
+                                        <label> Toggle To Enter Bulletin URL </label>
+                                    </div>
 
                                     <label> Input Bulletin Link </label>
-                                    <input className="form-control" name="bulletinLink" type="text" value={this.state.bulletinLink} onChange={this.handleBulletinUpdate} placeholder="Insert URL (http://...)"/>
+                                    <input disabled={!this.state.linkReady} className="form-control" name="bulletinLink" type="text" value={this.state.bulletinLink} onChange={this.handleBulletinUpdate} placeholder="Insert URL (http://...)"/>
                                 </form>
 
                                 <button className="btn btn-success" id="submitBulletinEdit" onClick={this.submitBulletinEdit}> Submit </button>

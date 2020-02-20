@@ -27,7 +27,8 @@ const EventSchema = new Schema({
     },
 
     registration:{
-      type: String
+      type: String,
+      default: ''
     },
 
     lastEdited: {

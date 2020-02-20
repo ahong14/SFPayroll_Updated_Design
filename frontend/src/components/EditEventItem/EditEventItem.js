@@ -94,8 +94,9 @@ class EditEventItem extends Component{
 
         //make request to update event
         else{
-            if(validator.isURL(editObject.registration) === false){
-                alert("Please insert valid URL");
+            //check for valid url
+            if(validator.isURL(editObject.registration) === false || editObject.registration.includes("http://") == false){
+                alert("Please insert valid URL (include http://)");
                 return;
             }
 

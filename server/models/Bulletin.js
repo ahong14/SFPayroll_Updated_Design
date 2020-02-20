@@ -15,6 +15,11 @@ const BulletinSchema = new Schema({
     lastEdited: {
         type: String,
         default: ''
+    },
+
+    linkReady: {
+        type: Boolean,
+        default: false
     }
 })
 

@@ -18,7 +18,7 @@ COPY ./server /app/src/server
 
 RUN npm install
 
-RUN npm install nodemon -g
+RUN npm install forever -g
 
 EXPOSE 4000
 
@@ -28,4 +28,4 @@ EXPOSE 4002
 
 EXPOSE 4003
 
-CMD ["nodemon", "server.js"]
+CMD ["forever", "server.js"]
