@@ -365,7 +365,7 @@ router.post('/resetPassword', (req, res) => {
                             from: process.env.EMAIL_USER, // sender address
                             to: process.env.EMAIL_RECEIVER, // list of receivers
                             subject: 'Reset Password Verification', // Subject line
-                            html: `<p> Reset password for ${userName}. Please click the following link to complete verification process. http://sfparyoll.org/api/admin/resetPasswordAuth/${tokenValue} </p>` 
+                            html: `<p> Reset password for ${userName}. Please click the following link to complete verification process. http://sfpayroll.org/api/admin/resetPasswordAuth/${tokenValue} </p>` 
                         }
 
                         transporter.sendMail(options, (err,info) => {
