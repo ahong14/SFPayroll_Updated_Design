@@ -419,7 +419,7 @@ router.get('/resetPasswordAuth/:token', (req, res) => {
                     })
                 }
 
-                return res.redirect('/ResetSuccessful');
+                return res.redirect('/ResetSuccess');
             }) 
         }
     })
