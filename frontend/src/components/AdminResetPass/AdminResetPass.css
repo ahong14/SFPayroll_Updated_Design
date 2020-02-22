@@ -1,0 +1,12 @@
+#adminResetContainer{
+    height: 600px;
+    margin-top: 50px;
+}
+
+#submitResetButton{
+    margin-top: 5px;
+}
+
+#resetPassForm{
+    width: 80%;
+}

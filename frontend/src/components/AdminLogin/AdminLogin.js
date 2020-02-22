@@ -93,6 +93,7 @@ class AdminLogin extends Component{
                         <div className="form-group">
                             <label> Password: </label>
                             <input name="password" onChange={this.handleLoginForms} type="password" className="form-control" placeholder="Enter Password"/>
+                            <Link to="/AdminResetPass"> Reset Password </Link>
                         </div>
 
                         <button type="button" className="btn btn-primary" onClick={this.submitLogin}> {this.state.loginLoading ? "Loading..." : "Login"} </button>
