@@ -19,6 +19,12 @@ class AdminResetPass extends Component{
         })
     }
 
+    handleEnterKey = (event) => {
+        if(event.key == "Enter"){
+            this.submitPasswordReset();
+        }
+    }
+
     submitPasswordReset = () => {
         //error handling
         //empty fields
@@ -44,6 +50,11 @@ class AdminResetPass extends Component{
             })
             .then(res => {
                 alert(res.data.message);
+                this.setState({
+                    userName: '',
+                    newPassword: '',
+                    confirmNewPassword: ''
+                });
             })
             .catch(err => {
                 alert(err.response.data.message);
@@ -56,15 +67,15 @@ class AdminResetPass extends Component{
             <div className="container" id="adminResetContainer">
                 <h1> Admin Reset Password </h1>
                 <div id="resetPassForm">
-                    <form>
+                    <form onKeyPress={this.handleEnterKey}>
                         <label> Insert username to reset </label>
-                        <input type="text" name="userName" className="form-control" onChange={this.handleResetChanges} placeholder="Insert username"/>
+                        <input type="text" name="userName" value={this.state.userName} className="form-control" onChange={this.handleResetChanges} placeholder="Insert username"/>
 
                         <label> Insert New Password </label>
-                        <input type="password" name="newPassword" className="form-control" onChange={this.handleResetChanges} placeholder="New Password"/>
+                        <input type="password" name="newPassword" value={this.state.newPassword} className="form-control" onChange={this.handleResetChanges} placeholder="New Password"/>
 
                         <label> Confirm New Password </label>
-                        <input type="password" name="confirmNewPassword" className="form-control" onChange={this.handleResetChanges} placeholder="Confirm Password"/>
+                        <input type="password" name="confirmNewPassword" value={this.state.confirmNewPassword} className="form-control" onChange={this.handleResetChanges} placeholder="Confirm Password"/>
 
                         <button type="button" className="btn btn-primary" id="submitResetButton" onClick={this.submitPasswordReset}> Submit </button>
                     </form>
