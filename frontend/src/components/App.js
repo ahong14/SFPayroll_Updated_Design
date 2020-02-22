@@ -17,6 +17,8 @@ import EditEvents from '../components/EditEvents/EditEvents';
 import EditCareers from '../components/EditCareers/EditCareers';
 import Logout from '../components/Logout/Logout';
 import TokenExpiration from '../components/TokenExpiration/TokenExpiration';
+import AdminRestPass from '../components/AdminResetPass/AdminResetPass';
+import ResetSuccess from '../components/ResetSuccess/ResetSuccess';
 
 class App extends Component {
   render() {
@@ -40,6 +42,8 @@ class App extends Component {
             <Route exact path="/EditCareers" component={EditCareers}/>
             <Route exact path="/Logout" component={Logout}/>
             <Route exact path="/TokenExpiration" component={TokenExpiration}/>
+            <Route exact path="/AdminResetPass" component={AdminRestPass}/>
+            <Route exact path="/ResetSuccess" component={ResetSuccess}/>
           </Switch>
           <Footer/>
         </ScrollToTop>
