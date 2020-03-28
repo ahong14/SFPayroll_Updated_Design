@@ -5,12 +5,26 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 require('dotenv').config();
+require('console-stamp')(console, {pattern: 'yyyy-mm-dd hh:mm:ss '});
 
 //mongoose, connect to mongoDB on mLab
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connection.on('error', function(error) {
-    console.error('Database connection error:', error);
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true, autoReconnect: true, poolSize: 10, reconnectTries: 10, reconnectInterval: 2000});
+
+//log mongo connection events
+mongoose.connection.on('open', () => {
+  console.log("Connected to mongo successfully");
+});
+
+//connection failed
+mongoose.connection.on('error', (error) => {
+  console.error('Database connection error:', error);
+  //if connection failed, kill process, restart within container
+  //set delay before restarting process
+  setTimeout( () => {
+    console.error("Connection failed, killing current process, restarting");
+    process.exit(0);
+  }, 2000);
 });
 
 //application, running express app
@@ -61,4 +75,4 @@ if(process.env.production){
 //listen to requests on port
 //choose port based on environment
 const PORT = process.env.PORT || 4000;
-const server = app.listen(PORT);
+app.listen(PORT);
