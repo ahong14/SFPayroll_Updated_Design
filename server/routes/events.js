@@ -24,7 +24,8 @@ router.get('/', (req, res) => {
 
     //cache miss
     else{
-      Events.find({},null,{sort:{'sortDate':1}})
+      //sort events descending
+      Events.find({},null,{sort:{'sortDate':-1}})
         .then(events => {
           //update redis cache
           //set key mapping events to db results
