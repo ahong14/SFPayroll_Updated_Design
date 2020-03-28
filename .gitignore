@@ -2,4 +2,3 @@ node_modules*
 node_cert/
 mongo/
 server/images/**
-package-lock.json
