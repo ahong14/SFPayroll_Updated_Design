@@ -1,16 +1,6 @@
 version: "3.7"
 
 services:
-  mongo:
-    image: mongo
-    volumes:
-      - ./mongo/data/db:/data/db
-    expose:
-      - "27017"
-    container_name: mongo
-    ports:
-      - "27017:27017"
-      
   node_server:
     build:
       context: ./server
@@ -37,6 +27,15 @@ services:
     restart: unless-stopped
     depends_on:
       - node_server
+
+  mongo:
+    image: mongo
+    volumes:
+      - ./mongo/data/db:/data/db
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
 
   redis:
     image: redis

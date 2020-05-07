@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:12.12.0
 
 #copy frontend contents
 WORKDIR /app/src/frontend
