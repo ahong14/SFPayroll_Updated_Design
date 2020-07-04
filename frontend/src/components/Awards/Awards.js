@@ -6,7 +6,7 @@ class AwardsSponsors extends Component{
     render(){
       // source: https://stackoverflow.com/questions/56347783/how-to-display-every-image-inside-an-image-folder-in-react
       // banner image sources
-      const bannerAwards = require.context('../../../public/banners', true, /\.(png|jpe?g|svg)$/).keys().map(image => {
+      const bannerAwards = require.context('../../../public/banners', true, /\.(png|jpe?g|svg)$/).keys().reverse().map(image => {
         let imageSource = '/banners/' + image;
         return(
           <Grid key={imageSource} item sm={3}> <img className="bannerImage" src={imageSource}/> </Grid>
@@ -14,7 +14,7 @@ class AwardsSponsors extends Component{
       }); 
 
       // award image sources
-      const awards = require.context('../../../public/awards', true, /\.(png|jpe?g|svg)$/).keys().map(image => {
+      const awards = require.context('../../../public/awards', true, /\.(png|jpe?g|svg)$/).keys().reverse().map(image => {
         let imageSource = '/awards/' + image;
         return(
           <Grid key={imageSource} item sm={4}> <img className="award_image" src={imageSource}/> </Grid>
