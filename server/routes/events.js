@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     //cache miss
     else{
       //sort events descending
-      Events.find({},null,{sort:{'sortDate':-1}})
+      Events.find({},null,{sort:{'unixTimestamp':-1}})
         .then(events => {
           //update redis cache
           //set key mapping events to db results
@@ -66,6 +66,8 @@ router.post('/createEvent', (req, res) => {
 
   var sortDate = moment(date).format('YYYY-MM-DD');
   date = moment(date).format('MMMM Do YYYY');
+  var dateObject = new Date(sortDate);
+  var timestamp = dateObject.getTime();
 
   Events.findOne({event: event}, (err, result) => {
     if(err){
@@ -93,6 +95,7 @@ router.post('/createEvent', (req, res) => {
       newEvent.registration = registration;
       newEvent.sortDate = sortDate;
       newEvent.lastEdited = lastEdited;
+      newEvent.unixTimestamp = timestamp;
 
       //save new event
       newEvent.save( (err) => {
@@ -126,6 +129,7 @@ router.put('/edit', (req, res) => {
     newEventUpdates = {...req.body.newEdits};
     event = req.body.originalEventTitle
   }
+
 
   //find event with original name
   //replace record with updated fields

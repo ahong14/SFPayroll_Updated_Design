@@ -6,6 +6,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import App from './components/App';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import "react-datepicker/dist/react-datepicker.css";
 //redux setup
 //reference: https://github.com/rt2zz/redux-persist
 import { createStore } from 'redux';

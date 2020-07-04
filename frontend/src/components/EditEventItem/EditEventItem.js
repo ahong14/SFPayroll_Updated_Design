@@ -3,6 +3,8 @@ import './EditEventItem.css';
 import axios from 'axios';
 import validator from 'validator';
 import moment from 'moment-timezone';
+import DatePicker from 'react-datepicker';
+import { FaCalendar } from 'react-icons/fa';
 import { connect } from 'react-redux';
 
 class EditEventItem extends Component{
@@ -15,6 +17,7 @@ class EditEventItem extends Component{
             speakers: '',
             Location: '',
             registration: '',
+            selectedDate: '',
             deleteClicked: false
         }
     }
@@ -54,6 +57,16 @@ class EditEventItem extends Component{
         })
     }
 
+    //select date
+    handleDatePickerChange = (event) => {
+        if(this.state.selectedDate !== event) {
+            this.setState({
+                selectedDate: event,
+                date: moment(event).format('MMMM DD YYYY')
+            })
+        }
+    }
+
     //submit updates to event
     updateEvent = () => {
         //array to keep track of edit keys
@@ -81,11 +94,6 @@ class EditEventItem extends Component{
             }
         });
 
-        //create lastEdited property with user and current date/time
-        let currentEditDate = new Date();
-        currentEditDate = moment(currentEditDate).tz('America/Los_Angeles').format('YYYY-MM-DD hh:mm:ss');
-        editObject['lastEdited'] = this.props.firstName + " " + this.props.lastName + " " + currentEditDate;
-
         //no updates found, return 
         if(updateFound == false){
             alert("No edits found");
@@ -99,6 +107,18 @@ class EditEventItem extends Component{
                 alert("Please insert valid URL (include http://)");
                 return;
             }
+
+            //create lastEdited property with user and current date/time
+            let currentEditDate = new Date();
+            currentEditDate = moment(currentEditDate).tz('America/Los_Angeles').format('YYYY-MM-DD hh:mm:ss');
+            editObject['lastEdited'] = this.props.firstName + " " + this.props.lastName + " " + currentEditDate;
+
+            //create sortDate and timestamp
+            let sortDate = new Date(this.state.selectedDate);
+            let timestamp = sortDate.getTime();
+
+            editObject['sortDate'] = sortDate;
+            editObject['unixTimestamp'] = timestamp;
 
             axios.put('/api/events/edit', {
                 params: {
@@ -149,7 +169,16 @@ class EditEventItem extends Component{
                                             <input name="event" onChange={this.editEvent} className="form-control" placeholder={this.props.event} type="text"/>
 
                                             <label> Date </label>
-                                            <input name="date" onChange={this.editEvent} className="form-control" placeholder={this.props.date} type="text"/>
+                                            <input name="date" value={this.state.date} className="form-control" placeholder={this.props.date} type="text"/>
+                                            
+                                            <label> Select Date: </label>
+                                            <div>
+                                                <span> <FaCalendar/> </span>
+                                                <DatePicker
+                                                    selected={this.state.selectedDate}
+                                                    onChange={this.handleDatePickerChange}
+                                                />
+                                            </div>
 
                                             <label> Time </label>
                                             <input name="time" onChange={this.editEvent} className="form-control" placeholder={this.props.time} type="text"/>
