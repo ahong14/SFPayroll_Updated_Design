@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import moment from 'moment-timezone';
 import './EventItem.css';
 
 //EventItem for Events component
@@ -13,7 +14,7 @@ class EventItem extends Component {
             <div className="card border-info eventCard">
                 <div className="card-body">
                     <h5 className="card-title text-center"> {this.props.eventTitle} </h5>
-                    <p className="card-text text-center"> <strong> Date: </strong> {this.props.date} </p>
+                    <p className="card-text text-center"> <strong> Date: </strong> {moment(this.props.date).format('MMMM Do YYYY')} </p>
                     <p className="card-text text-center"> <strong> Time: </strong> {this.props.time} </p>
                     <p className="card-text text-center"> <strong> Speakers: </strong> {this.props.speakers} </p>
                     <p className="card-text text-center"> <strong> Location: </strong> {this.props.location} </p>
