@@ -14,6 +14,10 @@ const EventSchema = new Schema({
       type: Date
     },
 
+    unixTimestamp: {
+      type: Number
+    },
+
     time:{
         type: String
     },
