@@ -169,7 +169,7 @@ class EditEventItem extends Component{
                                             <input name="event" onChange={this.editEvent} className="form-control" placeholder={this.props.event} type="text"/>
 
                                             <label> Date </label>
-                                            <input name="date" value={this.state.date} className="form-control" placeholder={this.props.date} type="text"/>
+                                            <input disabled name="date" value={this.state.date} className="form-control" placeholder={this.props.date} type="text"/>
                                             
                                             <label> Select Date: </label>
                                             <div>
