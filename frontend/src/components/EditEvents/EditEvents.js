@@ -60,7 +60,8 @@ class EditEvents extends Component{
                     speakers: this.state.speakers,
                     location: this.state.Location,
                     registration: this.state.registration,
-                    lastEdited: this.props.firstName + " " + this.props.lastName + " " + currentEditDate
+                    lastEdited: this.props.firstName + " " + this.props.lastName + " " + currentEditDate,
+                    sortDate: this.state.selectedDate
                 }
             })
             .then(res => {

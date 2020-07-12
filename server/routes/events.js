@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
 
 //create new event
 router.post('/createEvent', (req, res) => {
-  var event, date, time, speakers, location, registration, lastEdited;
+  var event, date, time, speakers, location, registration, lastEdited, sortDate;
 
   if(req.body.params){
     event = req.body.params.event;
@@ -52,6 +52,7 @@ router.post('/createEvent', (req, res) => {
     location = req.body.params.location;
     registration = req.body.params.registration;
     lastEdited = req.body.params.lastEdited;
+    sortDate = req.body.params.sortDate;
   }
 
   else if(req.body){
@@ -62,9 +63,10 @@ router.post('/createEvent', (req, res) => {
     location = req.body.location;
     registration = req.body.registration;
     lastEdited = req.body.lastEdited;
+    sortDate = req.body.sortDate;
   }
 
-  var sortDate = moment(date).format('YYYY-MM-DD');
+  sortDate = moment(date).format('YYYY-MM-DD');
   date = moment(date).format('MMMM Do YYYY');
   var dateObject = new Date(sortDate);
   var timestamp = dateObject.getTime();
