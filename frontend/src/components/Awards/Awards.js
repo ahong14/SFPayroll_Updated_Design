@@ -24,27 +24,17 @@ class AwardsSponsors extends Component{
       return(
         <div className="card border-dark" id="awardsCard">
           <Grid container direction="row" justify="center" alignItems="center" wrap="nowrap">
-              <div id="npwContainer">
-                <a href="https://gpminstitute.com/education-events/global-payroll-week" rel="noopener noreferrer" target="_blank"> <img id="npwImage" src="/images/gpmi_week_2020.png"/> </a>
+            <div className="eventBannerContainer">
+              <div className="eventBanner">
+                <a href="https://californiapayroll.org/" rel="noopener noreferrer" target="_blank"> <img className="eventBannerImage" src='../images/cpc2020banner.png'/> </a>
               </div>
-
-              <div>
-                <a href="https://www.nationalpayrollweek.com/" rel="noopener noreferrer" target="_blank"> <img src="/images/NPW20_Logo-200.png"/></a>
-              </div>
-          </Grid>
-
-          <Grid container direction="row" justify="center" alignItems="center" wrap="nowrap">
-              <div id="apaImageContainer">
-                <a 
-                  href="https://ebiz.americanpayroll.org/ebusiness/Education/ViewCourse.aspx?CourseID=1&utm_source=DFP&utm_medium=APAWebsite-DeskHoriz&utm_campaign=2020Congress" 
-                  rel="noopener noreferrer" 
-                  target="_blank"> 
-                  <img id="apaImageEvent" src="/images/apa_congress_38th.jpg" alt="APA Logo"/> 
-                </a>
-              </div>
+            </div>
           </Grid>
 
           <div className="card-body awardsBody">
+            <Grid container direction="row" justify="center" alignItems="center">
+              <h1 className="italicUnderline"> Chapter Awards </h1>
+            </Grid>
             <Grid container direction="row"  justify="center" alignItems="center" wrap="wrap">
               { bannerAwards }
             </Grid>
