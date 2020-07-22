@@ -23,8 +23,24 @@ class Events extends Component{
         //set state to new array of events
         axios.get(apiURL)
             .then(resp => {
+                let sortedDates = resp.data.filter(event => {
+                    if (!isNaN(Date.parse(event.date))) {
+                        return event;
+                    } 
+                });
+
+                sortedDates = sortedDates.map(event => {
+                    let updatedEventDateObject = {...event};
+                    updatedEventDateObject.sortDate = new Date(event.date);
+                    return updatedEventDateObject;
+                });
+
+                sortedDates.sort((a,b) => {
+                    return b.sortDate - a.sortDate;
+                });
+
                 this.setState({
-                    events: resp.data
+                    events: sortedDates
                 })
             })
             .catch(err => {
