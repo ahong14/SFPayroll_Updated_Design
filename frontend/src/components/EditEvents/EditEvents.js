@@ -48,6 +48,12 @@ class EditEvents extends Component{
             return;
         }
 
+        else if (this.state.registration.length > 0 && validator.isURL(this.state.registration, {protocols: ['http', 'https'], require_protocol: true}) === false) {
+            //check for valid url
+            alert("Please insert valid URL");
+            return;
+        }
+
         else{
             //create lastEdited property with current date/time
             let currentEditDate = new Date();
@@ -79,8 +85,24 @@ class EditEvents extends Component{
     getEvents = () => {
         axios.get('/api/events')
             .then(res => {
+                let sortedDates = res.data.filter(event => {
+                    if (!isNaN(Date.parse(event.date))) {
+                        return event;
+                    } 
+                });
+
+                sortedDates = sortedDates.map(event => {
+                    let updatedEventDateObject = {...event};
+                    updatedEventDateObject.sortDate = new Date(event.date);
+                    return updatedEventDateObject;
+                });
+
+                sortedDates.sort((a,b) => {
+                    return b.sortDate - a.sortDate;
+                });
+
                 this.setState({
-                    events: res.data
+                    events: sortedDates
                 })
             })
             .catch(err => {

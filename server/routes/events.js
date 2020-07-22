@@ -67,7 +67,7 @@ router.post('/createEvent', (req, res) => {
   }
 
   sortDate = moment(date).format('YYYY-MM-DD');
-  date = moment(date).format('MMMM Do YYYY');
+  date = moment(date).format('MMMM DD YYYY');
   var dateObject = new Date(sortDate);
   var timestamp = dateObject.getTime();
 
