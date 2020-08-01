@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import '../Events/Events.css';
 import EventItem from '../Events/EventItem/EventItem';
@@ -14,7 +14,7 @@ import Grid from '@material-ui/core/Grid';
 class Events extends Component{
     constructor(props){
         super(props);
-        this.state = {events: []};
+        this.state = {events: [], upcomingEvent: {}};
     }
 
     componentDidMount(){
@@ -39,7 +39,18 @@ class Events extends Component{
                     return b.sortDate - a.sortDate;
                 });
 
+
+                // get dates greater than today
+                let currentDate = new Date();
+                let upcomingDate = {};
+                sortedDates.forEach(date => {
+                    if (date.sortDate >= currentDate) {
+                        upcomingDate = {...date};
+                    }
+                });
+
                 this.setState({
+                    upcomingEvent: upcomingDate,
                     events: sortedDates
                 })
             })
@@ -79,7 +90,15 @@ class Events extends Component{
                         </div>
                     </div>
 
+                    <div id="upcomingEvent">
+                        <h3> Upcoming Event </h3>
+                        {
+                            Object.keys(this.state.upcomingEvent).length > 0 ? <EventItem key={this.state.upcomingEvent._id} eventTitle={this.state.upcomingEvent.event} date={this.state.upcomingEvent.date} time={this.state.upcomingEvent.time} speakers={this.state.upcomingEvent.speakers} location={this.state.upcomingEvent.Location} registration={this.state.upcomingEvent.registration}/> : <Fragment/>
+                        }
+                    </div>
+
                     <div id="eventPosts">
+                        <h3> Other Events </h3>
                         {eventList}
                     </div>
                 </div>
