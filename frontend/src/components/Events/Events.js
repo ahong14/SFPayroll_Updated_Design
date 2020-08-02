@@ -90,15 +90,20 @@ class Events extends Component{
                         </div>
                     </div>
 
-                    <div id="upcomingEvent">
-                        <h3> Upcoming Event </h3>
-                        {
-                            Object.keys(this.state.upcomingEvent).length > 0 ? <EventItem key={this.state.upcomingEvent._id} eventTitle={this.state.upcomingEvent.event} date={this.state.upcomingEvent.date} time={this.state.upcomingEvent.time} speakers={this.state.upcomingEvent.speakers} location={this.state.upcomingEvent.Location} registration={this.state.upcomingEvent.registration}/> : <Fragment/>
-                        }
-                    </div>
+                    {
+                        Object.keys(this.state.upcomingEvent).length > 0 ?                     
+                            <div id="upcomingEvent">
+                                <h3> Upcoming Event </h3>
+                                <EventItem key={this.state.upcomingEvent._id} eventTitle={this.state.upcomingEvent.event} date={this.state.upcomingEvent.date} time={this.state.upcomingEvent.time} speakers={this.state.upcomingEvent.speakers} location={this.state.upcomingEvent.Location} registration={this.state.upcomingEvent.registration}/>
+                            </div>
+                        
+                        :
+                        <Fragment/>
+                    }
+
 
                     <div id="eventPosts">
-                        <h3> Other Events </h3>
+                        <h3> Events </h3>
                         {eventList}
                     </div>
                 </div>
