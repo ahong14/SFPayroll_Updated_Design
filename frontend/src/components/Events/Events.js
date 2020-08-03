@@ -96,7 +96,6 @@ class Events extends Component{
                                 <h3> Upcoming Event </h3>
                                 <EventItem key={this.state.upcomingEvent._id} eventTitle={this.state.upcomingEvent.event} date={this.state.upcomingEvent.date} time={this.state.upcomingEvent.time} speakers={this.state.upcomingEvent.speakers} location={this.state.upcomingEvent.Location} registration={this.state.upcomingEvent.registration}/>
                             </div>
-                        
                         :
                         <Fragment/>
                     }
