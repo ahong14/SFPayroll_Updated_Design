@@ -23,8 +23,18 @@ class AwardsSponsors extends Component{
             
       return(
         <div className="card border-dark" id="awardsCard">
+          <Grid container direction="row" justify="space-evenly" alignItems="center" wrap="nowrap">
+            <div className="eventBanner">
+              <img className="eventBannerImage" src='../images/npw2020.png'/>
+            </div>
+          </Grid>
+
           <Grid container direction="row" justify="center" alignItems="center" wrap="nowrap">
             <div className="eventBannerContainer">
+              <div className="eventBanner">
+                <a href="https://californiapayroll.org" rel="noopener noreferrer" target="_blank"> <img className="eventBannerImage" src='../images/cpc2020prizes.png'/> </a>
+              </div>
+
               <div className="eventBanner">
                 <a href="https://californiapayroll.org/" rel="noopener noreferrer" target="_blank"> <img className="eventBannerImage" src='../images/cpc2020banner.png'/> </a>
               </div>
