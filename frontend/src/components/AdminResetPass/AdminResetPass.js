@@ -20,7 +20,7 @@ class AdminResetPass extends Component{
     }
 
     handleEnterKey = (event) => {
-        if(event.key == "Enter"){
+        if(event.key === "Enter"){
             this.submitPasswordReset();
         }
     }
@@ -28,13 +28,13 @@ class AdminResetPass extends Component{
     submitPasswordReset = () => {
         //error handling
         //empty fields
-        if(this.state.userName == '' || this.state.newPassword == '' || this.state.confirmNewPassword == ''){
+        if(this.state.userName === '' || this.state.newPassword === '' || this.state.confirmNewPassword === ''){
             alert("One or more fields empty");
             return;
         }
 
         //passwords do not match
-        else if(this.state.newPassword != this.state.confirmNewPassword){
+        else if(this.state.newPassword !== this.state.confirmNewPassword){
             alert("Passwords do not match");
             return;
         }

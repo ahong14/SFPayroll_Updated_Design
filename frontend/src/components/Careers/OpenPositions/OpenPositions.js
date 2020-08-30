@@ -16,7 +16,7 @@ class OpenPositions extends Component{
         axios.get(apiURL)
             .then(res=> {
                 let activePositions = res.data.filter(position => {
-                    return position.deleted == false;
+                    return position.deleted === false;
                 });
 
                 this.setState({

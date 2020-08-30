@@ -9,9 +9,9 @@ class HelpSites extends Component{
                     <h3 className="text-center underline_header"> Career Help Sites </h3>
                     <ul className="careerLinks">
                         <a href="https://www.americanpayroll.org/membership/career-advancement" rel="noopener noreferrer" target="_blank" > <li> APA- Career Center  </li> </a>
-                        <a href="" target="_blank" > <li> APA- Job Board </li> </a>
+                        <a href="https://www.americanpayroll.org/membership/career-advancement" rel="noopener noreferrer" target="_blank" > <li> APA- Job Board </li> </a>
                         <a href="https://gecd.mit.edu/" rel="noopener noreferrer" target="_blank" > <li> Resume Tips  </li> </a>
-                        <a href="" target="_blank" > <li> Interview Tips  </li> </a>
+                        <a href="https://www.americanpayroll.org/membership/career-advancement/career-strategies" rel="noopener noreferrer" target="_blank" > <li> Interview Tips  </li> </a>
                         <a href="https://www.livecareer.com/career/advice/jobs/career-assessment" rel="noopener noreferrer" target="_blank" > <li> Employment Assessments </li> </a>
                     </ul>
                 </div>

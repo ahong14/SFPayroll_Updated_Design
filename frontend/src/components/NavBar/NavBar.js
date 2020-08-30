@@ -36,7 +36,7 @@ class NavBar extends Component{
 
     //logout user
     logoutUser = () => {
-        if(this.props.login == true){
+        if (this.props.login) {
             this.props.updateLogout();
             // temp fix, use window.location to redirect
             window.location = '/';
@@ -56,18 +56,18 @@ class NavBar extends Component{
             return(
                 <nav id="navBar" className="navbar navbar-expand-lg navbar-inverse fixed-top">
                    <Link to="/" className="navbar-brand" id="navbarLogo"> 
-                        <img id="imageLogo" src={newLogo} /> 
+                        <img id="imageLogo" src={newLogo} alt="logo"/> 
                     </Link>
                    <ul className="navbar-nav nav-fill w-100" id="navbarList">
                        <NavElement section="Home"/>
-                       <NavElement section={this.props.login == true ? "Edit Events" : "Events"}/>
+                       <NavElement section={this.props.login === true ? "Edit Events" : "Events"}/>
                        <NavElement section="About Us"/>
                        <NavElement section="Membership"/>
                        <NavElement section="Resources"/>
-                       <NavElement section={this.props.login == true ? "Edit Careers" : "Careers"}/>
+                       <NavElement section={this.props.login === true ? "Edit Careers" : "Careers"}/>
                        <NavElement section="Contact Us"/>
                        <NavElement section="Gallery"/>
-                       <NavElement onClick={this.logoutUser} section={this.props.login == true ? "Logout" : "Admin"}/>
+                       <NavElement onClick={this.logoutUser} section={this.props.login === true ? "Logout" : "Admin"}/>
                    </ul>
                </nav>
             );
@@ -93,11 +93,11 @@ class NavBar extends Component{
                                         
                             <div className="text-center" id="mobile_nav_links">
                                 <NavElement onClick={this.closeSideNav} section = "Home"/>
-                                <NavElement section={this.props.login == true ? "Edit Events" : "Events"}/>
+                                <NavElement section={this.props.login === true ? "Edit Events" : "Events"}/>
                                 <NavElement onClick={this.closeSideNav} section = "About Us"/>
                                 <NavElement onClick={this.closeSideNav} section = "Membership"/>
                                 <NavElement onClick={this.closeSideNav} section = "Resources"/>
-                                <NavElement section={this.props.login == true ? "Edit Careers" : "Careers"}/>
+                                <NavElement section={this.props.login === true ? "Edit Careers" : "Careers"}/>
                                 <NavElement onClick={this.closeSideNav} section = "Contact Us"/>
                                 <NavElement onClick={this.closeSideNav} section = "Gallery"/>
                             </div>

@@ -22,20 +22,20 @@ class AdminSignup extends Component{
 
     //enter key pressed
     handleEnterKey = (event) => {
-        if(event.key == "Enter"){
+        if(event.key === "Enter"){
             this.submitLogin();
         }
     }
 
     //send signup info to backend
     submitSignup = () => {
-        if(this.state.firstName == '' || this.state.lastName == '' || this.state.password == '' || this.state.confirmPassword == ''){
+        if(this.state.firstName === '' || this.state.lastName === '' || this.state.password === '' || this.state.confirmPassword === ''){
             alert("One or more fields empty");
         }
 
         //if passwords do not match
-        else if(this.state.password != this.state.confirmPassword){
-            alert.log("Passwords do not match");
+        else if(this.state.password !== this.state.confirmPassword){
+            alert("Passwords do not match");
         }
 
         else{

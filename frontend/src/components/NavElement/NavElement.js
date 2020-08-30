@@ -26,7 +26,7 @@ class NavElement extends Component {
     //check if route updated based on login status
     //remove all white spaces
     componentDidUpdate(prevProps){
-        if(prevProps.section != this.props.section){
+        if(prevProps.section !== this.props.section){
             let currentSection = this.props.section;
             currentSection = currentSection.replace(/\s/g, '');
             this.setState({

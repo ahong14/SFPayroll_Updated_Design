@@ -77,14 +77,14 @@ class EditEventItem extends Component{
 
         //return keys not equal to deleteClicked
         currentEdits = Object.keys(this.state).filter(key => {
-            return key != "deleteClicked";
+            return key !== "deleteClicked";
         });
 
         //go through each edit key
         let editObject = {};
         currentEdits.forEach(edit => {
             //if value was not modified, use previous values from props
-            if(this.state[edit] == ''){
+            if(this.state[edit] === ''){
                 editObject[edit] = this.props[edit];
             }
 
@@ -95,7 +95,7 @@ class EditEventItem extends Component{
         });
 
         //no updates found, return 
-        if(updateFound == false){
+        if(updateFound === false){
             alert("No edits found");
             return;
         }
@@ -150,8 +150,8 @@ class EditEventItem extends Component{
                 </div>
 
                 <div className="editButtonsContainer">
-                    <button className="form-control" type="button" className="btn btn-secondary editButton" data-toggle="modal" data-target={"#" + this.props.id}> Edit </button>
-                    <button className="form-control" type="button" className="btn btn-danger editButton" onClick={this.handleDeleteClicked} data-toggle="modal" data-target={"#" + this.props.id}> Delete </button>
+                    <button className="form-control btn btn-secondary editButton" type="button" data-toggle="modal" data-target={"#" + this.props.id}> Edit </button>
+                    <button className="form-control btn btn-danger editButton" type="button" onClick={this.handleDeleteClicked} data-toggle="modal" data-target={"#" + this.props.id}> Delete </button>
                 </div>
 
                 <div className="modal fade" id={this.props.id}>
@@ -159,11 +159,11 @@ class EditEventItem extends Component{
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h4 className="modal-title"> Edit Event </h4>
-                                <button className="form-control" type="button" className="close" data-dismiss="modal" onClick={this.handleCloseDelete}>&times;</button>
+                                <button className="form-control close" type="button" data-dismiss="modal" onClick={this.handleCloseDelete}>&times;</button>
                             </div>
 
                             <div className="modal-body">
-                                {this.state.deleteClicked != true ? 
+                                {this.state.deleteClicked !== true ? 
                                         <form>
                                             <label> Event Title </label>
                                             <input name="event" onChange={this.editEvent} className="form-control" placeholder={this.props.event} type="text"/>
@@ -198,11 +198,11 @@ class EditEventItem extends Component{
                             </div>
 
                             <div className="modal-footer">
-                                <button className="form-control" type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.handleCloseDelete}>Close</button>
-                                {this.state.deleteClicked == false ? 
-                                    <button className="form-control" type="button" className="btn btn-success" onClick={this.updateEvent}> Submit Edit </button>
+                                <button className="form-control btn btn-secondary" type="button" data-dismiss="modal" onClick={this.handleCloseDelete}>Close</button>
+                                {this.state.deleteClicked === false ? 
+                                    <button className="form-control btn btn-success" type="button" onClick={this.updateEvent}> Submit Edit </button>
                                     :
-                                    <button className="form-control" type="button" className="btn btn-danger" onClick={this.deleteEvent}> Delete Event </button>
+                                    <button className="form-control btn btn-danger" type="button" onClick={this.deleteEvent}> Delete Event </button>
                                 }
                             </div>
                         </div>

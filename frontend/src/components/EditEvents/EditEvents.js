@@ -43,7 +43,7 @@ class EditEvents extends Component{
     //submit new event
     createNewEvent = () => {
         //check empty fields
-        if(this.state.event == ''|| this.state.date == ''|| this.state.time == '' || this.state.speakers == ''|| this.state.Location == ''){
+        if(this.state.event === ''|| this.state.date === ''|| this.state.time === '' || this.state.speakers === ''|| this.state.Location === ''){
             alert("One or more fields empty");
             return;
         }
@@ -86,9 +86,7 @@ class EditEvents extends Component{
         axios.get('/api/events')
             .then(res => {
                 let sortedDates = res.data.filter(event => {
-                    if (!isNaN(Date.parse(event.date))) {
-                        return event;
-                    } 
+                    return !isNaN(Date.parse(event.date)); 
                 });
 
                 sortedDates = sortedDates.map(event => {
@@ -143,7 +141,7 @@ class EditEvents extends Component{
                                 <div className="modal-content">
                                     <div className="modal-header">
                                         <h4 className="modal-title"> Create Event </h4>
-                                        <button className="form-control" type="button" className="close" data-dismiss="modal">&times;</button>
+                                        <button className="form-control close" type="button" data-dismiss="modal">&times;</button>
                                     </div>
 
                                     <div className="modal-body">
@@ -178,8 +176,8 @@ class EditEvents extends Component{
                                     </div>
 
                                     <div className="modal-footer">
-                                        <button className="form-control" type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button className="form-control" type="button" className="btn btn-success" onClick={this.createNewEvent}> Create Event </button>
+                                        <button className="form-control btn btn-danger" type="button" data-dismiss="modal">Close</button>
+                                        <button className="form-control btn btn-success" type="button" onClick={this.createNewEvent}> Create Event </button>
                                     </div>
                                 </div>
                             </div>

@@ -11,7 +11,7 @@ class AboutUs extends Component{
         return(
             <div className="container-fluid" id="about_us_header">
                 <h2 className="section_header font-italic"> About Us </h2>
-                <img className="align_center" id="about_us_1" src={aboutUs} alt="chapter photo" />
+                <img className="align_center" id="about_us_1" src={aboutUs} alt="chapter" />
                 <h2 className="text-center font-italic " > San Francisco Bay Area Chapter </h2>
                 <div className="blockquote_caption align_center">
                     <blockquote className="font-weight-bold " id="about_us_part1_blockquote">

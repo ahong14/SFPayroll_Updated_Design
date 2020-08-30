@@ -35,27 +35,27 @@ class BulletinSection extends Component{
     submitBulletinEdit = () => {
         //error handling 
         //empty fields
-        if(this.state.bulletinMonth == ''){
+        if(this.state.bulletinMonth === ''){
             alert("Month field is empty");
             return;
         }
 
         //if bulletin link set to ready, check for valid inputs
-        else if(this.state.linkReady == true){
+        else if(this.state.linkReady === true){
             //empty field
-            if(this.state.bulletinLink == ''){
+            if(this.state.bulletinLink === ''){
                 alert("Link field empty");
                 return;
             }
 
             //invalid url
-            else if(validator.isURL(this.state.bulletinLink) == false){
+            else if(validator.isURL(this.state.bulletinLink) === false){
                 alert("Please insert proper URL");
                 return;
             }
 
             //check for http://
-            else if(this.state.bulletinLink.includes("http://") == false){
+            else if(this.state.bulletinLink.includes("http://") === false){
                 alert("Please insert http:// or https:// at beginning of URL");
                 return;
             }
@@ -95,20 +95,20 @@ class BulletinSection extends Component{
     getBulletin = () => {
         axios.get('/api/bulletin')
             .then(res => {
-                if(res.data.values.length == 1){
+                if(res.data.values.length === 1){
                     let currentBulletin = res.data.values[0];
                     this.setState({
                         bulletinValues: {...currentBulletin}
                     }, () => {
                         //{this.state.bulletinValues['month'] != undefined ? this.state.bulletinValues['month'] + " Bulletin" : "Month"}
-                        if(this.state.bulletinValues['month'] != undefined && this.state.bulletinValues['linkReady'] == true){
+                        if(this.state.bulletinValues['month'] !== undefined && this.state.bulletinValues['linkReady'] === true){
                             this.setState({
                                 bulletinText: this.state.bulletinValues['month'] + " Bulletin"
                             })
                         }
 
                         //{this.state.bulletinValues['month'] != undefined ? this.state.bulletinValues['month'] + " Bulletin" : "Month"}
-                        else if(this.state.bulletinValues['month'] != undefined && this.state.bulletinValues['linkReady'] == false){
+                        else if(this.state.bulletinValues['month'] !== undefined && this.state.bulletinValues['linkReady'] === false){
                             this.setState({
                                 bulletinText: this.state.bulletinValues['month'] + " Bulletin Coming Soon"
                             })
@@ -130,12 +130,12 @@ class BulletinSection extends Component{
             <div className="card bannerContainer">
                 <div id="bannerContent">
                     <h1> {this.state.bulletinText}</h1>
-                    <a href={this.state.bulletinValues['link'] != undefined ? this.state.bulletinValues['link'] : "http://www.sfpayroll.org"} rel="noopener noreferrer" target="_blank"> 
+                    <a href={this.state.bulletinValues['link'] !== undefined ? this.state.bulletinValues['link'] : "http://www.sfpayroll.org"} rel="noopener noreferrer" target="_blank"> 
                         <button disabled={!this.state.bulletinValues['linkReady']}className="btn btn-primary">
                             View Bulletin 
                         </button>
                     </a>
-                    {this.props.login == true ?
+                    {this.props.login === true ?
                         <div id="editBulletinContainer">
                             <button className="btn btn-secondary" data-toggle="modal" data-target="#modalBulletin"> Edit Bulletin Information </button>
                             <span> (Last Edited: {this.state.bulletinValues['lastEdited'] || ''})</span>
@@ -152,7 +152,7 @@ class BulletinSection extends Component{
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h4 className="modal-title"> Edit Bulletin Information </h4>
-                                <button className="form-control" type="button" className="close" data-dismiss="modal" onClick={this.handleCloseDelete}>&times;</button>
+                                <button className="form-control close" type="button" data-dismiss="modal" onClick={this.handleCloseDelete}>&times;</button>
                             </div>
 
                             <div className="modal-body">

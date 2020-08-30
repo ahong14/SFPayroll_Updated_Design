@@ -19,19 +19,19 @@ class EventCarousel extends Component {
 
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img className="slide_image" src={image2} alt="first image"/>
+            <img className="slide_image" src={image2} alt="first"/>
           </div>
 
           <div className="carousel-item">
-            <img className="slide_image" src={image1} alt="second image"/>
+            <img className="slide_image" src={image1} alt="second"/>
           </div>
 
           <div className="carousel-item">
-            <img className="slide_image" src={image3} alt="third image"/>
+            <img className="slide_image" src={image3} alt="third"/>
           </div>
 
           <div className="carousel-item">
-            <img className="slide_image" src={image4} alt="fourth image"/>
+            <img className="slide_image" src={image4} alt="fourth"/>
           </div>
         </div>
       </div>

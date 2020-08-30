@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import '../Careers/Careers.css';
 import gpmi from '../../photos/gpmi_background.jpg';
 
@@ -12,7 +12,7 @@ class Careers extends Component{
             <div className="container-fluid careers_container">
                 <div id="career_header">
                     <h2 className="section_header text-center"> Careers </h2>
-                    <img src={gpmi} id="career_image"/>
+                    <img src={gpmi} id="career_image" alt="career"/>
                 </div>
                 <OpenPositions/>
                 <HelpSites/>

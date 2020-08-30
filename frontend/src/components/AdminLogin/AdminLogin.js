@@ -25,14 +25,14 @@ class AdminLogin extends Component{
 
     //enter key pressed
     handleEnterKey = (event) => {
-        if(event.key == "Enter"){
+        if(event.key === "Enter"){
             this.submitLogin();
         }
     }
 
     //submit login
     submitLogin = () => {
-        if(this.state.login == '' || this.state.password == ''){
+        if(this.state.login === '' || this.state.password === ''){
             alert("One or more fields empty");
         }
 
@@ -47,7 +47,7 @@ class AdminLogin extends Component{
                     }
                 })
                 .then(res => {
-                    if(res.data.success == true){
+                    if (res.data.success) {
                         alert(res.data.message);
                         //extract JWT and assign as cookie
                         let newToken = res.data.token;

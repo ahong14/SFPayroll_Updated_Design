@@ -50,11 +50,11 @@ class EditCareer extends Component{
             .then(res => {
                 //filter active and removed career positions
                 let activeCareers = res.data.filter(position => {
-                    return position.deleted == false;
+                    return position.deleted === false;
                 });
 
                 let removedCareers = res.data.filter(position => {
-                    return position.deleted == true;
+                    return position.deleted === true;
                 });
 
                 this.setState({
@@ -132,11 +132,11 @@ class EditCareer extends Component{
                     </div>
 
                     {
-                        this.state.activePostings == true && editCareersActive.length > 0 ?
+                        this.state.activePostings === true && editCareersActive.length > 0 ?
                             editCareersActive
                         :
 
-                        this.state.removedPostings == true && editCareersRemoved.length > 0 ?
+                        this.state.removedPostings === true && editCareersRemoved.length > 0 ?
                             editCareersRemoved
                         :
 

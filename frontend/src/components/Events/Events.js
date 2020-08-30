@@ -2,11 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import '../Events/Events.css';
 import EventItem from '../Events/EventItem/EventItem';
-import eventHeaderImage from '../../photos/events_photo.jpg';
 import EventCarousel from './EventCarousel/EventCarousel';
-import apa from '../../photos/american_payroll_association_logo.png';
-import cpc from '../../photos/cpclogo.png';
-import Grid from '@material-ui/core/Grid';
 
 //Events component to display events
 //state contains array of events retrieved from mongoDB
@@ -23,10 +19,8 @@ class Events extends Component{
         //set state to new array of events
         axios.get(apiURL)
             .then(resp => {
-                let sortedDates = resp.data.filter(event => {
-                    if (!isNaN(Date.parse(event.date))) {
-                        return event;
-                    } 
+                let sortedDates = resp.data.filter(event => {    
+                    return !isNaN(Date.parse(event.date));
                 });
 
                 sortedDates = sortedDates.map(event => {
@@ -63,7 +57,7 @@ class Events extends Component{
         //render current state of events
         const eventList = this.state.events.map(result => {
             //if the event has a registration, return registration link
-            if(result.registration != undefined){
+            if (result.registration) {
               return <EventItem key={result._id} eventTitle={result.event} date={result.date} time={result.time} speakers={result.speakers} location={result.Location} registration={result.registration}/>
             }
 
