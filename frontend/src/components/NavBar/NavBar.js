@@ -36,7 +36,7 @@ class NavBar extends Component{
 
     //logout user
     logoutUser = () => {
-        if (this.props.login) {
+        if (this.props.login === true) {
             this.props.updateLogout();
             // temp fix, use window.location to redirect
             window.location = '/';

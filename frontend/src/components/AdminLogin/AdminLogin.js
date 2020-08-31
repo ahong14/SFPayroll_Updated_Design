@@ -47,7 +47,7 @@ class AdminLogin extends Component{
                     }
                 })
                 .then(res => {
-                    if (res.data.success) {
+                    if (res.data.success === true) {
                         alert(res.data.message);
                         //extract JWT and assign as cookie
                         let newToken = res.data.token;

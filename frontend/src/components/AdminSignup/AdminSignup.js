@@ -23,7 +23,7 @@ class AdminSignup extends Component{
     //enter key pressed
     handleEnterKey = (event) => {
         if(event.key === "Enter"){
-            this.submitLogin();
+            this.submitSignup();
         }
     }
 
