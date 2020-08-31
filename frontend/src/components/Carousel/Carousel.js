@@ -19,23 +19,23 @@ class Carousel extends Component{
 
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img className= "slide_image img-responsive" src="/images/sfpayroll2019cover.jpg" alt="start image"/>
+                        <img className= "slide_image img-responsive" src="/images/sfpayroll2019cover.jpg" alt="start"/>
                     </div>
 
                     <div className="carousel-item">
-                        <img className= "slide_image img-responsive" src={image1} alt="first image"/>
+                        <img className= "slide_image img-responsive" src={image1} alt="first"/>
                     </div>
 
                     <div className="carousel-item">
-                        <img className= "slide_image img-responsive" src={image2} alt = "second image"/>
+                        <img className= "slide_image img-responsive" src={image2} alt = "second"/>
                     </div>
 
                     <div className="carousel-item">
-                        <img className= "slide_image img-responsive" src={image3} alt="third image"/>
+                        <img className= "slide_image img-responsive" src={image3} alt="third"/>
                     </div>
 
                     <div className="carousel-item">
-                        <img className= "slide_image img-responsive" src={image4} alt="fourth image"/>
+                        <img className= "slide_image img-responsive" src={image4} alt="fourth"/>
                     </div>
                 </div>
             </div> 

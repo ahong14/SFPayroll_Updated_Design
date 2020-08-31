@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from 'react';
 import '../../Careers/JobForm/JobForm.css';
 import axios from 'axios';
 import validator from 'validator';
@@ -55,7 +55,7 @@ class JobForm extends Component{
                 lastEditedDate = moment(lastEditedDate).tz('America/Los_Angeles').format('YYYY-MM-DD hh:mm:ss');
 
                 let lastEdited = "";
-                if(this.props.login == true){
+                if(this.props.login === true){
                     lastEdited = this.props.firstName + " " + this.props.lastName + " " + lastEditedDate;
                 }
 
@@ -157,9 +157,10 @@ class JobForm extends Component{
                             <span className="font-weight-bold"> {title} </span>: {this.state.uploadedFile.name ? this.state.uploadedFile.name : "No PDF uploaded"} 
                         </div>
                     )
-
                 default:
-                    return;
+                    return (
+                        <Fragment/>
+                    )
             }
         })
 

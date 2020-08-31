@@ -5,10 +5,6 @@ import GalleryGroupJSON from './Gallery.json';
 import GalleryGroup from '../GalleryGroup/GalleryGroup';
 
 class Gallery extends Component {
-  constructor(props){
-    super(props);
-  }
-
   render() {
     //create tab groups based on categories of photos
     const tabGroups = GalleryGroupJSON.galleryGroups.map(group => {

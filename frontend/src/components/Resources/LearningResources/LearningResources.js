@@ -9,13 +9,12 @@ class LearningResources extends Component{
                     <div className="learning_resources">
                         <h3 className="text-center underline"> Learning Resources </h3>
                         <a href="https://www.americanpayroll.org/news-resources/apa-news?" rel="noopener noreferrer" target="_blank"> <p> Webinar from American Payroll Association</p> </a>
-                        <a href="https://www.americanpayroll.org/education-certification/education/learning-paths"  target="_blank"> <p> American Payroll Association</p> </a>
+                        <a href="https://www.americanpayroll.org/education-certification/education/learning-paths"  rel="noopener noreferrer" target="_blank"> <p> American Payroll Association</p> </a>
                         <a href="http://www.gpminstitute.com/" rel="noopener noreferrer" target="_blank"> <p> Global Payroll Management Institute </p></a>
                         <a href="https://californiapayroll.org/" rel="noopener noreferrer" target="_blank"> <p> Calfornia Payroll Conference </p></a>
                         <a href="http://www.nationalpayrollweek.com/" rel="noopener noreferrer" target="_blank"> <p> National Payroll Week </p></a>
                         <a href="https://www.edd.ca.gov/Payroll_Tax_seminars/" rel="noopener noreferrer" target="_blank"> <p> Payroll Tax Seminars - EDD </p></a>
-                        <a href="> <p> Study Group </p></a>
-                        <a href=https://www.americanpayroll.org/news-resources/resource-library?resourcelibar=1ddd56c-da58-4b96-9c28-3f3099421cb3"  target="_blank"> <p> APA News and Resources</p></a>
+                        <a href="https://www.americanpayroll.org/news-resources/resource-library?resourcelibar=1ddd56c-da58-4b96-9c28-3f3099421cb3" rel="noopener noreferrer" target="_blank"> <p> APA News and Resources</p></a>
                     </div>
 
 

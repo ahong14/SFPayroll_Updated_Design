@@ -6,7 +6,7 @@ class President extends Component{
     render(){
         return(
             <div className="card memberCard">
-                <img className="card-img-top memberImage" src= {owhen} alt="Card image cap"/>
+                <img className="card-img-top memberImage" src= {owhen} alt="card caption"/>
                 <div className="card-body">
                     <h5 className="card-title text-center font-weight-bold"> Owhen Astorga </h5>
                     <p className="card-text text-center font-weight-bold"> President </p>

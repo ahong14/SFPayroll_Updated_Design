@@ -20,7 +20,6 @@ class EditCareerItem extends Component{
             //new pdf state values
             email: "",
             position: "",
-            city: "",
             state: "",
             description:"",
             select: "Payroll Position- Full Time",
@@ -63,9 +62,9 @@ class EditCareerItem extends Component{
         let newCareerContent = {};
         //return everything except deleteClicked from state object
         Object.keys(this.state).forEach(key => {
-            if(key != "deleteClicked" || key != "newPdf"){
+            if(key !== "deleteClicked" || key !== "newPdf"){
                 //update found, use updated state value
-                if(this.state[key] != ''){
+                if(this.state[key] !== ''){
                     newCareerContent[key] = this.state[key];
                 }
 
@@ -77,14 +76,14 @@ class EditCareerItem extends Component{
         });
 
         //check if new pdf was clicked, if not use old pdf link
-        if(this.state.newPdf == false){
+        if(this.state.newPdf === false){
             newCareerContent["link"] = this.props.link;
         }
 
         //check for empty fields if no PDF was uploaded
         else{
-            if(Array(Object.keys(this.state.uploadedFile)).length == 0){
-                if(this.state.email == '' || this.state.select == '' || this.state.company == '' || this.state.position == '' || this.state.description == '' || this.state.city == '' || this.state.state == ''){
+            if(Array(Object.keys(this.state.uploadedFile)).length === 0){
+                if(this.state.email === '' || this.state.select === '' || this.state.company === '' || this.state.position === '' || this.state.description === '' || this.state.city === '' || this.state.state === ''){
                     alert("One or more fields empty for pdf content");
                     return;
                 }
@@ -132,7 +131,7 @@ class EditCareerItem extends Component{
 
     //delete career from database
     deleteCareer = () => {
-        if(this.state.deletedMessage.length == 0 || this.state.deletedMessage == ''){
+        if(this.state.deletedMessage.length === 0 || this.state.deletedMessage === ''){
             alert("Please insert delete message");
             return;
         }
@@ -180,7 +179,7 @@ class EditCareerItem extends Component{
                     <p className="card-text text-center"> <strong> City: </strong> {this.props.city} </p>
                     <p className="card-text text-center"> <strong> Company: </strong> {this.props.company} </p>
                     <p className="card-text text-center"> <strong> Last Edited By: </strong> {this.props.lastEdited} </p>
-                    {this.props.deleted == true ? 
+                    {this.props.deleted === true ? 
                         <p className="card-text text-center"> <strong> Deleted Message: </strong> {this.props.deletedMessage} </p>
                         :
                         <Fragment/>
@@ -188,7 +187,7 @@ class EditCareerItem extends Component{
                 </div>
 
                 {
-                    this.props.deleted == false ? 
+                    this.props.deleted === false ? 
                         <div className="editButtonsContainer">
                             <button type="button" className="form-control btn btn-secondary editButton" data-toggle="modal" data-target={"#" + this.props.id}> Edit </button>
                             <button type="button" className="form-control btn btn-danger editButton" data-toggle="modal" data-target={"#" + this.props.id} onClick={this.handleDeleteClicked}> Delete </button> 
@@ -202,11 +201,11 @@ class EditCareerItem extends Component{
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h4 className="modal-title"> Edit Career </h4>
-                                <button className="form-control" type="button" className="close" data-dismiss="modal" onClick={this.handleCloseDelete}>&times;</button>
+                                <button className="form-control close" type="button" data-dismiss="modal" onClick={this.handleCloseDelete}>&times;</button>
                             </div>
 
                             <div className="modal-body">
-                                {this.state.deleteClicked != true ? 
+                                {this.state.deleteClicked !== true ? 
                                     <form>
                                         <label> Title </label>
                                         <input name="title" onChange={this.editCareer} className="form-control" placeholder={this.props.title} type="text"/>
@@ -238,7 +237,7 @@ class EditCareerItem extends Component{
 
                                 }
 
-                                {this.state.newPdf == true ? 
+                                {this.state.newPdf === true ? 
                                     <form>
                                         <label htmlFor="email" className="font-weight-bold"> Email: </label>
                                         <input disabled={this.state.disableForms} name="email" type="email" className="form-control" id="email" onChange={this.handleNewPdfContent}/>
@@ -274,11 +273,11 @@ class EditCareerItem extends Component{
                             </div>
 
                             <div className="modal-footer">
-                                <button className="form-control" type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.handleCloseDelete}>Close</button>
-                                {this.state.deleteClicked == false ? 
-                                    <button className="form-control" type="button" className="btn btn-success" onClick={this.updateCareer}> Submit Edit </button>
+                                <button className="form-control btn btn-secondary" type="button" data-dismiss="modal" onClick={this.handleCloseDelete}>Close</button>
+                                {this.state.deleteClicked === false ? 
+                                    <button className="form-control btn btn-success" type="button" onClick={this.updateCareer}> Submit Edit </button>
                                     :
-                                    <button className="form-control" type="button" className="btn btn-danger" onClick={this.deleteCareer}> Delete Event </button>
+                                    <button className="form-control btn btn-danger" type="button" onClick={this.deleteCareer}> Delete Event </button>
                                 }
                             </div>
                         </div>

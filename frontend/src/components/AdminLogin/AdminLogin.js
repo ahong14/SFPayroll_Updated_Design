@@ -25,14 +25,14 @@ class AdminLogin extends Component{
 
     //enter key pressed
     handleEnterKey = (event) => {
-        if(event.key == "Enter"){
+        if(event.key === "Enter"){
             this.submitLogin();
         }
     }
 
     //submit login
     submitLogin = () => {
-        if(this.state.login == '' || this.state.password == ''){
+        if(this.state.login === '' || this.state.password === ''){
             alert("One or more fields empty");
         }
 
@@ -47,7 +47,7 @@ class AdminLogin extends Component{
                     }
                 })
                 .then(res => {
-                    if(res.data.success == true){
+                    if (res.data.success === true) {
                         alert(res.data.message);
                         //extract JWT and assign as cookie
                         let newToken = res.data.token;
@@ -61,15 +61,20 @@ class AdminLogin extends Component{
                         })
                     }
     
-                    else{
-                        alert(res.data.message);
+                    else {
                         this.setState({
                             loginLoading: false
+                        }, () => {
+                            alert(res.data.message);
                         })
                     }
                 })
                 .catch(err => {
-                    alert(err.response.data.message);
+                    this.setState({
+                        loginLoading: false
+                    }, () => {
+                        alert(err.response.data.message);
+                    })
                 })
             })
         }
@@ -96,7 +101,7 @@ class AdminLogin extends Component{
                             <Link to="/AdminResetPass"> Reset Password </Link>
                         </div>
 
-                        <button type="button" className="btn btn-primary" onClick={this.submitLogin}> {this.state.loginLoading ? "Loading..." : "Login"} </button>
+                        <button type="button" className="btn btn-primary" onClick={this.submitLogin}> {this.state.loginLoading === true ? "Loading..." : "Login"} </button>
                     </form>
                 </div>
             </div>

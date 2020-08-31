@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import '../../AboutUs/AboutSections/AboutSections.css';
 import apa from '../../../photos/american_payroll_association_logo.png';
 import gpmi from '../../../photos/GPMILogo.png';
-import payrollLogo from '../../../photos/sf_payroll_logo.gif';
 import cpc from '../../../photos/cpclogo.png';
 
 class AboutSections extends Component{
@@ -10,7 +9,7 @@ class AboutSections extends Component{
         return(
             <div className=" container-fluid card-group">
                 <div className="card">
-                    <img className="card-img-top section_image" src= {apa} alt="Card image cap"/>
+                    <img className="card-img-top section_image" src= {apa} alt="Card caption"/>
                     <div className="card-body">
                       <h5 className="card-title text-center">American Payroll Association </h5>
                       <p className="text-center"> <a href = "https://www.americanpayroll.org/" rel="noopener noreferrer" target="_blank"> More Info </a> </p>
@@ -18,13 +17,13 @@ class AboutSections extends Component{
                           Established in 1982, the American Payroll Association (APA), headquartered in San Antonio , TX , is the nation's leader in payroll education, training, and publications. 
                           The nonprofit association conducts more than 300 payroll education conferences and seminars across the country each year and publishes a complete library of resource texts and newsletters. 
                           Every year, nearly 18,000 professionals attend APA training sessions. Representing over 22,000 members, APA is the industry's highly respected, collective voice in Washington DC.
-                          If you want to become a member of APA National, check out <a href = "https://www.americanpayroll.org/members" target = "_blank"> www.americanpayroll.org/members </a> to learn more and join today, or fill out the Membership Application."
+                          If you want to become a member of APA National, check out <a href = "https://www.americanpayroll.org/members" target = "_blank" rel="noopener noreferrer"> www.americanpayroll.org/members </a> to learn more and join today, or fill out the Membership Application."
                       </blockquote>
                     </div>
                 </div>
 
                 <div className="card">
-                    <img className="card-img-top section_image" src={gpmi} alt="Card image cap"/>
+                    <img className="card-img-top section_image" src={gpmi} alt="Card caption"/>
                     <div className="card-body">
                       <h5 className="card-title text-center"> GPMI </h5>
                       <p className="text-center"> <a href="https://www.gpminstitute.com/" rel="noopener noreferrer" target="_blank"> More Info </a> </p>
@@ -37,7 +36,7 @@ class AboutSections extends Component{
                 </div>
 
                 <div className="card">
-                    <img className="card-img-top section_image" src= {cpc} alt="Card image cap"/>
+                    <img className="card-img-top section_image" src= {cpc} alt="card caption"/>
                     <div className="card-body">
                         <h5 className="card-title text-center"> California Payroll Conference </h5>
                         <p className="text-center"> <a href = "https://californiapayroll.org/" rel="noopener noreferrer" target="_blank"> More Info </a> </p>
