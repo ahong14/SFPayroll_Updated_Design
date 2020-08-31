@@ -29,7 +29,7 @@ class Home extends Component {
                         of the American Payroll Association
                     </h3>
 
-                    <Grid container direction="row"  justify="center" alignItem="center" wrap="nowrap">
+                    <Grid container direction="row"  justify="center" alignItems="center" wrap="nowrap">
                         <a href="https://www.americanpayroll.org/" rel="noopener noreferrer" target="_blank"> <img className="logoImage" src={apa} alt="APA Logo"/> </a>
                         <a href="https://www.gpminstitute.com/" rel="noopener noreferrer" target="_blank"> <img id="gpmiLogoImageHome" className="logoImage" src={gpmi} alt="gpmi logo"/> </a>
                         <a href="https://californiapayroll.org/" rel="noopener noreferrer" target="_blank"> <img className="logoImage" src={cpc} alt="cpc logo"/> </a>
