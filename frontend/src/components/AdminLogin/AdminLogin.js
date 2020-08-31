@@ -61,15 +61,20 @@ class AdminLogin extends Component{
                         })
                     }
     
-                    else{
-                        alert(res.data.message);
+                    else {
                         this.setState({
                             loginLoading: false
+                        }, () => {
+                            alert(res.data.message);
                         })
                     }
                 })
                 .catch(err => {
-                    alert(err.response.data.message);
+                    this.setState({
+                        loginLoading: false
+                    }, () => {
+                        alert(err.response.data.message);
+                    })
                 })
             })
         }
@@ -96,7 +101,7 @@ class AdminLogin extends Component{
                             <Link to="/AdminResetPass"> Reset Password </Link>
                         </div>
 
-                        <button type="button" className="btn btn-primary" onClick={this.submitLogin}> {this.state.loginLoading ? "Loading..." : "Login"} </button>
+                        <button type="button" className="btn btn-primary" onClick={this.submitLogin}> {this.state.loginLoading === true ? "Loading..." : "Login"} </button>
                     </form>
                 </div>
             </div>
