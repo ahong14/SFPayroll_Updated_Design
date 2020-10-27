@@ -4,14 +4,10 @@ const nodemailer = require('nodemailer');
 //email options
 const transporter = nodemailer.createTransport({
     secure: false, // use SSL
-    service: 'gmail',
+    host: 'smtp.gmail.com',
     auth: {
-        type: 'OAuth2',
         user: process.env.EMAIL_USER,
-        clientId: process.env.GMAIL_CLIENT_ID,
-        clientSecret: process.env.GMAIL_CLIENT_SECRET,
-        accessToken: process.env.GMAIL_ACCESS_TOKEN,
-        refreshToken: process.env.GMAIL_REFRESH_TOKEN
+        pass: process.env.EMAIL_PASS
     },
     tls: {
         rejectUnauthorized: false
