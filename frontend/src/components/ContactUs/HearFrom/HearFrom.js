@@ -33,8 +33,12 @@ class HearFrom extends Component{
                     email: this.state.email,
                     message: this.state.message
                 }
-            }).then(resp => {
+            })
+            .then(resp => {
                 alert(resp.data);
+            })
+            .catch(err => {
+                alert("Error sending email");
             })
         }
     }

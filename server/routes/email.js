@@ -4,10 +4,10 @@ const nodemailer = require('nodemailer');
 //email options
 const transporter = nodemailer.createTransport({
     secure: false, // use SSL
-    service: 'gmail',
+    host: 'smtp.gmail.com',
     auth: {
-           user: process.env.EMAIL_USER,
-           pass: process.env.EMAIL_PASS
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     },
     tls: {
         rejectUnauthorized: false

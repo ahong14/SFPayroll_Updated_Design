@@ -27,14 +27,14 @@ router.post('/signup', (req, res) => {
     }
 
     Admin.findOne({userName: userName}, (err, result) => {
-        if(err){
+        if (err) {
             return res.status(500).json({
                 success: false,
                 message: "Error with database"
             })
         }
 
-        if(result){
+        if (result) {
             return res.status(400).json({
                 success: false,
                 message: "User name already exists"
@@ -45,7 +45,7 @@ router.post('/signup', (req, res) => {
             //hash password
             bcrypt.genSalt(saltRounds, (err, salt) => {
                 bcrypt.hash(password, salt, (err, hashedPassword) => {
-                    if(err){
+                    if (err) {
                         return res.status(500).json({
                             success: false,
                             message: "Error with hashing password"
@@ -59,7 +59,7 @@ router.post('/signup', (req, res) => {
                     newAdmin.lastName = lastName;
                     newAdmin.emailVerified = false;
                     newAdmin.save( (err) => {
-                        if(err){
+                        if (err) {
                             return res.status(500).json({
                                 success: false,
                                 message: "Error saving to db"
@@ -72,7 +72,7 @@ router.post('/signup', (req, res) => {
                         tokenString.user = userName;
                         tokenString.token = tokenValue;
                         tokenString.save(err => {
-                            if(err){
+                            if (err) {
                                 return res.status(500).json({
                                     success: false,
                                     message: "Error saving to db"
@@ -87,12 +87,12 @@ router.post('/signup', (req, res) => {
                             }
 
                             transporter.sendMail(options, (err,info) => {
-                                if(err){
+                                if (err) {
                                     console.log(err)
                                     res.status(500).send("email failed to send");
                                 }
                             
-                                else{
+                                else {
                                     console.log(info);
                                     return res.status(200).json({
                                         success: true,
@@ -112,7 +112,7 @@ router.post('/signup', (req, res) => {
 router.get('/authentication/:token', (req, res) => {
     var token = req.params.token;
     Token.findOne({token: token}, (err, result) => {
-        if(err){
+        if (err) {
             console.log(err);
             return res.status(500).json({
                 success: false,
@@ -121,7 +121,7 @@ router.get('/authentication/:token', (req, res) => {
         }
 
         //token was found, find user and set boolean verified to true
-        if(result){
+        if (result) {
             let userName = result.user;
             Admin.findOneAndUpdate({userName: userName}, {emailVerified: true}, (err, result) => {
                 if(err){
@@ -142,12 +142,12 @@ router.get('/authentication/:token', (req, res) => {
 
                 //send email to for success message
                 transporter.sendMail(options, (err,info) => {
-                    if(err){
+                    if (err) {
                         console.log(err)
                         res.status(500).send("email failed to send");
                     }
                 
-                    else{
+                    else {
                         console.log(info);
                         return res.redirect('/Admin');
                     }
@@ -163,7 +163,7 @@ router.get('/authentication/:token', (req, res) => {
             let tokenValue = crypto.randomBytes(16).toString('hex');
             tokenString.token = tokenValue;
             tokenString.save(err => {
-                if(err){
+                if (err) {
                     return res.status(500).json({
                         success: false,
                         message: "Error saving to db"
@@ -178,7 +178,7 @@ router.get('/authentication/:token', (req, res) => {
                 }
 
                 transporter.sendMail(options, (err,info) => {
-                    if(err){
+                    if (err) {
                         console.log(err)
                         res.status(500).send("email failed to send");
                     }
@@ -196,29 +196,29 @@ router.get('/authentication/:token', (req, res) => {
 router.post('/login', (req, res) => {
     var userName, password;
 
-    if(req.body.params){
+    if (req.body.params) {
         userName = req.body.params.userName;
         password = req.body.params.password;
     }
 
-    else if(req.body){
+    else if (req.body) {
         userName = req.body.userName;
         password = req.body.password;
     }
 
     Admin.findOne({userName: userName}, (err, result) => {
-        if(err){
+        if (err) {
             return res.status(500).json({
                 success: false,
                 message: "Error with database"
             })
         }
 
-        else if(result){
+        else if (result) {
             //compare submitted password and hashed password
             let comparePassword = result.password;
             bcrypt.compare(password, comparePassword, (err, match) => {
-                if(err){
+                if (err) {
                     console.log(err);
                     return res.status(500).json({
                         success: false,
@@ -226,7 +226,7 @@ router.post('/login', (req, res) => {
                     })
                 }
                 
-                if(match == false){
+                if (match === false) {
                     return res.status(400).json({
                         success: false,
                         message: "Error, passwords do not match"
@@ -234,14 +234,14 @@ router.post('/login', (req, res) => {
                 }
 
                 //if email not verified, send email
-                else if(result.emailVerified == false){
+                else if (result.emailVerified === false) {
                     //create token and send email for verification for created user
                     let tokenString = new Token();
                     let tokenValue = crypto.randomBytes(16).toString('hex');
                     tokenString.user = result.userName;
                     tokenString.token = tokenValue;
                     tokenString.save(err => {
-                        if(err){
+                        if (err) {
                             return res.status(500).json({
                                 success: false,
                                 message: "Error saving to db"
@@ -256,7 +256,7 @@ router.post('/login', (req, res) => {
                         }
 
                         transporter.sendMail(options, (err,info) => {
-                            if(err){
+                            if (err) {
                                 console.log(err)
                                 res.status(500).send("email failed to send");
                             }
@@ -305,19 +305,19 @@ router.post('/login', (req, res) => {
 
 router.post('/resetPassword', (req, res) => {
     var userName, newPassword;
-    if(req.body.params){
+    if (req.body.params) {
         userName = req.body.params.userName;
         newPassword = req.body.params.newPassword;
     }
 
-    else if(req.body){
+    else if (req.body) {
         userName = req.body.userName;
         newPassword = req.body.newPassword;
     }
 
     //find if username exists
     Admin.findOne({userName: userName}, (err, result) => {
-        if(err){
+        if (err) {
             return res.status(500).json({
                 success: false,
                 message: "Error with database"
@@ -352,7 +352,7 @@ router.post('/resetPassword', (req, res) => {
                     passwordToken.token = tokenValue;
 
                     passwordToken.save((err) => {
-                        if(err){
+                        if (err) {
                             return res.status(500).json({
                                 success: false,
                                 message: "Error with database"
@@ -369,7 +369,7 @@ router.post('/resetPassword', (req, res) => {
                         }
 
                         transporter.sendMail(options, (err,info) => {
-                            if(err){
+                            if (err) {
                                 console.log(err)
                                 res.status(500).send("email failed to send");
                             }
@@ -400,7 +400,7 @@ router.post('/resetPassword', (req, res) => {
 router.get('/resetPasswordAuth/:token', (req, res) => {
     let token = req.params.token;
     NewPasswordToken.find({token: token}, (err, result) => {
-        if(err){
+        if (err) {
             return res.status(500).json({
                 success: false,
                 message: "Error with database"
@@ -412,7 +412,7 @@ router.get('/resetPasswordAuth/:token', (req, res) => {
             let userName = result[0].user;
             let newPassword = result[0].password;
             Admin.findOneAndUpdate({userName: userName}, {$set: {"password": newPassword}}, (err, result) => {
-                if(err){
+                if (err) {
                     return res.status(500).json({
                         success: false,
                         message: "Error with database"
