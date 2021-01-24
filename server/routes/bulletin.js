@@ -72,6 +72,7 @@ router.post('/createNew', (req, res) => {
     let newBulletin = new Bulletin();
     newBulletin.month = month;
     newBulletin.link = link;
+    newBulletin.createdDate = new Date();
 
     newBulletin.save((err, result) => {
         if (err) {

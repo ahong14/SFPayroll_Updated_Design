@@ -20,7 +20,11 @@ const BulletinSchema = new Schema({
     linkReady: {
         type: Boolean,
         default: false
+    },
+
+    createdDate: {
+        type: Date
     }
-})
+});
 
 module.exports = mongoose.model('bulletin', BulletinSchema);
