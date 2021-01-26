@@ -68,7 +68,7 @@ router.post('/createOne', (req, res) => {
 });
 
 router.post('/createNew', (req, res) => {
-    const { month, link } = req.body;
+    const { month, link } = req.body.params;
     let newBulletin = new Bulletin();
     newBulletin.month = month;
     newBulletin.link = link;
