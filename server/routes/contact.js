@@ -11,7 +11,8 @@ router.post('/contactUs', (req, res) => {
     const contactUsOptions = {
         from: process.env.EMAIL_USER, // sender address
         to: process.env.EMAIL_RECEIVER, // list of receivers
-        subject: 'Message From Visitor', // Subject line
+        subject:
+            'Message From Visitor (Please Reply Directly To Visitor Email)', // Subject line
         html:
             '<p>Name: ' +
             params.name +

@@ -1,19 +1,28 @@
-.bannerContainer{
+.bannerContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 150px;
+    height: 250px;
 }
 
-#bannerContent{
+#bannerContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     align-self: center;
+    justify-content: space-between;
+    overflow: auto;
 }
 
-#editBulletinContainer{
+#selectBulletin {
+    margin-bottom: 5px;
+}
+
+.editBulletinContainer {
     padding-top: 5px;
 }
 
-#submitBulletinEdit{
+#submitBulletinEdit {
     margin-top: 5px;
 }
