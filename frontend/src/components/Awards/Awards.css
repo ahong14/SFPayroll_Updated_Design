@@ -1,86 +1,84 @@
-#awards{
+#awards {
     min-height: 110px;
-    display:flex;
-    flex-direction: row;  
-    align-self:center;
-    justify-content: space-around;    
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: space-around;
 }
 
-.award_image{
+.award_image {
     padding: 5px;
-    width:100%;
+    width: 100%;
     height: 100%;
 }
 
-.bannerImage{
-  width: 290px;
-  height: 100px;
-  padding: 5px;
+.bannerImage {
+    width: 290px;
+    height: 100px;
+    padding: 5px;
 }
 
-#thirdPlaceBanner{
-  width: 300px;
+#thirdPlaceBanner {
+    width: 300px;
 }
 
-#awardsCard{
-  align-self: center;
+#awardsCard {
+    align-self: center;
 }
 
-#apaImageEvent{
-  width: 95%;
+#apaImageEvent {
+    width: 95%;
 }
 
-.awardsBody{
-  align-self: center;
+.awardsBody {
+    align-self: center;
 }
 
-#npwContainer{
-  margin: 10px;
-  padding-right: 5px;
+#npwContainer {
+    margin: 10px;
+    padding-right: 5px;
 }
 
 .eventBannerContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: -50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: -50px;
 }
 
 .eventBanner {
-  display: flex;
-  align-self: center;
-  margin-top: 10px;
+    display: flex;
+    align-self: center;
+    margin-top: 10px;
 }
 
 .eventBannerImage {
-  height: 80%;
-  width: 100%;
-  align-self: center;
+    height: 100%;
+    width: 100%;
+    align-self: center;
 }
 
 .italicUnderline {
-  font-style: italic;
-  text-decoration: underline;
+    font-style: italic;
+    text-decoration: underline;
 }
 
-@media screen and (max-width: 600px){
-    .award_image{
+@media screen and (max-width: 600px) {
+    .award_image {
         width: 40px;
-        height:40px;
+        height: 40px;
     }
 
-    .bannerImage{
-      width: 100px;
-      height: 50px;
+    .bannerImage {
+        width: 100px;
+        height: 50px;
     }
-    
-    #thirdPlaceBanner{
-      width: 105px;
+
+    #thirdPlaceBanner {
+        width: 105px;
     }
-    
-    #awardsGrid{
-      width: 100%;
+
+    #awardsGrid {
+        width: 100%;
     }
 }
-
-
