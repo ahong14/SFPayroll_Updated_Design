@@ -1,4 +1,4 @@
-.editContainer{
+.editContainer {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -7,7 +7,7 @@
     padding-top: 70px;
 }
 
-#editEventsContainer{
+#editEventsContainer {
     align-self: center;
     height: 500px;
     overflow: auto;
@@ -15,7 +15,11 @@
     padding: 10px;
 }
 
-#createEvent{
+#createEvent {
     align-self: center;
     margin-bottom: 10px;
+}
+
+.editEventTitle {
+    width: 100%;
 }

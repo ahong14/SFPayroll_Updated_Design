@@ -18,7 +18,8 @@ class EditEventItem extends Component{
             Location: '',
             registration: '',
             selectedDate: '',
-            deleteClicked: false
+            deleteClicked: false,
+            description: ''
         }
     }
 
@@ -191,6 +192,10 @@ class EditEventItem extends Component{
 
                                             <label> Registration </label>
                                             <input name="registration" onChange={this.editEvent} className="form-control" placeholder={this.props.registration} type="text"/>
+
+
+                                            <label> Description </label>
+                                            <textarea name="description" onChange={this.editEvent} className="form-control" placeholder={this.props.description}> </textarea>
                                         </form>
                                     :
                                         <p> Confirm Deleting {this.props.event} ? </p>
