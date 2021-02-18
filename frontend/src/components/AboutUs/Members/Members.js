@@ -53,7 +53,7 @@ class Members extends Component {
                     <OfficerMember
                         imagesrc={lois}
                         name="Lois Fried, CPP"
-                        position="APA Ambassador, President Elect"
+                        position="APA President"
                     />
                     <OfficerMember
                         imagesrc={alex}
