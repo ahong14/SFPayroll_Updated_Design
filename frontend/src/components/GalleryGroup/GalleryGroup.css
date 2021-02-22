@@ -1,5 +1,11 @@
-.galleryGroupContainer{
+.galleryGroupContainer {
     height: 500px;
     overflow: auto;
 }
 
+@media screen and (min-width: 1400px) {
+    .galleryGroupContainer {
+        height: 100%;
+        overflow: auto;
+    }
+}

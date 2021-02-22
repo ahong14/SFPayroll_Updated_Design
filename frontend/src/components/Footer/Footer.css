@@ -1,5 +1,5 @@
-#ending{
-    display:flex;
+#ending {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #252525;
@@ -7,24 +7,24 @@
     height: 200px;
 }
 
-#ending_content{
+#ending_content {
     align-self: center;
     color: white;
 }
 
-#apa_link{
-  color: inherit;
-  text-decoration: none;
+#apa_link {
+    color: inherit;
+    text-decoration: none;
 }
 
-.footerLink{
-  padding: 5px;
-  color: inherit;
-  text-decoration: none;
+.footerLink {
+    padding: 5px;
+    color: inherit;
+    text-decoration: none;
 }
 
-@media screen and (max-width: 600px){
-  #ending{
-    height: 210px;
-  } 
+@media screen and (max-width: 600px) {
+    #ending {
+        height: 210px;
+    }
 }

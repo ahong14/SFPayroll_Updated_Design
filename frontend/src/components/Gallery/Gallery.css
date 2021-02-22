@@ -1,9 +1,17 @@
-.galleryContainer{
-  margin-top: 30px;
+.galleryContainer {
+    margin-top: 30px;
 }
 
-@media screen and (max-width: 600px){
-  .container{
-    margin-top: 40px;
-  }
+@media screen and (max-width: 600px) {
+    .container {
+        margin-top: 40px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .galleryContainer {
+        margin-top: 30px;
+        min-height: 1200px;
+        height: 100%;
+    }
 }

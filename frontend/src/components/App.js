@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Home from '../components/Home/Home';
-import {Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import NavBar from '../components/NavBar/NavBar';
 import Footer from '../components/Footer/Footer';
 import Events from '../components/Events/Events';
@@ -21,36 +21,63 @@ import AdminRestPass from '../components/AdminResetPass/AdminResetPass';
 import ResetSuccess from '../components/ResetSuccess/ResetSuccess';
 
 class App extends Component {
-  render() {
-    return (
-      <div>
-        <ScrollToTop>
-          <NavBar/>
-          <Switch>
-            <Route exact path="/" component={Home}/> 
-            <Route exact path="/Home" component={Home}/>
-            <Route exact path="/Events" component={Events}/>
-            <Route exact path="/AboutUs" component={AboutUs}/>
-            <Route exact path="/Membership" component={Membership}/>
-            <Route exact path="/Resources"  component={Resources}/> 
-            <Route exact path="/Careers" component={Careers}/>
-            <Route exact path="/ContactUs" component={ContactUs}/>
-            <Route exact path="/Gallery" component={Gallery}/>
-            <Route exact path="/Admin" component={AdminLogin}/>
-            <Route exact path="/AdminSignup" component={AdminSignup}/>
-            <Route exact path="/EditEvents" component={EditEvents}/>
-            <Route exact path="/EditCareers" component={EditCareers}/>
-            <Route exact path="/Logout" component={Logout}/>
-            <Route exact path="/TokenExpiration" component={TokenExpiration}/>
-            <Route exact path="/AdminResetPass" component={AdminRestPass}/>
-            <Route exact path="/ResetSuccess" component={ResetSuccess}/>
-          </Switch>
-          <Footer/>
-        </ScrollToTop>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <ScrollToTop>
+                    <NavBar />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/Home" component={Home} />
+                        <Route exact path="/Events" component={Events} />
+                        <Route exact path="/AboutUs" component={AboutUs} />
+                        <Route
+                            exact
+                            path="/Membership"
+                            component={Membership}
+                        />
+                        <Route exact path="/Resources" component={Resources} />
+                        <Route exact path="/Careers" component={Careers} />
+                        <Route exact path="/ContactUs" component={ContactUs} />
+                        <Route exact path="/Gallery" component={Gallery} />
+                        <Route exact path="/Admin" component={AdminLogin} />
+                        <Route
+                            exact
+                            path="/AdminSignup"
+                            component={AdminSignup}
+                        />
+                        <Route
+                            exact
+                            path="/EditEvents"
+                            component={EditEvents}
+                        />
+                        <Route
+                            exact
+                            path="/EditCareers"
+                            component={EditCareers}
+                        />
+                        <Route exact path="/Logout" component={Logout} />
+                        <Route
+                            exact
+                            path="/TokenExpiration"
+                            component={TokenExpiration}
+                        />
+                        <Route
+                            exact
+                            path="/AdminResetPass"
+                            component={AdminRestPass}
+                        />
+                        <Route
+                            exact
+                            path="/ResetSuccess"
+                            component={ResetSuccess}
+                        />
+                    </Switch>
+                    <Footer />
+                </ScrollToTop>
+            </div>
+        );
+    }
 }
 
 export default App;
-
