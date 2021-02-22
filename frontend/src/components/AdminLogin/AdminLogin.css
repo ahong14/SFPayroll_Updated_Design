@@ -1,4 +1,4 @@
-.loginContainer{
+.loginContainer {
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -7,13 +7,13 @@
     padding-top: 70px;
 }
 
-@media screen and (min-width: 1400px){
-    .loginContainer{
-        height: 600px;
+@media screen and (min-width: 1400px) {
+    .loginContainer {
+        height: 80vh;
     }
 }
 
-#loginForm{
+#loginForm {
     display: flex;
     flex-direction: column;
     align-self: center;

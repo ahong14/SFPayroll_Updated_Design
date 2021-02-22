@@ -1,108 +1,109 @@
-#welcomeContainer{
-    display:flex;
+#welcomeContainer {
+    display: flex;
     flex-direction: column;
-    background-color: #D8D8D8;
+    background-color: #d8d8d8;
     margin: 0 auto;
 }
 
-#welcome_awards_join{
+#welcome_awards_join {
     margin-top: 20px;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-#welcome_text{
+#welcome_text {
     font-style: italic;
 }
 
-#page_header{
-    margin:auto;
+#page_header {
+    margin: auto;
     font-style: italic;
     margin-top: 30px;
+    position: relative;
 }
 
-.centered{
+.centered {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-#backgroundImage{
+#backgroundImage {
     width: 100vw;
     height: 900px;
     margin-left: -30px;
 }
 
-#golden_gate_background{
+#golden_gate_background {
     width: 100vw;
     height: 450px;
     margin-left: 5px;
 }
 
-#header_text{
-    color:white;
+#header_text {
+    color: white;
 }
 
 .slider-wrapper {
     width: 800px;
 }
 
-.companyLogo{
-  display:flex;
-  justify-content: center;
-  width: 200px;
-  height:130px;
-  align-self: center;
+.companyLogo {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    height: 130px;
+    align-self: center;
 }
 
-#apaImage{
-  display:flex;
-  align-self: center;
+#apaImage {
+    display: flex;
+    align-self: center;
 }
 
-.logoImage{
+.logoImage {
     width: 180px;
     height: 150px;
     padding: 10px;
 }
 
 /*mobile screens */
-@media screen and (max-width: 900px){
+@media screen and (max-width: 900px) {
     h1 {
         font-size: 1.5rem;
     }
 
-    #backgroundImage{
+    #backgroundImage {
         height: 200px;
         width: 90vw;
     }
 
-    #page_header{
+    #page_header {
         position: relative;
         font-style: italic;
-        height:300px;
+        height: 300px;
     }
 
-    #welcome_awards_join{
+    #welcome_awards_join {
         margin-top: -30px;
     }
 
-    .logoImage{
+    .logoImage {
         width: 120px;
         height: 130px;
         padding: 10px;
     }
 
-    #gpmiLogoImageHome{
+    #gpmiLogoImageHome {
         width: 140px;
     }
 }
 
 /*laptop screens */
-@media screen and (max-width: 1500px){
-    #backgroundImage{
+@media screen and (max-width: 1500px) {
+    #backgroundImage {
         margin-left: 0px;
     }
 }
