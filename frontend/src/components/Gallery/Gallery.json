@@ -1,34 +1,33 @@
 {
-    "galleryGroups":
-    [
+    "galleryGroups": [
         {
-          "groupName": "Chapter Meetings",
-          "eventKey": "chapterMeetings"
+            "groupName": "Chapter Meetings",
+            "eventKey": "chapterMeetings"
         },
-      
+
         {
-          "groupName": "NPW",
-          "eventKey": "npw"
+            "groupName": "NPW",
+            "eventKey": "npw"
         },
-      
+
         {
-          "groupName": "Congress",
-          "eventKey": "congress"
+            "groupName": "Congress",
+            "eventKey": "congress"
         },
-      
+
         {
-          "groupName": "CPC",
-          "eventKey": "cpc"
+            "groupName": "CPC",
+            "eventKey": "cpc"
         },
-      
+
         {
-          "groupName": "Holiday Dinner",
-          "eventKey": "installment"
+            "groupName": "Holiday Dinner",
+            "eventKey": "installment"
         },
-      
+
         {
-          "groupName": "More",
-          "eventKey": "more"
+            "groupName": "As Time Goes By",
+            "eventKey": "as_time_goes_by"
         }
     ]
 }
