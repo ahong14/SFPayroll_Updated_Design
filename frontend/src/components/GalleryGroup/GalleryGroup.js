@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import GalleryItem from '../GalleryItem/GalleryItem';
+import CarouselItem from '../CarouselItem/CarouselItem';
+import CarouselSlide from '../CarouselSlide/CarouselSlide';
 import axios from 'axios';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 
@@ -9,24 +11,12 @@ class GalleryGroup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            imageSources: [],
-            pdfPages: 0,
-            pdfWidth: null
+            imageSources: []
         };
     }
 
     //make api request to get image sources based on current group name
     componentDidMount() {
-        if (!this.state.pdfWidth) {
-            // get width of gallery container, set width of pdf page
-            const containerElements = document.getElementsByClassName(
-                'tab-content'
-            );
-            this.setState({
-                pdfWidth: containerElements[0].offsetWidth
-            });
-        }
-
         axios
             .get(`/api/images/${this.props.groupName}`)
             .then(res => {
@@ -57,27 +47,41 @@ class GalleryGroup extends Component {
             return <GalleryItem imageSrc={image} />;
         });
 
-        // reference: https://github.com/wojtekmaj/react-pdf/blob/master/sample/webpack/Sample.jsx
-        // create array from pdf pages, apply callback function on each element
-        // create new array of pdf pages from callback results
-        const pdfPages = Array.from(
-            new Array(this.state.pdfPages),
-            (element, index) => {
+        const asTimeGoesByImageSources = this.state.imageSources.map(
+            (image, index) => {
+                return <CarouselItem index={index} image={image} />;
+            }
+        );
+
+        const asTimeGoesBySlides = this.state.imageSources.map(
+            (image, index) => {
                 return (
-                    <Page pageNumber={index + 1} width={this.state.pdfWidth} />
+                    <CarouselSlide
+                        target="#asTimeGoesByCarousel"
+                        slideToIndex={index}
+                    />
                 );
             }
         );
 
-        const pdfSource =
-            '/api/imageSource/as_time_goes_by/2020_Congress_San_Francisco_Bay_Area_Chapter.pptx.pdf';
-
         return (
             <div>
                 {this.props.groupName == 'as_time_goes_by' ? (
-                    <Document file={pdfSource} onLoadSuccess={this.setPdfPages}>
-                        {pdfPages}
-                    </Document>
+                    // setup carousel if as_time_goes_by
+                    <div
+                        className="carousel slide"
+                        id="asTimeGoesByCarousel"
+                        data-ride="carousel"
+                        data-interval="5500"
+                    >
+                        <ol className="carousel-indicators">
+                            {asTimeGoesBySlides}
+                        </ol>
+
+                        <div className="carousel-inner">
+                            {asTimeGoesByImageSources}
+                        </div>
+                    </div>
                 ) : (
                     <div className="row galleryGroupContainer">
                         {renderImages}
