@@ -58,7 +58,6 @@ const pdfs = require('./routes/pdfs');
 const admin = require('./routes/admin');
 const images = require('./routes/images');
 const bulletin = require('./routes/bulletin');
-const imageSlides = require('./routes/imageSlides');
 
 app.use('/api/events', events);
 app.use('/api/contact', contact);
