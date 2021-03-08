@@ -29,7 +29,6 @@ router.get('/slidesFolder/:folder', (req, res) => {
 router.get('/:folder', (req, res) => {
     var folder = req.params.folder;
     let targetImageDirectory = path.join(imageDirectory, `/${folder}`);
-    console.log('target image directory: ', targetImageDirectory);
     fs.readdir(targetImageDirectory, (err, images) => {
         if (err) {
             return res.status(500).json({
