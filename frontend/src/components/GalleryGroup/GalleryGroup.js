@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
+import GallerySlides from '../GallerySlides/GallerySlides';
 import GalleryItem from '../GalleryItem/GalleryItem';
-import CarouselItem from '../CarouselItem/CarouselItem';
-import CarouselSlide from '../CarouselSlide/CarouselSlide';
 import axios from 'axios';
-import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-
 import './GalleryGroup.css';
 
 class GalleryGroup extends Component {
@@ -17,21 +14,57 @@ class GalleryGroup extends Component {
 
     //make api request to get image sources based on current group name
     componentDidMount() {
-        axios
-            .get(`/api/images/${this.props.groupName}`)
-            .then(res => {
-                //create image sources based on returned image names in image group
-                let currentImageSources = res.data.images.map(image => {
-                    return `/api/imageSource/${this.props.groupName}/${image}`;
+        if (this.props.groupName === 'as_time_goes_by') {
+            axios
+                .get(`/api/images/${this.props.groupName}`)
+                .then(res => {
+                    // make requests from each directory found
+                    const imagePromises = [];
+                    res.data.images.forEach(directory => {
+                        const folderName = directory;
+                        imagePromises.push(
+                            axios.get(`/api/images/slidesFolder/${folderName}`)
+                        );
+                    });
+                    Promise.all(imagePromises)
+                        .then(images => {
+                            const imageSources = [];
+                            images.forEach(response => {
+                                response.data.images = response.data.images.map(
+                                    image => {
+                                        return `/api/imageSource/${this.props.groupName}/${response.data.directory}/${image}`;
+                                    }
+                                );
+                                imageSources.push(response.data);
+                            });
+                            this.setState({
+                                imageSources: imageSources
+                            });
+                        })
+                        .catch(err => {
+                            alert(err);
+                        });
+                })
+                .catch(err => {
+                    alert(err);
                 });
+        } else {
+            axios
+                .get(`/api/images/${this.props.groupName}`)
+                .then(res => {
+                    //create image sources based on returned image names in image group
+                    let currentImageSources = res.data.images.map(image => {
+                        return `/api/imageSource/${this.props.groupName}/${image}`;
+                    });
 
-                this.setState({
-                    imageSources: currentImageSources
+                    this.setState({
+                        imageSources: currentImageSources
+                    });
+                })
+                .catch(err => {
+                    alert(err.response.data.message);
                 });
-            })
-            .catch(err => {
-                alert(err.response.data.message);
-            });
+        }
     }
 
     setPdfPages = pdf => {
@@ -47,41 +80,20 @@ class GalleryGroup extends Component {
             return <GalleryItem imageSrc={image} />;
         });
 
-        const asTimeGoesByImageSources = this.state.imageSources.map(
-            (image, index) => {
-                return <CarouselItem index={index} image={image} />;
-            }
-        );
-
-        const asTimeGoesBySlides = this.state.imageSources.map(
-            (image, index) => {
-                return (
-                    <CarouselSlide
-                        target="#asTimeGoesByCarousel"
-                        slideToIndex={index}
-                    />
-                );
-            }
-        );
+        const gallerySlides = this.state.imageSources.map((gallery, index) => {
+            return (
+                <GallerySlides
+                    galleryId={'gallery' + index}
+                    imageSources={gallery.images}
+                />
+            );
+        });
 
         return (
             <div>
-                {this.props.groupName == 'as_time_goes_by' ? (
+                {this.props.groupName === 'as_time_goes_by' ? (
                     // setup carousel if as_time_goes_by
-                    <div
-                        className="carousel slide"
-                        id="asTimeGoesByCarousel"
-                        data-ride="carousel"
-                        data-interval="5500"
-                    >
-                        <ol className="carousel-indicators">
-                            {asTimeGoesBySlides}
-                        </ol>
-
-                        <div className="carousel-inner">
-                            {asTimeGoesByImageSources}
-                        </div>
-                    </div>
+                    <div>{gallerySlides}</div>
                 ) : (
                     <div className="row galleryGroupContainer">
                         {renderImages}
