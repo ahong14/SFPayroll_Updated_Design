@@ -67,6 +67,27 @@ class AboutUs extends Component {
                     </blockquote>
                 </div>
 
+                <div
+                    className="about_section align_center"
+                    id="chapter_history_section"
+                >
+                    <h2 className="text-center ">
+                        San Francisco Bay Area Chapter History
+                    </h2>
+                    <div>
+                        <p className="text-center font-italic">
+                            Click here to view:
+                            <a
+                                href="https://sfpayroll.s3.us-east-2.amazonaws.com/pdfs/SFBACHistory2012.docx.pdf"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                Chapter History
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
                 <div className="about_section align_center" id="bylaws_section">
                     <h2 className="text-center ">
                         San Francisco Bay Area Chapter By Laws
@@ -81,7 +102,7 @@ class AboutUs extends Component {
                         <p className="text-center font-italic">
                             Click here for details:
                             <a
-                                href="http://www.sfpayroll.org/boardfiles/2014_Bylaws_Constitution.pdf"
+                                href="https://sfpayroll.s3.us-east-2.amazonaws.com/pdfs/2014_Bylaws_Constitution.pdf"
                                 rel="noopener noreferrer"
                                 target="_blank"
                             >
