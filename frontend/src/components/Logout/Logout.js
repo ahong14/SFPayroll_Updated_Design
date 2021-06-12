@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
 
 function Logout() {
-    return(
-        <Fragment/>
-    )
+    return <Fragment />;
 }
 
 export default Logout;
