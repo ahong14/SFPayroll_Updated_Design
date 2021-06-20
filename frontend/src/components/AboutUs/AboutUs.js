@@ -6,7 +6,7 @@ import Members from '../AboutUs/Members/Members';
 import bylaws from '../../photos/bylaws.jpg';
 
 //About Us Section
-function AboutUs() {
+const AboutUs = () => {
     return (
         <div className="container-fluid" id="about_us_header">
             <h2 className="section_header font-italic"> About Us </h2>
@@ -111,6 +111,6 @@ function AboutUs() {
             <Members />
         </div>
     );
-}
+};
 
 export default AboutUs;

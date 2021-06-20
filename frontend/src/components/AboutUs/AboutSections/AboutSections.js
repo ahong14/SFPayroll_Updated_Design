@@ -4,7 +4,7 @@ import apa from '../../../photos/american_payroll_association_logo.png';
 import gpmi from '../../../photos/GPMILogo.png';
 import cpc from '../../../photos/cpclogo.png';
 
-function AboutSections() {
+const AboutSections = () => {
     return (
         <div className=" container-fluid card-group">
             <div className="card">
@@ -119,6 +119,6 @@ function AboutSections() {
             </div>
         </div>
     );
-}
+};
 
 export default AboutSections;

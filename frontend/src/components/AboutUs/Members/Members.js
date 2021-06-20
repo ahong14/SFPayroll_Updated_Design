@@ -14,7 +14,7 @@ import alex from '../../../photos/alex_image.jpg';
 import trinity from '../../../photos/trinity_img.JPG';
 import noImage from '../../../photos/default.jpg';
 
-function Members() {
+const Members = () => {
     return (
         <div className="container-fluid" id="officers_container">
             <h2 className="text-center"> Officers </h2>
@@ -75,6 +75,6 @@ function Members() {
             </div>
         </div>
     );
-}
+};
 
 export default Members;

@@ -5,7 +5,7 @@ import { FaTwitter } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import HearFrom from '../ContactUs/HearFrom/HearFrom';
 
-function ContactUs() {
+const ContactUs = () => {
     return (
         <div className="container-fluid" id="contact_us_container">
             <h3 class="section_header"> Contact Us </h3>
@@ -89,6 +89,6 @@ function ContactUs() {
             <HearFrom />
         </div>
     );
-}
+};
 
 export default ContactUs;

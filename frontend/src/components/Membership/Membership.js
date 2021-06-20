@@ -7,7 +7,7 @@ import JoinButton from '../JoinButton/JoinButton';
 import APASignUp from '../Membership/APASignUp/APASignUp';
 import membershipPhoto from '../../photos/membership_photo.jpg';
 
-function Membership() {
+const Membership = () => {
     return (
         <div className="container-fluid" id="membership_container">
             <div className="text-center" id="membership_fess">
@@ -25,6 +25,6 @@ function Membership() {
             </div>
         </div>
     );
-}
+};
 
 export default Membership;

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../Resources/LearningResources/LearningResources.css';
 
-function LearningResources() {
+const LearningResources = () => {
     return (
         <div className="resourcesCard container-fluid card">
             <div id="learning_resources_container">
@@ -241,6 +241,6 @@ function LearningResources() {
             </div>
         </div>
     );
-}
+};
 
 export default LearningResources;

@@ -13,7 +13,7 @@ import cpc from '../../photos/cpclogo.png';
 //https://www.pexels.com/photo/architecture-bay-bridge-construction-417236/
 //Home page component
 
-function Home() {
+const Home = () => {
     return (
         <div className="container-fluid" id="welcomeContainer">
             <div className="text-center" id="page_header">
@@ -76,6 +76,6 @@ function Home() {
             </div>
         </div>
     );
-}
+};
 
 export default Home;

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../JoinButton/JoinButton.css';
 
-function JoinButton() {
+const JoinButton = () => {
     return (
         <div id="join">
             <h3 className="text-center"> Not a member yet? </h3>
@@ -25,6 +25,6 @@ function JoinButton() {
             <h3 className="text-center"> Click to join! </h3>
         </div>
     );
-}
+};
 
 export default JoinButton;

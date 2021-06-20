@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
-function Logout() {
+const Logout = () => {
     return <Fragment />;
-}
+};
 
 export default Logout;

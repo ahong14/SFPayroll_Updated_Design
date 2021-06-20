@@ -2,7 +2,7 @@ import React from 'react';
 import '../../Membership/StudyGroup/StudyGroup.css';
 import studyGroup from '../../../photos/study_group.jpg';
 
-function StudyGroup() {
+const StudyGroup = () => {
     return (
         <div className="about_section" id="study_group">
             <h2 className="text-center "> Study Group </h2>
@@ -27,6 +27,6 @@ function StudyGroup() {
             </div>
         </div>
     );
-}
+};
 
 export default StudyGroup;

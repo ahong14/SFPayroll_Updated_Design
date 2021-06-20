@@ -20,7 +20,7 @@ import TokenExpiration from '../components/TokenExpiration/TokenExpiration';
 import AdminRestPass from '../components/AdminResetPass/AdminResetPass';
 import ResetSuccess from '../components/ResetSuccess/ResetSuccess';
 
-function App() {
+const App = () => {
     return (
         <div>
             <ScrollToTop>
@@ -60,6 +60,6 @@ function App() {
             </ScrollToTop>
         </div>
     );
-}
+};
 
 export default App;

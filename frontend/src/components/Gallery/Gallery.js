@@ -4,7 +4,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 import GalleryGroupJSON from './Gallery.json';
 import GalleryGroup from '../GalleryGroup/GalleryGroup';
 
-function Gallery() {
+const Gallery = () => {
     //create tab groups based on categories of photos
     const tabGroups = GalleryGroupJSON.galleryGroups.map(group => {
         return (
@@ -20,6 +20,6 @@ function Gallery() {
             <Tabs defaultActiveKey="chapterMeetings">{tabGroups}</Tabs>
         </div>
     );
-}
+};
 
 export default Gallery;

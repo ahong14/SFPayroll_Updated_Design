@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../Membership/Corporate/Corporate.css';
-function Corporate() {
+const Corporate = () => {
     return (
         <div className="container-fluid" id="corporateContainer">
             <div className="card border-dark corporateCard">
@@ -34,6 +34,6 @@ function Corporate() {
             </div>
         </div>
     );
-}
+};
 
 export default Corporate;

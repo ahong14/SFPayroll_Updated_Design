@@ -3,7 +3,7 @@ import '../../Resources/StudyGroupResources/StudyGroupResources.css';
 import cpp from '../../../photos/cpp.jpg';
 import fpc from '../../../photos/fpc.jpg';
 
-function StudyGroupResources() {
+const StudyGroupResources = () => {
     return (
         <div id="study_group_resources">
             <div className="card">
@@ -103,6 +103,6 @@ function StudyGroupResources() {
             </div>
         </div>
     );
-}
+};
 
 export default StudyGroupResources;

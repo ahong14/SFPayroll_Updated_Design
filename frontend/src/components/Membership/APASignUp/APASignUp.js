@@ -3,7 +3,7 @@ import './APASignUp.css';
 import Grid from '@material-ui/core/Grid';
 import apa from '../../../photos/american_payroll_association_logo.png';
 
-function APASignUp() {
+const APASignUp = () => {
     return (
         <Grid container direction="column" justify="center">
             <div className="card border-dark corporateCard">
@@ -23,6 +23,6 @@ function APASignUp() {
             </div>
         </Grid>
     );
-}
+};
 
 export default APASignUp;

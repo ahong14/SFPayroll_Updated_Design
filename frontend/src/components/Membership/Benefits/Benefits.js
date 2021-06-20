@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../Membership/Benefits/Benefits.css';
 
-function Benefits() {
+const Benefits = () => {
     return (
         <div id="benefits">
             <h3>
@@ -19,6 +19,6 @@ function Benefits() {
             </ul>
         </div>
     );
-}
+};
 
 export default Benefits;
