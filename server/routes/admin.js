@@ -224,14 +224,7 @@ router.post('/logout', async (req, res) => {
 });
 
 router.post('/resetPassword', (req, res) => {
-    var userName, newPassword;
-    if (req.body.params) {
-        userName = req.body.params.userName;
-        newPassword = req.body.params.newPassword;
-    } else if (req.body) {
-        userName = req.body.userName;
-        newPassword = req.body.newPassword;
-    }
+    const { userName, newPassword } = req.body.params || req.body;
 
     //find if username exists
     Admin.findOne({ userName: userName }, (err, result) => {

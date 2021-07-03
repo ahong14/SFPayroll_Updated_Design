@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../AboutUs/AboutSections/AboutSections.css';
+import './AboutSections.css';
 import apa from '../../../photos/american_payroll_association_logo.png';
 import gpmi from '../../../photos/GPMILogo.png';
 import cpc from '../../../photos/cpclogo.png';

@@ -55,16 +55,17 @@ const GalleryGroup = props => {
                     alert(err);
                 });
         }
-    }, []);
+    }, [null]);
 
     //render GalleryItem for each image source
-    const renderImages = imageSources.map(image => {
-        return <GalleryItem imageSrc={image} />;
+    const renderImages = imageSources.map((image, index) => {
+        return <GalleryItem key={'gallery_item' + index} imageSrc={image} />;
     });
 
     const gallerySlides = imageSources.map((gallery, index) => {
         return (
             <GallerySlides
+                key={'gallery' + index}
                 galleryId={'gallery' + index}
                 imageSources={gallery.images}
             />

@@ -1,79 +1,58 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Alert, Container, Carousel } from 'react-bootstrap';
 import './GallerySlides.css';
 
-export default class GallerySlides extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            interval: 5500,
-            showToast: false,
-            showSlide: false
-        };
-    }
+const GallerySlides = props => {
+    const [interval, setSlideInterval] = useState(5500);
+    const [showToast, setShowToast] = useState(false);
+    const [showSlide, setShowSlide] = useState(false);
 
-    startSlideshowAnimation = () => {
-        this.setState(
-            {
-                showToast: true,
-                showSlide: true
-            },
-            () => {
-                setTimeout(() => {
-                    this.setState({
-                        showToast: false
-                    });
-                }, 3000);
-            }
-        );
+    const startSlideshowAnimation = () => {
+        setShowSlide(true);
+        setShowToast(true);
+        setTimeout(() => {
+            setShowToast(false);
+        }, 3000);
     };
 
-    render() {
-        const asTimeGoesByImageSources = this.props.imageSources.map(
-            (image, index) => {
-                return (
-                    <Carousel.Item
-                        interval={this.state.interval}
-                        index={index}
-                        image={image}
-                    >
-                        <img
-                            class="gallerySlideImage"
-                            src={image}
-                            alt={image}
-                        />
-                    </Carousel.Item>
-                );
-            }
-        );
+    const asTimeGoesByImageSources = props.imageSources.map((image, index) => {
         return (
-            <div id="gallerySlidesContainer">
-                <Container>
-                    <button
-                        className="btn btn-primary startSlideButton"
-                        onClick={this.startSlideshowAnimation}
-                    >
-                        View Slideshow
-                    </button>
-                    <Alert variant="success" show={this.state.showToast}>
-                        Slideshow Started
-                    </Alert>
-                    {!this.state.showSlide ? (
-                        <img
-                            class="gallerySlideImage"
-                            src={this.props.imageSources[0]}
-                            alt={this.props.imageSources[0]}
-                        />
-                    ) : (
-                        <Carousel
-                            autoPlay={false}
-                            interval={this.state.interval}
-                        >
-                            {asTimeGoesByImageSources}
-                        </Carousel>
-                    )}
-                </Container>
-            </div>
+            <Carousel.Item
+                key={'carousel' + index}
+                interval={interval}
+                index={index}
+                image={image}
+            >
+                <img className="gallerySlideImage" src={image} alt={image} />
+            </Carousel.Item>
         );
-    }
-}
+    });
+    return (
+        <div id="gallerySlidesContainer">
+            <Container>
+                <button
+                    className="btn btn-primary startSlideButton"
+                    onClick={startSlideshowAnimation}
+                >
+                    View Slideshow
+                </button>
+                <Alert variant="success" show={showToast}>
+                    Slideshow Started
+                </Alert>
+                {!showSlide ? (
+                    <img
+                        className="gallerySlideImage"
+                        src={props.imageSources[0]}
+                        alt={props.imageSources[0]}
+                    />
+                ) : (
+                    <Carousel autoPlay={false} interval={interval}>
+                        {asTimeGoesByImageSources}
+                    </Carousel>
+                )}
+            </Container>
+        </div>
+    );
+};
+
+export default GallerySlides;

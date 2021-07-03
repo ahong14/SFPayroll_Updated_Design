@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../AboutUs/Members/Members.css';
-import OfficerMember from '../../AboutUs/Members/OfficerMember/OfficerMember';
+import OfficerMember from './OfficerMember/OfficerMember';
 import EmptyMember from './EmptyMember/EmptyMember';
 
 import owhen from '../../../photos/owhenupdatedpic.jpg';

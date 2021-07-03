@@ -1,20 +1,18 @@
-.memberImage{
-    width:210px;
-    height:200px;
-    align-self:center;
+.memberImage {
+    width: 210px;
+    height: 200px;
+    align-self: center;
 }
 
-.memberCard{
+.memberCard {
     width: 400px;
     height: 410px;
-    display:flex;
+    display: flex;
 }
 
-@media screen and (max-width: 600px){
-  .memberCard{
-    width: 350px;
-    height: 410px;
-  }
+@media screen and (max-width: 600px) {
+    .memberCard {
+        width: 350px;
+        height: 410px;
+    }
 }
-
-

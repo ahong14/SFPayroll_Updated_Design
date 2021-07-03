@@ -8,7 +8,11 @@ const Gallery = () => {
     //create tab groups based on categories of photos
     const tabGroups = GalleryGroupJSON.galleryGroups.map(group => {
         return (
-            <Tab eventKey={group.eventKey} title={group.groupName}>
+            <Tab
+                key={group.eventKey}
+                eventKey={group.eventKey}
+                title={group.groupName}
+            >
                 <GalleryGroup groupName={group.eventKey} />
             </Tab>
         );

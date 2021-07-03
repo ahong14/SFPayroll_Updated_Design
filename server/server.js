@@ -47,7 +47,7 @@ app.use(cookieParser());
 //use cors;
 app.use(cors());
 
-//morgan loggin
+//morgan logging
 app.use(morgan('combined'));
 
 //serve react files

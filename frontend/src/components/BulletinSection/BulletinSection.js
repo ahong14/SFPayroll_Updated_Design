@@ -1,88 +1,99 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import './BulletinSection.css';
 import validator from 'validator';
 import axios from 'axios';
 import moment from 'moment-timezone';
 import { connect } from 'react-redux';
 
-class BulletinSection extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            bulletinMonth: '',
-            bulletinLink: '',
-            bulletinValues: {},
-            linkReady: false,
-            bulletinText: '',
-            createMode: false,
-            editMode: false,
-            bulletins: [],
-            bulletinOptions: [],
-            selectedBulletinLink: null,
-            selectedMonthId: ''
-        };
-    }
+const BulletinSection = props => {
+    const [bulletinMonth, setBulletinMonth] = useState('');
+    const [bulletinLink, setBulletinLink] = useState('');
+    const [bulletinValues, setBulletinValues] = useState({});
+    const [linkReady, setLinkReady] = useState(false);
+    const [bulletinText, setBulletinText] = useState('');
+    const [createMode, setCreateModeState] = useState(false);
+    const [editMode, setEditModeState] = useState(false);
+    const [bulletins, setBulletins] = useState([]);
+    const [bulletinOptions, setBulletinOptions] = useState([]);
+    const [selectedBulletinLink, setSelectedBulletinLink] = useState(null);
+    const [selectedMonthId, setSelectedMonthId] = useState('');
 
-    updateMonthSelection = event => {
-        const bulletinFound = this.state.bulletins.find(bulletin => {
+    // updated bulletin values
+    useEffect(() => {
+        if (bulletinValues['month'] && bulletinValues['linkReady']) {
+            const monthBulletinText = bulletinValues['month'] + ' Bulletin';
+            setBulletinText(monthBulletinText);
+        } else if (bulletinValues['month'] && !bulletinValues['linkReady']) {
+            const monthBulletinText =
+                bulletinValues['month'] + ' Bulletin Coming Soon';
+            setBulletinText(monthBulletinText);
+        }
+    }, [bulletinValues]);
+
+    // get bulletin values
+    useEffect(() => {
+        getBulletin();
+    }, [null]);
+
+    const updateMonthSelection = event => {
+        const bulletinFound = bulletins.find(bulletin => {
             return bulletin._id === event.target.value;
         });
 
         if (bulletinFound) {
-            this.setState({
-                selectedBulletinLink: bulletinFound.link,
-                selectedMonthId: bulletinFound._id
-            });
+            setSelectedBulletinLink(bulletinFound.link);
+            setSelectedMonthId(bulletinFound._id);
         }
     };
 
     //handle input changes for bulletin
-    handleBulletinUpdate = event => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
+    const handleBulletinUpdate = event => {
+        switch (event.target.name) {
+            case 'bulletinMonth':
+                setBulletinMonth(event.target.value);
+                break;
+            case 'bulletinLink':
+                setBulletinLink(event.target.value);
+                break;
+            default:
+                break;
+        }
     };
 
     //handle bulletin available
-    handleBulletinLink = () => {
-        this.setState({
-            linkReady: !this.state.linkReady
-        });
+    const handleBulletinLink = () => {
+        setLinkReady(!linkReady);
     };
 
-    setCreateMode = () => {
-        this.setState({
-            createMode: true,
-            editMode: false
-        });
+    const setCreateMode = () => {
+        setCreateModeState(true);
+        setEditModeState(false);
     };
 
-    setEditMode = () => {
-        this.setState({
-            createMode: false,
-            editMode: true
-        });
+    const setEditMode = () => {
+        setEditModeState(true);
+        setCreateModeState(false);
     };
 
     //submit bulletin edit changes
-    submitBulletinEdit = () => {
+    const submitBulletinEdit = () => {
         //error handling
         //empty fields
-        if (this.state.bulletinMonth === '') {
+        if (!bulletinMonth) {
             alert('Month field is empty');
             return;
         }
 
         //if bulletin link set to ready, check for valid inputs
-        else if (this.state.linkReady === true) {
+        else if (linkReady) {
             //empty field
-            if (this.state.bulletinLink === '') {
+            if (!bulletinLink) {
                 alert('Link field empty');
                 return;
             }
 
             //invalid url
-            else if (validator.isURL(this.state.bulletinLink) === false) {
+            else if (!validator.isURL(bulletinLink)) {
                 alert('Please insert proper URL');
                 return;
             }
@@ -95,23 +106,19 @@ class BulletinSection extends Component {
             .format('YYYY-MM-DD hh:mm:ss');
 
         let lastEdited =
-            this.props.firstName +
-            ' ' +
-            this.props.lastName +
-            ' ' +
-            lastEditDate;
+            props.firstName + ' ' + props.lastName + ' ' + lastEditDate;
 
         //create new bulletin object
         let newBulletinUpdates = {
-            month: this.state.bulletinMonth,
-            link: this.state.bulletinLink,
+            month: bulletinMonth,
+            link: bulletinLink,
             lastEdited: lastEdited,
-            id: this.state.bulletinValues._id,
-            linkReady: this.state.linkReady
+            id: bulletinValues._id,
+            linkReady: linkReady
         };
 
         //make request to update record
-        if (this.state.editMode) {
+        if (editMode) {
             axios
                 .put('/api/bulletin', {
                     params: {
@@ -120,17 +127,17 @@ class BulletinSection extends Component {
                 })
                 .then(res => {
                     alert(res.data.message);
-                    this.getBulletin();
+                    getBulletin();
                 })
                 .catch(err => {
                     alert(err.response.data.message);
                 });
-        } else if (this.state.createMode) {
+        } else if (createMode) {
             axios
                 .post('/api/bulletin/createNew', {
                     params: {
-                        month: this.state.bulletinMonth,
-                        link: this.state.bulletinLink
+                        month: bulletinMonth,
+                        link: bulletinLink
                     }
                 })
                 .then(res => {
@@ -143,44 +150,13 @@ class BulletinSection extends Component {
     };
 
     //function to get latest bulletin record from database
-    getBulletin = () => {
+    const getBulletin = () => {
         axios
             .get('/api/bulletin')
             .then(res => {
                 if (res.data.values.length === 1) {
                     let currentBulletin = res.data.values[0];
-                    this.setState(
-                        {
-                            bulletinValues: { ...currentBulletin }
-                        },
-                        () => {
-                            //{this.state.bulletinValues['month'] != undefined ? this.state.bulletinValues['month'] + " Bulletin" : "Month"}
-                            if (
-                                this.state.bulletinValues['month'] !==
-                                    undefined &&
-                                this.state.bulletinValues['linkReady'] === true
-                            ) {
-                                this.setState({
-                                    bulletinText:
-                                        this.state.bulletinValues['month'] +
-                                        ' Bulletin'
-                                });
-                            }
-
-                            //{this.state.bulletinValues['month'] != undefined ? this.state.bulletinValues['month'] + " Bulletin" : "Month"}
-                            else if (
-                                this.state.bulletinValues['month'] !==
-                                    undefined &&
-                                this.state.bulletinValues['linkReady'] === false
-                            ) {
-                                this.setState({
-                                    bulletinText:
-                                        this.state.bulletinValues['month'] +
-                                        ' Bulletin Coming Soon'
-                                });
-                            }
-                        }
-                    );
+                    setBulletinValues({ ...currentBulletin });
                 } else {
                     let bulletins = [...res.data.values];
                     bulletins = bulletins.filter(bulletin => {
@@ -194,30 +170,26 @@ class BulletinSection extends Component {
 
                     let bulletinOptions = [];
                     bulletins.forEach(option => {
-                        if (this.state.selectedMonthId === option._id) {
+                        if (selectedMonthId === option._id) {
                             bulletinOptions.push(
                                 <option
                                     key={option._id}
                                     value={option._id}
                                     selected
                                 >
-                                    {' '}
                                     {option.month}
                                 </option>
                             );
                         } else {
                             bulletinOptions.push(
                                 <option key={option._id} value={option._id}>
-                                    {' '}
                                     {option.month}
                                 </option>
                             );
                         }
                     });
-                    this.setState({
-                        bulletins: [...bulletins],
-                        bulletinOptions: [...bulletinOptions]
-                    });
+                    setBulletins([...bulletins]);
+                    setBulletinOptions([...bulletinOptions]);
                 }
             })
             .catch(err => {
@@ -225,216 +197,189 @@ class BulletinSection extends Component {
             });
     };
 
-    componentDidMount() {
-        this.getBulletin();
-    }
-
-    render() {
-        return (
-            <div className="card bannerContainer">
-                <div id="bannerContent">
-                    <h2> Bulletins </h2>
-                    <select
-                        className="custom-select"
-                        onChange={this.updateMonthSelection}
-                        id="selectBulletin"
+    return (
+        <div className="card bannerContainer">
+            <div id="bannerContent">
+                <h2> Bulletins </h2>
+                <select
+                    className="custom-select"
+                    onChange={updateMonthSelection}
+                    id="selectBulletin"
+                >
+                    <option> Select bulletin to view </option>
+                    {bulletinOptions}
+                </select>
+                <a
+                    href={
+                        selectedBulletinLink
+                            ? selectedBulletinLink
+                            : 'http://www.sfpayroll.org'
+                    }
+                    rel="noopener noreferrer"
+                    target="_blank"
+                >
+                    <button
+                        disabled={selectedBulletinLink ? false : true}
+                        className="btn btn-primary"
                     >
-                        <option> Select bulletin to view </option>
-                        {this.state.bulletinOptions}
-                    </select>
-                    <a
-                        href={
-                            this.state.selectedBulletinLink
-                                ? this.state.selectedBulletinLink
-                                : 'http://www.sfpayroll.org'
-                        }
-                        rel="noopener noreferrer"
-                        target="_blank"
-                    >
-                        <button
-                            disabled={
-                                this.state.selectedBulletinLink ? false : true
-                            }
-                            className="btn btn-primary"
-                        >
-                            View Bulletin
-                        </button>
-                    </a>
-                    {this.props.login === true ? (
-                        <div>
-                            <div class="editBulletinContainer">
-                                <button
-                                    className="btn btn-info"
-                                    data-toggle="modal"
-                                    data-target="#createModalBulletin"
-                                    onClick={this.setCreateMode}
-                                >
-                                    {' '}
-                                    Add new bulletin{' '}
-                                </button>
-                            </div>
-                            <div class="editBulletinContainer">
-                                <button
-                                    className="btn btn-secondary"
-                                    data-toggle="modal"
-                                    data-target="#modalBulletin"
-                                    onClick={this.setEditMode}
-                                    disabled
-                                >
-                                    {' '}
-                                    Edit Bulletin Information (Need to update)
-                                </button>
-                                <span>
-                                    {' '}
-                                    (Last Edited:{' '}
-                                    {this.state.bulletinValues['lastEdited'] ||
-                                        ''}
-                                    )
-                                </span>
-                            </div>
+                        View Bulletin
+                    </button>
+                </a>
+                {props.login === true ? (
+                    <div>
+                        <div class="editBulletinContainer">
+                            <button
+                                className="btn btn-info"
+                                data-toggle="modal"
+                                data-target="#createModalBulletin"
+                                onClick={setCreateMode}
+                            >
+                                Add new bulletin
+                            </button>
                         </div>
-                    ) : (
-                        <Fragment />
-                    )}
-                </div>
-
-                <div className="modal fade" id="modalBulletin">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h4 className="modal-title">
-                                    {' '}
-                                    Edit Bulletin Information (Need to update)
-                                </h4>
-                                <button
-                                    className="form-control close"
-                                    type="button"
-                                    data-dismiss="modal"
-                                    onClick={this.handleCloseDelete}
-                                >
-                                    &times;
-                                </button>
-                            </div>
-
-                            <div className="modal-body">
-                                <form>
-                                    <label> Set Bulletin Month </label>
-                                    <input
-                                        className="form-control"
-                                        name="bulletinMonth"
-                                        type="text"
-                                        value={this.state.bulletinMonth}
-                                        onChange={this.handleBulletinUpdate}
-                                        placeholder="Insert Month Name"
-                                    />
-
-                                    <div className="form-check">
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            onChange={this.handleBulletinLink}
-                                        />
-                                        <label>
-                                            {' '}
-                                            Toggle To Enter Bulletin URL{' '}
-                                        </label>
-                                    </div>
-
-                                    <label> Input Bulletin Link </label>
-                                    <input
-                                        disabled={!this.state.linkReady}
-                                        className="form-control"
-                                        name="bulletinLink"
-                                        type="text"
-                                        value={this.state.bulletinLink}
-                                        onChange={this.handleBulletinUpdate}
-                                        placeholder="Insert URL (http://...)"
-                                    />
-                                </form>
-
-                                <button
-                                    className="btn btn-success"
-                                    id="submitBulletinEdit"
-                                    onClick={this.submitBulletinEdit}
-                                >
-                                    {' '}
-                                    Submit{' '}
-                                </button>
-                            </div>
+                        <div class="editBulletinContainer">
+                            <button
+                                className="btn btn-secondary"
+                                data-toggle="modal"
+                                data-target="#modalBulletin"
+                                onClick={setEditMode}
+                                disabled
+                            >
+                                Edit Bulletin Information (Need to update)
+                            </button>
+                            <span>
+                                (Last Edited:
+                                {bulletinValues['lastEdited'] || ''})
+                            </span>
                         </div>
                     </div>
-                </div>
+                ) : (
+                    <Fragment />
+                )}
+            </div>
 
-                <div className="modal fade" id="createModalBulletin">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h4 className="modal-title">
-                                    {' '}
-                                    Create Bulletin{' '}
-                                </h4>
-                                <button
-                                    className="form-control close"
-                                    type="button"
-                                    data-dismiss="modal"
-                                    onClick={this.handleCloseDelete}
-                                >
-                                    &times;
-                                </button>
-                            </div>
+            <div className="modal fade" id="modalBulletin">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h4 className="modal-title">
+                                Edit Bulletin Information (Need to update)
+                            </h4>
+                            <button
+                                className="form-control close"
+                                type="button"
+                                data-dismiss="modal"
+                            >
+                                &times;
+                            </button>
+                        </div>
 
-                            <div className="modal-body">
-                                <form>
-                                    <label> Set Bulletin Month </label>
+                        <div className="modal-body">
+                            <form>
+                                <label> Set Bulletin Month </label>
+                                <input
+                                    className="form-control"
+                                    name="bulletinMonth"
+                                    type="text"
+                                    value={bulletinMonth}
+                                    onChange={handleBulletinUpdate}
+                                    placeholder="Insert Month Name"
+                                />
+
+                                <div className="form-check">
                                     <input
-                                        className="form-control"
-                                        name="bulletinMonth"
-                                        type="text"
-                                        value={this.state.bulletinMonth}
-                                        onChange={this.handleBulletinUpdate}
-                                        placeholder="Insert Month Name"
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        onChange={handleBulletinLink}
                                     />
+                                    <label>Toggle To Enter Bulletin URL</label>
+                                </div>
 
-                                    <div className="form-check">
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            onChange={this.handleBulletinLink}
-                                        />
-                                        <label>
-                                            {' '}
-                                            Toggle To Enter Bulletin URL{' '}
-                                        </label>
-                                    </div>
+                                <label> Input Bulletin Link </label>
+                                <input
+                                    disabled={!linkReady}
+                                    className="form-control"
+                                    name="bulletinLink"
+                                    type="text"
+                                    value={bulletinLink}
+                                    onChange={handleBulletinUpdate}
+                                    placeholder="Insert URL (http://...)"
+                                />
+                            </form>
 
-                                    <label> Input Bulletin Link </label>
-                                    <input
-                                        disabled={!this.state.linkReady}
-                                        className="form-control"
-                                        name="bulletinLink"
-                                        type="text"
-                                        value={this.state.bulletinLink}
-                                        onChange={this.handleBulletinUpdate}
-                                        placeholder="Insert URL (http://...)"
-                                    />
-                                </form>
-
-                                <button
-                                    className="btn btn-success"
-                                    id="submitBulletinEdit"
-                                    onClick={this.submitBulletinEdit}
-                                >
-                                    {' '}
-                                    Submit{' '}
-                                </button>
-                            </div>
+                            <button
+                                className="btn btn-success"
+                                id="submitBulletinEdit"
+                                onClick={submitBulletinEdit}
+                            >
+                                Submit
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        );
-    }
-}
+
+            <div className="modal fade" id="createModalBulletin">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h4 className="modal-title"> Create Bulletin </h4>
+                            <button
+                                className="form-control close"
+                                type="button"
+                                data-dismiss="modal"
+                            >
+                                &times;
+                            </button>
+                        </div>
+
+                        <div className="modal-body">
+                            <form>
+                                <label> Set Bulletin Month </label>
+                                <input
+                                    className="form-control"
+                                    name="bulletinMonth"
+                                    type="text"
+                                    value={bulletinMonth}
+                                    onChange={handleBulletinUpdate}
+                                    placeholder="Insert Month Name"
+                                />
+
+                                <div className="form-check">
+                                    <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        onChange={handleBulletinLink}
+                                    />
+                                    <label>Toggle To Enter Bulletin URL</label>
+                                </div>
+
+                                <label> Input Bulletin Link </label>
+                                <input
+                                    disabled={!linkReady}
+                                    className="form-control"
+                                    name="bulletinLink"
+                                    type="text"
+                                    value={bulletinLink}
+                                    onChange={handleBulletinUpdate}
+                                    placeholder="Insert URL (http://...)"
+                                />
+                            </form>
+
+                            <button
+                                className="btn btn-success"
+                                id="submitBulletinEdit"
+                                onClick={submitBulletinEdit}
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const mapStateToProps = state => {
     return {

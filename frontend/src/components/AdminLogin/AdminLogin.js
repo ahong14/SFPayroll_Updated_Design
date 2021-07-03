@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './AdminLogin.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import { connect } from 'react-redux';
 import actions from '../../actions';
 
