@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './EditEvents.css';
 import axios from 'axios';
 import EditEventItem from '../EditEventItem/EditEventItem';
@@ -8,63 +8,62 @@ import DatePicker from 'react-datepicker';
 import { FaCalendar } from 'react-icons/fa';
 import { connect } from 'react-redux';
 
-class EditEvents extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            events: [],
-            event: '',
-            date: '',
-            time: '',
-            speakers: '',
-            Location: '',
-            registration: '',
-            selectedDate: '',
-            description: ''
-        };
-    }
+const EditEvents = props => {
+    const [editEventsState, setEditEventsState] = useState({
+        events: [],
+        event: '',
+        date: '',
+        time: '',
+        speakers: '',
+        Location: '',
+        registration: '',
+        selectedDate: '',
+        description: ''
+    });
 
-    //handle event forms
-    handleCreateEvent = event => {
-        this.setState({
+    // handle event forms
+    const handleCreateEvent = event => {
+        setEditEventsState({
+            ...editEventsState,
             [event.target.name]: event.target.value
         });
     };
 
-    //select date
-    handleDatePickerChange = event => {
-        if (this.state.selectedDate !== event) {
-            this.setState({
+    // select date
+    const handleDatePickerChange = event => {
+        if (editEventsState.selectedDate !== event) {
+            setEditEventsState({
+                ...editEventsState,
                 selectedDate: event,
                 date: moment(event).format('MMMM DD YYYY')
             });
         }
     };
 
-    //submit new event
-    createNewEvent = () => {
-        //check empty fields
+    // submit new event
+    const createNewEvent = () => {
+        // check empty fields
         if (
-            this.state.event === '' ||
-            this.state.date === '' ||
-            this.state.time === '' ||
-            this.state.speakers === '' ||
-            this.state.Location === ''
+            editEventsState.event === '' ||
+            editEventsState.date === '' ||
+            editEventsState.time === '' ||
+            editEventsState.speakers === '' ||
+            editEventsState.Location === ''
         ) {
             alert('One or more fields empty');
             return;
         } else if (
-            this.state.registration.length > 0 &&
-            validator.isURL(this.state.registration, {
+            editEventsState.registration.length > 0 &&
+            validator.isURL(editEventsState.registration, {
                 protocols: ['http', 'https'],
                 require_protocol: true
             }) === false
         ) {
-            //check for valid url
+            // check for valid url
             alert('Please insert valid URL');
             return;
         } else {
-            //create lastEdited property with current date/time
+            // create lastEdited property with current date/time
             let currentEditDate = new Date();
             currentEditDate = moment(currentEditDate)
                 .tz('America/Los_Angeles')
@@ -72,30 +71,30 @@ class EditEvents extends Component {
             axios
                 .post('/api/events/createEvent', {
                     params: {
-                        event: this.state.event,
-                        date: this.state.date,
-                        time: this.state.time,
-                        speakers: this.state.speakers,
-                        location: this.state.Location,
-                        registration: this.state.registration,
+                        event: editEventsState.event,
+                        date: editEventsState.date,
+                        time: editEventsState.time,
+                        speakers: editEventsState.speakers,
+                        location: editEventsState.Location,
+                        registration: editEventsState.registration,
                         lastEdited:
-                            this.props.firstName +
+                            props.firstName +
                             ' ' +
-                            this.props.lastName +
+                            props.lastName +
                             ' ' +
                             currentEditDate,
-                        sortDate: this.state.selectedDate,
+                        sortDate: editEventsState.selectedDate,
                         description:
-                            this.state.description ||
-                            this.state.description.length > 0
-                                ? this.state.description
+                            editEventsState.description ||
+                            editEventsState.description.length > 0
+                                ? editEventsState.description
                                 : null
                     }
                 })
                 .then(res => {
                     alert(res.data.message);
-                    //make call to get updated events
-                    this.getEvents();
+                    // make call to get updated events
+                    getEvents();
                 })
                 .catch(err => {
                     alert(err.response.data.message);
@@ -103,8 +102,8 @@ class EditEvents extends Component {
         }
     };
 
-    //get events from database
-    getEvents = () => {
+    // get events from database
+    const getEvents = () => {
         axios
             .get('/api/events')
             .then(res => {
@@ -122,197 +121,176 @@ class EditEvents extends Component {
                     return b.sortDate - a.sortDate;
                 });
 
-                this.setState({
-                    events: sortedDates
-                });
+                setEditEventsState({ ...editEventsState, events: sortedDates });
             })
             .catch(err => {
                 alert(err);
             });
     };
 
-    //get list of events from database
-    componentDidMount() {
-        this.getEvents();
-    }
+    // get list of events from database
+    useEffect(() => {
+        getEvents();
+    }, []);
 
-    render() {
-        const editEvents = this.state.events.map(event => {
-            return (
-                <EditEventItem
-                    key={event._id}
-                    id={event._id.toLowerCase().replace(/[^a-z]/g, '')}
-                    event={event.event}
-                    date={event.date}
-                    time={event.time}
-                    speakers={event.speakers}
-                    Location={event.Location}
-                    registration={event.registration}
-                    lastEdited={event.lastEdited}
-                    description={event.description}
-                />
-            );
-        });
-
+    const editEvents = editEventsState.events.map(event => {
         return (
-            <div className="editContainer">
-                <div id="editEventsContainer">
-                    <div id="createEvent">
-                        <h3> Edit Events </h3>
-                        <button
-                            type="button"
-                            className="btn btn-success"
-                            data-toggle="modal"
-                            data-target="#create"
-                        >
-                            {' '}
-                            Create New Event{' '}
-                        </button>
-                        <div className="modal fade" id="create">
-                            <div className="modal-dialog">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h4 className="modal-title editEventTitle">
-                                            {' '}
-                                            Create Event{' '}
-                                        </h4>
-                                        <button
-                                            className="form-control close"
-                                            type="button"
-                                            data-dismiss="modal"
-                                        >
-                                            &times;
-                                        </button>
-                                    </div>
+            <EditEventItem
+                key={event._id}
+                id={event._id.toLowerCase().replace(/[^a-z]/g, '')}
+                event={event.event}
+                date={event.date}
+                time={event.time}
+                speakers={event.speakers}
+                Location={event.Location}
+                registration={event.registration}
+                lastEdited={event.lastEdited}
+                description={event.description}
+            />
+        );
+    });
 
-                                    <div className="modal-body">
-                                        <form>
-                                            <label> Event Title </label>
-                                            <input
-                                                name="event"
-                                                onChange={
-                                                    this.handleCreateEvent
+    return (
+        <div className="editContainer">
+            <div id="editEventsContainer">
+                <div id="createEvent">
+                    <h3> Edit Events </h3>
+                    <button
+                        type="button"
+                        className="btn btn-success"
+                        data-toggle="modal"
+                        data-target="#create"
+                    >
+                        Create New Event
+                    </button>
+                    <div className="modal fade" id="create">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h4 className="modal-title editEventTitle">
+                                        Create Event
+                                    </h4>
+                                    <button
+                                        className="form-control close"
+                                        type="button"
+                                        data-dismiss="modal"
+                                    >
+                                        &times;
+                                    </button>
+                                </div>
+
+                                <div className="modal-body">
+                                    <form>
+                                        <label> Event Title </label>
+                                        <input
+                                            name="event"
+                                            onChange={handleCreateEvent}
+                                            className="form-control"
+                                            placeholder="Event Title"
+                                            type="text"
+                                        />
+
+                                        <label> Date </label>
+                                        <input
+                                            name="date"
+                                            disabled
+                                            value={editEventsState.date}
+                                            className="form-control"
+                                            placeholder="Select Date"
+                                            type="text"
+                                        />
+
+                                        <label> Select Date: </label>
+                                        <div>
+                                            <span>
+                                                <FaCalendar />
+                                            </span>
+                                            <DatePicker
+                                                selected={
+                                                    editEventsState.selectedDate
                                                 }
-                                                className="form-control"
-                                                placeholder="Event Title"
-                                                type="text"
-                                            />
-
-                                            <label> Date </label>
-                                            <input
-                                                name="date"
-                                                disabled
-                                                value={this.state.date}
-                                                className="form-control"
-                                                placeholder="Select Date"
-                                                type="text"
-                                            />
-
-                                            <label> Select Date: </label>
-                                            <div>
-                                                <span>
-                                                    {' '}
-                                                    <FaCalendar />{' '}
-                                                </span>
-                                                <DatePicker
-                                                    selected={
-                                                        this.state.selectedDate
-                                                    }
-                                                    onChange={
-                                                        this
-                                                            .handleDatePickerChange
-                                                    }
-                                                />
-                                            </div>
-
-                                            <label> Time </label>
-                                            <input
-                                                name="time"
                                                 onChange={
-                                                    this.handleCreateEvent
+                                                    handleDatePickerChange
                                                 }
-                                                className="form-control"
-                                                placeholder="Time"
-                                                type="text"
                                             />
+                                        </div>
 
-                                            <label> Speakers</label>
-                                            <input
-                                                name="speakers"
-                                                onChange={
-                                                    this.handleCreateEvent
-                                                }
-                                                className="form-control"
-                                                placeholder="Speakers"
-                                                type="text"
-                                            />
+                                        <label> Time </label>
+                                        <input
+                                            name="time"
+                                            onChange={handleCreateEvent}
+                                            className="form-control"
+                                            placeholder="Time"
+                                            type="text"
+                                        />
 
-                                            <label> Location </label>
-                                            <input
-                                                name="Location"
-                                                onChange={
-                                                    this.handleCreateEvent
-                                                }
-                                                className="form-control"
-                                                placeholder="Location"
-                                                type="text"
-                                            />
+                                        <label> Speakers</label>
+                                        <input
+                                            name="speakers"
+                                            onChange={handleCreateEvent}
+                                            className="form-control"
+                                            placeholder="Speakers"
+                                            type="text"
+                                        />
 
-                                            <label> Registration </label>
-                                            <input
-                                                name="registration"
-                                                onChange={
-                                                    this.handleCreateEvent
-                                                }
-                                                className="form-control"
-                                                placeholder="Registration Link"
-                                                type="text"
-                                            />
+                                        <label> Location </label>
+                                        <input
+                                            name="Location"
+                                            onChange={handleCreateEvent}
+                                            className="form-control"
+                                            placeholder="Location"
+                                            type="text"
+                                        />
 
-                                            <label> Description </label>
-                                            <textarea
-                                                className="form-control"
-                                                name="description"
-                                                onChange={
-                                                    this.handleCreateEvent
-                                                }
-                                                placeholder="Enter Optional Description"
-                                            ></textarea>
-                                        </form>
-                                    </div>
+                                        <label> Registration </label>
+                                        <input
+                                            name="registration"
+                                            onChange={handleCreateEvent}
+                                            className="form-control"
+                                            placeholder="Registration Link"
+                                            type="text"
+                                        />
 
-                                    <div className="modal-footer">
-                                        <button
-                                            className="form-control btn btn-danger"
-                                            type="button"
-                                            data-dismiss="modal"
-                                        >
-                                            Close
-                                        </button>
-                                        <button
-                                            className="form-control btn btn-success"
-                                            type="button"
-                                            onClick={this.createNewEvent}
-                                        >
-                                            {' '}
-                                            Create Event{' '}
-                                        </button>
-                                    </div>
+                                        <label> Description </label>
+                                        <textarea
+                                            className="form-control"
+                                            name="description"
+                                            onChange={handleCreateEvent}
+                                            placeholder="Enter Optional Description"
+                                        ></textarea>
+                                    </form>
+                                </div>
+
+                                <div className="modal-footer">
+                                    <button
+                                        className="form-control btn btn-danger"
+                                        type="button"
+                                        data-dismiss="modal"
+                                    >
+                                        Close
+                                    </button>
+                                    <button
+                                        className="form-control btn btn-success"
+                                        type="button"
+                                        onClick={createNewEvent}
+                                    >
+                                        Create Event
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    {this.state.events.length > 0 ? (
-                        editEvents
-                    ) : (
-                        <p> No events found </p>
-                    )}
                 </div>
+
+                {editEventsState.events.length > 0 ? (
+                    editEvents
+                ) : (
+                    <p> No events found </p>
+                )}
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
 const mapStateToProps = state => {
     return {
