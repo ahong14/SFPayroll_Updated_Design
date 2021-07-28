@@ -5,17 +5,15 @@ import moment from 'moment-timezone';
 import './EditCareerItem.css';
 
 const EditCareerItem = props => {
-    const [editCareerItemState, setCarerItemState] = useState({
-        //career info state values
+    const [editCareerItemState, setEditCareerItemState] = useState({
+        // career info state values
         date: '',
         city: '',
         company: '',
         title: '',
-        //boolean clicked values
-        deleteClicked: false,
         deletedMessage: '',
         newPdf: false,
-        //new pdf state values
+        // new pdf state values
         email: '',
         position: '',
         state: '',
@@ -34,69 +32,72 @@ const EditCareerItem = props => {
         uploadedFile: {}
     });
 
-    // update state of fields updated
+    const [deleteClicked, setDeleteClicked] = useState(false);
+
+    //  update state of fields updated
     const editCareer = event => {
-        this.setState({
+        setEditCareerItemState({
+            ...editCareerItemState,
             [event.target.name]: event.target.value
         });
     };
 
-    // set flag for new pdf
+    //  set flag for new pdf
     const enableNewPdf = () => {
-        this.setState({
-            newPdf: !this.state.newPdf
+        setEditCareerItemState({
+            ...editCareerItemState,
+            newPdf: editCareerItemState.newPdf
         });
     };
 
-    // function to handle delete clicked
+    //  function to handle delete clicked
     const handleDeleteClicked = () => {
-        this.setState({
-            deleteClicked: true
-        });
+        setDeleteClicked(true);
     };
 
     const handleCloseDelete = () => {
-        this.setState({
-            deleteClicked: false
-        });
+        setDeleteClicked(false);
     };
 
-    //update career values
+    // update career values
     const updateCareer = () => {
-        //object storing state values
-        //stores values for edit career and edit new pdf
+        // object storing state values
+        // stores values for edit career and edit new pdf
         let newCareerContent = {};
-        //return everything except deleteClicked from state object
-        Object.keys(this.state).forEach(key => {
+        // return everything except deleteClicked from state object
+        Object.keys(editCareerItemState).forEach(key => {
             if (key !== 'deleteClicked' || key !== 'newPdf') {
-                //update found, use updated state value
-                if (this.state[key] !== '') {
-                    newCareerContent[key] = this.state[key];
+                // update found, use updated state value
+                if (editCareerItemState[key] !== '') {
+                    newCareerContent[key] = editCareerItemState[key];
                 }
 
-                //no update found, use prop value
+                // no update found, use prop value
                 else {
-                    newCareerContent[key] = this.props[key] || '';
+                    newCareerContent[key] = props[key] || '';
                 }
             }
         });
 
-        //check if new pdf was clicked, if not use old pdf link
-        if (this.state.newPdf === false) {
-            newCareerContent['link'] = this.props.link;
+        // check if new pdf was clicked, if not use old pdf link
+        if (editCareerItemState.newPdf === false) {
+            newCareerContent['link'] = props.link;
         }
 
-        //check for empty fields if no PDF was uploaded
+        // check for empty fields if no PDF was uploaded
         else {
-            if (Array(Object.keys(this.state.uploadedFile)).length === 0) {
+            if (
+                Array(Object.keys(editCareerItemState.uploadedFile)).length ===
+                0
+            ) {
                 if (
-                    this.state.email === '' ||
-                    this.state.select === '' ||
-                    this.state.company === '' ||
-                    this.state.position === '' ||
-                    this.state.description === '' ||
-                    this.state.city === '' ||
-                    this.state.state === ''
+                    editCareerItemState.email === '' ||
+                    editCareerItemState.select === '' ||
+                    editCareerItemState.company === '' ||
+                    editCareerItemState.position === '' ||
+                    editCareerItemState.description === '' ||
+                    editCareerItemState.city === '' ||
+                    editCareerItemState.state === ''
                 ) {
                     alert('One or more fields empty for pdf content');
                     return;
@@ -104,25 +105,21 @@ const EditCareerItem = props => {
             }
         }
 
-        //create form data
+        // create form data
         const fileData = new FormData();
-        fileData.append('newPdf', this.state.uploadedFile);
+        fileData.append('newPdf', editCareerItemState.uploadedFile);
 
-        //create last edited information
+        // create last edited information
         let lastEditedDate = new Date();
         lastEditedDate = moment(lastEditedDate)
             .tz('America/Los_Angeles')
             .format('YYYY-MM-DD hh:mm:ss');
 
         let lastEdited =
-            this.props.firstName +
-            ' ' +
-            this.props.lastName +
-            ' ' +
-            lastEditedDate;
+            props.firstName + ' ' + props.lastName + ' ' + lastEditedDate;
         newCareerContent['lastEdited'] = lastEdited;
 
-        //make api request to update record
+        // make api request to update record
         axios
             .put('/api/positions/edit', fileData, {
                 headers: {
@@ -131,9 +128,9 @@ const EditCareerItem = props => {
                 },
 
                 params: {
-                    id: this.props.objectid,
+                    id: props.objectid,
                     newCareerContent: newCareerContent,
-                    newPdf: this.state.newPdf
+                    newPdf: editCareerItemState.newPdf
                 }
             })
             .then(res => {
@@ -144,18 +141,19 @@ const EditCareerItem = props => {
             });
     };
 
-    //handle input for delete message
+    // handle input for delete message
     const handleDeleteMessage = event => {
-        this.setState({
+        setEditCareerItemState({
+            ...editCareerItemState,
             [event.target.name]: event.target.value
         });
     };
 
-    //delete career from database
+    // delete career from database
     const deleteCareer = () => {
         if (
-            this.state.deletedMessage.length === 0 ||
-            this.state.deletedMessage === ''
+            editCareerItemState.deletedMessage.length === 0 ||
+            editCareerItemState.deletedMessage === ''
         ) {
             alert('Please insert delete message');
             return;
@@ -163,8 +161,8 @@ const EditCareerItem = props => {
             axios
                 .delete('/api/positions/delete', {
                     params: {
-                        id: this.props.objectid,
-                        deletedMessage: this.state.deletedMessage
+                        id: props.objectid,
+                        deletedMessage: editCareerItemState.deletedMessage
                     }
                 })
                 .then(res => {
@@ -176,20 +174,22 @@ const EditCareerItem = props => {
         }
     };
 
-    //new PDF content functions
+    // new PDF content functions
 
-    //handle file upload for new pdf
-    //function to handle file uploaded
+    // handle file upload for new pdf
+    // function to handle file uploaded
     const handleFileUpload = event => {
         if (event.target.files) {
-            this.setState({
+            setEditCareerItemState({
+                ...editCareerItemState,
                 uploadedFile: event.target.files[0]
             });
         }
     };
 
     const handleNewPdfContent = event => {
-        this.setState({
+        setEditCareerItemState({
+            ...editCareerItemState,
             [event.target.name]: event.target.value
         });
     };
@@ -197,71 +197,56 @@ const EditCareerItem = props => {
     return (
         <div className="card border-info">
             <div className="card-body">
-                <a
-                    href={this.props.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    {' '}
-                    <h5 className="card-title text-center">
-                        {' '}
-                        {this.props.title}{' '}
-                    </h5>{' '}
+                <a href={props.link} target="_blank" rel="noopener noreferrer">
+                    <h5 className="card-title text-center">{props.title}</h5>
                 </a>
                 <p className="card-text text-center">
-                    {' '}
-                    <strong> Date Posted: </strong> {this.props.date}{' '}
+                    <strong> Date Posted: </strong> {props.date}
                 </p>
                 <p className="card-text text-center">
-                    {' '}
-                    <strong> City: </strong> {this.props.city}{' '}
+                    <strong> City: </strong> {props.city}
                 </p>
                 <p className="card-text text-center">
-                    {' '}
-                    <strong> Company: </strong> {this.props.company}{' '}
+                    <strong> Company: </strong> {props.company}
                 </p>
                 <p className="card-text text-center">
-                    {' '}
-                    <strong> Last Edited By: </strong> {this.props.lastEdited}{' '}
+                    <strong> Last Edited By: </strong> {props.lastEdited}
                 </p>
-                {this.props.deleted === true ? (
+                {props.deleted === true ? (
                     <p className="card-text text-center">
-                        {' '}
-                        <strong> Deleted Message: </strong>{' '}
-                        {this.props.deletedMessage}{' '}
+                        <strong> Deleted Message: </strong>
+                        {props.deletedMessage}
                     </p>
                 ) : (
                     <Fragment />
                 )}
             </div>
 
-            {this.props.deleted === false ? (
+            {props.deleted === false ? (
                 <div className="editButtonsContainer">
                     <button
                         type="button"
                         className="form-control btn btn-secondary editButton"
                         data-toggle="modal"
-                        data-target={'#' + this.props.id}
+                        data-target={'#' + props.id}
                     >
-                        {' '}
-                        Edit{' '}
+                        Edit
                     </button>
                     <button
                         type="button"
                         className="form-control btn btn-danger editButton"
                         data-toggle="modal"
-                        data-target={'#' + this.props.id}
-                        onClick={this.handleDeleteClicked}
+                        data-target={'#' + props.id}
+                        onClick={handleDeleteClicked}
                     >
-                        {' '}
-                        Delete{' '}
+                        Delete
                     </button>
                 </div>
             ) : (
                 <Fragment />
             )}
 
-            <div className="modal fade" id={this.props.id}>
+            <div className="modal fade" id={props.id}>
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -270,48 +255,48 @@ const EditCareerItem = props => {
                                 className="form-control close"
                                 type="button"
                                 data-dismiss="modal"
-                                onClick={this.handleCloseDelete}
+                                onClick={handleCloseDelete}
                             >
                                 &times;
                             </button>
                         </div>
 
                         <div className="modal-body">
-                            {this.state.deleteClicked !== true ? (
+                            {deleteClicked !== true ? (
                                 <form>
                                     <label> Title </label>
                                     <input
                                         name="title"
-                                        onChange={this.editCareer}
+                                        onChange={editCareer}
                                         className="form-control"
-                                        placeholder={this.props.title}
+                                        placeholder={props.title}
                                         type="text"
                                     />
 
                                     <label> Date </label>
                                     <input
                                         name="date"
-                                        onChange={this.editCareer}
+                                        onChange={editCareer}
                                         className="form-control"
-                                        placeholder={this.props.date}
+                                        placeholder={props.date}
                                         type="text"
                                     />
 
                                     <label> Company </label>
                                     <input
                                         name="company"
-                                        onChange={this.editCareer}
+                                        onChange={editCareer}
                                         className="form-control"
-                                        placeholder={this.props.company}
+                                        placeholder={props.company}
                                         type="text"
                                     />
 
                                     <label> City </label>
                                     <input
                                         name="city"
-                                        onChange={this.editCareer}
+                                        onChange={editCareer}
                                         className="form-control"
-                                        placeholder={this.props.city}
+                                        placeholder={props.city}
                                         type="text"
                                     />
 
@@ -319,51 +304,46 @@ const EditCareerItem = props => {
                                         <input
                                             name="link"
                                             className="form-check-input"
-                                            onChange={this.enableNewPdf}
+                                            onChange={enableNewPdf}
                                             placeholder="Yes"
                                             type="checkbox"
                                         />
                                         <label>
-                                            {' '}
                                             Click checkbox to create new PDF
-                                            Link{' '}
+                                            Link
                                         </label>
                                     </div>
                                 </form>
                             ) : (
                                 <div>
-                                    <p>
-                                        {' '}
-                                        Confirm Deleting {
-                                            this.props.title
-                                        } ?{' '}
-                                    </p>
+                                    <p> Confirm Deleting {props.title} ? </p>
                                     <form className="deleteConfirmMessage">
                                         <label> Input Delete Message </label>
                                         <textarea
                                             name="deletedMessage"
-                                            onChange={this.handleDeleteMessage}
+                                            onChange={handleDeleteMessage}
                                         />
                                     </form>
                                 </div>
                             )}
 
-                            {this.state.newPdf === true ? (
+                            {editCareerItemState.newPdf === true ? (
                                 <form>
                                     <label
                                         htmlFor="email"
                                         className="font-weight-bold"
                                     >
-                                        {' '}
-                                        Email:{' '}
+                                        Email:
                                     </label>
                                     <input
-                                        disabled={this.state.disableForms}
+                                        disabled={
+                                            editCareerItemState.disableForms
+                                        }
                                         name="email"
                                         type="email"
                                         className="form-control"
                                         id="email"
-                                        onChange={this.handleNewPdfContent}
+                                        onChange={handleNewPdfContent}
                                     />
 
                                     <label
@@ -373,74 +353,77 @@ const EditCareerItem = props => {
                                         Title of Position:
                                     </label>
                                     <input
-                                        disabled={this.state.disableForms}
+                                        disabled={
+                                            editCareerItemState.disableForms
+                                        }
                                         name="position"
                                         type="text"
                                         className="form-control"
                                         id="position"
-                                        onChange={this.handleNewPdfContent}
+                                        onChange={handleNewPdfContent}
                                     />
 
                                     <label
                                         htmlFor="city"
                                         className="font-weight-bold"
                                     >
-                                        {' '}
-                                        City:{' '}
+                                        City:
                                     </label>
                                     <input
-                                        disabled={this.state.disableForms}
+                                        disabled={
+                                            editCareerItemState.disableForms
+                                        }
                                         name="city"
                                         type="text"
                                         className="form-control"
                                         id="city"
-                                        onChange={this.handleNewPdfContent}
+                                        onChange={handleNewPdfContent}
                                     />
 
                                     <label
                                         htmlFor="state"
                                         className="font-weight-bold"
                                     >
-                                        {' '}
-                                        State:{' '}
+                                        State:
                                     </label>
                                     <input
-                                        disabled={this.state.disableForms}
+                                        disabled={
+                                            editCareerItemState.disableForms
+                                        }
                                         name="state"
                                         type="text"
                                         className="form-control"
                                         id="state"
-                                        onChange={this.handleNewPdfContent}
+                                        onChange={handleNewPdfContent}
                                     />
 
                                     <label
                                         htmlFor="position"
                                         className="font-weight-bold"
                                     >
-                                        {' '}
                                         Select Position:
                                     </label>
                                     <select
                                         className="form-control"
                                         id="payroll_position"
                                         name="select"
-                                        onChange={this.handleNewPdfContent}
+                                        onChange={handleNewPdfContent}
                                     >
                                         <option>
-                                            Payroll Position- Full Time{' '}
+                                            Payroll Position- Full Time
                                         </option>
                                         <option>
                                             Payroll Position- Part Time
                                         </option>
                                         <option>Payroll Position- Temp</option>
                                         <option>
-                                            Non Payroll Position - Full Time{' '}
+                                            Non Payroll Position - Full Time
                                         </option>
                                         <option>
-                                            Non Payroll Position - Part Time{' '}
+                                            Non Payroll Position - Part Time
                                         </option>
                                         <option>
-                                            Non Payroll Position - Temp{' '}
+                                            Non Payroll Position - Temp
                                         </option>
                                     </select>
                                     <label
@@ -450,9 +433,11 @@ const EditCareerItem = props => {
                                         Job Description:
                                     </label>
                                     <textarea
-                                        disabled={this.state.disableForms}
+                                        disabled={
+                                            editCareerItemState.disableForms
+                                        }
                                         name="description"
-                                        onChange={this.handleNewPdfContent}
+                                        onChange={handleNewPdfContent}
                                         className="form-control"
                                         rows="5"
                                         id="job_description"
@@ -461,14 +446,13 @@ const EditCareerItem = props => {
                                         htmlFor="file"
                                         className="font-weight-bold"
                                     >
-                                        {' '}
-                                        Upload PDF (Optional):{' '}
+                                        Upload PDF (Optional):
                                     </label>
                                     <div>
                                         <input
                                             type="file"
                                             name="jobPosting"
-                                            onChange={this.handleFileUpload}
+                                            onChange={handleFileUpload}
                                         />
                                     </div>
                                 </form>
@@ -482,27 +466,25 @@ const EditCareerItem = props => {
                                 className="form-control btn btn-secondary"
                                 type="button"
                                 data-dismiss="modal"
-                                onClick={this.handleCloseDelete}
+                                onClick={handleCloseDelete}
                             >
                                 Close
                             </button>
-                            {this.state.deleteClicked === false ? (
+                            {deleteClicked === false ? (
                                 <button
                                     className="form-control btn btn-success"
                                     type="button"
-                                    onClick={this.updateCareer}
+                                    onClick={updateCareer}
                                 >
-                                    {' '}
-                                    Submit Edit{' '}
+                                    Submit Edit
                                 </button>
                             ) : (
                                 <button
                                     className="form-control btn btn-danger"
                                     type="button"
-                                    onClick={this.deleteCareer}
+                                    onClick={deleteCareer}
                                 >
-                                    {' '}
-                                    Delete Event{' '}
+                                    Delete Event
                                 </button>
                             )}
                         </div>

@@ -25,7 +25,7 @@ mongoose.connection.on('open', () => {
 });
 
 //connection failed
-mongoose.connection.on('error', error => {
+mongoose.connection.on('error', (error) => {
     console.error('Database connection error:', error);
     //if connection failed, kill process, restart within container
     //set delay before restarting process

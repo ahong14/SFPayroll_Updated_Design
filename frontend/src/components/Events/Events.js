@@ -116,14 +116,14 @@ const Events = () => {
                     <div id="upcomingEvent">
                         <h3> Upcoming Event </h3>
                         <EventItem
-                            key={this.state.upcomingEvent._id}
-                            eventTitle={this.state.upcomingEvent.event}
-                            date={this.state.upcomingEvent.date}
-                            time={this.state.upcomingEvent.time}
-                            speakers={this.state.upcomingEvent.speakers}
-                            location={this.state.upcomingEvent.Location}
-                            registration={this.state.upcomingEvent.registration}
-                            description={this.state.upcomingEvent.description}
+                            key={upcomingEvent._id}
+                            eventTitle={upcomingEvent.event}
+                            date={upcomingEvent.date}
+                            time={upcomingEvent.time}
+                            speakers={upcomingEvent.speakers}
+                            location={upcomingEvent.Location}
+                            registration={upcomingEvent.registration}
+                            description={upcomingEvent.description}
                         />
                     </div>
                 ) : (

@@ -1,51 +1,38 @@
-import React, { Fragment, Component } from 'react';
+import React, { useState, useEffect, Fragment, Component } from 'react';
 import axios from 'axios';
 import EditCareerItem from '../EditCareerItem/EditCareerItem';
 import './EditCareers.css';
 import JobForm from '../Careers/JobForm/JobForm';
 
-class EditCareer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            careers: [],
-            removedCareers: [],
-            showJobForm: false,
-            activePostings: true,
-            removedPostings: false
-        };
-    }
+const EditCareer = () => {
+    const [careers, setCareers] = useState([]);
+    const [removedCareers, setRemovedCareers] = useState([]);
+    const [showJobForm, setShowJobForm] = useState(false);
+    const [activePostings, setActivePostings] = useState(false);
+    const [removedPostings, setRemovedPostings] = useState(false);
 
-    //show job form
-    handleJobForm = () => {
-        this.setState({
-            showJobForm: true
-        });
+    // show job form
+    const handleJobForm = () => {
+        setShowJobForm(true);
     };
 
-    //hide job form
-    hideJobForm = () => {
-        this.setState({
-            showJobForm: false
-        });
+    // hide job form
+    const hideJobForm = () => {
+        setShowJobForm(false);
     };
 
-    handleActivePosts = () => {
-        this.setState({
-            activePostings: true,
-            removedPostings: false
-        });
+    const handleActivePosts = () => {
+        setActivePostings(true);
+        setRemovedPostings(false);
     };
 
-    handleRemovedPosts = () => {
-        this.setState({
-            activePostings: false,
-            removedPostings: true
-        });
+    const handleRemovedPosts = () => {
+        setActivePostings(false);
+        setRemovedPostings(true);
     };
 
-    //get career postings
-    componentDidMount() {
+    // get career postings
+    useEffect(() => {
         axios
             .get('/api/positions/getPostings')
             .then(res => {
@@ -57,118 +44,108 @@ class EditCareer extends Component {
                 let removedCareers = res.data.filter(position => {
                     return position.deleted === true;
                 });
-
-                this.setState({
-                    careers: activeCareers,
-                    removedCareers: removedCareers
-                });
+                setCareers(activeCareers);
+                setRemovedCareers(removedCareers);
             })
             .catch(err => {
                 alert(err);
             });
-    }
+    }, []);
 
-    render() {
-        const editCareersActive = this.state.careers.map(career => {
-            return (
-                <EditCareerItem
-                    objectid={career._id}
-                    id={career._id.toLowerCase().replace(/[^a-z]/gi, '')}
-                    title={career.title}
-                    date={career.date}
-                    city={career.city}
-                    company={career.company}
-                    link={career.link}
-                    email={career.email}
-                    lastEdited={career.lastEdited}
-                    deleted={career.deleted}
-                    deletedMessage={career.deletedMessage}
-                />
-            );
-        });
-
-        const editCareersRemoved = this.state.removedCareers.map(career => {
-            return (
-                <EditCareerItem
-                    objectid={career._id}
-                    id={career._id.toLowerCase().replace(/[^a-z]/gi, '')}
-                    title={career.title}
-                    date={career.date}
-                    city={career.city}
-                    company={career.company}
-                    link={career.link}
-                    email={career.email}
-                    lastEdited={career.lastEdited}
-                    deleted={career.deleted}
-                    deletedMessage={career.deletedMessage}
-                />
-            );
-        });
-
+    const editCareersActive = careers.map(career => {
         return (
-            <div className="editContainer">
-                <div id="editCareersContainer">
-                    <div>
-                        <h3> Edit Careers </h3>
-                        {this.state.showJobForm ? (
-                            <button
-                                className="btn btn-danger"
-                                onClick={this.hideJobForm}
-                            >
-                                {' '}
-                                Hide{' '}
-                            </button>
-                        ) : (
-                            <button
-                                className="btn btn-success"
-                                onClick={this.handleJobForm}
-                            >
-                                {' '}
-                                Create New Position{' '}
-                            </button>
-                        )}
-                    </div>
+            <EditCareerItem
+                objectid={career._id}
+                id={career._id.toLowerCase().replace(/[^a-z]/gi, '')}
+                title={career.title}
+                date={career.date}
+                city={career.city}
+                company={career.company}
+                link={career.link}
+                email={career.email}
+                lastEdited={career.lastEdited}
+                deleted={career.deleted}
+                deletedMessage={career.deletedMessage}
+            />
+        );
+    });
 
-                    {this.state.showJobForm ? (
-                        <div>
-                            <JobForm />
-                        </div>
-                    ) : (
-                        <Fragment />
-                    )}
+    const editCareersRemoved = removedCareers.map(career => {
+        return (
+            <EditCareerItem
+                objectid={career._id}
+                id={career._id.toLowerCase().replace(/[^a-z]/gi, '')}
+                title={career.title}
+                date={career.date}
+                city={career.city}
+                company={career.company}
+                link={career.link}
+                email={career.email}
+                lastEdited={career.lastEdited}
+                deleted={career.deleted}
+                deletedMessage={career.deletedMessage}
+            />
+        );
+    });
 
-                    <div className="viewPostingsButtons">
+    return (
+        <div className="editContainer">
+            <div id="editCareersContainer">
+                <div>
+                    <h3> Edit Careers </h3>
+                    {showJobForm ? (
                         <button
-                            className="btn btn-info postingsButton"
-                            onClick={this.handleActivePosts}
-                            disabled={this.state.activePostings}
+                            className="btn btn-danger"
+                            onClick={hideJobForm}
                         >
-                            {' '}
-                            View Active Postings{' '}
+                            Hide
                         </button>
-                        <button
-                            className="btn btn-danger postingsButtons"
-                            onClick={this.handleRemovedPosts}
-                            disabled={this.state.removedPostings}
-                        >
-                            {' '}
-                            View Removed Postings{' '}
-                        </button>
-                    </div>
-
-                    {this.state.activePostings === true &&
-                    editCareersActive.length > 0 ? (
-                        editCareersActive
-                    ) : this.state.removedPostings === true &&
-                      editCareersRemoved.length > 0 ? (
-                        editCareersRemoved
                     ) : (
-                        <p> No postings found </p>
+                        <button
+                            className="btn btn-success"
+                            onClick={handleJobForm}
+                        >
+                            Create New Position
+                        </button>
                     )}
                 </div>
+
+                {showJobForm ? (
+                    <div>
+                        <JobForm />
+                    </div>
+                ) : (
+                    <Fragment />
+                )}
+
+                <div className="viewPostingsButtons">
+                    <button
+                        className="btn btn-info postingsButton"
+                        onClick={handleActivePosts}
+                        disabled={activePostings}
+                    >
+                        View Active Postings
+                    </button>
+                    <button
+                        className="btn btn-danger postingsButtons"
+                        onClick={handleRemovedPosts}
+                        disabled={removedPostings}
+                    >
+                        View Removed Postings
+                    </button>
+                </div>
+
+                {activePostings === true && editCareersActive.length > 0 ? (
+                    editCareersActive
+                ) : removedPostings === true &&
+                  editCareersRemoved.length > 0 ? (
+                    editCareersRemoved
+                ) : (
+                    <p> No postings found </p>
+                )}
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
 export default EditCareer;
