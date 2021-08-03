@@ -18,6 +18,8 @@ const AdminResetPass = () => {
             case 'confirmNewPassword':
                 setConfirmNewPassword(event.target.value);
                 break;
+            default:
+                break;
         }
     };
 

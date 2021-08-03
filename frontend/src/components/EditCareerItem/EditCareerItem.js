@@ -1,4 +1,4 @@
-import React, { useState, Component, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import moment from 'moment-timezone';
