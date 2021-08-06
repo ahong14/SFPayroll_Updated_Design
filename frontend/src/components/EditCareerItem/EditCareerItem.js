@@ -46,7 +46,7 @@ const EditCareerItem = props => {
     const enableNewPdf = () => {
         setEditCareerItemState({
             ...editCareerItemState,
-            newPdf: editCareerItemState.newPdf
+            newPdf: !editCareerItemState.newPdf
         });
     };
 
