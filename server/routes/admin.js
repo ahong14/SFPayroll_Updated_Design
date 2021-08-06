@@ -4,10 +4,10 @@ const Admin = require('../models/Admin');
 const Token = require('../models/Token');
 const NewPasswordToken = require('../models/NewPasswordToken');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const transporter = require('./email');
 const saltRounds = 10;
+const UserService = require('../services/UserService');
 
 //create new admin
 router.post('/signup', (req, res) => {
@@ -188,118 +188,43 @@ router.get('/authentication/:token', (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
-    var userName, password;
+/**
+ * POST /admin/login
+ * @param {string} userName - email of user attempting to login
+ * @param {string} password - password of user attempting to login
+ */
 
-    if (req.body.params) {
-        userName = req.body.params.userName;
-        password = req.body.params.password;
-    } else if (req.body) {
-        userName = req.body.userName;
-        password = req.body.password;
+router.post('/login', async (req, res) => {
+    const { userName, password } = req.body.params || req.body;
+    const userService = new UserService();
+    const loginResult = await userService.loginUser(userName, password);
+    if (!loginResult.token) {
+        return res.status(loginResult.status).json(loginResult);
     }
 
-    Admin.findOne({ userName: userName }, (err, result) => {
-        if (err) {
-            return res.status(500).json({
-                success: false,
-                message: 'Error with database'
-            });
-        } else if (result) {
-            //compare submitted password and hashed password
-            let comparePassword = result.password;
-            bcrypt.compare(password, comparePassword, (err, match) => {
-                if (err) {
-                    console.log(err);
-                    return res.status(500).json({
-                        success: false,
-                        message: 'Error with password hashing'
-                    });
-                }
+    res.cookie('authToken', loginResult.token, { httpOnly: true });
+    return res.status(200).json({
+        success: true,
+        message: 'Login successful',
+        userPayload: loginResult.tokenPayload
+    });
+});
 
-                if (match === false) {
-                    return res.status(400).json({
-                        success: false,
-                        message: 'Error, passwords do not match'
-                    });
-                }
-
-                //if email not verified, send email
-                else if (result.emailVerified === false) {
-                    //create token and send email for verification for created user
-                    let tokenString = new Token();
-                    let tokenValue = crypto.randomBytes(16).toString('hex');
-                    tokenString.user = result.userName;
-                    tokenString.token = tokenValue;
-                    tokenString.save((err) => {
-                        if (err) {
-                            return res.status(500).json({
-                                success: false,
-                                message: 'Error saving to db'
-                            });
-                        }
-                        //send email for verification
-                        const options = {
-                            from: process.env.EMAIL_USER, // sender address
-                            to: process.env.EMAIL_RECEIVER, // list of receivers
-                            subject: 'Signup Verification', // Subject line
-                            html: `<p> Hi ${result.firstName}, Please click the following link to complete verification process. http://sfpayroll.org/api/admin/authentication/${tokenValue} </p>`
-                        };
-
-                        transporter.sendMail(options, (err, info) => {
-                            if (err) {
-                                console.log(err);
-                                res.status(500).send('email failed to send');
-                            } else {
-                                console.log(info);
-                                return res.status(200).json({
-                                    success: false,
-                                    message:
-                                        'Email not yet verified. Please check sfbac inbox for verification process.'
-                                });
-                            }
-                        });
-                    });
-                }
-
-                //sign jwt for successful login
-                else {
-                    let tokenPayload = {
-                        firstName: result.firstName,
-                        lastName: result.lastName,
-                        userName: result.userName
-                    };
-
-                    let token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
-                        expiresIn: 3600
-                    });
-
-                    return res.status(200).json({
-                        success: true,
-                        message: 'Login successful',
-                        token: token,
-                        payload: tokenPayload
-                    });
-                }
-            });
-        } else {
-            return res.status(400).json({
-                success: false,
-                message: 'User name does not exist'
-            });
-        }
+/**
+ * POST /admin/logout
+ */
+router.post('/logout', async (req, res) => {
+    if (req.cookies['authToken']) {
+        res.clearCookie('authToken');
+    }
+    return res.status(200).json({
+        success: true,
+        message: 'Logout successful'
     });
 });
 
 router.post('/resetPassword', (req, res) => {
-    var userName, newPassword;
-    if (req.body.params) {
-        userName = req.body.params.userName;
-        newPassword = req.body.params.newPassword;
-    } else if (req.body) {
-        userName = req.body.userName;
-        newPassword = req.body.newPassword;
-    }
+    const { userName, newPassword } = req.body.params || req.body;
 
     //find if username exists
     Admin.findOne({ userName: userName }, (err, result) => {

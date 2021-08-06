@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import GallerySlides from '../GallerySlides/GallerySlides';
 import GalleryItem from '../GalleryItem/GalleryItem';
 import axios from 'axios';
 import './GalleryGroup.css';
 
-class GalleryGroup extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            imageSources: []
-        };
-    }
+const GalleryGroup = props => {
+    const [imageSources, setImageSources] = useState([]);
 
-    //make api request to get image sources based on current group name
-    componentDidMount() {
-        if (this.props.groupName === 'as_time_goes_by') {
+    useEffect(() => {
+        //make api request to get image sources based on current group name
+        if (props.groupName === 'as_time_goes_by') {
             axios
-                .get(`/api/images/${this.props.groupName}`)
+                .get(`/api/images/${props.groupName}`)
                 .then(res => {
                     // make requests from each directory found
                     const imagePromises = [];
@@ -32,14 +27,12 @@ class GalleryGroup extends Component {
                             images.forEach(response => {
                                 response.data.images = response.data.images.map(
                                     image => {
-                                        return `/api/imageSource/${this.props.groupName}/${response.data.directory}/${image}`;
+                                        return `/api/imageSource/${props.groupName}/${response.data.directory}/${image}`;
                                     }
                                 );
                                 imageSources.push(response.data);
                             });
-                            this.setState({
-                                imageSources: imageSources
-                            });
+                            setImageSources(imageSources);
                         })
                         .catch(err => {
                             alert(err);
@@ -50,58 +43,45 @@ class GalleryGroup extends Component {
                 });
         } else {
             axios
-                .get(`/api/images/${this.props.groupName}`)
+                .get(`/api/images/${props.groupName}`)
                 .then(res => {
                     //create image sources based on returned image names in image group
                     let currentImageSources = res.data.images.map(image => {
-                        return `/api/imageSource/${this.props.groupName}/${image}`;
+                        return `/api/imageSource/${props.groupName}/${image}`;
                     });
-
-                    this.setState({
-                        imageSources: currentImageSources
-                    });
+                    setImageSources(currentImageSources);
                 })
                 .catch(err => {
-                    alert(err.response.data.message);
+                    alert(err);
                 });
         }
-    }
+    }, [null]);
 
-    setPdfPages = pdf => {
-        this.setState({
-            pdfPages: pdf._pdfInfo.numPages,
-            pdf: true
-        });
-    };
+    //render GalleryItem for each image source
+    const renderImages = imageSources.map((image, index) => {
+        return <GalleryItem key={'gallery_item' + index} imageSrc={image} />;
+    });
 
-    render() {
-        //render GalleryItem for each image source
-        const renderImages = this.state.imageSources.map(image => {
-            return <GalleryItem imageSrc={image} />;
-        });
-
-        const gallerySlides = this.state.imageSources.map((gallery, index) => {
-            return (
-                <GallerySlides
-                    galleryId={'gallery' + index}
-                    imageSources={gallery.images}
-                />
-            );
-        });
-
+    const gallerySlides = imageSources.map((gallery, index) => {
         return (
-            <div>
-                {this.props.groupName === 'as_time_goes_by' ? (
-                    // setup carousel if as_time_goes_by
-                    <div>{gallerySlides}</div>
-                ) : (
-                    <div className="row galleryGroupContainer">
-                        {renderImages}
-                    </div>
-                )}
-            </div>
+            <GallerySlides
+                key={'gallery' + index}
+                galleryId={'gallery' + index}
+                imageSources={gallery.images}
+            />
         );
-    }
-}
+    });
+
+    return (
+        <div>
+            {props.groupName === 'as_time_goes_by' ? (
+                // setup carousel if as_time_goes_by
+                <div>{gallerySlides}</div>
+            ) : (
+                <div className="row galleryGroupContainer">{renderImages}</div>
+            )}
+        </div>
+    );
+};
 
 export default GalleryGroup;

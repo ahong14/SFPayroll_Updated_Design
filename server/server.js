@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 require('dotenv').config();
 require('console-stamp')(console, { pattern: 'yyyy-mm-dd hh:mm:ss ' });
@@ -40,10 +41,13 @@ const app = express();
 //parse body request
 app.use(bodyParser.json());
 
+// parse cookies
+app.use(cookieParser());
+
 //use cors;
 app.use(cors());
 
-//morgan loggin
+//morgan logging
 app.use(morgan('combined'));
 
 //serve react files
