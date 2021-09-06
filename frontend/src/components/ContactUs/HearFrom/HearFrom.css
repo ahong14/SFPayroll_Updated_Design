@@ -1,8 +1,16 @@
-#hear_from_form{
+#hear_from_form {
     width: 50%;
     align-self: center;
 }
 
-#hearHeader{
-  width: 90%;
+#hearHeader {
+    width: 90%;
+}
+
+.contact_us_actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }

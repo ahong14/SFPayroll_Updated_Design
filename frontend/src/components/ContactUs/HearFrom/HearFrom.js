@@ -3,6 +3,7 @@ import '../../ContactUs/HearFrom/HearFrom.css';
 import SubmitButton from '../../SubmitButton/SubmitButton';
 import axios from 'axios';
 import validator from 'validator';
+import { Spinner } from 'react-bootstrap';
 
 const HearFrom = () => {
     const [hearFromState, setHearFromState] = useState({
@@ -10,6 +11,8 @@ const HearFrom = () => {
         email: '',
         message: ''
     });
+
+    const [showSpinner, setShowSpinner] = useState(false);
 
     const handleHearFromInput = event => {
         let currentHearFromState = { ...hearFromState };
@@ -20,6 +23,7 @@ const HearFrom = () => {
     // send contact info to email
     const sendContact = () => {
         const apiURL = '/api/contact/contactUs';
+        setShowSpinner(true);
 
         if (
             !hearFromState.name.trim() ||
@@ -27,8 +31,10 @@ const HearFrom = () => {
             !hearFromState.message.trim()
         ) {
             alert('One or more fields empty');
+            setShowSpinner(false);
         } else if (!validator.isEmail(hearFromState.email)) {
             alert('Invalid email inserted');
+            setShowSpinner(false);
         } else {
             axios
                 .post(apiURL, {
@@ -39,10 +45,16 @@ const HearFrom = () => {
                     }
                 })
                 .then(resp => {
-                    alert(resp.data);
+                    setShowSpinner(false);
+                    setTimeout(() => {
+                        alert(resp.data);
+                    }, 500);
                 })
                 .catch(err => {
-                    alert('Error sending email');
+                    setShowSpinner(false);
+                    setTimeout(() => {
+                        alert('Error sending email');
+                    }, 500);
                 });
         }
     };
@@ -63,7 +75,7 @@ const HearFrom = () => {
                 us a note, ask a question about our Chapter, or join us a
                 sponsor. We will get back to you right away.
             </p>
-            <label htmlFor="usr" className="font-weight-bold">
+            <label htmlFor="name" className="font-weight-bold">
                 Name:
             </label>
             <input
@@ -74,7 +86,7 @@ const HearFrom = () => {
                 onChange={handleHearFromInput}
             />
 
-            <label htmlFor="usr" className="font-weight-bold">
+            <label htmlFor="email" className="font-weight-bold">
                 Email:
             </label>
             <input
@@ -85,7 +97,7 @@ const HearFrom = () => {
                 onChange={handleHearFromInput}
             />
 
-            <label htmlFor="usr" className="font-weight-bold">
+            <label htmlFor="message" className="font-weight-bold">
                 Message:
             </label>
             <textarea
@@ -95,7 +107,13 @@ const HearFrom = () => {
                 name="message"
                 onChange={handleHearFromInput}
             ></textarea>
-            <SubmitButton click={sendContact} />
+            <div className="contact_us_actions">
+                {showSpinner ? (
+                    <Spinner animation="border" variant="primary" />
+                ) : (
+                    <SubmitButton click={sendContact} />
+                )}
+            </div>
         </div>
     );
 };
