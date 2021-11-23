@@ -1,4 +1,4 @@
-//require packages
+// require packages
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
@@ -8,52 +8,28 @@ const morgan = require('morgan');
 require('dotenv').config();
 require('console-stamp')(console, { pattern: 'yyyy-mm-dd hh:mm:ss ' });
 
-//mongoose, connect to mongoDB on mLab
+// mongoose, connect to mongoDB on mLab
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    autoReconnect: true,
-    poolSize: 10,
-    reconnectTries: 10,
-    reconnectInterval: 2000
-});
 
-//log mongo connection events
-mongoose.connection.on('open', () => {
-    console.log('Connected to mongo successfully');
-});
-
-//connection failed
-mongoose.connection.on('error', (error) => {
-    console.error('Database connection error:', error);
-    //if connection failed, kill process, restart within container
-    //set delay before restarting process
-    setTimeout(() => {
-        console.error('Connection failed, killing current process, restarting');
-        process.exit(0);
-    }, 2000);
-});
-
-//application, running express app
+// application, running express app
 const app = express();
 
-//parse body request
+// parse body request
 app.use(bodyParser.json());
 
-// parse cookies
+//  parse cookies
 app.use(cookieParser());
 
-//use cors;
+// use cors;
 app.use(cors());
 
-//morgan logging
+// morgan logging
 app.use(morgan('combined'));
 
-//serve react files
+// serve react files
 app.use(express.static(path.join(__dirname, '/../frontend/build')));
 
-//routes
+// routes
 const events = require('./routes/events');
 const contact = require('./routes/contact');
 const job = require('./routes/job');
@@ -72,18 +48,31 @@ app.use('/api/admin', admin);
 app.use('/api/images', images);
 app.use('/api/bulletin', bulletin);
 
-//serve images directory for gallery image sources
+// serve images directory for gallery image sources
 app.use('/api/imageSource', express.static(path.join(__dirname, '/images')));
 
-//check if dev or production mode
-//fix react app crashing on refresh
+// check if dev or production mode
+// fix react app crashing on refresh
 if (process.env.production) {
     app.get('/*', (req, res) => {
         res.sendFile(path.join(__dirname + '/../frontend/build/index.html'));
     });
 }
 
-//listen to requests on port
-//choose port based on environment
+// listen to requests on port
+// choose port based on environment
 const PORT = process.env.PORT || 4000;
-app.listen(PORT);
+
+mongoose
+    .connect(process.env.MONGO_URI, {
+        useNewUrlParser: true
+    })
+    .then(() => {
+        console.log('Mongo connected successfully.');
+        app.listen(PORT, () => {
+            console.log(`App started on port ${PORT}`);
+        });
+    })
+    .catch((err) => {
+        console.error(err);
+    });
