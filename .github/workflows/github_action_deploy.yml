@@ -14,7 +14,9 @@ jobs:
             key: '${{secrets.DIGITAL_OCEAN_SSH_KEY}}'
             username: '${{secrets.DIGITAL_OCEAN_SSH_USER}}'
             script: |
-                sfpayroll
-                git pull origin master
-                sudo make start-production
-                echo "Build/Deploy sfpayroll executed successfully"
+                whoami
+                ls
+                #sfpayroll
+                #git pull origin master
+                #sudo make start-production
+                #echo "Build/Deploy sfpayroll executed successfully"
