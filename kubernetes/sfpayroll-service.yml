@@ -1,0 +1,11 @@
+apiVersion: v1 # version of Kubernetes API
+kind: Service # kind of object being created https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/
+metadata: # data to help identify object
+    name: sfpayroll-service
+spec: # state for desired object
+    type: LoadBalancer # how the service is exposed
+    selector: # route service traffic to pods with label/keys matching selector
+        app: sfpayroll
+    ports: # port exposed by service and target ports
+        - port: 80 # port exposed by this service
+          targetPort: 4000 # port on the pods targeted by service

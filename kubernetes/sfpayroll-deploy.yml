@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: sfpayroll
+spec:
+    replicas: 2
+    selector:
+        matchLabels:
+            app: sfpayroll
+    template:
+        metadata:
+            labels:
+                app: sfpayroll
+        spec:
+            containers:
+                - name: sfpayroll
+                  image: ahong415/sfpayroll:latest
+                  ports:
+                      - containerPort: 4000

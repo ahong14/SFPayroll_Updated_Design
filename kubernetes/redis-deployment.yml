@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: sfpayroll-redis
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: sfpayroll-redis
+    template:
+        metadata:
+            labels:
+                app: sfpayroll-redis
+        spec:
+            containers:
+                - name: sfpayroll-redis
+                  image: redis
+                  ports:
+                      - containerPort: 6379

@@ -4,7 +4,7 @@ const redisClient = redis.createClient({
     host: process.env.REDIS_HOST || process.env.REDIS_DEV
 });
 
-redisClient.on('error', (err) => {
+redisClient.on('error', err => {
     console.log('redis error: ', err);
 });
 
