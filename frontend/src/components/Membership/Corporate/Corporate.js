@@ -6,14 +6,14 @@ const Corporate = () => {
             <div className="card border-dark corporateCard">
                 <div className="card-header header">Individual Membership</div>
                 <div className="card-body text-primary">
-                    <h5 className="card-title">$60 </h5>
+                    <h5 className="card-title">$65 </h5>
                 </div>
             </div>
             <div className="card border-dark corporateCard">
                 <div className="card-header header">Silver</div>
                 <div className="card-body text-primary">
                     <h5 className="card-title">5 Members</h5>
-                    <p className="card-text"> $225 </p>
+                    <p className="card-text"> $250 </p>
                 </div>
             </div>
 
@@ -21,7 +21,7 @@ const Corporate = () => {
                 <div className="card-header header">Gold</div>
                 <div className="card-body text-primary">
                     <h5 className="card-title">20 Members</h5>
-                    <p className="card-text"> $900 </p>
+                    <p className="card-text"> $950 </p>
                 </div>
             </div>
 
@@ -29,7 +29,7 @@ const Corporate = () => {
                 <div className="card-header header">Platinum</div>
                 <div className="card-body text-primary">
                     <h5 className="card-title">20+ Members</h5>
-                    <p className="card-text"> $1500 </p>
+                    <p className="card-text"> $1600 </p>
                 </div>
             </div>
         </div>
