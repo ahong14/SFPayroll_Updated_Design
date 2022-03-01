@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import BannerImage from '../../photos/golden_gate_bridge.jpg';
 import apa from '../../photos/american_payroll_association_logo.png';
 import gpmi from '../../photos/GPMILogo.png';
-import cpc from '../../photos/cpclogo.png';
+import cpc from '../../photos/cpc_2022_logo.png';
 
 //banner image source:
 //https://www.pexels.com/photo/architecture-bay-bridge-construction-417236/
