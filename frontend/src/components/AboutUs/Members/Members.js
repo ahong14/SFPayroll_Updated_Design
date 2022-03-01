@@ -61,12 +61,6 @@ const Members = () => {
                     email="alexhong681@gmail.com"
                 />
                 <OfficerMember
-                    imagesrc={trinity}
-                    name="Trinity Au"
-                    position="Bulletin Intern"
-                    email="Trinitytau112@gmail.com"
-                />
-                <OfficerMember
                     imagesrc={noImage}
                     name="Catherine Zolli"
                     position="Hospitality Chairperson"
