@@ -52,7 +52,7 @@ const Members = () => {
                 <OfficerMember
                     imagesrc={lois}
                     name="Lois Fried, CPP"
-                    position="APA President"
+                    position="APA Immediate Past-President"
                 />
                 <OfficerMember
                     imagesrc={alex}

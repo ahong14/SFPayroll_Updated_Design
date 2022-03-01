@@ -4,3 +4,4 @@ pdfs/
 images/**
 accessToken.json
 gmailCredentials.json
+.DS_Store

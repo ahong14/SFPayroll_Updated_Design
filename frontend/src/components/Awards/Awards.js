@@ -11,14 +11,14 @@ const AwardsSponsors = () => {
 
     useEffect(() => {
         const yearPromises = [];
-        awardYears.forEach(year => {
+        awardYears.forEach((year) => {
             yearPromises.push(axios.get(`/api/images/awards?year=${year}`));
         });
         // wait for all promises to resolve, request made for each year
         Promise.all(yearPromises)
-            .then(res => {
+            .then((res) => {
                 let allAwardResults = [];
-                res.forEach(result => {
+                res.forEach((result) => {
                     allAwardResults = [
                         ...allAwardResults,
                         ...(result.data.result || result.data)
@@ -26,7 +26,7 @@ const AwardsSponsors = () => {
                 });
 
                 // remove null results
-                const urlResults = allAwardResults.filter(result => {
+                const urlResults = allAwardResults.filter((result) => {
                     return result !== null;
                 });
                 const updateAllAwardUrls = [...allAwardUrls, ...urlResults];
@@ -34,24 +34,24 @@ const AwardsSponsors = () => {
                 setAllAwardUrls(updateAllAwardUrls);
 
                 // get banner urls
-                const updateBannerUrls = updateAllAwardUrls.filter(image => {
+                const updateBannerUrls = updateAllAwardUrls.filter((image) => {
                     return image.url.includes('banners');
                 });
                 setBannerUrls(updateBannerUrls);
 
                 // get square award image urls
-                const updateAwardUrls = updateAllAwardUrls.filter(image => {
+                const updateAwardUrls = updateAllAwardUrls.filter((image) => {
                     return !image.url.includes('banners');
                 });
                 setAwardUrls(updateAwardUrls);
             })
-            .catch(err => {
+            .catch((err) => {
                 alert(err);
             });
     }, []);
 
     // banner award image sources
-    const bannerAwards = bannerUrls.map(image => {
+    const bannerAwards = bannerUrls.map((image) => {
         return (
             <Grid item sm={3}>
                 <img className="bannerImage" src={image.url} alt="banner" />
@@ -60,7 +60,7 @@ const AwardsSponsors = () => {
     });
 
     // award image sources
-    const awards = awardUrls.map(image => {
+    const awards = awardUrls.map((image) => {
         return (
             <Grid item sm={4}>
                 <img className="award_image" src={image.url} alt="award" />
@@ -79,13 +79,13 @@ const AwardsSponsors = () => {
             >
                 <div className="eventBanner">
                     <a
-                        href="http://blogs.americanpayroll.org/congress-today/register-for-congress-xstream-to-receive-two-bonus-events"
+                        href="https://www.apacongress.com/"
                         rel="noopener noreferrer"
                         target="_blank"
                     >
                         <img
                             className="eventBannerImage"
-                            src="../../images/npw_2021_banner.png"
+                            src="../../images/npw_2022_banner.jpeg"
                             alt="npw banner"
                         />
                     </a>
@@ -108,7 +108,7 @@ const AwardsSponsors = () => {
                         >
                             <img
                                 className="eventBannerImage"
-                                src="../images/cpc_2021_logo.png"
+                                src="../images/cpc_2022_logo.png"
                                 alt="prize"
                             />
                         </a>
