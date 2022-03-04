@@ -17,12 +17,12 @@ const Events = () => {
         //set state to new array of events
         axios
             .get(apiURL)
-            .then(resp => {
-                let sortedDates = resp.data.filter(event => {
+            .then((resp) => {
+                let sortedDates = resp.data.filter((event) => {
                     return !isNaN(Date.parse(event.date));
                 });
 
-                sortedDates = sortedDates.map(event => {
+                sortedDates = sortedDates.map((event) => {
                     let updatedEventDateObject = { ...event };
                     updatedEventDateObject.sortDate = new Date(event.date);
                     return updatedEventDateObject;
@@ -35,7 +35,7 @@ const Events = () => {
                 // get dates greater than today
                 let currentDate = new Date();
                 let upcomingDate = {};
-                sortedDates.forEach(date => {
+                sortedDates.forEach((date) => {
                     if (date.sortDate >= currentDate) {
                         upcomingDate = { ...date };
                     }
@@ -44,13 +44,13 @@ const Events = () => {
                 setUpcomingEvent(upcomingDate);
                 setEvents(sortedDates);
             })
-            .catch(err => {
+            .catch((err) => {
                 alert(err);
             });
     }, []);
 
     //render current state of events
-    const eventList = events.map(result => {
+    const eventList = events.map((result) => {
         //if the event has a registration, return registration link
         if (result.registration) {
             return (
@@ -106,7 +106,7 @@ const Events = () => {
                                 rel="noopener noreferrer"
                                 target="_blank"
                             >
-                                <h4>California Payroll Congress Schedule</h4>
+                                <h4>California Payroll Conference Schedule</h4>
                             </a>
                         </div>
                     </div>

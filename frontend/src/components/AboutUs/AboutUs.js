@@ -74,7 +74,7 @@ const AboutUs = () => {
                     <p className="text-center font-italic">
                         Click here to view:
                         <a
-                            href="https://sfpayroll.s3.us-east-2.amazonaws.com/pdfs/030122_SFBACHistory_1983_2020.pdf"
+                            href="https://sfpayroll.s3.us-east-2.amazonaws.com/pdfs/SFBAC_History_1983_2021.pdf"
                             rel="noopener noreferrer"
                             target="_blank"
                         >
