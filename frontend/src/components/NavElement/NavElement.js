@@ -4,7 +4,7 @@ import '../NavElement/NavElement.css';
 
 // NavElement component for NavBar
 // remove white spaces for routing
-const NavElement = props => {
+const NavElement = (props) => {
     const [route, setRoute] = useState('');
 
     // set route when props are loaded
@@ -13,7 +13,7 @@ const NavElement = props => {
             const currentSection = props.section.replace(/\s/g, '');
             setRoute(currentSection);
         }
-    }, []);
+    }, [props]);
 
     return (
         <li className="nav-item">

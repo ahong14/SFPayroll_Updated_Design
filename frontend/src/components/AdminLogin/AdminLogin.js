@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './AdminLogin.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import actions from '../../actions';
 
-const AdminLogin = props => {
+const AdminLogin = (props) => {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [loginLoading, setLoginLoading] = useState(false);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (!loginLoading) {
@@ -21,15 +22,16 @@ const AdminLogin = props => {
                     password: password
                 }
             })
-            .then(res => {
+            .then((res) => {
                 if (res.data.success === true) {
                     alert(res.data.message);
-                    //update redux store, retrieve user info payload
-                    props.updateLogin(
-                        res.data.userPayload.userName,
-                        res.data.userPayload.firstName,
-                        res.data.userPayload.lastName
-                    );
+                    // update redux store, retrieve user info payload
+                    dispatch({
+                        type: actions.UPDATE_LOGIN,
+                        userName: res.data.userPayload.userName,
+                        firstName: res.data.userPayload.firstName,
+                        lastName: res.data.userPayload.lastName
+                    });
                     props.history.push('/');
                     setLoginLoading(false);
                 } else {
@@ -37,14 +39,14 @@ const AdminLogin = props => {
                     alert(res.data.message);
                 }
             })
-            .catch(err => {
+            .catch((err) => {
                 setLoginLoading(false);
                 alert(err.response.data.message);
             });
     }, [loginLoading]);
 
     //handle login form changes
-    const handleLoginForms = event => {
+    const handleLoginForms = (event) => {
         switch (event.target.name) {
             case 'userName':
                 setUserName(event.target.value);
@@ -58,7 +60,7 @@ const AdminLogin = props => {
     };
 
     //enter key pressed
-    const handleEnterKey = event => {
+    const handleEnterKey = (event) => {
         if (event.key === 'Enter') {
             submitLogin();
         }
@@ -66,7 +68,7 @@ const AdminLogin = props => {
 
     //submit login
     const submitLogin = () => {
-        if (userName === '' || password === '') {
+        if (!userName || !password) {
             alert('One or more fields empty');
         } else {
             setLoginLoading(true);
@@ -121,17 +123,4 @@ const AdminLogin = props => {
     );
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        updateLogin: (userName, firstName, lastName) => {
-            dispatch({
-                type: actions.UPDATE_LOGIN,
-                userName: userName,
-                firstName: firstName,
-                lastName: lastName
-            });
-        }
-    };
-};
-
-export default connect(null, mapDispatchToProps)(AdminLogin);
+export default AdminLogin;
