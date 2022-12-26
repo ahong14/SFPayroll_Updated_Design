@@ -4,7 +4,7 @@ import { FaBars } from 'react-icons/fa';
 import NavElement from '../NavElement/NavElement';
 import '../NavBar/NavBar.css';
 import newLogo from '../../photos/sfpayroll-red.png';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import actions from '../../actions';
 import axios from 'axios';
 
@@ -12,9 +12,11 @@ import axios from 'axios';
 //Consits of NavElement components
 //renders standard navigation bar or mobile depending on window width
 
-const NavBar = props => {
+const NavBar = () => {
     const [width, setWidth] = useState(0);
     const sideBar = useRef(null);
+    const loginState = useSelector((rootState) => rootState.authReducer);
+    const dispatch = useDispatch();
 
     // update window width after rendering
     useEffect(() => {
@@ -36,15 +38,17 @@ const NavBar = props => {
 
     //logout user
     const logoutUser = () => {
-        if (props.login) {
+        if (loginState.login) {
             axios
                 .post('/api/admin/logout')
-                .then(res => {
-                    props.updateLogout();
+                .then((res) => {
+                    dispatch({
+                        type: actions.UPDATE_LOGOUT
+                    });
                     // temp fix, use window.location to redirect
                     window.location = '/';
                 })
-                .catch(err => {
+                .catch((err) => {
                     alert(err);
                 });
         }
@@ -63,19 +67,19 @@ const NavBar = props => {
                 <ul className="navbar-nav nav-fill w-100" id="navbarList">
                     <NavElement section="Home" />
                     <NavElement
-                        section={props.login ? 'Edit Events' : 'Events'}
+                        section={loginState.login ? 'Edit Events' : 'Events'}
                     />
                     <NavElement section="About Us" />
                     <NavElement section="Membership" />
                     <NavElement section="Resources" />
                     <NavElement
-                        section={props.login ? 'Edit Careers' : 'Careers'}
+                        section={loginState.login ? 'Edit Careers' : 'Careers'}
                     />
                     <NavElement section="Contact Us" />
                     <NavElement section="Gallery" />
                     <NavElement
                         onClick={logoutUser}
-                        section={props.login ? 'Logout' : 'Admin'}
+                        section={loginState.login ? 'Logout' : 'Admin'}
                     />
                 </ul>
             </nav>
@@ -114,7 +118,9 @@ const NavBar = props => {
                         <div className="text-center" id="mobile_nav_links">
                             <NavElement onClick={closeSideNav} section="Home" />
                             <NavElement
-                                section={props.login ? 'Edit Events' : 'Events'}
+                                section={
+                                    loginState.login ? 'Edit Events' : 'Events'
+                                }
                             />
                             <NavElement
                                 onClick={closeSideNav}
@@ -130,7 +136,9 @@ const NavBar = props => {
                             />
                             <NavElement
                                 section={
-                                    props.login ? 'Edit Careers' : 'Careers'
+                                    loginState.login
+                                        ? 'Edit Careers'
+                                        : 'Careers'
                                 }
                             />
                             <NavElement
@@ -149,20 +157,4 @@ const NavBar = props => {
     }
 };
 
-const mapStateToProps = state => {
-    return {
-        login: state.authReducer.login
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        updateLogout: () => {
-            dispatch({
-                type: actions.UPDATE_LOGOUT
-            });
-        }
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default NavBar;
