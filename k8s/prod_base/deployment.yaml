@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: sfpayroll-deployment
+    namespace: default
+spec:
+    replicas: 2
+    selector:
+        matchLabels:
+            app: sfpayroll-deployment
+    template:
+        metadata:
+            labels:
+                app: sfpayroll-deployment
+        spec:
+            containers:
+                - name: sfpayroll
+                  image: ahong415/sfpayroll:latest
+                  imagePullPolicy: IfNotPresent
+                  resources:
+                      requests:
+                          cpu: 500m
+                          memory: 64Mi
+                  ports:
+                      - name: http
+                        containerPort: 4000
+                        protocol: TCP
+                - name: redis
+                  image: redis
+                  imagePullPolicy: IfNotPresent
+                  resources:
+                      requests:
+                          cpu: 500m
+                          memory: 64Mi
+                  ports:
+                      - name: http
+                        containerPort: 6379
+                        protocol: TCP

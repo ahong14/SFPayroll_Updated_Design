@@ -12,3 +12,12 @@ start-production:
 
 stop-production:
 	docker-compose -f docker-compose.yml down --remove-orphans
+
+# install ingress nginx
+install-ingress-nginx:
+	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/cloud/deploy.yaml
+
+# start k8s dev
+start-dev-k8:
+	cd k8s/dev_base/
+	kubectl apply -k .

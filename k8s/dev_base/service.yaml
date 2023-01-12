@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
     name: sfpayroll-service
+    namespace: default
 spec:
-    # TODO change to LoadBalancer type when deployed to cloud server
     type: NodePort
     ports:
-        - protocol: TCP
-          nodePort: 30000
+        - name: http
+          protocol: TCP
           port: 80
           targetPort: 4000
     selector:
