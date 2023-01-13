@@ -16,22 +16,14 @@ spec:
             containers:
                 - name: sfpayroll
                   image: ahong415/sfpayroll:latest
-                  imagePullPolicy: IfNotPresent
-                  resources:
-                      requests:
-                          cpu: 500m
-                          memory: 64Mi
+                  imagePullPolicy: Always
                   ports:
                       - name: http
                         containerPort: 4000
                         protocol: TCP
                 - name: redis
                   image: redis
-                  imagePullPolicy: IfNotPresent
-                  resources:
-                      requests:
-                          cpu: 500m
-                          memory: 64Mi
+                  imagePullPolicy: Always
                   ports:
                       - name: http
                         containerPort: 6379

@@ -4,8 +4,13 @@ metadata:
     name: sfpayroll-ingress
     annotations:
         kubernetes.io/ingress.class: 'nginx'
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
         nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+    tls:
+    - hosts:
+            - sfpayroll.org
+      secretName: sfpayroll-tls
     rules:
         - host: sfpayroll.org
           http:
