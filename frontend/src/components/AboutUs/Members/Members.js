@@ -10,8 +10,8 @@ import becky from '../../../photos/beckypic.jpg';
 import bill from '../../../photos/bill_member_image.png';
 import christine from '../../../photos/christinepic.jpg';
 import lois from '../../../photos/loispicture.jpg';
+import iris from '../../../photos/iris_img.png';
 import alex from '../../../photos/alex_image.jpg';
-import trinity from '../../../photos/trinity_img.JPG';
 import noImage from '../../../photos/default.jpg';
 
 const Members = () => {
@@ -55,15 +55,20 @@ const Members = () => {
                     position="APA Immediate Past-President"
                 />
                 <OfficerMember
-                    imagesrc={alex}
-                    name="Alex Hong"
-                    position="Webmaster"
-                    email="alexhong681@gmail.com"
+                    imagesrc={iris}
+                    name="Iris Yu"
+                    position="Communications Officer"
                 />
                 <OfficerMember
                     imagesrc={noImage}
                     name="Catherine Zolli"
                     position="Hospitality Chairperson"
+                />
+                <OfficerMember
+                    imagesrc={alex}
+                    name="Alex Hong"
+                    position="Webmaster"
+                    email="alexhong681@gmail.com"
                 />
                 <EmptyMember />
             </div>
