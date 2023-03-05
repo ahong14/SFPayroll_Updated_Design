@@ -1,6 +1,10 @@
 {
     "galleryGroups": [
         {
+            "groupName": "Congress 2022",
+            "eventKey": "congress_2022"
+        },
+        {
             "groupName": "Chapter Meetings",
             "eventKey": "chapterMeetings"
         },
