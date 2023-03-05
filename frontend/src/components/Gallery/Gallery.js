@@ -6,7 +6,7 @@ import GalleryGroup from '../GalleryGroup/GalleryGroup';
 
 const Gallery = () => {
     //create tab groups based on categories of photos
-    const tabGroups = GalleryGroupJSON.galleryGroups.map(group => {
+    const tabGroups = GalleryGroupJSON.galleryGroups.map((group) => {
         return (
             <Tab
                 key={group.eventKey}
@@ -21,7 +21,7 @@ const Gallery = () => {
     return (
         <div className="container galleryContainer">
             <h1 className="text-center"> Gallery </h1>
-            <Tabs defaultActiveKey="chapterMeetings">{tabGroups}</Tabs>
+            <Tabs>{tabGroups}</Tabs>
         </div>
     );
 };
