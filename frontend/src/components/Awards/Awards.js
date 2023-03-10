@@ -85,7 +85,7 @@ const AwardsSponsors = () => {
                     >
                         <img
                             className="eventBannerImage"
-                            src="../../images/npw_2022_banner.jpeg"
+                            src="../../images/npw_2023_banner.jpeg"
                             alt="npw banner"
                         />
                     </a>
