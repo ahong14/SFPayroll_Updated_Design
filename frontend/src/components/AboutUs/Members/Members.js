@@ -56,7 +56,7 @@ const Members = () => {
                 />
                 <OfficerMember
                     imagesrc={iris}
-                    name="Iris Yu"
+                    name="Iris Yu, CPP"
                     position="Communications Officer"
                 />
                 <OfficerMember
