@@ -11,8 +11,16 @@ Nginx proxy/load balancer running in Docker Containers.
 
 ## Stack:
 
-Frontend: React, Bootstrap
+**Frontend**: React, Redux, Bootstrap
 
-Backend: Node/Express, MongoDB, mLab
+**Backend**: Node/Express, MongoDB, mLab
 
-DevOps: Nginx, Docker, Let's Encrypt
+**Infra**: Nginx, Docker, Let's Encrypt, DigitalOcean
+
+## Scripts:
+
+renew_cert.sh 
+
+1. Stops docker containers
+2. Runs command `certbot renew`
+3. When ssl certs are renewed, start up Docker containers again
