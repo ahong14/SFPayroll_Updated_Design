@@ -14,11 +14,11 @@ jobs:
         - name: Pull master and deploy docker containers
           uses: appleboy/ssh-action@master
           with:
-                host: ${{secrets.DIGITAL_OCEAN_HOST}}
-                key: ${{secrets.DIGITAL_OCEAN_SSH_KEY}}
-                username: ${{secrets.DIGITAL_OCEAN_SSH_USER}}
+                host: ${{ secrets.DIGITAL_OCEAN_HOST }}
+                key: ${{ secrets.DIGITAL_OCEAN_SSH_KEY }}
+                username: ${{ secrets.DIGITAL_OCEAN_SSH_USER }}
                 script: |
-                    sfpayroll
-                    git pull origin master
-                    sudo make start-production
-                    echo "Build/Deploy sfpayroll executed successfully"
+                  sfpayroll
+                  git pull origin master
+                  sudo make start-production
+                  echo "Build/Deploy sfpayroll executed successfully"
