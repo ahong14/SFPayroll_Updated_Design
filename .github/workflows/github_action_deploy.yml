@@ -7,18 +7,18 @@ on:
             - master
 
 jobs:
-    deploy:
+    build:
+        name: Deploy
         runs-on: ubuntu-latest # type of machine the job runs on
         steps:
-            - name: Pull master and deploy docker containers
-              uses: appleboy/ssh-action@master
-              with:
-                  host: ${{secrets.DIGITAL_OCEAN_HOST}}
-                  key: ${{secrets.DIGITAL_OCEAN_SSH_KEY}}
-                  username: ${{secrets.DIGITAL_OCEAN_SSH_USER}}
-
-              script: |
-                  sfpayroll
-                  git pull origin master
-                  sudo make start-production
-                  echo "Build/Deploy sfpayroll executed successfully"
+        - name: Pull master and deploy docker containers
+          uses: appleboy/ssh-action@master
+          with:
+                host: ${{secrets.DIGITAL_OCEAN_HOST}}
+                key: ${{secrets.DIGITAL_OCEAN_SSH_KEY}}
+                username: ${{secrets.DIGITAL_OCEAN_SSH_USER}}
+                script: |
+                    sfpayroll
+                    git pull origin master
+                    sudo make start-production
+                    echo "Build/Deploy sfpayroll executed successfully"
