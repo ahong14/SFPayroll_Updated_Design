@@ -1,13 +1,14 @@
 name: Build/Deploy sfpayroll
 
 on:
-    push:
+    workflow_dispatch: # manual workflow trigger
+    push: # push to branches trigger action
         branches:
             - master
 
 jobs:
     deploy:
-        runs-on: ubuntu-18.04 # type of machine the job runs on
+        runs-on: ubuntu-latest # type of machine the job runs on
         steps:
             - name: Pull master and deploy docker containers
               uses: appleboy/ssh-action@master
