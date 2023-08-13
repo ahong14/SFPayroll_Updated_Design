@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 
 const AwardsSponsors = () => {
-    const awardYears = [2021, 2020, 2019, 2018, 2017, 2016, 2015];
+    const awardYears = [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015];
     const [allAwardUrls, setAllAwardUrls] = useState([]);
     const [bannerUrls, setBannerUrls] = useState([]);
     const [awardUrls, setAwardUrls] = useState([]);
