@@ -108,7 +108,7 @@ const AwardsSponsors = () => {
                         >
                             <img
                                 className="eventBannerImage"
-                                src="../images/cpc_2022_logo.png"
+                                src="../images/cpc_2023_logo.png"
                                 alt="prize"
                             />
                         </a>
