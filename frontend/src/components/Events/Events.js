@@ -132,7 +132,7 @@ const Events = () => {
 
                 <div id="eventPosts">
                     <h3> Events </h3>
-                    {eventList}
+                    {eventList.length ? eventList : 'No active events'}
                 </div>
             </div>
         </div>
