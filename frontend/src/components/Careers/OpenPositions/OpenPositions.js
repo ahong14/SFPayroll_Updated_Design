@@ -37,7 +37,7 @@ const OpenPositions = () => {
     return (
         <div className="learning_resources underline" id="open_positions">
             <h3> Open Positions </h3>
-            {postings}
+            {postings.length ? postings : 'No active postings'}
         </div>
     );
 };
