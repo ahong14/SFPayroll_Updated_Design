@@ -7,7 +7,7 @@ COPY ./frontend /app/src/frontend
 
 WORKDIR /app/src/frontend
 
-RUN npm install
+RUN npm install --silent
 
 RUN npm run build
 
@@ -16,7 +16,7 @@ WORKDIR /app/src/server
 
 COPY ./server /app/src/server
 
-RUN npm install
+RUN npm install --silent
 
 RUN npm install forever -g
 
